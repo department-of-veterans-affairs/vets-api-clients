@@ -1,4 +1,4 @@
-# vets-api-cleints
+# vets-api-clients
 
 This is a collection of sample vets.gov API clients.
 
