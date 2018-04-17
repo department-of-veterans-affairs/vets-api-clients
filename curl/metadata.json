@@ -1,7 +1,8 @@
 {
   "veteranFirstName": "Jane",
   "veteranLastName": "Doe",
-  "fileNumber": 42,
+  "fileNumber": "12345678",
   "zipCode": "60647",
-  "source": "vets.gov API test client"
+  "source": "Vets.gov",
+  "docType": "21-22"
 }

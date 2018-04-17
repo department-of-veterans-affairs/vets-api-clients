@@ -18,6 +18,11 @@ if [ "$token" == "invalid-token" ]; then
   exit 1
 fi
 
+if [ "$#" -ne 2 ]; then
+  echo "usage: client.sh <document.pdf> <metadata.json>"
+  exit 2
+fi
+
 echo "starting document upload to $apiUrl"
 
 # tell the vets-api about the upload
@@ -50,7 +55,7 @@ curl -X PUT \
 
 status="pending"
 echo "polling every 5 seconds for status..."
-while [ "$status" == "pending" ]
+while [ "$status" == "pending" -o "$status" == "uploaded" ]
 do
   status=$(curl \
     -X GET \
