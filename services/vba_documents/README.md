@@ -15,7 +15,7 @@ check the status of their submission to ensure acceptance and processing in
 the VA system of record for these forms.
 
 ## API Specification
-- [PDF](Document Upload API Design-20180416.pdf)
+- [PDF](Document%20Upload%20API%20Design-20180416.pdf)
 
 ## API Endpoints
 - (Pending)
