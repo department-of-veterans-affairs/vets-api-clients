@@ -19,7 +19,7 @@ To use the client in your own application, include the package and create a new 
 package main
 
 import (
-    "fmt"
+	"fmt"
 
 	vetsapi "github.com/department-of-veterans-affairs/vets-api-clients/services/vba_documents/go"
 )
