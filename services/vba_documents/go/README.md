@@ -37,8 +37,11 @@ func main() {
 
 ## Testing
 
-TK: tests
-
+```shell
+$ vgo test
+PASS
+ok  	github.com/department-of-veterans-affairs/vets-api-clients/services/vba_documents/go	0.749s
+```
 ## Notes
 
 The structure of the client code is heavily indebted to the [go-github project](https://github.com/google/go-github).
