@@ -54,9 +54,10 @@ func NewClient(client *http.Client) *VetsAPIClient {
 }
 
 func (c *VetsAPIClient) NewRequest(method, path string, body io.Reader) (*http.Request, error) {
-	c.Url.Path = path
+	u := c.Url
+	u.Path = path
 
-	req, err := http.NewRequest(method, c.Url.String(), body)
+	req, err := http.NewRequest(method, u.String(), body)
 
 	req.Header.Set(c.Header, c.Key)
 	req.Header.Set("User-agent", c.UserAgent)
