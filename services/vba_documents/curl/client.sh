@@ -9,7 +9,7 @@
 
 set -e
 
-apiUrl=${VETS_API_URL:-"https://api.vets.gov"}
+apiUrl=${VETS_API_URL:-"https://dev-api.vets.gov"}
 token=${VETS_API_TOKEN:-"invalid-token"}
 tokenHeader="apiKey"
 
@@ -48,7 +48,7 @@ curl -X PUT \
   -s \
   $s3location \
   -H 'Content-type: ""' \
-  -F "document=@$1;type=application/pdf" \
+  -F "content=@$1;type=application/pdf" \
   -F "metadata=<$2;type=application/json" > /dev/null 2>&1
 
 # poll for status update
