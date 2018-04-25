@@ -37,7 +37,7 @@ Next, the following criteria needs to be met and verified by the API team.
 
 
 ### What happens after I am approved?
-You will receive an email from the VA API team notifying you of approval. You will then receive a new Client ID and Secret for your app in production. You will use the base URL api.vets.gov instead of staging-api.vets.gov.
+You will receive an email from the VA API team notifying you of approval. You will then receive a new Client ID and Secret for your app in production. You will use the base URL api.vets.gov instead of dev-api.vets.gov.
 
 ## Developer Guidelines
 Below are guidelines you should follow to be successful in your VA API integration.
