@@ -16,6 +16,8 @@ The VA API uses token-based authentication. Clients must provide a token with ea
 
 Sample code and documentation is available at [https://github.com/department-of-veterans-affairs/vets-api-clients](https://github.com/department-of-veterans-affairs/vets-api-clients). 
 
+## Development API Access
+During the alpha phase of this project, if you want access to a development API token, email Alex.Yale-Loehr@va.gov.  We will be creating a self service capability for developer tokens in the near future. 
 
 ## Production API Access
 During the alpha phase of this project, once you have successfully integrated with the API and are ready to go live, you can request access to a production token by emailing Alex.Yale-Loehr@va.gov, providing the information detailed below. 
@@ -46,5 +48,5 @@ Below are guidelines you should follow to be successful in your VA API integrati
 You will be asked to provide a URL to your privacy policy and terms and conditions when applying for production access. These links should be easy to access and understand by a Veteran using your app. Consider using the Model Privacy Notice.
 
 ### Rate Limiting and Data Refresh
-We implemented basic rate limiting. If you exceed this quota and receive an error message, you may petition for increased rate limits which will be decided on a case by case basis.  
+We implemented basic rate limiting of 60 requests per minute. If you exceed this quota, your request will return a 429 status code.  You may petition for increased rate limits by emailing Alex.Yale-Loehr@va.gov and requests will be decided on a case by case basis.  
  
