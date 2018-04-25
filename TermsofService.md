@@ -16,7 +16,7 @@ Developer credentials (such as passwords, keys, tokens, and client IDs) are inte
 You will only access (or attempt to access) an API by the means described in the documentation of that API. If VA assigns you developer credentials (e.g., client IDs), you must use them with the applicable APIs.
 
 ### Attribution
-When using content, data, documentation, code, and related materials associated with the API in your own work, we ask that proper credit be given. All services which utilize or access the API should display the following notice prominently within the application: “This product uses the VA Data API but is not endorsed or certified by VA”.
+While not required, when using content, data, documentation, code, and related materials associated with the API in your own work, we ask that proper credit be given. 
 
 ### Right to Limit
 Your use of the API may be subject to certain limitations on access, calls, or use as set forth within this Agreement or otherwise provided by VA. These limitations are designed to manage the load on the system, promote equitable access, and prevent abuse, and these limitations may be adjusted without notice, as deemed necessary by VA. If VA reasonably believes that you have attempted to exceed or circumvent these limits, your ability to use the API may be temporarily or permanently blocked. VA may monitor your use of the API to improve the service or to ensure compliance with this Agreement.
