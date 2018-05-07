@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "id": "7387389",
+      "type": "appealSeries",
+      "attributes": {
+        "active": true,
+        "incompleteHistory": false,
+        "aoj": "vba",
+        "programArea": "compensation",
+        "description": null,
+        "type": "original",
+        "aod": false,
+        "location": "bva",
+        "status": {
+          "type": "pending_hearing",
+          "details": {
+            "hearingType": "video",
+            "ro": "St. Petersburg Regional Office"
+          }
+        },
+        "docket": {
+          "front": false,
+          "total": 208515,
+          "ahead": 80114,
+          "ready": 21915,
+          "eta": null
+        },
+        "issues": [
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": false,
+            "description": null,
+            "lastAction": "field_grant",
+            "date": "2015-02-09"
+          }
+        ],
+        "alerts": [
+          {
+            "type": "scheduled_hearing",
+            "details": {
+              "hearingType": "video",
+              "ro": "St. Petersburg Regional Office",
+              "date": "2016-01-12",
+              "time": "am"
+            }
+          }
+        ],
+        "events": [
+          {
+            "type": "claim",
+            "date": "2013-05-30",
+            "details": {}
+          },
+          {
+            "type": "nod",
+            "date": "2013-06-05",
+            "details": {}
+          },
+          {
+            "type": "soc",
+            "date": "2014-07-12",
+            "details": {}
+          },
+          {
+            "type": "form9",
+            "date": "2014-07-21",
+            "details": {}
+          },
+          {
+            "type": "field_grant",
+            "date": "2015-02-09",
+            "details": {}
+          },
+          {
+            "type": "ssoc",
+            "date": "2015-02-12",
+            "details": {}
+          },
+          {
+            "type": "certification",
+            "date": "2015-04-19",
+            "details": {}
+          }
+        ],
+        "evidence": []
+      }
+    }
+  ]
+}
