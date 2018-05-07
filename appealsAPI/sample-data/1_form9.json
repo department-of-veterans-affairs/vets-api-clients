@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+      "id": "7387389",
+      "type": "appealSeries",
+      "attributes": {
+        "active": true,
+        "incompleteHistory": false,
+        "aoj": "vba",
+        "programArea": "compensation",
+        "description": null,
+        "type": "original",
+        "aod": false,
+        "location": "aoj",
+        "status": {
+          "type": "pending_form9",
+          "details": {
+            "ro": "St. Petersburg Regional Office",
+            "ssocMonths": 11,
+            "certMonths": 3
+          }
+        },
+        "docket": null,
+        "issues": [
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          }
+        ],
+        "alerts": [
+          {
+            "type": "form9_due",
+            "details": {
+              "dueDate": "2014-09-10"
+            }
+          }
+        ],
+        "events": [
+          {
+            "type": "claim",
+            "date": "2013-05-30",
+            "details": {}
+          },
+          {
+            "type": "nod",
+            "date": "2013-06-05",
+            "details": {}
+          },
+          {
+            "type": "soc",
+            "date": "2014-07-12",
+            "details": {}
+          }
+        ],
+        "evidence": []
+      }
+    }
+  ]
+}
