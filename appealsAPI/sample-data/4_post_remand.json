@@ -1,0 +1,95 @@
+{
+  "data": [
+    {
+      "id": "7387389",
+      "type": "appealSeries",
+      "attributes": {
+        "active": true,
+        "incompleteHistory": false,
+        "aoj": "vba",
+        "programArea": "compensation",
+        "description": null,
+        "type": "post_remand",
+        "aod": false,
+        "location": "aoj",
+        "status": {
+          "type": "remand",
+          "details": {
+            "ro": "St. Petersburg Regional Office",
+            "ssocMonths": 8
+          }
+        },
+        "docket": null,
+        "issues": [
+          {
+            "active": false,
+            "description": null,
+            "lastAction": "allowed",
+            "date": "2016-11-01"
+          },
+          {
+            "active": true,
+            "description": null,
+            "lastAction": "remand",
+            "date": "2016-11-01"
+          },
+          {
+            "active": false,
+            "description": null,
+            "lastAction": "field_grant",
+            "date": "2015-02-09"
+          }
+        ],
+        "alerts": [],
+        "events": [
+          {
+            "type": "claim",
+            "date": "2013-05-30",
+            "details": {}
+          },
+          {
+            "type": "nod",
+            "date": "2013-06-05",
+            "details": {}
+          },
+          {
+            "type": "soc",
+            "date": "2014-07-12",
+            "details": {}
+          },
+          {
+            "type": "form9",
+            "date": "2014-07-21",
+            "details": {}
+          },
+          {
+            "type": "field_grant",
+            "date": "2015-02-09",
+            "details": {}
+          },
+          {
+            "type": "ssoc",
+            "date": "2015-02-12",
+            "details": {}
+          },
+          {
+            "type": "certification",
+            "date": "2015-04-19",
+            "details": {}
+          },
+          {
+            "type": "hearing",
+            "date": "2016-01-12",
+            "details": {}
+          },
+          {
+            "type": "bva_decision",
+            "date": "2016-11-01",
+            "details": {}
+          }
+        ],
+        "evidence": []
+      }
+    }
+  ]
+}
