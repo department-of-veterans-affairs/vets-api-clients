@@ -1,0 +1,91 @@
+{
+  "data": [
+    {
+      "id": "7387389",
+      "type": "appealSeries",
+      "attributes": {
+        "active": true,
+        "incompleteHistory": false,
+        "aoj": "vba",
+        "programArea": "compensation",
+        "description": null,
+        "type": "original",
+        "aod": false,
+        "location": "bva",
+        "status": {
+          "type": "pending_hearing_scheduling",
+          "details": {
+            "hearingType": "video",
+            "ro": "St. Petersburg Regional Office"
+          }
+        },
+        "docket": {
+          "front": false,
+          "total": 206900,
+          "ahead": 109203,
+          "ready": 22109,
+          "eta": null
+        },
+        "issues": [
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": true,
+            "description": null,
+            "lastAction": null,
+            "date": null
+          },
+          {
+            "active": false,
+            "description": null,
+            "lastAction": "field_grant",
+            "date": "2015-02-09"
+          }
+        ],
+        "alerts": [],
+        "events": [
+          {
+            "type": "claim",
+            "date": "2013-05-30",
+            "details": {}
+          },
+          {
+            "type": "nod",
+            "date": "2013-06-05",
+            "details": {}
+          },
+          {
+            "type": "soc",
+            "date": "2014-07-12",
+            "details": {}
+          },
+          {
+            "type": "form9",
+            "date": "2014-07-21",
+            "details": {}
+          },
+          {
+            "type": "field_grant",
+            "date": "2015-02-09",
+            "details": {}
+          },
+          {
+            "type": "ssoc",
+            "date": "2015-02-12",
+            "details": {}
+          },
+          {
+            "type": "certification",
+            "date": "2015-04-19",
+            "details": {}
+          }
+        ],
+        "evidence": []
+      }
+    }
+  ]
+}
