@@ -2,7 +2,8 @@
 Thank you for using U.S. Department of Veterans Affairs (VA) APIs. By accessing or using our APIs, you are agreeing to the terms below. 
 
 Please review these terms carefully. Once accepted, these terms become a binding legal commitment between you and the VA. If you do not agree to be bound by these terms, you should not use VA’s APIs. 
-Scope
+
+#### Scope
 The service ("API") through which you interact with VA data is subject to these terms. Use of the API constitutes acceptance to these Terms.
 
 ## Data Rights and Usage
@@ -27,7 +28,8 @@ We may revise these Terms from time to time. If we do, those revised Terms will 
 
 ### Changes to Services 
 The features and functions of our Services, including our APIs, and VA’s service level agreement (SLA), may change over time. It is your responsibility to ensure that calls or requests you make to our Services are compatible with our then-current Services. Although we try to avoid making changes to our Services that are not backwards compatible, if any such changes become necessary, we will use reasonable efforts to let you know at least sixty (60) days prior to implementing those changes.
-Service Termination
+
+### Service Termination
 
 If you wish to terminate this Agreement, you may do so by refraining from further use of the API. VA reserves the right (though not the obligation) to: (1) refuse to provide the API to you, if it is VA’s opinion that use violates any VA policy; or (2) terminate or deny you access to and use of all or part of the API at any time for any other reason which in its sole discretion it deems necessary to in order to prevent abuse. You may petition VA to regain access to the API. If VA determines in its sole discretion that the circumstances which led to the refusal to provide the API or terminate access to the API are no longer in existence, then VA may restore your access. All provisions of this Agreement shall survive termination including, without limitation, warranty disclaimers, and limitations of liability.
 
@@ -53,6 +55,6 @@ VA’s failure to exercise or enforce any right or provision of this Agreement s
 ## Privacy
 You may use a VA API to develop a service to search, display, analyze, retrieve, view and otherwise ‘get’ information from VA, which requires special safeguarding. You agree to strictly abide by all applicable federal and state laws regarding the protection and disclosure of information obtained through a VA API.
 
-You further acknowledge that when records regarding an individual are obtained through a VA API, you may not expose that content to other individuals or third parties without specific, explicit consent from the individual or his or her authorized representative, or as permitted by applicable law. The terms “individual” and “record” have the meanings given in the Privacy Act at 5 U.S.C. § 552a(a). If you would like more information about the application of the Privacy Policy at VA, click here.
+You further acknowledge that when records regarding an individual are obtained through a VA API, you may not expose that content to other individuals or third parties without specific, explicit consent from the individual or his or her authorized representative, or as permitted by applicable law. The terms “individual” and “record” have the meanings given in the Privacy Act at 5 U.S.C. § 552a(a). If you would like more information about the application of the Privacy Policy at VA, [click here](https://www.va.gov/privacy/).
 
 
