@@ -6,15 +6,19 @@ about: Reporting issues with the VA API Platform
 
 ## APIs Affected
 
-* [ ] VA Facilities
-* [ ] Benefits Intake
-* [ ] Appeals Status
-* [ ] Health
-* [ ] Veteran Verification
+<!-- Please list affected APIs -->
 
-## Brief Summary and Severity of the Issue
+* API 1
+* API 2
 
-<!-- One or two sentence summary of the Issue. Please indicate how severe this issue if for your use case. -->
+## Brief Summary 
+
+<!-- One or two sentence summary of the Issue. --> 
+
+## Severity of the Issue
+
+<!-- Please indicate how severe this issue if for your use case. -->
+
 
 ## Steps to Reproduce
 

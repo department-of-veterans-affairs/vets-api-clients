@@ -6,19 +6,20 @@ about: For Requesting enhancement or changes to the APIs functionality
 
 ## APIs Affected
 
-* [ ] VA Facilities
-* [ ] Benefits Intake
-* [ ] Appeals Status
-* [ ] Health
-* [ ] Veteran Verification
+<!-- Please list affected APIs -->
 
-## Brief Summary of the Request
+* API 1
+* API 2
 
 <!-- One or two sentence summary of the Request. -->
+
+## Value Provided by Feature
+
+<!-- Explanation of why this feature would help your use case or be generally useful --> 
 
 ## Acceptance Criteria
 
 <!-- List any criteria that developers can use to validate they've solved your request. -->
 
-* [ ] It should solve my problem
-* [ ] It should do it in a way that makes sense
+* [ ] <!-- Example: Bulk API for facilities data -->
+* [ ] <!-- Example: Updated Documentation. -->
