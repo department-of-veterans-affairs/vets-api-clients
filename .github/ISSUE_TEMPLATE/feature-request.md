@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: For Requesting enhancement or changes to the APIs functionality
+about: For Requesting enhancement or changes to API functionality
 
 ---
 
@@ -10,6 +10,8 @@ about: For Requesting enhancement or changes to the APIs functionality
 
 * API 1
 * API 2
+
+## Explanation Feature
 
 <!-- One or two sentence summary of the Request. -->
 
