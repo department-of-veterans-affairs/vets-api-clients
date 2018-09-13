@@ -17,7 +17,7 @@ about: Reporting issues with the VA API Platform
 
 ## Severity of the Issue
 
-<!-- Please indicate how severe this issue if for your use case. -->
+<!-- Please indicate how severe this issue is for your use case. -->
 
 
 ## Steps to Reproduce
