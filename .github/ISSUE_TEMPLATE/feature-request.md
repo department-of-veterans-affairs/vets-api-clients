@@ -8,12 +8,9 @@ about: For Requesting enhancement or changes to API functionality
 
 <!-- Please list affected APIs -->
 
-* API 1
-* API 2
-
 ## Explanation Feature
 
-<!-- One or two sentence summary of the Request. -->
+<!-- One or two sentence summary of the request. -->
 
 ## Value Provided by Feature
 
@@ -22,6 +19,3 @@ about: For Requesting enhancement or changes to API functionality
 ## Acceptance Criteria
 
 <!-- List any criteria that developers can use to validate they've solved your request. -->
-
-* [ ] <!-- Example: Bulk API for facilities data -->
-* [ ] <!-- Example: Updated Documentation. -->

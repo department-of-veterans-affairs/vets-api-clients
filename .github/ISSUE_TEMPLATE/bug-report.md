@@ -8,21 +8,15 @@ about: Reporting issues with the VA API Platform
 
 <!-- Please list affected APIs -->
 
-* API 1
-* API 2
-
 ## Brief Summary 
 
-<!-- One or two sentence summary of the Issue. --> 
+<!-- One or two sentence summary of the issue. --> 
 
 ## Severity of the Issue
 
 <!-- Please indicate how severe this issue is for your use case. -->
-
+<!-- Does it prevent you from using the API? Were you able to workaround? -->
 
 ## Steps to Reproduce
 
-<!-- Please include any details about your environment, language, browser, operating system, etc that will halp us reproduce. -->
-
-1. Step one
-1. Step two
+<!-- Please include any details about your environment, language, browser, operating system, etc that will help us reproduce. -->
