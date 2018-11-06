@@ -1,0 +1,26 @@
+{
+  "name": "va-api-client-oauth-example",
+  "version": "1.0.0",
+  "description": "Example OAuth Client with VA API Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/department-of-veterans-affairs/vets-api-clients.git"
+  },
+  "author": "Ed Paget",
+  "license": " CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/department-of-veterans-affairs/vets-api-clients/issues"
+  },
+  "homepage": "https://github.com/department-of-veterans-affairs/vets-api-clients#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "openid-client": "^2.4.5",
+    "passport": "^0.4.0"
+  }
+}
