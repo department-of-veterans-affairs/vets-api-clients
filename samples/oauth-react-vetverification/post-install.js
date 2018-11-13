@@ -1,5 +1,8 @@
 /*
  * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * This file has been modified from the original.
+ * Modifications are subject to the CC0 1.0 Universal public domain dedication.
+ *
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
