@@ -1,5 +1,5 @@
 {
-  "name": "samples-js-react",
+  "name": "va-api-client-oauth-react-vetverification-sample",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "semantic-ui-react": "^0.77.1"
   },
   "scripts": {
-    "start": "cross-env PORT=8080 react-scripts start",
+    "start": "cross-env react-scripts start",
     "build": "react-scripts build",
     "test": "echo 'Tests not yet implemented' && exit 1",
     "eject": "react-scripts eject",

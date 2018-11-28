@@ -49,7 +49,12 @@ Now start the app server:
 npm start
 ```
 
-Now navigate to http://localhost:8080 in your browser.
+Now navigate to http://localhost:3000 in your browser.
+
+To change the port, specify the PORT environment variable:
+```
+PORT=8080 npm start
+```
 
 If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will redirect you to the Okta hosted sign-in page.
 
