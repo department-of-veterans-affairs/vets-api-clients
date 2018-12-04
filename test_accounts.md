@@ -1,8 +1,12 @@
 # Test User Accounts
 
-These are accounts you can use to test OAuth APIs by logging in with them through ID.me
+These are test accounts you can use to test OAuth APIs by logging in with them through the ID.me sandbox environment that is connected to dev-api.va.gov. 
 
-## Accounts
+**Do not modify any of the attributes for these test accounts, including passwords.** 
+
+## Health API Accounts
+
+These users have a variety of synthetic health records defined for use with the VA Argonaut Health APIs.
 
 | Email | Password      | Last Name | First Name | Gender | Birthdate | SSN | ICN |
 |---|---|---|---|---|---|---|---|
