@@ -2,8 +2,8 @@
 
 ## Requirements
 
-* [Node 10.x.x or greater]()
-* [NPM]()
+* [Node 10.x.x or greater](https://nodejs.org/en/)
+* [NPM](https://www.npmjs.com/get-npm)
 
 ## Installation
 
