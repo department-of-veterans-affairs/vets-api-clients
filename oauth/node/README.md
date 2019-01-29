@@ -1,5 +1,7 @@
 # Node Sample Application
 
+An explanation of how this works and choices made can be found [here](https://developer.va.gov/oauth).
+
 ## Requirements
 
 * [Node 10.x.x or greater](https://nodejs.org/en/)
