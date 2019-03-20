@@ -2,8 +2,16 @@
 name: 🔴 Bug Report
 about: Reporting issues with the VA API Platform
 ---
-**Note: As this is a public forum, please do not include your _VA API OAuth Client ID_, _VA API OAuth Client Secret_, _VA API key_, or any _Personally Identifiable Information (PII)_ or _Protected Health Information (PHI)_ in your report.**
 
+### As this is a public forum, please do not include your _VA API OAuth Client ID_, _VA API OAuth Client Secret_, _VA API key_, or any _Personally Identifiable Information (PII)_ or _Protected Health Information (PHI)_ in your request.
+
+### Troubleshooting Note
+* For test apps, please make sure you are using your registered URL, not the URL provided in the example.
+
+
+## Email address
+
+<!-- Please include your email address -->
 ## APIs Affected
 
 <!-- Please list affected APIs -->
