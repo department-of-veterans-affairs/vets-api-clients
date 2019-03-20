@@ -1,5 +1,5 @@
 ---
-name: Feature Request
+name: 💡 Feature Request
 about: For Requesting enhancement or changes to API functionality
 
 ---
