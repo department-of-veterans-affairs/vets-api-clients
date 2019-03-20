@@ -1,6 +1,6 @@
 ---
 name: 💡 Feature Request
-about: For requesting new features or enhancements
+about: For requesting new features or enhancements on the VA API Platform
 ---
 **Note: As this is a public forum, please do not include your _VA API OAuth Client ID_, _VA API OAuth Client Secret_, _VA API key_, or any _Personally Identifiable Information (PII)_ or _Protected Health Information (PHI)_ in your request.**
 
