@@ -11,9 +11,14 @@ about: For requesting new documentation or updates on the VA API Platform
 <!-- Please include your email address. -->
 
 
-## APIs affected
+## APIs affected (if applicable)
 
-<!-- Please list affected APIs (if applicable). -->
+<!-- Please list affected APIs. -->
+
+
+## API version (if applicable)
+
+<!-- Please note the API version that is affected. -->
 
 
 ## Explanation

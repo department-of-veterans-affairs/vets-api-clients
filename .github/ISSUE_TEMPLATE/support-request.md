@@ -11,9 +11,9 @@ about: For requesting general support with the VA API Platform
 <!-- Please include your email address. -->
 
 
-## APIs affected
+## APIs affected (if applicable)
 
-<!-- Please list affected APIs (if applicable). -->
+<!-- Please list affected APIs. -->
 
 
 ## How can we help?
