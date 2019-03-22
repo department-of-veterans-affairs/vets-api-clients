@@ -33,14 +33,14 @@ about: For reporting issues with the VA API Platform
 
 <!-- Please indicate how severe this issue is for your use case. -->
 
-[ ] High severity: Blocking work
-[ ] Medium severity: Not blocking work, but needs attention
-[ ] Low severity: Needs attention in a timely manner
+- [ ] High severity: Blocking work
+- [ ] Medium severity: Not blocking work, but needs attention
+- [ ] Low severity: Needs attention in a timely manner
 
-[ ] I am unable to use the API
-[ ] I was able to use the API, but am not getting the results I expected
-[ ] I was able to workaround the issue
-    <!-- Please explain the workaround. -->
+- [ ] I am unable to use the API
+- [ ] I was able to use the API, but am not getting the results I expected
+- [ ] I was able to workaround the issue
+      <!-- Please explain the workaround. -->
 
 
 ## Steps to reproduce
