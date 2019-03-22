@@ -3,10 +3,7 @@ name: 🔴 Bug Report
 about: For reporting issues with the VA API Platform
 ---
 
-Important note: As this is a public forum, please do not include your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, or any Personally Identifiable Information (PII) or Protected Health Information (PHI) in your report.
-
-### Troubleshooting note
-* For test apps, please make sure you are using your registered URL, not the URL provided in the example.
+⚠️ Please read before submitting: As this is a public forum, please do not include your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, or any Personally Identifiable Information (PII) or Protected Health Information (PHI) in your report. For test apps, please make sure you are using your registered redirect URL, not the URL provided in the example.
 
 
 ## Email address
@@ -21,17 +18,24 @@ Important note: As this is a public forum, please do not include your VA API OAu
 
 ## What I expected to happen
 
-<!-- What did you expect to happen? --> 
+<!-- Please provide a step by step summary of what the expected behavior was. -->
+1. 
+2. 
+3. 
 
 
 ## What actually happened
 
-<!-- Describe in detail what went wrong. Screenshots, gifs, and videos are encouraged. --> 
+<!-- Describe in detail what went wrong. Screenshots, gifs, and videos are encouraged. -->
 
 
 ## Severity of the issue
 
 <!-- Please indicate how severe this issue is for your use case. -->
+
+[ ] High severity: Blocking work
+[ ] Medium severity: Not blocking work, but needs attention
+[ ] Low severity: Needs attention in a timely manner
 
 [ ] I am unable to use the API
 [ ] I was able to use the API, but am not getting the results I expected

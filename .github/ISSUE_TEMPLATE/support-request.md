@@ -3,10 +3,7 @@ name: 🆘 Support Request
 about: For requesting general support with the VA API Platform
 ---
 
-Important note: As this is a public forum, please do not include your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, or any Personally Identifiable Information (PII) or Protected Health Information (PHI) in your request.
-
-### Troubleshooting note
-* For test apps, please make sure you are using your registered URL, not the URL provided in the example.
+⚠️ Please read before submitting: As this is a public forum, please do not include your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, or any Personally Identifiable Information (PII) or Protected Health Information (PHI) in your report. For test apps, please make sure you are using your registered redirect URL, not the URL provided in the example.
 
 
 ## Email address
@@ -26,7 +23,7 @@ Important note: As this is a public forum, please do not include your VA API OAu
 
 ## What have you tried?
 
-<!-- Describe in detail what you have already tried. --> 
+<!-- Describe in detail what you have already tried. -->
 
 
 ## Additional context
