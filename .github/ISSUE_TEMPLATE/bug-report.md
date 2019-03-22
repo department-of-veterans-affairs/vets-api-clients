@@ -45,7 +45,7 @@ about: For reporting issues with the VA API Platform
 
 ## Steps to reproduce
 
-<!-- Please include any details about your environment, language, browser, operating system, etc that will help us to reproduce. -->
+<!-- Please include any details about your development environment, language, browser, operating system, etc that will help us to reproduce. -->
 
 1. 
 2. 
