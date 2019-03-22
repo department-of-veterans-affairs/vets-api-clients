@@ -1,6 +1,6 @@
 ---
-name: 💡 Feature Request
-about: For requesting new features or enhancements on the VA API Platform
+name: 📖 Documentation Request
+about: For requesting new documentation or updates on the VA API Platform
 ---
 
 Important note: As this is a public forum, please do not include your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, or any Personally Identifiable Information (PII) or Protected Health Information (PHI) in your request.
@@ -18,12 +18,12 @@ Important note: As this is a public forum, please do not include your VA API OAu
 
 ## Explanation
 
-<!-- Summary of the request. Please provide a code sample if you have one. -->
+<!-- Summary of the request. -->
 
 
-## Value provided by feature
+## Link to existing documentation
 
-<!-- Explanation of why this feature would help your use case or be generally useful. --> 
+<!-- Please provide the link to where the current documentation lives (if applicable). --> 
 
 
 ## Acceptance criteria
