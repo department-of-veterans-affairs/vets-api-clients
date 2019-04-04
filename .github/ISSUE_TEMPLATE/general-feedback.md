@@ -13,4 +13,7 @@ about: For general feedback on the VA API Platform
 
 ## Feedback
 
-<!-- Please let us know your feedback here. Please be as detailed as possible. -->
+<!-- What was your first impression when you entered the website? -->
+<!-- Is there anything missing on this page? -->
+<!-- What other products (or product features) would you like us to offer? -->
+<!-- Please be as detailed as possible. -->
