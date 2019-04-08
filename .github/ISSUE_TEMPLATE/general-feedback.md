@@ -9,11 +9,6 @@ about: For general feedback on the VA API Platform
 We are continually striving to improve our process and APIs. Your input and feedback ensures we are serving both Veterans and people like you. Thank you!
 
 
-## Email address
-
-<!-- Please include your email address. -->
-
-
 ## Feedback
 
 <!-- What was your first impression when you entered the website? -->
