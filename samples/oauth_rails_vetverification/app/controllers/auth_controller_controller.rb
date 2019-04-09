@@ -13,4 +13,18 @@ class AuthControllerController < ApplicationController
     }
     @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
   end
+
+  def callback
+    body = {
+      grant_type: 'authorization_code',
+      code: params[:code],
+      state: params[:state],
+      redirect_uri: 'http://localhost:3000/callback'
+    }
+    auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
+    response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
+    
+    # TODO save token and redirect instead
+    render plain: response    
+  end
 end
