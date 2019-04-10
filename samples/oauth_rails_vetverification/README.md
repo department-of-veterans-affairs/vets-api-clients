@@ -6,8 +6,11 @@ This is a sample app that will connect with the oauth provider to access Veteran
 1. rails new oauth_rails_vetverification
 2. rails generate controller auth_controller
 3. use figaro to set up application config to hold keys
-4. build login action on auth_controller
-5. build callback action on auth_controller
+4. build app features to login and request veteran verification data 
+  * login action on auth_controller
+  * callback action on auth_controller
+  * Session model
+  * class for handling Veteran Verification API calls
 
 // TODO more documentation
 

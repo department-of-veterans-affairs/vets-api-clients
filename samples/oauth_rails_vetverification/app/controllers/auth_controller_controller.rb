@@ -1,6 +1,6 @@
 class AuthControllerController < ApplicationController
   def login
-    scope = 'openid profile'
+    scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     state = 'state' # TODO make this better
     oauth_params = {
       client_id: ENV['va_developer_client_id'], # required - The client_id issued by the VA API Platform team
@@ -23,8 +23,9 @@ class AuthControllerController < ApplicationController
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
-    
+    # TODO if 400 need a bad login flow
     # TODO save token and redirect instead
-    render plain: response    
+    vv = VeteranVerification.new(response['access_token'])
+    render plain: "Confirmed Veteran: #{vv.confirmed? ? 'Yes' : 'No'}"
   end
 end
