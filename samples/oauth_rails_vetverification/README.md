@@ -11,6 +11,7 @@ This is a sample app that will connect with the oauth provider to access Veteran
   * callback action on auth_controller
   * Session model
   * class for handling Veteran Verification API calls
+5. use session model to authenticate requests
 
 // TODO more documentation
 

@@ -25,7 +25,8 @@ class AuthControllerController < ApplicationController
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
     # TODO if 400 need a bad login flow
     # TODO save token and redirect instead
-    vv = VeteranVerification.new(response['access_token'])
-    render plain: "Confirmed Veteran: #{vv.confirmed? ? 'Yes' : 'No'}"
+    raise 'hey!'
+    sesh = Session.create!(response.body)
+    render plain: "Confirmed Veteran: #{sesh.veteran_verification.confirmed? ? 'Yes' : 'No'}"
   end
 end
