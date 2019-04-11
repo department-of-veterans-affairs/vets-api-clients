@@ -1,10 +1,10 @@
 <div class="container">
     <h1>Veteran Verification</h1>
-    <h2>for <%= @name %> <small><span class="badge badge-<%= @veteran_verification.confirmed? ? 'success' : 'warning' %>">Veteran Status <%= @veteran_verification.confirmed? ? 'Confirmed' : 'Unconfirmed' %></span></small></h2>
+    <h2>for <%= @name %> <small><span class="badge badge-<%= @veteran_confirmed ? 'success' : 'warning' %>">Veteran Status <%= @veteran_confirmed ? 'Confirmed' : 'Unconfirmed' %></span></small></h2>
 
     <h3>Service History</h3>
     <div class="row">
-        <% @veteran_verification.service_histories.each do |service| %>
+        <% @service_histories.each do |service| %>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -27,6 +27,9 @@
         </div>
         <% end %>
     </div>
+
+    <br/>
+    <%= @disability_rating %>
 
     <br/>
     <%= link_to 'Logout', logout_path, class: "btn btn-primary" %>

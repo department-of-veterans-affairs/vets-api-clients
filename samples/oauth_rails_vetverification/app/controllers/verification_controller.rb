@@ -10,8 +10,12 @@ class VerificationController < ApplicationController
   end
 
   def show
-    @veteran_verification = @session.veteran_verification
     @name = @session.id_token_attributes['name']
+    veteran_verification = @session.veteran_verification
+    @veteran_confirmed = veteran_verification.confirmed?
+    @service_histories = veteran_verification.service_histories
+    @disability_rating = veteran_verification.disability_rating
+    # TODO catch VeteranVerification::ResultsUnavailable errors and make something in the view to display them
   end
 
 end
