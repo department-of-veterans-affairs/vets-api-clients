@@ -1,4 +1,4 @@
-class AuthControllerController < ApplicationController
+class AuthController < ApplicationController
   def login
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     state = 'state' # TODO make this better
