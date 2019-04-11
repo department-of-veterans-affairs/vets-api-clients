@@ -3,7 +3,7 @@ class VerificationController < ApplicationController
 
   def require_auth
     @session = Session.where(id: session[:id]).first
-    if @session.nil? || session.expired_at < Time.zone.now
+    if @session.nil? || @session.expires_at < Time.zone.now
       # TODO flash message, session not valid
       redirect_to login_path
     end

@@ -28,7 +28,6 @@ class AuthController < ApplicationController
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
     # TODO if 400 need a bad login flow
-    raise 'yo'
     sesh = Session.create_from_oauth!(response)
     session[:id] = sesh.id
     redirect_to verify_path

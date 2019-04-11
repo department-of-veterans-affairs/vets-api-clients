@@ -18,6 +18,6 @@ class Session < ApplicationRecord
 
   def id_token_attributes
     # REVIEW how to decode? https://developer.va.gov/oauth#id-token
-    @id_token_attributes ||= JWT.decode self.id_token, nil, false
+    @id_token_attributes ||= JWT.decode(self.id_token, nil, false).first
   end
 end
