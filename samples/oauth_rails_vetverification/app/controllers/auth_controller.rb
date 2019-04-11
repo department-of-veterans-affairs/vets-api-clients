@@ -32,4 +32,9 @@ class AuthController < ApplicationController
     session[:id] = sesh.id
     redirect_to verify_path
   end
+
+  def logout
+    session[:id] = nil
+    redirect_to login_path
+  end
 end

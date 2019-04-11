@@ -36,12 +36,16 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# these gems are added for the app beyond default rails new
 # manages config/application.yml
 gem 'figaro'
 # makes http requests fun (i guess?)
 gem 'httparty'
 # parses jwt token from oauth
 gem 'jwt'
+# bootstrap makes styling simple
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails' #required for rails 5.1+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

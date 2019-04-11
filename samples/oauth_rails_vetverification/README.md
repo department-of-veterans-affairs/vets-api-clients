@@ -11,8 +11,11 @@ This is a sample app that will connect with the oauth provider to access Veteran
   * callback action on auth_controller
   * Session model
   * class for handling Veteran Verification API calls
+    * class for managing service history data
   * verification_controller to display data from API
 5. use session model to authenticate requests
+6. used bootstrap to make things easier on the eyes
+  * https://github.com/twbs/bootstrap-rubygem/tree/v4.3.1
 
 // TODO more documentation
 
