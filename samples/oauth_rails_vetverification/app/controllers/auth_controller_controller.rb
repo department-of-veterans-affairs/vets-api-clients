@@ -15,6 +15,10 @@ class AuthControllerController < ApplicationController
   end
 
   def callback
+    if params[:code].nil?
+      redirect_to(login_path) and return
+    end
+    # TODO verify state
     body = {
       grant_type: 'authorization_code',
       code: params[:code],
@@ -24,9 +28,9 @@ class AuthControllerController < ApplicationController
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
     # TODO if 400 need a bad login flow
-    # TODO save token and redirect instead
-    raise 'hey!'
-    sesh = Session.create!(response.body)
-    render plain: "Confirmed Veteran: #{sesh.veteran_verification.confirmed? ? 'Yes' : 'No'}"
+    raise 'yo'
+    sesh = Session.create_from_oauth!(response)
+    session[:id] = sesh.id
+    redirect_to verify_path
   end
 end
