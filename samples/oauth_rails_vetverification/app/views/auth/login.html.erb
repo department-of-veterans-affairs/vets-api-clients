@@ -1,3 +1,10 @@
-<h1>Please Login to the Veteran Verification Sample Rails App</h1>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Veteran Verification Sample Rails App</h1>
+        <p class="lead">Use Oauth to Login</p>
+        <hr class="my-4">
+        <p>After you login you will be directed to a page that shows data accessed from the Veteran Verification API.</p>
+        <%= link_to 'Oauth Login', @oauth_url, class: "btn btn-primary btn-large" %>
+    </div>
+</div>
 
-<a href=<%= @oauth_url %>>Oauth Login</a>
