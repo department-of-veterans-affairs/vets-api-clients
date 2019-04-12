@@ -1,35 +1,12 @@
 <div class="container">
     <h1>Veteran Verification</h1>
-    <h2>for <%= @name %> <small><span class="badge badge-<%= @veteran_confirmed ? 'success' : 'warning' %>">Veteran Status <%= @veteran_confirmed ? 'Confirmed' : 'Unconfirmed' %></span></small></h2>
-
-    <h3>Service History</h3>
-    <div class="row">
-        <% @service_histories.each do |service| %>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><%= service.branch_of_service %></h5>
-                    <dl>
-                        <dt>Joined</dt>
-                        <dd><%= service.start_date %></dd>
-                        <dt>Discharged</dt>
-                        <dd><%= service.end_date %></dd>
-                        <dt>Discharge Reason</dt>
-                        <dd><%= service.discharge_status %></dd>
-                    </dl>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <% service.deployments.each do |deployment| %>
-                    <li class="list-group-item"><strong>Deployed to <%= deployment.location %></strong><br/><%= deployment.start_date %> until <%= deployment.end_date %></li>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-        <% end %>
-    </div>
+    <h2>for <%= @name %> <%= render partial: "veteran_confirmed", object: @veteran_confirmed %></h2>
 
     <br/>
-    <%= @disability_rating %>
+    <%= render partial: "service_histories", object: @service_histories %>
+
+    <br/>
+    <%= render partial: "disability_rating", object: @disability_rating %>
 
     <br/>
     <%= link_to 'Logout', logout_path, class: "btn btn-primary" %>
