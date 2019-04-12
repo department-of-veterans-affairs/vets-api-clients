@@ -1,5 +1,5 @@
 class Session < ApplicationRecord
-  def self.create_from_oauth!(response)
+  def self.new_from_oauth(response)
     attributes_array = response.map do |key,value|
       clean_value =
         if key == 'expires_at'
@@ -9,7 +9,7 @@ class Session < ApplicationRecord
         end
       [key, clean_value]
     end
-    Session.create!(Hash[attributes_array])
+    Session.new(Hash[attributes_array])
   end
 
   def veteran_verification
