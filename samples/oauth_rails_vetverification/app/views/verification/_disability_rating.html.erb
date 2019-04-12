@@ -1,7 +1,5 @@
-<% if disability_rating.is_a? VeteranVerification::BadResponse %>
-    <%= render partial: "bad_response", object: disability_rating %>
-<% else %>
-    <div class="card" style="width: 18rem;">
+<div class="col-md-5">
+    <div class="card">
         <div class="card-header">
             Disability
         </div>
@@ -11,4 +9,4 @@
             <li class="list-group-item"><strong>Effective Date</strong> <%= disability_rating['effective_date'] %></li>
         </ul>
     </div>
-<% end %>
+</div>

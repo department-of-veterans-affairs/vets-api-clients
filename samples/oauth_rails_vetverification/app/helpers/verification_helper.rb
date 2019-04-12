@@ -1,6 +1,6 @@
 module VerificationHelper
   def badge_class(veteran_confirmed)
-    if veteran_confirmed.is_a? VeteranVerification::BadResponse
+    if veteran_confirmed.nil?
       'badge-danger'
     elsif veteran_confirmed
       'badge-success'
@@ -10,7 +10,7 @@ module VerificationHelper
   end
 
   def confirmed_text(veteran_confirmed)
-    if veteran_confirmed.is_a? VeteranVerification::BadResponse
+    if veteran_confirmed.nil?
       'Unreachable'
     elsif veteran_confirmed
       'Confirmed' 

@@ -1,24 +1,35 @@
 class VeteranVerification
+  attr_reader :errors
+
   def initialize(access_token)
     @authed_header = { Authorization: "Bearer #{access_token}" }
     @env_prefix = 'dev-' # TODO support other environments
+    @errors = []
   end
 
-  def confirmed?
+  def confirmed_status
+    return @confirmed_status unless @confirmed_status.nil?
     response = get('status')
-    return response if response.is_a? BadResponse
-    response['data']['attributes']['veteran_status'] == 'confirmed'
+    return nil if response.code != 200
+    @confirmed_status = (response['data']['attributes']['veteran_status'] == 'confirmed')
   end
 
   def service_histories
+    return @service_histories if @service_histories
     response = get('service_history')
-    return response if response.is_a? BadResponse
-    response['data'].collect { |data| ServiceHistory.new(data) }
+    @service_histories =
+      if response.code == 200
+        response['data'].collect { |data| ServiceHistory.new(data) }
+      else
+        []
+      end
   end
 
   def disability_rating
-    response = get('disability_rating')
-    return response if response.is_a? BadResponse
+    return @disability_rating if @disability_rating
+    response = get('disability_rating', allow: [402])
+    return nil if response.code != 200
+
     d_rating = {}
     response['data']['attributes'].each do |key,value|
       d_rating[key] =
@@ -28,21 +39,15 @@ class VeteranVerification
           value
         end
     end
-    d_rating
+    @disability_rating = d_rating
   end
 
 private
-  class BadResponse
-    attr_reader :message, :api_errors
-    def initialize(message, errors)
-      @api_errors = errors
-      @message = message
-    end
-  end
-
-  def get(endpoint, version: 0)
+  def get(endpoint, version: 0, allow: [])
     response = HTTParty.get("https://#{@env_prefix}api.va.gov/services/veteran_verification/v#{version}/#{endpoint}", { headers: @authed_header })
-    return response if response.code == 200
-    BadResponse.new("Accessing #{endpoint} API returned an #{Rack::Utils::HTTP_STATUS_CODES[response.code]}", response['errors'])
+    if response.code != 200 && allow.exclude?(response.code)
+      @errors << {message: "Accessing #{endpoint} API returned #{Rack::Utils::HTTP_STATUS_CODES[response.code]}", error_objects: response['errors']}
+    end
+    response
   end
 end
