@@ -25,21 +25,25 @@ class VeteranVerification
       end
   end
 
-  def disability_rating
-    return @disability_rating if @disability_rating
+  def disability_ratings
+    return @disability_ratings if @disability_ratings
     response = get('disability_rating', allow: [402])
     return nil if response.code != 200
 
-    d_rating = {}
-    response['data']['attributes'].each do |key,value|
-      d_rating[key] =
-        if key == 'effective_date'
-          Time.zone.parse(value)
-        else
-          value
-        end
+    ratings = []
+    response['data'].each do |rating|
+      modified_rating = {}
+      rating['attributes'].each do |key,value|
+        modified_rating[key] =
+          if key == 'effective_date'
+            Time.zone.parse(value)
+          else
+            value
+          end
+      end
+      ratings << modified_rating
     end
-    @disability_rating = d_rating
+    @disability_ratings = ratings
   end
 
 private

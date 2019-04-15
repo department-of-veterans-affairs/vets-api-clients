@@ -1,36 +1,40 @@
 <div class="container">
-    <h1>Veteran Verification</h1>
-    <h2>for <%= @name %> <%= render partial: "veteran_confirmed", object: @veteran_verification.confirmed_status %></h2>
+    <div class="row">
+        <h1 class="col-12">Veteran Verification</h1>
+        <h2>for <%= @name %> <%= render partial: "veteran_confirmed", object: @veteran_verification.confirmed_status %></h2>
+    </div>
 
     <% if @veteran_verification.service_histories.any? %>
-    <br/>
     <%= render partial: "service_histories", object: @veteran_verification.service_histories %>
     <% end %>
 
-    <% if @veteran_verification.disability_rating %>
-    <br/>
-    <%= render partial: "disability_rating", object: @veteran_verification.disability_rating %>
+    <% if @veteran_verification.disability_ratings.any? %>
+    <div class="row">
+        <h3 class="col-12">Disability</h3>
+        <%= render partial: "disability_rating", collection: @veteran_verification.disability_ratings %>
+    </div>
     <% end %>
 
     <% if @veteran_verification.errors.any? %>
-    <br/>
-    <table class="table">
-        <% @veteran_verification.errors.each do |error| %>
-        <thead>
-            <tr class="table-danger">
-                <th colspan="2"><%= error[:message] %></th>
-            </tr>
-        </thead>
-        <tbody class="table-striped">
-            <% error[:error_objects].each do |api_error| %>
-            <tr>
-                <th scope="row"><%= api_error['title'] %></th>
-                <td><%= api_error['detail'] %></td>
-            </tr>
+    <div class="row">
+        <table class="table">
+            <% @veteran_verification.errors.each do |error| %>
+            <thead>
+                <tr class="table-danger">
+                    <th colspan="2"><%= error[:message] %></th>
+                </tr>
+            </thead>
+            <tbody class="table-striped">
+                <% error[:error_objects].each do |api_error| %>
+                <tr>
+                    <th scope="row"><%= api_error['title'] %></th>
+                    <td><%= api_error['detail'] %></td>
+                </tr>
+                <% end %>
+            </tbody>
             <% end %>
-        </tbody>
-        <% end %>
-    </table>
+        </table>
+    </div>
     <% end %>
 
     <br/>
