@@ -1,4 +1,16 @@
 <div class="container">
+    <% if flash.alert %>
+    <br/>
+    <div class="alert alert-danger" role="alert">
+        <%= flash.alert %>
+    </div>
+    <% end %>
+    <% if flash.notice %>
+    <br/>
+    <div class="alert alert-warning" role="alert">
+        <%= flash.notice %>
+    </div>
+    <% end %>
     <div class="jumbotron">
         <h1 class="display-4">Veteran Verification Sample Rails App</h1>
         <p class="lead">Use Oauth to Login</p>

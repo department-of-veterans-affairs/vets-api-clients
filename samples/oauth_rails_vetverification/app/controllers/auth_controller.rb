@@ -4,7 +4,6 @@ class AuthController < ApplicationController
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
-    state = 'state' # TODO make this better
     oauth_params = {
       client_id: ENV['va_developer_client_id'], # required - The client_id issued by the VA API Platform team
       nonce: digest(nonce_base), # optional - Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value.
@@ -22,7 +21,7 @@ class AuthController < ApplicationController
       redirect_to(login_path) and return
     end
     if params[:state].to_i != session[:login_time]
-      # TODO flash invalid callback
+      flash.alert = "Invalid state"
       Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
       redirect_to(login_path) and return
     end
@@ -34,11 +33,14 @@ class AuthController < ApplicationController
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
-    # TODO if 400 need a bad login flow
+    if response.code == 400
+      flash.alert = "Login failed because #{response['error']}"
+      redirect_to(login_path) and return
+    end
     sesh = Session.new_from_oauth(response)
     unless sesh.id_token_attributes['nonce'] == digest(session[:nonce_key])
-      # TODO reject bad nonce
-      raise 'uh oh'
+      flash.alert = "Inauthentic token received."
+      redirect_to(login_path) and return
     end
     sesh.save!
     session[:id] = sesh.id
