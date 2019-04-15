@@ -3,7 +3,7 @@ class VeteranVerification
 
   def initialize(access_token)
     @authed_header = { Authorization: "Bearer #{access_token}" }
-    @env_prefix = 'dev-' # TODO support other environments
+    @env_prefix = 'dev-' # dev is only supported in sample, but an arg could be used to open this up
     @errors = []
   end
 
