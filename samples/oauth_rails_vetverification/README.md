@@ -14,11 +14,11 @@ The home page will show an "Oauth Login" button.  That will take you to the VA s
 1. rails new oauth_rails_vetverification
 2. use figaro to set up application config to hold keys
 3. build app features to login and request veteran verification data 
-  * login action on auth_controller
-  * callback action on auth_controller
-  * class for handling Veteran Verification API calls
-    * class for managing service history data
-  * verification_controller to display data from API
+    * login action on auth_controller
+    * callback action on auth_controller
+    * class for handling Veteran Verification API calls
+      * class for managing service history data
+    * verification_controller to display data from API
 4. the session model was created hide oauth data and authenticate future requests
 5. used bootstrap to make things easier on the eyes
-  * https://github.com/twbs/bootstrap-rubygem/tree/v4.3.1
+    * https://github.com/twbs/bootstrap-rubygem/tree/v4.3.1
