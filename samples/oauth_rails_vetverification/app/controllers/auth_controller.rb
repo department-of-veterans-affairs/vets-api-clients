@@ -2,6 +2,7 @@ class AuthController < ApplicationController
   def login
     nonce_base = SecureRandom.base64(20)
     session[:nonce_key] = nonce_base
+    session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     state = 'state' # TODO make this better
     oauth_params = {
@@ -11,7 +12,7 @@ class AuthController < ApplicationController
       # response_mode: 'fragment', # optional - Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment.
       response_type: 'code', # required - one or two of, id_token, token, or code. Using code will require your application to complete the Authorization Code Flow. Using id_token or token allows you to use the Implicit flow.
       scope: scope, # optional - Will use your application's default scopes unless you specify a smaller subset of scopes separated by a space.
-      state: state # optional - Ensures authorization flow integrity. See security.
+      state: session[:login_time] # optional - Contains app flow state and/or ensures authorization flow integrity.
     }
     @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
   end
@@ -20,7 +21,11 @@ class AuthController < ApplicationController
     if params[:code].nil?
       redirect_to(login_path) and return
     end
-    # TODO verify state
+    if params[:state].to_i != session[:login_time]
+      # TODO flash invalid callback
+      Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
+      redirect_to(login_path) and return
+    end
     body = {
       grant_type: 'authorization_code',
       code: params[:code],
@@ -48,6 +53,6 @@ class AuthController < ApplicationController
 private
   # helper method to always digest the same
   def digest(value)
-    Digest::SHA256.hexdigest(value)
+    Digest::SHA256.hexdigest(value + ENV['va_developer_client_secret'])
   end
 end

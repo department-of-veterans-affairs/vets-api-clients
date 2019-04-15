@@ -7,7 +7,7 @@ class VerificationController < ApplicationController
       Rails.logger.warn "No session found"
       # TODO flash message, session not valid
       redirect_to login_path
-    elsif @session.expires_at < Time.zone.now
+    elsif @session.expired?
       Rails.logger.warn "Session #{@session.id} expired"
       # TODO flash message, session not valid
       redirect_to login_path

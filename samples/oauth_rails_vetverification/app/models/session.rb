@@ -12,6 +12,10 @@ class Session < ApplicationRecord
     Session.new(Hash[attributes_array])
   end
 
+  def expired?
+    @expired ||= self.expires_at < Time.zone.now
+  end
+
   def veteran_verification
     @veteran_verification ||= VeteranVerification.new(self.access_token)
   end
