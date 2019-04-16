@@ -1,17 +1,18 @@
 class AuthController < ApplicationController
   def login
+    # create a linke to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/verification/docs/authorization
     nonce_base = SecureRandom.base64(20)
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     oauth_params = {
-      client_id: ENV['va_developer_client_id'], # required - The client_id issued by the VA API Platform team
-      nonce: digest(nonce_base), # optional - Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value.
-      redirect_uri: 'http://localhost:3000/callback', # required - the URL you supplied that the Veteran will be redirected to after authorizing your application
-      # response_mode: 'fragment', # optional - Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment.
-      response_type: 'code', # required - one or two of, id_token, token, or code. Using code will require your application to complete the Authorization Code Flow. Using id_token or token allows you to use the Implicit flow.
-      scope: scope, # optional - Will use your application's default scopes unless you specify a smaller subset of scopes separated by a space.
-      state: session[:login_time] # optional - Contains app flow state and/or ensures authorization flow integrity.
+      client_id: ENV['va_developer_client_id'],
+      nonce: digest(nonce_base),
+      redirect_uri: 'http://localhost:3000/callback',
+      # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
+      response_type: 'code',
+      scope: scope,
+      state: session[:login_time]
     }
     @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
   end
