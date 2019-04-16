@@ -4,7 +4,7 @@ This is a sample app that will connect with the oauth provider to access Veteran
 
 ## Running locally
 
-The sample app uses the default SQLite database setup.  The app expects the file `config/application.yml` to contain a key for `va_developer_client_id` and `va_developer_client_secret` using your credentials set up at the [Developer Portal](https://developer.va.gov/apply).  The callback for this app to work needs to be `http://localhost:3000/callback`.
+The sample app uses the default SQLite database setup and `rails db:migrate` will generate the sqlite3 file with the table needed to run the app.  **The app expects the file `config/application.yml` to contain a key for `va_developer_client_id` and `va_developer_client_secret`** using your credentials set up at the [Developer Portal](https://developer.va.gov/apply).  The callback for this app to work needs to be `http://localhost:3000/callback`.
 
 ## Using the app
 
