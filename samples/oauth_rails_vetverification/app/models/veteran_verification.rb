@@ -8,30 +8,34 @@ class VeteranVerification
   end
 
   def confirmed_status
-    return @confirmed_status unless @confirmed_status.nil?
-    response = get('status')
-    return nil if response.code != 200
-    @confirmed_status = (response['data']['attributes']['veteran_status'] == 'confirmed')
+    return nil if confirmed_status_response.code != 200
+    confirmed_status_response['data']['attributes']['veteran_status'] == 'confirmed'
+  end
+
+  def confirmed_status_response
+    @confirmed_status_response ||= get('status')
   end
 
   def service_histories
     return @service_histories if @service_histories
-    response = get('service_history')
     @service_histories =
-      if response.code == 200
-        response['data'].collect { |data| ServiceHistory.new(data) }
+      if service_histories_response.code == 200
+        service_histories_response['data'].collect { |data| ServiceHistory.new(data) }
       else
         []
       end
   end
 
+  def service_histories_response
+    @service_histories_response ||= get('service_history')
+  end
+
   def disability_ratings
     return @disability_ratings if @disability_ratings
-    response = get('disability_rating', allow: [402])
-    return nil if response.code != 200
 
-    ratings = []
-    response['data'].each do |rating|
+    @disability_ratings = []
+    return @disability_ratings if disability_ratings_response.code != 200
+    disability_ratings_response['data'].each do |rating|
       modified_rating = {}
       rating['attributes'].each do |key,value|
         modified_rating[key] =
@@ -41,9 +45,13 @@ class VeteranVerification
             value
           end
       end
-      ratings << modified_rating
+      @disability_ratings << modified_rating
     end
-    @disability_ratings = ratings
+    @disability_ratings
+  end
+
+  def disability_ratings_response
+    @disability_ratings_response = get('disability_rating', allow: [402])
   end
 
 private
