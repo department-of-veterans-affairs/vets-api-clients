@@ -12,6 +12,12 @@ The sample app uses the default SQLite database setup and `rails db:migrate` wil
 
 The home page will show an "Oauth Login" button.  That will take you to the VA sign-in page.  You can use a [test login](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md).  Once logged in, you will see the /verify page, which will show the confirmed Veteran Status, Service History, and Disability Ratings for the user.  Trying to access /verify directly (without logging in) will have the user redirected to /login because they don't have a session available in the app.
 
+### Exploring the API
+
+Once a valid session has been created, you can use `rails console` to explore the API through code.  Find a Session in the database that is not expired, and use the `veteran_verification` method to get a VeteranVerification object.  Then you can use the _response methods to see the HTTParty::Response object returned when accessing that API.  Calling `.body` on the response will give the raw JSON string, but `[]` can be used on the response object to access values in the response as a hash.
+
+Ex: `Session.last.veteran_verification.confirmed_status_response['data']['attributes']['veteran_status']` will return "confirmed" (if the veteran status is confirmed).
+
 ## This is how the app was created
 1. rails new oauth_rails_vetverification
 2. use figaro to set up application config to hold keys
