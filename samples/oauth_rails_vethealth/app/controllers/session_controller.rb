@@ -34,8 +34,14 @@ class SessionController < ApplicationController
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
-    if response.code == 400
-      flash.alert = "Login failed because #{response['error']}"
+    if response.code/400 == 1
+      flash.alert = "Login failed because #{response['error']}."
+      Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
+      redirect_to(login_path) and return
+    end
+    if response.code != 200
+      flash.alert = "Authorization did not receive OK response.  Response in logs."
+      Rails.logger.warn "Response not OK.  This was response:\n     #{response}"
       redirect_to(login_path) and return
     end
     sesh = Session.new_from_oauth(response)
