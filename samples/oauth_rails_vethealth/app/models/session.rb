@@ -4,7 +4,7 @@ class Session < ApplicationRecord
   attr_reader :session_errors
 
   def self.generate_nonce(base)
-    Digest::SHA256.hexdigest(value + ENV['va_developer_client_secret'])
+    Digest::SHA256.hexdigest(base + ENV['va_developer_client_secret'])
   end
 
   def self.new_from_oauth(response)

@@ -5,23 +5,33 @@ class SessionController < ApplicationController
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
-    oauth_params = {
+    @oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: Session.generate_nonce(nonce_base),
       redirect_uri: 'http://localhost:3000/callback',
-      # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
+      response_mode: 'fragment',
       response_type: 'code',
       scope: scope,
       state: session[:login_time]
     }
-    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
+    @oauth_param_description = [
+      {param: :client_id, description: "The client_id issued by the VA API Platform team", required: true},
+      {param: :nonce, description: "Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value."},
+      {param: :redirect_uri, description: "The URL you supplied when signing up for access.", required: true},
+      {param: :response_mode, description: "Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment so it can be omitted."},
+      {param: :response_type, description: "Set to \"code\" to use the Authorization Code Flow.", required: true},
+      {param: :scope, description: "The information for which your app is requesting access.  Should include 'openid'."},
+      {param: :state, description: "Can be used as a nonce for security or as app state information."}
+    ]
+    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
   end
 
   def callback
     # TODO explain this in view
-    # if params[:code].nil?
-    #   redirect_to(login_path) and return
-    # end
+    if params[:code].nil?
+      flash.notice = "The callback page is for oauth responses, please login first."
+      redirect_to(login_path) and return
+    end
     # if params[:state].to_i != session[:login_time]
     #   flash.alert = "Invalid state"
     #   Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
