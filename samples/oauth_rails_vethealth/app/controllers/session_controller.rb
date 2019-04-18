@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     oauth_params = {
       client_id: ENV['va_developer_client_id'],
-      nonce: digest(nonce_base),
+      nonce: Session.generate_nonce(nonce_base),
       redirect_uri: 'http://localhost:3000/callback',
       # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
       response_type: 'code',
@@ -26,6 +26,18 @@ class SessionController < ApplicationController
       Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
       redirect_to(login_path) and return
     end
+    # TODO show this data before asking for token
+    @body = {
+      grant_type: 'authorization_code',
+      code: params[:code],
+      state: params[:state],
+      redirect_uri: 'http://localhost:3000/callback'
+    }
+    @auth = { username: ENV['va_developer_client_id'], password: "...#{ENV['va_developer_client_secret'][-5,5]}" }
+    @post_url = 'https://dev-api.va.gov/oauth2/token'
+  end
+
+  def authenticate
     body = {
       grant_type: 'authorization_code',
       code: params[:code],
@@ -33,35 +45,33 @@ class SessionController < ApplicationController
       redirect_uri: 'http://localhost:3000/callback'
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
-    if response.code/400 == 1
-      flash.alert = "Login failed because #{response['error']}."
-      Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
-      redirect_to(login_path) and return
-    end
-    if response.code != 200
-      flash.alert = "Authorization did not receive OK response.  Response in logs."
-      Rails.logger.warn "Response not OK.  This was response:\n     #{response}"
-      redirect_to(login_path) and return
-    end
-    sesh = Session.new_from_oauth(response)
-    unless sesh.id_token_attributes['nonce'] == digest(session[:nonce_key])
+    @response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
+    # show response to user
+    # if response.code/400 == 1
+    #   flash.alert = "Login failed because #{response['error']}."
+    #   Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
+    #   redirect_to(login_path) and return
+    # end
+    # if response.code != 200
+    #   flash.alert = "Authorization did not receive OK response.  Response in logs."
+    #   Rails.logger.warn "Response not OK.  This was response:\n     #{response}"
+    #   redirect_to(login_path) and return
+    # end
+
+    @session = Session.new_from_oauth(response)
+    unless @session.id_token_attributes['nonce'] == digest(session[:nonce_key])
       flash.alert = "Inauthentic token received."
       redirect_to(login_path) and return
     end
-    sesh.save!
-    session[:id] = sesh.id
-    redirect_to verify_path
+  end
+
+  def create
+    @session.save!
+    session[:id] = @session.id
   end
 
   def logout
     session[:id] = nil
     redirect_to login_path
-  end
-
-private
-  # helper method to always digest the same
-  def digest(value)
-    Digest::SHA256.hexdigest(value + ENV['va_developer_client_secret'])
   end
 end
