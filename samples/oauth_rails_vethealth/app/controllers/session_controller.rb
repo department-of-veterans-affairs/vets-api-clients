@@ -18,14 +18,15 @@ class SessionController < ApplicationController
   end
 
   def callback
-    if params[:code].nil?
-      redirect_to(login_path) and return
-    end
-    if params[:state].to_i != session[:login_time]
-      flash.alert = "Invalid state"
-      Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
-      redirect_to(login_path) and return
-    end
+    # TODO explain this in view
+    # if params[:code].nil?
+    #   redirect_to(login_path) and return
+    # end
+    # if params[:state].to_i != session[:login_time]
+    #   flash.alert = "Invalid state"
+    #   Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
+    #   redirect_to(login_path) and return
+    # end
     # TODO show this data before asking for token
     @body = {
       grant_type: 'authorization_code',
@@ -59,15 +60,14 @@ class SessionController < ApplicationController
     # end
 
     @session = Session.new_from_oauth(response)
-    unless @session.id_token_attributes['nonce'] == digest(session[:nonce_key])
-      flash.alert = "Inauthentic token received."
-      redirect_to(login_path) and return
+    # unless @session.id_token_attributes['nonce'] == digest(session[:nonce_key])
+    #   flash.alert = "Inauthentic token received."
+    #   redirect_to(login_path) and return
+    # end
+    if @session.valid_session?
+      @session.save!
+      session[:id] = @session.id
     end
-  end
-
-  def create
-    @session.save!
-    session[:id] = @session.id
   end
 
   def logout

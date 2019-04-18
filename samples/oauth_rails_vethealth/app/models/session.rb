@@ -30,10 +30,11 @@ class Session < ApplicationRecord
   end
 
   def authentic?(session)
-    @authentic ||= self.id_token['nonce'] == Session.generate_nonce(session[:nonce_key])
+    @authentic ||= (self.id_token['nonce'] == Session.generate_nonce(session[:nonce_key]))
   end
 
-  def matches_user_session?(session)
+  def valid_session?(session)
+    return @session_errors.empty? if @validated
     @session_errors = []
     if expired?
       @session_errors << { type: :expired, message: 'The session has expired.' }
@@ -41,6 +42,7 @@ class Session < ApplicationRecord
     if authentic?(session)
       @session_errors << { type: :inauthentic, message: 'The token is not authentic!' }
     end
+    @validated = true
     @session_errors.empty?
   end
 end
