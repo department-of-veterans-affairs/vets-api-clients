@@ -1,0 +1,24 @@
+<h1 class="display-2">Callback</h1>
+<p class="lead">
+  Now that with the user identity verified by <em>ID.me</em>, we will post our client secret to receive a token we can use to access the Health API.
+</p>
+
+<% if @verified_state %>
+    <p>
+        The time of login was sent in the "state" parameter, but the returned state does not match!
+    </p>
+    <% link_to 'Return to Login', login_path, class: "btn btn-primary" %>
+<% else %>
+    <p>
+        To finish authentication, we need to make a <code>POST</code> to <code><%= @post_url %></code>.
+    </p>
+    * auth
+    <p>
+        This is the body of the post:
+        <pre><code>
+            <%= @body %>
+        </code></pre>
+    </p>
+    <% link_to 'Finish Authentication', authenticate_path(params), class: "btn btn-primary" %>
+<% end %>
+

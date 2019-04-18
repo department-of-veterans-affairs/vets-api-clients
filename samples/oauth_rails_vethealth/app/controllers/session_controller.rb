@@ -32,12 +32,7 @@ class SessionController < ApplicationController
       flash.notice = "The callback page is for oauth responses, please login first."
       redirect_to(login_path) and return
     end
-    # if params[:state].to_i != session[:login_time]
-    #   flash.alert = "Invalid state"
-    #   Rails.logger.warn "Session login_time does not match state! Session: #{session[:login_time]} State: #{params[:state]}"
-    #   redirect_to(login_path) and return
-    # end
-    # TODO show this data before asking for token
+    @verified_state = params[:state].to_i == session[:login_time]
     @body = {
       grant_type: 'authorization_code',
       code: params[:code],
