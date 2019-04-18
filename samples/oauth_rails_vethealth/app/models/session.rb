@@ -1,11 +1,14 @@
 class Session < ApplicationRecord
   serialize :id_token
 
+  attr_reader :session_errors
+
   def self.generate_nonce(base)
     Digest::SHA256.hexdigest(value + ENV['va_developer_client_secret'])
   end
 
   def self.new_from_oauth(response)
+    # TODO path for creating an empty session because of error?
     attributes_array = response.map do |key,value|
       clean_value =
         case key
@@ -28,5 +31,16 @@ class Session < ApplicationRecord
 
   def authentic?(session)
     @authentic ||= self.id_token['nonce'] == Session.generate_nonce(session[:nonce_key])
+  end
+
+  def matches_user_session?(session)
+    @session_errors = []
+    if expired?
+      @session_errors << { type: :expired, message: 'The session has expired.' }
+    end
+    if authentic?(session)
+      @session_errors << { type: :inauthentic, message: 'The token is not authentic!' }
+    end
+    @session_errors.empty?
   end
 end
