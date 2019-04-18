@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  access_token: MyString
+  token_type: MyString
+  expires_at: 2019-04-10 21:56:04
+  scope: MyString
+  id_token: MyString
+  state: MyString
+
+two:
+  access_token: MyString
+  token_type: MyString
+  expires_at: 2019-04-10 21:56:04
+  scope: MyString
+  id_token: MyString
+  state: MyString

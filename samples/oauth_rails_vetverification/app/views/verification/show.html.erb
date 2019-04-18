@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <h1 class="col-12">Veteran Verification</h1>
+        <h2 class="col-12">for <%= @name %> <%= render partial: "veteran_confirmed", object: @veteran_verification.confirmed_status %></h2>
+        <small class="col-12"><%= link_to 'Veteran Confirmation API Documentation', 'https://developer.va.gov/explore/verification/docs/veteran_confirmation', target: '_blank', title: 'Veteran Confirmation Documentation' %></small>
+    </div>
+
+    <% if @veteran_verification.service_histories.any? %>
+    <div class="row">
+        <h3 class="col-12">Service History</h3>
+        <small class="col-12"><%= link_to 'Service History API Documentation', 'https://developer.va.gov/explore/verification/docs/service_history', target: '_blank', title: 'Service History Documentation' %></small>
+        <%= render partial: "service_history", collection: @veteran_verification.service_histories %>
+    </div>
+    <% end %>
+
+    <% if @veteran_verification.disability_ratings.any? %>
+    <div class="row">
+        <h3 class="col-12">Disability</h3>
+        <small class="col-12"><%= link_to 'Disability Ratings API Documentation', 'https://developer.va.gov/explore/verification/docs/disability_rating', target: '_blank', title: 'Disability Rating Documentation' %></small>
+        <%= render partial: "disability_rating", collection: @veteran_verification.disability_ratings %>
+    </div>
+    <% end %>
+
+    <% if @veteran_verification.errors.any? %>
+    <div class="row">
+        <table class="table">
+            <% @veteran_verification.errors.each do |error| %>
+            <thead>
+                <tr class="table-danger">
+                    <th colspan="2"><%= error[:message] %></th>
+                </tr>
+            </thead>
+            <tbody class="table-striped">
+                <% error[:error_objects].each do |api_error| %>
+                <tr>
+                    <th scope="row"><%= api_error['title'] %></th>
+                    <td><%= api_error['detail'] %></td>
+                </tr>
+                <% end %>
+            </tbody>
+            <% end %>
+        </table>
+    </div>
+    <% end %>
+
+    <br/>
+    <%= link_to 'Logout', logout_path, class: "btn btn-primary" %>
+</div>

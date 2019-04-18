@@ -1,6 +1,6 @@
 # Test User Accounts
 
-These are test accounts you can use to test OAuth APIs by logging in with them through the ID.me sandbox environment that is connected to dev-api.va.gov. 
+These are test accounts you can use to test OAuth APIs by logging in with them through the ID.me sandbox environment that is connected to dev-api.va.gov.  When signing in with a test account, step 2 will ask how you want to receive an authentication code and you can just click "continue" for the verification to be automatically populated in step 3.
 
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
