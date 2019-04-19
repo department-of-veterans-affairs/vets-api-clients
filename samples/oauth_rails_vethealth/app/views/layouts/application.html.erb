@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <% if flash.alert %>
+      <br/>
+      <div class="alert alert-danger" role="alert">
+          <%= flash.alert %>
+      </div>
+      <% end %>
+      <% if flash.notice %>
+      <br/>
+      <div class="alert alert-warning" role="alert">
+          <%= flash.notice %>
+      </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+    <br/> <!-- some space at the end of the page -->
   </body>
 </html>

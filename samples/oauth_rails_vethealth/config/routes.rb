@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   get '/login', to: 'session#login'
   get '/callback', to: 'session#callback'
+  get '/authenticate', to: 'session#authenticate'
   get '/logout', to: 'session#logout'
 end

@@ -9,7 +9,7 @@ class SessionController < ApplicationController
       client_id: ENV['va_developer_client_id'],
       nonce: Session.generate_nonce(nonce_base),
       redirect_uri: 'http://localhost:3000/callback',
-      response_mode: 'fragment',
+      # response_mode: 'fragment',
       response_type: 'code',
       scope: scope,
       state: session[:login_time]
@@ -18,7 +18,8 @@ class SessionController < ApplicationController
       {param: :client_id, description: "The client_id issued by the VA API Platform team", required: true},
       {param: :nonce, description: "Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value."},
       {param: :redirect_uri, description: "The URL you supplied when signing up for access.", required: true},
-      {param: :response_mode, description: "Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment so it can be omitted."},
+      # TODO uncomment this description, known issue is causing a 500 if this param is used https://github.com/department-of-veterans-affairs/vets-contrib/issues/1842
+      # {param: :response_mode, description: "Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment so it can be omitted."},
       {param: :response_type, description: "Set to \"code\" to use the Authorization Code Flow.", required: true},
       {param: :scope, description: "The information for which your app is requesting access.  Should include 'openid'."},
       {param: :state, description: "Can be used as a nonce for security or as app state information."}
@@ -27,27 +28,26 @@ class SessionController < ApplicationController
   end
 
   def callback
-    # TODO explain this in view
     if params[:code].nil?
       flash.notice = "The callback page is for oauth responses, please login first."
       redirect_to(login_path) and return
     end
     @verified_state = params[:state].to_i == session[:login_time]
     @body = {
-      grant_type: 'authorization_code',
       code: params[:code],
       state: params[:state],
+      grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:3000/callback'
     }
-    @auth = { username: ENV['va_developer_client_id'], password: "...#{ENV['va_developer_client_secret'][-5,5]}" }
+    @auth = { username: ENV['va_developer_client_id'], password: "<Client Secret found in application.yml>" }
     @post_url = 'https://dev-api.va.gov/oauth2/token'
   end
 
   def authenticate
     body = {
-      grant_type: 'authorization_code',
       code: params[:code],
       state: params[:state],
+      grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:3000/callback'
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
