@@ -1,0 +1,29 @@
+<h3>Successfully authenticated OAuth.</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Response Key</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @oauth_response.keys.each do |key| %>
+        <tr>
+            <td><%= key %></td>
+            <td><%= @oauth_response[key] %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<% if @session %>
+    <% if @session.valid_session? %>
+        <p>Session was saved with ID <code><%= @session.id %></code>.  Use this session record to authenticate requests to the API.</p>
+    <% else %>
+        <p>The session does not match the oauth response.  These are the issues:</p>
+        <ul>
+        <% @session.session_errors.each do |error| %>
+            <li><%= error[:message] %></li>
+        <% end %>
+        </ul>
+    <% end %>
+<% end %>

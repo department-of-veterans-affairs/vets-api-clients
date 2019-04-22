@@ -40,30 +40,20 @@ class SessionController < ApplicationController
       grant_type: 'authorization_code',
       redirect_uri: 'http://localhost:3000/callback'
     }
-    @auth = { username: ENV['va_developer_client_id'], password: "<Client Secret found in application.yml>" }
     @post_url = 'https://dev-api.va.gov/oauth2/token'
-  end
-
-  def authenticate
-    body = {
-      code: params[:code],
-      state: params[:state],
-      grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:3000/callback'
-    }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    @oauth_response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
+    @oauth_response = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
+
+    @auth = auth.dup
+    @auth[:password] = "<Client Secret found in application.yml>"
 
     if @oauth_response.ok?
-      Rails.logger.debug "HEeeyyyyy it's ok"
       @session = Session.new_from_oauth(@oauth_response)
       if @session.validate_session(session)
-        Rails.logger.debug "Session if validated!"
         @session.save!
         session[:id] = @session.id
       end
     else
-      Rails.logger.debug "No session"
       @session = nil
     end
   end

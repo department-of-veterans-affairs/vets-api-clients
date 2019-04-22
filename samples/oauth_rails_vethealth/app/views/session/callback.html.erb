@@ -4,30 +4,28 @@
 </p>
 
 <% if @verified_state %>
-    <p>
-        To finish authentication, the server will make a <code>POST</code> to <code><%= @post_url %></code>.
-    </p>
-    <p>
-        This is the basic auth for the post:
-        <pre><code>
-    {
-        <% @auth.each do |key, value| %>
-        <%= key %>: <%= value %>
+    <%= render partial: 'post_data' %>
+    <% if @oauth_response.ok? %>
+        <%= render partial: 'oauth_response' %>
+        <br/>
+        <%= link_to 'Logout', logout_path, class: "btn btn-primary" %>
+    <% else %>
+        <%# bad response for oauth'ing %>
+        <% if @oauth_response.code/400 == 1 %>
+            <h3>Failed to authenticate response.</h3>        
+            <dl>
+                <dt><%= @oauth_response['error'] %></dt>
+                <dd><%= @oauth_response['error_description'] %></dd>
+            </dl>
+        <% else %>
+            <h3>Bad Response from Oauth Server</h3>
+            <p>Response Code <code><%= @oauth_response.code %></code></p>
+            <pre><code>
+                <%= @oauth_response.body %>
+            </code></pre>
         <% end %>
-    }
-        </code></pre>
-    </p>
-    <p>
-        This is the body of the post, including the code and state sent from the oauth server:
-        <pre><code>
-    {
-        <% @body.each do |key, value| %>
-        <%= key %>: <%= value %>
-        <% end %>
-    }
-        </code></pre>
-    </p>
-    <%= link_to 'Finish Authentication', authenticate_path(params: params.slice(:code, :state).permit!), class: "btn btn-primary" %>
+        <%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>
+    <% end %>
 <% else %>
     <p>
         The time of login was sent in the "state" parameter, but the returned state does not match <%= session[:login_time] %>!
