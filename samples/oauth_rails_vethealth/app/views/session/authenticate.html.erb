@@ -1,0 +1,43 @@
+<h1 class="display-2">Session Authentication</h1>
+<p class="lead">
+  This page shows the result of requesting the token with the client secret.
+</p>
+
+<% if @oauth_response.ok? %>
+    great response!
+    <pre><code>
+        <%= @oauth_response.body.split(',') %>
+    </code></pre>
+    <% if @session %>
+        <% if @session.valid_session? %>
+            <p>Session was saved with ID <code><%= @session.id %></code>.  Use this session record to authenticate requests to the API.</p>
+        <% else %>
+            <p>The session does not match the oauth response.  These are the issues:</p>
+            <ul>
+            <% @session.session_errors.each do |error| %>
+                <li><%= error[:message] %></li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+
+<% else %>
+    <%# bad response for oauth'ing %>
+    <% if @oauth_response.code/400 == 1 %>
+        <h3>Failed to authenticate response.</h3>        
+        <dl>
+            <dt><%= @oauth_response['error'] %></dt>
+            <dd><%= @oauth_response['error_description'] %></dd>
+        </dl>
+    <% else %>
+        <h3>Bad Response from Oauth Server</h3>
+        <p>Response Code <code><%= @oauth_response.code %></code></p>
+        <pre><code>
+            <%= @oauth_response.body %>
+        </code></pre>
+    <% end %>
+    <%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>
+<% end %>
+
+<br/>
+<%= link_to 'Logout', logout_path, class: "btn btn-primary" %>

@@ -8,7 +8,6 @@ class Session < ApplicationRecord
   end
 
   def self.new_from_oauth(response)
-    # TODO path for creating an empty session because of error?
     attributes_array = response.map do |key,value|
       clean_value =
         case key
@@ -33,16 +32,20 @@ class Session < ApplicationRecord
     @authentic ||= (self.id_token['nonce'] == Session.generate_nonce(session[:nonce_key]))
   end
 
-  def valid_session?(session)
-    return @session_errors.empty? if @validated
+  def validate_session(session)
     @session_errors = []
     if expired?
       @session_errors << { type: :expired, message: 'The session has expired.' }
     end
-    if authentic?(session)
+    unless authentic?(session)
       @session_errors << { type: :inauthentic, message: 'The token is not authentic!' }
     end
     @validated = true
     @session_errors.empty?
+  end
+
+  def valid_session?
+    return @session_errors.empty? if @validated
+    raise "#validate_session must be called first!"
   end
 end

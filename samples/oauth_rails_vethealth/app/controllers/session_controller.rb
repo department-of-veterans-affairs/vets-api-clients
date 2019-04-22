@@ -2,6 +2,7 @@ class SessionController < ApplicationController
   def login
     # create a linke to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/verification/docs/authorization
     nonce_base = SecureRandom.base64(20)
+    session[:id] = nil
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
@@ -51,32 +52,24 @@ class SessionController < ApplicationController
       redirect_uri: 'http://localhost:3000/callback'
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    @response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
-    # show response to user
-    # if response.code/400 == 1
-    #   flash.alert = "Login failed because #{response['error']}."
-    #   Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
-    #   redirect_to(login_path) and return
-    # end
-    # if response.code != 200
-    #   flash.alert = "Authorization did not receive OK response.  Response in logs."
-    #   Rails.logger.warn "Response not OK.  This was response:\n     #{response}"
-    #   redirect_to(login_path) and return
-    # end
+    @oauth_response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
 
-    @session = Session.new_from_oauth(response)
-    # unless @session.id_token_attributes['nonce'] == digest(session[:nonce_key])
-    #   flash.alert = "Inauthentic token received."
-    #   redirect_to(login_path) and return
-    # end
-    if @session.valid_session?
-      @session.save!
-      session[:id] = @session.id
+    if @oauth_response.ok?
+      Rails.logger.debug "HEeeyyyyy it's ok"
+      @session = Session.new_from_oauth(@oauth_response)
+      if @session.validate_session(session)
+        Rails.logger.debug "Session if validated!"
+        @session.save!
+        session[:id] = @session.id
+      end
+    else
+      Rails.logger.debug "No session"
+      @session = nil
     end
   end
 
   def logout
-    session[:id] = nil
+    # TODO set expires_at to now in session
     redirect_to login_path
   end
 end
