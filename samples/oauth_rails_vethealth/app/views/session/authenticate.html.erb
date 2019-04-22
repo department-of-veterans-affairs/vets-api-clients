@@ -4,10 +4,23 @@
 </p>
 
 <% if @oauth_response.ok? %>
-    great response!
-    <pre><code>
-        <%= @oauth_response.body.split(',') %>
-    </code></pre>
+    <h3>Successfully authenticated OAuth.</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Response Key</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @oauth_response.keys.each do |key| %>
+            <tr>
+                <td><%= key %></td>
+                <td><%= @oauth_response[key] %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
     <% if @session %>
         <% if @session.valid_session? %>
             <p>Session was saved with ID <code><%= @session.id %></code>.  Use this session record to authenticate requests to the API.</p>
