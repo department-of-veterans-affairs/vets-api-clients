@@ -29,6 +29,7 @@ class SessionController < ApplicationController
   end
 
   def callback
+    # TODO support refresh - store oauth_response (keys if good, body if bad) and code in session
     if params[:code].nil?
       flash.notice = "The callback page is for oauth responses, please login first."
       redirect_to(login_path) and return
