@@ -13,9 +13,6 @@ class Session < ApplicationRecord
         case key
         when 'expires_at'
           Time.zone.at(value)
-        when 'id_token'
-          # TODO REVIEW how to decode? https://developer.va.gov/oauth#id-token #also for other app
-          JWT.decode(value, nil, false).first
         else
           value
         end
@@ -24,12 +21,17 @@ class Session < ApplicationRecord
     Hash[attributes_array]
   end
 
+  def parsed_id_token
+    # TODO REVIEW how to decode? https://developer.va.gov/oauth#id-token #also for other app
+    @parsed_id_token ||= JWT.decode(self.id_token, nil, false).first
+  end
+
   def expired?
     @expired ||= self.expires_at < Time.zone.now
   end
 
   def authentic?(session)
-    @authentic ||= (self.id_token['nonce'] == Session.generate_nonce(session[:nonce_key]))
+    @authentic ||= (self.parsed_id_token['nonce'] == Session.generate_nonce(session[:nonce_key]))
   end
 
   def validate_session(session)

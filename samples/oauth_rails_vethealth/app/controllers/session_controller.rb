@@ -5,6 +5,8 @@ class SessionController < ApplicationController
     session[:id] = nil
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
+    session[:oauth_response] = nil
+    session[:oauth_code] = nil
     scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
@@ -63,25 +65,12 @@ class SessionController < ApplicationController
         else
           # session[:oauth_response] is an array of keys, so get data from saved session
           @session = Session.find(session[:id])
-          session[:oauth_response].map do |key|
-            [key, @session[key]]
-          end.to_h
+          hide_sensitive_data(@session.attributes.reject { |k,v| %w(id created_at updated_at).include?(k) })
         end
       @session.validate_session(session) if @session
     else
       oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
-      @oauth_response = oauth_post.map do |key, value|
-        scrubbed_value =
-          case key
-          when 'access_token'
-            "<secret token for accessing API>"
-          when 'id_token'
-            "<JWT token including secret token>"
-          else
-            value
-          end
-        [key, scrubbed_value]
-      end.to_h
+      @oauth_response = hide_sensitive_data(oauth_post.to_h)
       @oauth_response_code = oauth_post.code
       # save oauth_post to support refreshing this page
       session[:oauth_code] = @oauth_response_code
@@ -102,5 +91,13 @@ class SessionController < ApplicationController
   def logout
     # TODO set expires_at to now in session
     redirect_to login_path
+  end
+
+private
+  def hide_sensitive_data(response_hash)
+    new_hash = response_hash.dup
+    new_hash['access_token'] = "<secret token for accessing API>"
+    new_hash['id_token'] = "<JWT data including Vet's name>"
+    new_hash
   end
 end

@@ -11,7 +11,7 @@
         <%= link_to 'Logout to Create New Session', logout_path, class: "btn btn-primary" %>
     <% else %>
         <%# bad response for oauth'ing %>
-        <% if @oauth_response.code/400 == 1 %>
+        <% if @oauth_response_code/400 == 1 %>
             <h3>Failed to authenticate response.</h3>        
             <dl>
                 <dt><%= @oauth_response['error'] %></dt>
@@ -19,7 +19,7 @@
             </dl>
         <% else %>
             <h3>Bad Response from Oauth Server</h3>
-            <p>Response Code <code><%= @oauth_response.code %></code></p>
+            <p>Response Code <code><%= @oauth_response_code %></code></p>
             <pre><code>
                 <%= @oauth_response.body %>
             </code></pre>
