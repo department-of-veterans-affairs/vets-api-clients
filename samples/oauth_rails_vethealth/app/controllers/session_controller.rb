@@ -43,37 +43,59 @@ class SessionController < ApplicationController
     }
     @post_url = 'https://dev-api.va.gov/oauth2/token'
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
-    @oauth_response = oauth_post.map do |key, value|
-      scrubbed_value =
-        case key
-        when 'access_token'
-          "<secret token for accessing API>"
-        when 'id_token'
-          "<JWT token including secret token>"
-        else
-          value
-        end
-      [key, scrubbed_value]
-    end.to_h
-    @oauth_response_code = oauth_post.code
-    # save oauth_post to support refreshing this page
-    session[:oauth_code] = @oauth_response_code
-    session[:oauth_response] = @oauth_response
-
     @auth = auth.dup
     @auth[:password] = "<Client Secret found in application.yml>"
+    @session = nil
 
-    if oauth_post.ok?
-      attributes = Session.attributes_from_oauth(oauth_post)
-      @session = Session.new(attributes)
-      if @session.validate_session(session)
-        @session.save!
-        session[:id] = @session.id
-        session[:oauth_response] = attributes.keys # don't store the sensitive data in the session
-      end
+    # set oauth_response and oauth_response_code
+    if session[:oauth_code]
+      # we are reloading the page so we don't want to make a stale request
+      @oauth_response_code = session[:oauth_code]
+      @oauth_response = 
+        if session[:oauth_response].is_a? Hash
+          # response was not saved as a Session model
+          if @oauth_response_code == 200
+            # 200 OK means it was a successful request but session was found invalid
+            attributes = Session.attributes_from_oauth(oauth_post)
+            @session = Session.new(attributes)
+          end
+          session[:oauth_response]
+        else
+          # session[:oauth_response] is an array of keys, so get data from saved session
+          @session = Session.find(session[:id])
+          session[:oauth_response].map do |key|
+            [key, @session[key]]
+          end.to_h
+        end
+      @session.validate_session(session) if @session
     else
-      @session = nil
+      oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
+      @oauth_response = oauth_post.map do |key, value|
+        scrubbed_value =
+          case key
+          when 'access_token'
+            "<secret token for accessing API>"
+          when 'id_token'
+            "<JWT token including secret token>"
+          else
+            value
+          end
+        [key, scrubbed_value]
+      end.to_h
+      @oauth_response_code = oauth_post.code
+      # save oauth_post to support refreshing this page
+      session[:oauth_code] = @oauth_response_code
+      session[:oauth_response] = @oauth_response
+
+      if oauth_post.ok?
+        attributes = Session.attributes_from_oauth(oauth_post)
+        @session = Session.new(attributes)
+        if @session.validate_session(session)
+          @session.save!
+          session[:id] = @session.id
+          session[:oauth_response] = attributes.keys # don't store the sensitive data in the session
+        end
+      end
     end
   end
 
