@@ -29,7 +29,7 @@ class SessionController < ApplicationController
   end
 
   def callback
-    # TODO support refresh - store oauth_response (keys if good, body if bad) and code in session
+    # TODO support refresh using values from session
     if params[:code].nil?
       flash.notice = "The callback page is for oauth responses, please login first."
       redirect_to(login_path) and return
@@ -43,16 +43,34 @@ class SessionController < ApplicationController
     }
     @post_url = 'https://dev-api.va.gov/oauth2/token'
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    @oauth_response = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
+    oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
+    @oauth_response = oauth_post.map do |key, value|
+      scrubbed_value =
+        case key
+        when 'access_token'
+          "<secret token for accessing API>"
+        when 'id_token'
+          "<JWT token including secret token>"
+        else
+          value
+        end
+      [key, scrubbed_value]
+    end.to_h
+    @oauth_response_code = oauth_post.code
+    # save oauth_post to support refreshing this page
+    session[:oauth_code] = @oauth_response_code
+    session[:oauth_response] = @oauth_response
 
     @auth = auth.dup
     @auth[:password] = "<Client Secret found in application.yml>"
 
-    if @oauth_response.ok?
-      @session = Session.new_from_oauth(@oauth_response)
+    if oauth_post.ok?
+      attributes = Session.attributes_from_oauth(oauth_post)
+      @session = Session.new(attributes)
       if @session.validate_session(session)
         @session.save!
         session[:id] = @session.id
+        session[:oauth_response] = attributes.keys # don't store the sensitive data in the session
       end
     else
       @session = nil

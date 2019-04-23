@@ -7,7 +7,7 @@ class Session < ApplicationRecord
     Digest::SHA256.hexdigest(base + ENV['va_developer_client_secret'])
   end
 
-  def self.new_from_oauth(response)
+  def self.attributes_from_oauth(response)
     attributes_array = response.map do |key,value|
       clean_value =
         case key
@@ -21,7 +21,7 @@ class Session < ApplicationRecord
         end
       [key, clean_value]
     end
-    Session.new(Hash[attributes_array])
+    Hash[attributes_array]
   end
 
   def expired?

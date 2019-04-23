@@ -5,10 +5,10 @@
 
 <% if @verified_state %>
     <%= render partial: 'post_data' %>
-    <% if @oauth_response.ok? %>
+    <% if @oauth_response_code == 200 %>
         <%= render partial: 'oauth_response' %>
         <br/>
-        <%= link_to 'Logout', logout_path, class: "btn btn-primary" %>
+        <%= link_to 'Create New Session', logout_path, class: "btn btn-primary" %>
     <% else %>
         <%# bad response for oauth'ing %>
         <% if @oauth_response.code/400 == 1 %>
