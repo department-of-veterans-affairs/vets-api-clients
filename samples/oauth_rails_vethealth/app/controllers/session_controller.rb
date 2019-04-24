@@ -31,7 +31,6 @@ class SessionController < ApplicationController
   end
 
   def callback
-    # TODO support refresh using values from session
     if params[:code].nil?
       flash.notice = "The callback page is for oauth responses, please login first."
       redirect_to(login_path) and return
@@ -89,7 +88,11 @@ class SessionController < ApplicationController
   end
 
   def logout
-    # TODO set expires_at to now in session
+    if session[:id]
+      sesh = Session.find(session[:id])
+      sesh.expires_at = Time.zone.now
+      sesh.save!
+    end
     redirect_to login_path
   end
 
