@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/login', to: 'session#login'
   get '/callback', to: 'session#callback'
   get '/logout', to: 'session#logout'
+
+  get '/health_api', to: 'health_api#index'
 end
