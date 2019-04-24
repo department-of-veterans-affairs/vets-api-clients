@@ -1,0 +1,6 @@
+<h1>Health API Exploration</h1>
+<%= link_to 'Health API Documentation', 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
+
+put this in your console and smoke it
+
+HTTParty.get('https://dev-api.va.gov/services/argonaut/v0/Condition', { headers: { Authorization: "Bearer #{Session.last.access_token}" } })

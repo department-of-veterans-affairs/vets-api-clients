@@ -1,5 +1,20 @@
 class HealthApiController < ApplicationController
+  before_action :require_auth
+
+  def require_auth
+    @session = Session.where(id: session[:id]).first
+    if @session.nil?
+      Rails.logger.warn "No session found"
+      flash.notice = "Login required"
+      redirect_to(login_path) and return
+    elsif !@session.validate_session(session)
+      Rails.logger.warn "Session #{@session.id} expired"
+      flash.notice = "Login expired, please login again"
+      redirect_to(login_path) and return
+    end
+  end
+
+
   def index
-    render plain: 'welcome to the index'
   end
 end
