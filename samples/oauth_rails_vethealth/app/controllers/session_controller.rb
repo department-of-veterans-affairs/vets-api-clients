@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     session[:login_time] = Time.zone.now.to_i
     session[:oauth_response] = nil
     session[:oauth_code] = nil
-    scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
+    scope = 'openid profile patient/*'
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: Session.generate_nonce(nonce_base),
@@ -32,7 +32,11 @@ class SessionController < ApplicationController
 
   def callback
     if params[:code].nil?
-      flash.notice = "The callback page is for oauth responses, please login first."
+      if params[:error].present?
+        flash.alert = "Callback received \"#{params['error']}\" error: #{params['error_description']}"
+      else
+        flash.notice = "The callback page is for oauth responses, please login first."
+      end
       redirect_to(login_path) and return
     end
     @verified_state = params[:state].to_i == session[:login_time]
