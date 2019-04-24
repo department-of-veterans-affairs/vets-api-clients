@@ -7,7 +7,8 @@ class SessionController < ApplicationController
     session[:login_time] = Time.zone.now.to_i
     session[:oauth_response] = nil
     session[:oauth_code] = nil
-    scope = 'openid profile patient/*'
+    # TODO consider making this something the user can add/subtract on login screen?
+    scope = 'openid profile patient/Patient.read patient/AllergyIntolerance.read patient/Condition.read patient/DiagnosticReport.read patient/Immunization.read patient/Medication.read patient/MedicationOrder.read patient/MedicationStatement.read patient/Observation.read patient/Procedure.read'
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: Session.generate_nonce(nonce_base),
