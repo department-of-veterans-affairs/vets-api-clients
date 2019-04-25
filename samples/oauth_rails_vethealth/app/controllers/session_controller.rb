@@ -95,8 +95,10 @@ class SessionController < ApplicationController
   def logout
     if session[:id]
       sesh = Session.find(session[:id])
-      sesh.expires_at = Time.zone.now
-      sesh.save!
+      if Time.zone.now < sesh.expires_at
+        sesh.expires_at = Time.zone.now
+        sesh.save!
+      end
     end
     redirect_to login_path
   end
