@@ -7,12 +7,12 @@ Session expires in <%= distance_of_time_in_words(Time.zone.now, @session.expires
 
 <pre><code>
 @condition = HTTParty.get(
-        'https://dev-api.va.gov/services/argonaut/v0/Condition',
-        query: { patient: <%= @session.parsed_id_token['name'] %> },
+        "https://dev-api.va.gov/services/argonaut/v0/Condition/<%= @session.patient %>",
         headers: { Authorization: <%= "Bearer #{@session.access_token}"%> }
     )
 </code></pre>
 <hr>
+Response Result <code><%= @condition.code %></code>
 <pre><code>
 <%= @condition %>
 </code></pre>

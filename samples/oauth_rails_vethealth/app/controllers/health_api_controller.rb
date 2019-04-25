@@ -17,9 +17,9 @@ class HealthApiController < ApplicationController
 
   def index
     @condition = HTTParty.get(
-        'https://dev-api.va.gov/services/argonaut/v0/Condition',
-        query: { patient: @session.parsed_id_token['name'] },
+        "https://dev-api.va.gov/services/argonaut/v0/Condition/#{@session.patient}",
         headers: { Authorization: "Bearer #{@session.access_token}" }
     )
+    # 404 response has "issues" key.   if code="not-found" then point at test login docs
   end
 end
