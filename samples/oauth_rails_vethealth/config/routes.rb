@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'session#logout'
 
   get '/health_api', to: 'health_api#index'
+  scope 'health_api' do
+    get 'index', to: 'health_api#index'
+    get 'condition', to: 'health_api#condition'
+  end
 end

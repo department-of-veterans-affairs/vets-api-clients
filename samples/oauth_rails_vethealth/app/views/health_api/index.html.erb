@@ -1,18 +1,6 @@
-<h1>Health API Exploration</h1>
-<div>
-<%= link_to 'Health API Documentation', 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
-<%= link_to 'Logout', logout_path, class: "btn btn-outline-warning" %>
-Session expires in <%= distance_of_time_in_words(Time.zone.now, @session.expires_at) %>.
+<%= render partial: 'health_api_header' %>
+
+<div class="row">
+    <%= link_to 'Condition', condition_path %>
 </div>
 
-<pre><code>
-@condition = HTTParty.get(
-        "https://dev-api.va.gov/services/argonaut/v0/Condition/<%= @session.patient %>",
-        headers: { Authorization: <%= "Bearer #{@session.access_token}"%> }
-    )
-</code></pre>
-<hr>
-Response Result <code><%= @condition.code %></code>
-<pre><code>
-<%= @condition %>
-</code></pre>
