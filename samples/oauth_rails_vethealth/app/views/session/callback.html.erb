@@ -8,7 +8,14 @@
     <% if @oauth_response_code == 200 %>
         <%= render partial: 'oauth_response' %>
         <br/>
+        <% if @session && @session.patient.present? %>
         <%= link_to 'Use Access Token to explore Health API', health_api_path, class: "btn btn-primary" %>
+        <% else %>
+        <div class="alert alert-danger" role="alert">
+            Cannot access Health APIs with a test user that has no patient id.
+            <%= link_to 'Use one of these test accounts.', 'https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md#health-api-accounts' %>
+        </div>
+        <% end %>
         <%= link_to 'Logout to Create New Session', logout_path, class: "btn btn-outline-danger" %>
     <% else %>
         <%# bad response for oauth'ing %>
