@@ -5,12 +5,14 @@
 Session expires in <%= distance_of_time_in_words(Time.zone.now, @session.expires_at) %>.
 </div>
 
-put this in your console and smoke it
 <pre><code>
-s = Session.last
-HTTParty.get(
-    'https://dev-api.va.gov/services/argonaut/v0/Condition',
-    query: { patient: s.parsed_id_token['name'] },
-    headers: { Authorization: "Bearer #{s.access_token}" }
-)
+@condition = HTTParty.get(
+        'https://dev-api.va.gov/services/argonaut/v0/Condition',
+        query: { patient: <%= @session.parsed_id_token['name'] %> },
+        headers: { Authorization: <%= "Bearer #{@session.access_token}"%> }
+    )
+</code></pre>
+<hr>
+<pre><code>
+<%= @condition %>
 </code></pre>

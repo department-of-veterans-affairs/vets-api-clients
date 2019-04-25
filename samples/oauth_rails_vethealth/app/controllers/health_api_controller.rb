@@ -16,5 +16,10 @@ class HealthApiController < ApplicationController
 
 
   def index
+    @condition = HTTParty.get(
+        'https://dev-api.va.gov/services/argonaut/v0/Condition',
+        query: { patient: @session.parsed_id_token['name'] },
+        headers: { Authorization: "Bearer #{@session.access_token}" }
+    )
   end
 end
