@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     get 'index', to: 'health_api#index'
     get 'condition', to: 'health_api#condition'
     get 'allergy_intolerance', to: 'health_api#allergy_intolerance'
+    get 'api_response/:api_name', to: 'health_api#api_by_param', as: 'generic'
   end
 end
