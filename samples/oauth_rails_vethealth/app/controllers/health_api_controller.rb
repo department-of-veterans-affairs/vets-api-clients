@@ -25,6 +25,6 @@ class HealthApiController < ApplicationController
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
     # 404 response has "issues" key.   if code="not-found" then point at test login docs
-
+    render :api_response
   end
 end
