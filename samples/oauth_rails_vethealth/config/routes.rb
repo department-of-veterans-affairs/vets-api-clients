@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   scope 'health_api' do
     get 'index', to: 'health_api#index'
     get 'condition', to: 'health_api#condition'
+    get 'allergy_intolerance', to: 'health_api#allergy_intolerance'
   end
 end

@@ -20,7 +20,15 @@ class HealthApiController < ApplicationController
 
   def condition
     @target = "https://dev-api.va.gov/services/argonaut/v0/Condition/#{@session.patient}"
-    # explain to user that Authorization header is being passed with request
+    @api_response = HTTParty.get(@target,
+      headers: { Authorization: "Bearer #{@session.access_token}" }
+    )
+    # 404 response has "issues" key.   if code="not-found" then point at test login docs
+    render :api_response
+  end
+
+  def allergy_intolerance
+    @target = "https://dev-api.va.gov/services/argonaut/v0/AllergyIntolerance/#{@session.patient}"
     @api_response = HTTParty.get(@target,
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
