@@ -1,16 +1,17 @@
 <%= render partial: 'health_api_header' %>
-
-<div class="row">
-    <p>
-        This page is showing a <code>GET</code> request to <code><%= @target %></code> using the header <code>Authorization: Bearer &lt;access_token&gt;</code>.
-    </p>
-</div>
-<hr>
-<div class="row">
-    <p>
+<br>
+<div class="card">
+  <h5 class="card-header">
+    <code>GET</code> request to <code><%= @target %></code>
+  </h5>
+  <div class="card-body">
+    <p class="card-title">
         Response Result <code><%= @api_response.code %></code>
     </p>
-    <pre><code>
-    <%= @api_response %>
-    </code></pre>
+    <p class="card-text">
+        <pre><code>
+<%= JSON.pretty_generate @api_response.to_h %>
+        </code></pre>
+    </p>
+  </div>
 </div>

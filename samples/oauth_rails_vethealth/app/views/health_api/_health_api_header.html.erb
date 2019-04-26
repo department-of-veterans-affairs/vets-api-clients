@@ -4,9 +4,10 @@
         <%= link_to 'Health API Documentation', 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
         <%= link_to 'Logout', logout_path, class: "btn btn-outline-warning" %>
         Session expires in <%= distance_of_time_in_words(Time.zone.now, @session.expires_at) %>.
-        <% unless action_name == 'index'%>
-        <br>
-        <%= link_to '&larr; Health APIs'.html_safe, health_api_path, class: 'btn btn-sm btn-info' %>
-        <% end %>
     </div>
 </div>
+<hr>
+<% unless action_name == 'index'%>
+<%= link_to '&larr; Try other Health APIs'.html_safe, health_api_path, class: 'btn btn-sm btn-outline-info' %>
+<br>
+<% end %>
