@@ -5,9 +5,10 @@
 
 <div class="row">
     <dl>
-        <dd><%= link_to 'Condition', condition_path %></dd>
-        <dd><%= link_to 'Allergy Intolerence', allergy_intolerance_path %></dd>
-        <dd><%= link_to 'Diagnostic Report', generic_path('DiagnosticReport') %></dd>
+        <% @apis.each do |api| %>
+        <dd><%= link_to api[:text], generic_path(api[:uri_segment]) %></dd>
+        <% end %>
+        <dd><%= link_to 'Metadata', metadata_path %></dd>
     </dd>
 </div>
 
