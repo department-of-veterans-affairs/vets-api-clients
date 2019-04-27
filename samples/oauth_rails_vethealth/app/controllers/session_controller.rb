@@ -103,6 +103,15 @@ class SessionController < ApplicationController
     redirect_to login_path
   end
 
+  def show
+    @session =
+      if params[:id].blank?
+        Session.find(session[:id])
+      else
+        Session.find(params[:id])
+      end
+  end
+
 private
   def hide_sensitive_data(response_hash)
     new_hash = response_hash.dup

@@ -1,0 +1,58 @@
+<div class="row">
+    <h1 class="col-12">
+    <% if @session.id == session[:id] %>
+        Current Session Information
+    <% else %>
+        Details for Session <%= @session.id %>
+    <% end %>
+    </h1>
+    <p class="lead">
+        This session information is returned from OAuth after the user has successfully
+        authenticated.  The information is stored on the server and the <code>id</code>
+        for the <code>Session</code> object is stored in the browser session (Rails
+        default is an http_only cookie).  The <%= link_to 'Health API Controller', health_api_path %>
+        loads the <code>Session</code> object and uses a <code>before_action</code> to
+        validate the session and know which token to use for API requests.  The values
+        stored in the <code>Session</code> object are shown below with an explination of
+        how they are used.
+    </p>
+</div>
+<div class="row">
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">Attribute</th>
+            <th scope="col">Value</th>
+            <th scope="col">Use</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!--
+            :token_type
+            :expires_at
+            :scope
+            :id_token
+            :state
+            :patient -->
+            <tr>
+                <th>access_token</th>
+                <td><em>hidden from browser</em></td>
+                <td>
+                    This should be added to the header of each request as <code>Authorization: Bearer ACCESSTOKEN</code>.
+                    This is hidden here because this value is best kept secret on the server.
+                    If you want to see it, open up <code>rails console</code> and call <code>access_token</code>
+                    on the <code>Session</code> object with ID <code><%= @session.id %></code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
