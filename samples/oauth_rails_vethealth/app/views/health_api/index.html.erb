@@ -1,6 +1,5 @@
 <%= render partial: 'health_api_header' %>
 
-<!-- TODO include information on header and how requests are made and results will show PII and PHI-->
 <div class="row">
     <p class="lead">
         Once a Veteran has given your app permission through OAuth,
@@ -8,13 +7,12 @@
         requests to APIs.  These APIs use the <code>patient's identifier</code>
         to make requests to the various Health API endpoints (metadata
         does not require a patient identifier).  Keep in mind that the
-        information returned is Patient Health Information and/or
-        Personal Identification Information and you should keep in mind
+        information returned is Protected Health Information and/or
+        Personally Identifiable Information and you should keep in mind
         the legal ramifications of how you use it with real Veteran
         information.
     </p>
 </div>
-<%# Header uses <code>Authorization: Bearer &lt;access_token&gt;</code>. %>
 
 <div class="row">
     <dl>
@@ -24,4 +22,3 @@
         <dd><%= link_to 'Metadata', metadata_path %> <span class="badge badge-secondary">Patient ID not used</span></dd>
     </dd>
 </div>
-
