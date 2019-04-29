@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get '/health_api', to: 'health_api#index'
   scope 'health_api' do
     get 'index', to: 'health_api#index'
-    get 'metadata', to: 'health_api#metadata'
     get 'api_response/:api_name', to: 'health_api#api_by_param', as: 'generic'
   end
 end

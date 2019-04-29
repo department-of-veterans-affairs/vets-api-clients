@@ -19,6 +19,5 @@
         <% @apis.each do |api| %>
         <dd><%= link_to api[:text], generic_path(api[:uri_segment]) %></dd>
         <% end %>
-        <dd><%= link_to 'Metadata', metadata_path %> <span class="badge badge-secondary">Patient ID not used</span></dd>
     </dd>
 </div>

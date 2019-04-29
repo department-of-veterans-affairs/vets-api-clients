@@ -16,15 +16,6 @@ class HealthApiController < ApplicationController
     ]
   end
 
-  def metadata
-    # TODO what's up with this?  it needs a special scope?
-    @target = "https://dev-api.va.gov/services/argonaut/v0/Metadata"
-    @api_response = HTTParty.get(@target,
-      headers: { Authorization: "Bearer #{@session.access_token}" }
-    )
-    render :api_response
-  end
-
   def api_by_param
     @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}/#{@session.patient}"
     @api_response = HTTParty.get(@target,
