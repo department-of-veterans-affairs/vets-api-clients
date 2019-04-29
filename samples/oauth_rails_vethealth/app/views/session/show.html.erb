@@ -27,13 +27,6 @@
             </tr>
         </thead>
         <tbody>
-        <!--
-            :token_type
-            :expires_at
-            :scope
-            :id_token
-            :state
-            :patient -->
             <tr>
                 <th>access_token</th>
                 <td><em>hidden from browser</em></td>
@@ -45,13 +38,54 @@
                 </td>
             </tr>
             <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <th>token_type</th>
+                <td><%= @session.token_type %></td>
+                <td>
+                    This should be <code>Bearer</code> for the Authorization Code Flow used to verify your
+                    app.
+                </td>
             </tr>
             <tr>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                <th>expires_at</th>
+                <td><%= @session.expires_at %></td>
+                <td>
+                    This is the timestamp for when the token will no longer be valid to make requests.
+                </td>
+            </tr>
+            <tr>
+                <th>scope</th>
+                <td><%= @session.scope.gsub(' ', '<br>').html_safe %></td>
+                <td>
+                    This is the list of scopes requested with the authentication request.  It is a space-separated
+                    list, but &lt;br&gt; tags replace the spaces for layout here.
+                </td>
+            </tr> 
+            <tr>
+                <th>state</th>
+                <td><%= @session.state %></td>
+                <td>
+                    This is the value passed in with the authentication request.  It can be used for verifying
+                    authenticity or storing app state information.
+                </td>
+            </tr>
+            <tr>
+                <th>patient</th>
+                <td><%= @session.patient %></td>
+                <td>
+                    This is the patient ID used to make requests to the Health APIs.
+                </td>
+            </tr>
+            <tr>
+                <th>id_token</th>
+                <td>
+                    <pre>
+<%= JSON.pretty_generate @session.parsed_id_token %>
+                    </pre>
+                </td>
+                <td>
+                    Information about the authenticated user from the JSON Web Token (JWT).  The nonce is used for
+                    validating the message to the callback from the authentication server.
+                </td>
             </tr>
         </tbody>
     </table>

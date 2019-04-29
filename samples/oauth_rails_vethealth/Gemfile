@@ -41,7 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'figaro'
 # makes http requests fun (i guess?)
 gem 'httparty'
-# parses jwt token from oauth
+# parses jwt from oauth
 gem 'jwt'
 # bootstrap makes styling simple
 gem 'bootstrap', '~> 4.3.1'
