@@ -1,9 +1,10 @@
 <div class="row">
     <h1 class='col-12'>Health API Exploration</h1>
     <div class='col-12'>
-        <%= link_to 'Health API Documentation', 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
+        <%= link_to 'Health API Documentation &nearr;'.html_safe, 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
         <%= link_to 'Logout', logout_path, class: "btn btn-outline-warning" %>
         Session expires in <%= distance_of_time_in_words(Time.zone.now, @session.expires_at) %>.
+        <small><%= link_to 'session details', session_path(@session.id) %></small>
     </div>
 </div>
 <hr>

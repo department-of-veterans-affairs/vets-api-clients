@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+  before_action :require_auth, only: :show
+
   def login
     # create a linke to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/verification/docs/authorization
     nonce_base = SecureRandom.base64(20)

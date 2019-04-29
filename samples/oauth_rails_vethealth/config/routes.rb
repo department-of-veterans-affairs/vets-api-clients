@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/login', to: 'session#login'
   get '/callback', to: 'session#callback'
   get '/logout', to: 'session#logout'
-  get 'session/:id', to: 'session#show'
+  get 'session/:id', to: 'session#show', as: 'session'
 
   get '/health_api', to: 'health_api#index'
   scope 'health_api' do

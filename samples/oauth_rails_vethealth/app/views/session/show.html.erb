@@ -6,6 +6,7 @@
         Details for Session <%= @session.id %>
     <% end %>
     </h1>
+    <%= link_to '&larr; Back to API'.html_safe, health_api_path, class: 'btn btn-sm btn-outline-primary' %>
     <p class="lead">
         This session information is returned from OAuth after the user has successfully
         authenticated.  The information is stored on the server and the <code>id</code>
@@ -78,9 +79,9 @@
             <tr>
                 <th>id_token</th>
                 <td>
-                    <pre>
+                    <small><pre>
 <%= JSON.pretty_generate @session.parsed_id_token %>
-                    </pre>
+                    </pre></small>
                 </td>
                 <td>
                     Information about the authenticated user from the JSON Web Token (JWT).  The nonce is used for
