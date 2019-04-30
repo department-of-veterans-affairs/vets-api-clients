@@ -9,7 +9,6 @@ class SessionController < ApplicationController
     session[:login_time] = Time.zone.now.to_i
     session[:oauth_response] = nil
     session[:oauth_code] = nil
-    # TODO consider making this something the user can add/subtract on login screen?
     scope = 'openid profile launch/patient patient/Patient.read patient/AllergyIntolerance.read patient/Condition.read patient/DiagnosticReport.read patient/Immunization.read patient/Medication.read patient/MedicationOrder.read patient/MedicationStatement.read patient/Observation.read patient/Procedure.read'
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
@@ -26,8 +25,8 @@ class SessionController < ApplicationController
       {param: :redirect_uri, description: "The URL you supplied when signing up for access.", required: true},
       # TODO uncomment this description, known issue is causing a 500 if this param is used https://github.com/department-of-veterans-affairs/vets-contrib/issues/1842
       # {param: :response_mode, description: "Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment so it can be omitted."},
-      {param: :response_type, description: "Set to \"code\" to use the Authorization Code Flow.", required: true},
-      {param: :scope, description: "The information for which your app is requesting access.  Should include 'openid'."},
+      {param: :response_type, description: "Set to <code>code</code> to use the Authorization Code Flow.", required: true},
+      {param: :scope, description: "The information for which your app is requesting access.  Should include <code>openid</code>.  <code>launch/patient</code> is used to get the patient id to use as a param for Health API requests.  <code>profile</code> returns user information like name and email.  The <code>patient/*</code> scopes give access to each of the specific APIs".html_safe},
       {param: :state, description: "Can be used as a nonce for security or as app state information."}
     ]
     @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
