@@ -22,7 +22,6 @@ class Session < ApplicationRecord
   end
 
   def parsed_id_token
-    # TODO REVIEW how to decode? https://developer.va.gov/oauth#id-token #also for other app
     @parsed_id_token ||= JWT.decode(self.id_token, nil, false).first
   end
 
