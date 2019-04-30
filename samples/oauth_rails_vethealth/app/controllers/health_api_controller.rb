@@ -23,4 +23,14 @@ class HealthApiController < ApplicationController
     )
     render :api_response
   end
+
+  def search_api_by_param
+    @count = params[:count] || 25
+    @page = params[:page] || 1
+    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}?patient=#{@session.patient}&page=#{@page}&_count=#{@count}"
+    @api_response = HTTParty.get(@target,
+      headers: { Authorization: "Bearer #{@session.access_token}" }
+    )
+    render :api_response
+  end
 end

@@ -17,7 +17,10 @@
 <div class="row">
     <dl>
         <% @apis.each do |api| %>
-        <dd><%= link_to api[:text], generic_path(api[:uri_segment]) %></dd>
+        <dd>
+            <%= link_to api[:text], search_api_path(api[:uri_segment]) %>
+            <%#= link_to api[:text], api_path(api[:uri_segment]) %>
+        </dd>
         <% end %>
     </dd>
 </div>
