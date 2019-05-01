@@ -1,6 +1,4 @@
 <%= render partial: 'health_api_header' %>
-<% if params.keys.include?('return_count') && params.keys.include?('return_page') %>
 <%= link_to "Return to #{params[:api_name]} Search", :back, class: 'btn btn-primary' %>
 <br><br>
-<% end %>
 <%= render partial: 'api_response_card', locals: { target: @target, code: @api_response.code, response_text: JSON.pretty_generate(@api_response.to_h) } %>

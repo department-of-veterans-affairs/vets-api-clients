@@ -15,3 +15,5 @@ The main page of the app will ask you to log in through `ID.me`.  [These test ac
 After successfully logging in to the OAuth server it will open the the designated callback page in your app.  Typically this endpoint would set up a session and redirect to the main functionality of your app.  In this app, instead of redirecting, the callback information is all shown and explained.  The code for the `session_controller#callback` action is more complex to support all the information it can display as well as storing callack information in the session to support refreshing this page.  (The [sample app for veteran verification](https://github.com/department-of-veterans-affairs/vets-api-clients/tree/master/samples/oauth_rails_vetverification) has a callback designed more like a practical app would.)
 
 Once the callback page shows a new session, you can follow the link to explore the Health API.  Click on any of the links to have the `auth_token` used to request data for the logged in user from the given API endpoints.  The raw json returned will be shown.
+
+## TODO update this doc to discuss search and links

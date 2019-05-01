@@ -49,6 +49,12 @@ class HealthApiController < ApplicationController
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
 
     # replace all the "fullURL"s with links to api_by_param for those individual requests
-    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2\">\\1\/\\2</a>").html_safe
+    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2\">\\1\/\\2</a>")
+
+    if params[:api_name] == 'MedicationOrder'
+      # link to medication API
+      # TODO this should be applied to api_by_param for MedicationOrder also
+      @response_string.gsub!(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/Medication)\/(.+)\"/, "<a href=\"/health_api/api_response/Medication/\\2\">\\1\/\\2</a>")
+    end
   end
 end
