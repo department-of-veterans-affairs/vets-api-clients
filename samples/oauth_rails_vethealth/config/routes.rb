@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/health_api', to: 'health_api#index'
   scope 'health_api' do
     get 'index', to: 'health_api#index'
-    get 'api_response/:api_name', to: 'health_api#api_by_param', as: 'api'
+    get 'api_response/:api_name/:id', to: 'health_api#api_by_param'
     get 'search_api_response/:api_name', to: 'health_api#search_api_by_param', as: 'search_api'
   end
 end

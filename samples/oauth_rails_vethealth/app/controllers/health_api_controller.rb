@@ -17,7 +17,7 @@ class HealthApiController < ApplicationController
   end
 
   def api_by_param
-    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}/#{@session.patient}"
+    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}/#{params[:id]}"
     @api_response = HTTParty.get(@target,
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
@@ -43,9 +43,9 @@ class HealthApiController < ApplicationController
         @api_navs << nav
       end
     end
-
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
 
-    # TODO extract all the full URLs and create links to api_by_param for those individual requests
+    # replace all the "fullURL"s with links to api_by_param for those individual requests
+    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2?return_page=#{@page}&return_count=#{@count}\">\\1\/\\2</a>").html_safe
   end
 end
