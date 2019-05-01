@@ -1,0 +1,4 @@
+<%= render partial: 'health_api_header' %>
+<%= link_to "Go back", :back, class: 'btn btn-warning' %>
+<br><br>
+<%= render partial: 'api_response_card', locals: { target: @target, code: @api_response.code, response_text: JSON.pretty_generate(@api_response.to_h) } %>

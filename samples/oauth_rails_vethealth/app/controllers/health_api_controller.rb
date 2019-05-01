@@ -3,16 +3,16 @@ class HealthApiController < ApplicationController
 
   def index
     @apis = [
-      {text: 'Allergy Intolerance', uri_segment: 'AllergyIntolerance'},
-      {text: 'Condition', uri_segment: 'Condition'},
-      {text: 'Diagnostic Report', uri_segment: 'DiagnosticReport'},
-      {text: 'Immunization', uri_segment: 'Immunization'},
-      {text: 'Medication', uri_segment: 'Medication'},
-      {text: 'Medication Order', uri_segment: 'MedicationOrder'},
-      {text: 'Medication Statement', uri_segment: 'MedicationStatement'},
-      {text: 'Observation', uri_segment: 'Observation'},
-      {text: 'Patient', uri_segment: 'Patient'},
-      {text: 'Procedure', uri_segment: 'Procedure'}
+      {text: 'Allergy Intolerance', uri_segment: 'AllergyIntolerance', search_param: 'patient'},
+      {text: 'Condition', uri_segment: 'Condition', search_param: 'patient'},
+      {text: 'Diagnostic Report', uri_segment: 'DiagnosticReport', search_param: 'patient'},
+      {text: 'Immunization', uri_segment: 'Immunization', search_param: 'patient'},
+      # {text: 'Medication', uri_segment: 'Medication'}, #has no search # TODO show this
+      {text: 'Medication Order', uri_segment: 'MedicationOrder', search_param: 'patient'},
+      {text: 'Medication Statement', uri_segment: 'MedicationStatement', search_param: 'patient'},
+      {text: 'Observation', uri_segment: 'Observation', search_param: 'patient'},
+      {text: 'Patient', uri_segment: 'Patient', search_param: '_id'},
+      {text: 'Procedure', uri_segment: 'Procedure', search_param: 'patient'}
     ]
   end
 
@@ -21,16 +21,19 @@ class HealthApiController < ApplicationController
     @api_response = HTTParty.get(@target,
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
-    render :api_response
   end
 
   def search_api_by_param
     @count = params[:count] || 10
     @page = params[:page] || 1
-    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}?patient=#{@session.patient}&page=#{@page}&_count=#{@count}"
+    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}?#{params[:search_param]}=#{@session.patient}&page=#{@page}&_count=#{@count}"
     @api_response = HTTParty.get(@target,
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
+
+    if @api_response.code != 200
+      render :api_request_failed and return
+    end
 
     @api_navs = []
     self_nav = nil
@@ -46,6 +49,6 @@ class HealthApiController < ApplicationController
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
 
     # replace all the "fullURL"s with links to api_by_param for those individual requests
-    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2?return_page=#{@page}&return_count=#{@count}\">\\1\/\\2</a>").html_safe
+    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2\">\\1\/\\2</a>").html_safe
   end
 end
