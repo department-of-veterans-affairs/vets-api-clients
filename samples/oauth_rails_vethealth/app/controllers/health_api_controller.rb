@@ -25,12 +25,27 @@ class HealthApiController < ApplicationController
   end
 
   def search_api_by_param
-    @count = params[:count] || 25
+    @count = params[:count] || 10
     @page = params[:page] || 1
     @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}?patient=#{@session.patient}&page=#{@page}&_count=#{@count}"
     @api_response = HTTParty.get(@target,
       headers: { Authorization: "Bearer #{@session.access_token}" }
     )
-    render :api_response
+
+    @api_navs = []
+    self_nav = nil
+    @api_response['link'].each do |link|
+      name, url = link['relation'], link['url']
+      nav = { name: name, page: /page=(\d+)/.match(url)[1], count: /_count=(\d+)/.match(url)[1] }
+      if name == 'self'
+        self_nav = nav
+      else
+        @api_navs << nav
+      end
+    end
+
+    @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
+
+    # TODO extract all the full URLs and create links to api_by_param for those individual requests
   end
 end

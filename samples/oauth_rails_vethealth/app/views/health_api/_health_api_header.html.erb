@@ -7,8 +7,8 @@
         <small><%= link_to 'session details', session_path(@session.id) %></small>
     </div>
 </div>
-<hr>
+<br>
 <% unless action_name == 'index'%>
 <%= link_to '&larr; Try other Health APIs'.html_safe, health_api_path, class: 'btn btn-sm btn-outline-info' %>
-<br>
 <% end %>
+<hr>

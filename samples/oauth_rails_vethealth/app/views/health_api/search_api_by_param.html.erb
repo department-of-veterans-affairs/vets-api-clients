@@ -1,0 +1,15 @@
+<%= render partial: 'health_api_header' %>
+<br>
+<% if @api_navs.any? %>
+  <div class="row">
+    <p class="lead">Showing <%= @count %> entries from page <%= @page %>.<br><small>Use the buttons to see more pages.</small></p>
+  </div>
+  <div class="row">
+    <% @api_navs.each do |nav| %>
+    <%= link_to nav[:name], search_api_path(params[:api_name], params: { page: nav[:page], count: nav[:count] }), class: 'btn btn-primary btn-sm col-1'%>
+    &nbsp;
+    <% end %>
+  </div>
+  <br>
+<% end %>
+<%= render partial: 'api_response' %>
