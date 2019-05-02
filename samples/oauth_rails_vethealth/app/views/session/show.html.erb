@@ -32,7 +32,7 @@
                 <th>access_token</th>
                 <td><em>hidden from browser</em></td>
                 <td>
-                    This should be added to the header of each request as <code>Authorization: Bearer ACCESSTOKEN</code>.
+                    This should be added to the header of each request as <code>Authorization: Bearer <em>access_token</em></code>.
                     This is hidden here because this value is best kept secret on the server.
                     If you want to see it, open up <code>rails console</code> and call <code>access_token</code>
                     on the <code>Session</code> object with ID <code><%= @session.id %></code>.
@@ -73,7 +73,7 @@
                 <th>patient</th>
                 <td><%= @session.patient %></td>
                 <td>
-                    This is the patient ID used to make requests to the Health APIs.
+                    This is the <em>patient identifier</em> used as the search param for the Health APIs.
                 </td>
             </tr>
             <tr>
