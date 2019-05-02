@@ -4,13 +4,22 @@
     <p class="lead">
         Once a Veteran has given your app permission through OAuth,
         you can use the returned <code>access_token</code> to make
-        requests to APIs.  These APIs use the <code>patient's identifier</code>
-        to make requests to the various Health API endpoints (metadata
-        does not require a patient identifier).  Keep in mind that the
-        information returned is Protected Health Information and/or
-        Personally Identifiable Information and you should keep in mind
-        the legal ramifications of how you use it with real Veteran
-        information.
+        requests to APIs.
+    </p>
+    <p>    
+        The <code>access_token</code> is added to the header of all
+        requests as <code>Authorization: "Bearer <em>access_token</em>"</code>.
+        The below links make a request to the search endpoint of an API using
+        the <code>patient's identifier</code> as a parameter.  From there you can
+        follow links in the response to see related API calls based on resource
+        ids.
+        <br>
+        <strong>
+            Keep in mind that the information returned is Protected Health
+            Information and/or Personally Identifiable Information and you
+            should keep in mind the legal ramifications of how you use it with
+            real Veteran information.
+        </strong>
     </p>
 </div>
 
