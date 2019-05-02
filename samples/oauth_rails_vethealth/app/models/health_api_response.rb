@@ -38,7 +38,7 @@ class HealthApiResponse
 
   def api_navs
     return @api_navs if @api_navs
-    return nil if @action == :read
+    return nil unless (@action == :search && code == 200)
     @api_navs = []
     self_nav = nil
     @api_response['link'].each do |link|

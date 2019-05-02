@@ -3,16 +3,15 @@ class HealthApiController < ApplicationController
 
   def index
     @apis = [
-      {text: 'Allergy Intolerance', uri_segment: 'AllergyIntolerance', search_param: 'patient'},
-      {text: 'Condition', uri_segment: 'Condition', search_param: 'patient'},
-      {text: 'Diagnostic Report', uri_segment: 'DiagnosticReport', search_param: 'patient'},
-      {text: 'Immunization', uri_segment: 'Immunization', search_param: 'patient'},
-      # {text: 'Medication', uri_segment: 'Medication'}, #has no search # TODO show this
-      {text: 'Medication Order', uri_segment: 'MedicationOrder', search_param: 'patient'},
-      {text: 'Medication Statement', uri_segment: 'MedicationStatement', search_param: 'patient'},
-      {text: 'Observation', uri_segment: 'Observation', search_param: 'patient'},
-      {text: 'Patient', uri_segment: 'Patient', search_param: '_id'},
-      {text: 'Procedure', uri_segment: 'Procedure', search_param: 'patient'}
+      {text: 'Allergy Intolerance', uri_segment: 'AllergyIntolerance'},
+      {text: 'Condition', uri_segment: 'Condition'},
+      {text: 'Diagnostic Report', uri_segment: 'DiagnosticReport'},
+      {text: 'Immunization', uri_segment: 'Immunization'},
+      {text: 'Medication Order', uri_segment: 'MedicationOrder'},
+      {text: 'Medication Statement', uri_segment: 'MedicationStatement'},
+      {text: 'Observation', uri_segment: 'Observation'},
+      {text: 'Patient', uri_segment: 'Patient'},
+      {text: 'Procedure', uri_segment: 'Procedure'}
     ]
   end
 

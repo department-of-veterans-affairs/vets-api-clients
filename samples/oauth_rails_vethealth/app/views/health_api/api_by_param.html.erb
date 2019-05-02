@@ -1,4 +1,4 @@
 <%= render partial: 'health_api_header' %>
 <%= link_to "Go to previous request", :back, class: 'btn btn-primary' %>
 <br><br>
-<%= render partial: 'api_response_card', locals: { target: @api_response.target, code: @api_response.code, response_text: @api_response.response_string.html_safe } %>
+<%= render partial: 'api_response', object: @api_response %>

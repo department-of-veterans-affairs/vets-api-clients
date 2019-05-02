@@ -3,7 +3,7 @@
     <code>GET</code> request to <code><%= api_response.target %></code>
   </h5>
   <div class="card-body">
-  <% if api_response.api_navs.any? %>
+  <% if api_response.api_navs.present? %>
       <p class="card-text">Showing <%= api_response.count %> entries from page <%= api_response.page %>.<br><small>Use the buttons to see more pages.</small></p>
       <% api_response.api_navs.each do |nav| %>
       <%= link_to nav[:name], search_api_path(params[:api_name], params: { page: nav[:page], count: nav[:count] }), class: 'btn btn-primary btn-sm col-1'%>

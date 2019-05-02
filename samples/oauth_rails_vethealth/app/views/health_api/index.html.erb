@@ -18,7 +18,7 @@
     <dl>
         <% @apis.each do |api| %>
         <dd>
-            <%= link_to api[:text], search_api_path(api[:uri_segment], params: {search_param: api[:search_param]}) %>
+            <%= link_to api[:text], search_api_path(api[:uri_segment]) %>
         </dd>
         <% end %>
     </dd>
