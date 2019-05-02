@@ -33,6 +33,8 @@ class SessionController < ApplicationController
   end
 
   def callback
+    # display content of the callback, post to oauth, and resulting data (including token) received from oauth
+    # this controller is heavier than a typical callback enpdpoint would be to support showing all that data (as well as supporting refreshing the page), for another callback example see https://github.com/department-of-veterans-affairs/vets-api-clients/tree/master/samples/oauth_rails_vetverification
     if params[:code].nil?
       if params[:error].present?
         flash.alert = "Callback received \"#{params['error']}\" error: #{params['error_description']}"
