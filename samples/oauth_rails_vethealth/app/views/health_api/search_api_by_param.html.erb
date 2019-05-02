@@ -1,26 +1,2 @@
 <%= render partial: 'health_api_header' %>
-<div class="card">
-  <h5 class="card-header">
-    <code>GET</code> request to <code><%= @target %></code>
-  </h5>
-  <div class="card-body">
-  <% if @api_navs.any? %>
-      <p class="card-text">Showing <%= @count %> entries from page <%= @page %>.<br><small>Use the buttons to see more pages.</small></p>
-      <% @api_navs.each do |nav| %>
-      <%= link_to nav[:name], search_api_path(params[:api_name], params: { page: nav[:page], count: nav[:count] }), class: 'btn btn-primary btn-sm col-1'%>
-      &nbsp;
-      <% end %>
-    <hr>
-  <% end %>
-    <p class="card-title">
-        Response Result <code><%= @api_response.code %></code>
-        <br>
-        <small>Click on the "fullURL" to see the result of a request to that URL.</small>
-    </p>
-    <p class="card-text">
-        <pre><code>
-<%= @response_string.html_safe %>
-        </code></pre>
-    </p>
-  </div>
-</div>
+<%= render partial: 'api_response', object: @api_response %>

@@ -1,11 +1,13 @@
 class HealthApiResponse
-  attr_reader :target
-  def initializer(api_name:, id:, access_token:, action: :read, page: 1, count: 10)
-    @api_name, @id, @action, @page, @count = api_name, id, action, page, count
+  attr_reader :api_name, :target, :page, :count
+  def initialize(api_name:, id:, access_token:, action: :read, page: 1, count: 10)
+    @api_name, @id, @action = api_name, id, action
     if action == :search
-      search_param = (api_name == 'Patient' ? '_id' : 'patient'
+      @page, @count = page, count
+      search_param = (api_name == 'Patient' ? '_id' : 'patient')
       @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param}=#{id}&page=#{page}&_count=#{count}"
     elsif action == :read
+      @page, @count = nil, nil
       @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}/#{id}"
     else
       raise "action must be one of the symbols :search or :read"
@@ -31,6 +33,7 @@ class HealthApiResponse
       # link to medication API
       @response_string.gsub!(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/Medication)\/(.+)\"/, "<a href=\"/health_api/api_response/Medication/\\2\">\\1\/\\2</a>")
     end
+    @response_string
   end
 
   def api_navs
@@ -48,7 +51,7 @@ class HealthApiResponse
       end
     end
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
-    # TODO delete first/last if same as prev/next?
+    # TODO delete first/last if same as prev/next
     @api_navs
   end
 end

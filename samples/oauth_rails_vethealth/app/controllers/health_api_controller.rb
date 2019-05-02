@@ -17,44 +17,26 @@ class HealthApiController < ApplicationController
   end
 
   def api_by_param
-    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}/#{params[:id]}"
-    @api_response = HTTParty.get(@target,
-      headers: { Authorization: "Bearer #{@session.access_token}" }
+    @api_response = HealthApiResponse.new(
+      api_name: params[:api_name],
+      id: params[:id],
+      access_token: @session.access_token
     )
   end
 
   def search_api_by_param
-    @count = params[:count] || 10
-    @page = params[:page] || 1
-    @target = "https://dev-api.va.gov/services/argonaut/v0/#{params[:api_name]}?#{params[:search_param]}=#{@session.patient}&page=#{@page}&_count=#{@count}"
-    @api_response = HTTParty.get(@target,
-      headers: { Authorization: "Bearer #{@session.access_token}" }
+    @api_response = HealthApiResponse.new(
+      api_name: params[:api_name],
+      id: @session.patient,
+      access_token: @session.access_token,
+      action: :search,
+      page: params[:page] || 1,
+      count: params[:count] || 10
     )
 
-    if @api_response.code != 200
-      render :api_request_failed and return
-    end
-
-    @api_navs = []
-    self_nav = nil
-    @api_response['link'].each do |link|
-      name, url = link['relation'], link['url']
-      nav = { name: name, page: /page=(\d+)/.match(url)[1], count: /_count=(\d+)/.match(url)[1] }
-      if name == 'self'
-        self_nav = nav
-      else
-        @api_navs << nav
-      end
-    end
-    @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
-
-    # replace all the "fullURL"s with links to api_by_param for those individual requests
-    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{params[:api_name]})\/(.+)\"/, "<a href=\"/health_api/api_response/#{params[:api_name]}/\\2\">\\1\/\\2</a>")
-
-    if params[:api_name] == 'MedicationOrder'
-      # link to medication API
-      # TODO this should be applied to api_by_param for MedicationOrder also
-      @response_string.gsub!(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/Medication)\/(.+)\"/, "<a href=\"/health_api/api_response/Medication/\\2\">\\1\/\\2</a>")
-    end
+    # TODO restore and support HealthApiResponse
+    # if @api_response.code != 200
+    #   render :api_request_failed and return
+    # end
   end
 end
