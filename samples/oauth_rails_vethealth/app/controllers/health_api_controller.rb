@@ -32,10 +32,5 @@ class HealthApiController < ApplicationController
       page: params[:page] || 1,
       count: params[:count] || 10
     )
-
-    # TODO restore and support HealthApiResponse
-    # if @api_response.code != 200
-    #   render :api_request_failed and return
-    # end
   end
 end
