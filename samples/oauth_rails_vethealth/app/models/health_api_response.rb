@@ -16,23 +16,13 @@ class HealthApiResponse
   end
 
   def code
-    # TODO review: do we want to just method_missing to @api_response?
     @api_response.code
   end
 
   def response_string
     return @response_string if @response_string
-    @response_string = JSON.pretty_generate(@api_response.to_h)
-    
-    if @action == :search
-      # replace all the "fullURL"s with links to api_by_param for those individual requests
-      @response_string.gsub!(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{@api_name})\/(.+)\"/, "<a href=\"/health_api/api_response/#{@api_name}/\\2\">\\1\/\\2</a>")
-    end
-
-    if @api_name == 'MedicationOrder'
-      # link to medication API
-      @response_string.gsub!(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/Medication)\/(.+)\"/, "<a href=\"/health_api/api_response/Medication/\\2\">\\1\/\\2</a>")
-    end
+    # use JSON pretty_generate to add readable whitespace and gsub api links to be links with the test app
+    @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/, "<a href=\"/health_api/api_response/\\2/\\3\">\\1\/\\2\/\\3</a>")
     @response_string
   end
 
