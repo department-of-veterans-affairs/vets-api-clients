@@ -23,7 +23,6 @@ class HealthApiResponse
     return @response_string if @response_string
     # use JSON pretty_generate to add readable whitespace and gsub api links to be links with the test app
     @response_string = JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/, "<a href=\"/health_api/api_response/\\2/\\3\">\\1\/\\2\/\\3</a>")
-    @response_string
   end
 
   def api_navs
