@@ -6,8 +6,7 @@ class HealthApiResponse
     case action
     when :search
       @page, @count = page, count
-      search_param = (api_name == 'Patient' ? '_id' : 'patient')
-      @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param}=#{id}&page=#{page}&_count=#{count}"
+      @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param_name}=#{id}&page=#{page}&_count=#{count}"
     when :read
       @page, @count = nil, nil
       @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}/#{id}"
@@ -43,4 +42,14 @@ class HealthApiResponse
     end
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
   end
+
+private
+  def search_param_name
+    if api_name == 'Patient'
+      '_id'
+    else
+      'patient'
+    end
+  end
+
 end
