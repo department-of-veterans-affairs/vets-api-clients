@@ -40,6 +40,5 @@ class HealthApiResponse
       end
     end
     @api_navs.delete_if { |nav| nav[:page] == "0" || (nav[:page] == self_nav[:page] && nav[:count] == self_nav[:count]) }
-    @api_navs
   end
 end
