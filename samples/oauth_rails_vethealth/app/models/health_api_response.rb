@@ -45,7 +45,7 @@ class HealthApiResponse
 
 private
   def search_param_name
-    if api_name == 'Patient'
+    if @api_name == 'Patient'
       '_id'
     else
       'patient'
