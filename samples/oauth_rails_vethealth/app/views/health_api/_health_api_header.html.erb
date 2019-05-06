@@ -4,7 +4,7 @@
         <%= link_to 'Health API Documentation &nearr;'.html_safe, 'https://developer.va.gov/explore/health/docs/argonaut', class: 'btn btn-primary', target: '_blank' %>
         <%= link_to 'Logout', logout_path, class: "btn btn-outline-warning" %>
         Authentication expires <%= distance_of_time_in_words(Time.zone.now, @authentication.expires_at) %> from <%= Time.zone.now.strftime('%l:%M %p %Z') %>.
-        <small><%= link_to 'session details', session_path(@authentication.id) %></small>
+        <small><%= link_to 'session details', authentication_path(@authentication.id) %></small>
     </div>
 </div>
 <br>
