@@ -56,7 +56,7 @@ class SessionController < ApplicationController
     if session[:oauth_code]
       # we are reloading the page so we don't want to make a stale request
       @oauth_response_code = session[:oauth_code]
-      @oauth_response = 
+      @oauth_response =
         if session[:oauth_response].is_a? Hash
           # response was not saved as a Authentication model
           if @oauth_response_code == 200
