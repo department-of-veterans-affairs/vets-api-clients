@@ -2,13 +2,11 @@ class SessionController < ApplicationController
   before_action :require_auth, only: :show
 
   def login
-    # create a link to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/health/docs/authorization#authorization-code-flow
+    reset_session
+    # create a url to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/health/docs/authorization#authorization-code-flow
     nonce_base = SecureRandom.base64(20)
-    session[:id] = nil
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
-    session[:oauth_response] = nil
-    session[:oauth_code] = nil
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: Authentication.generate_nonce(nonce_base),
@@ -18,6 +16,8 @@ class SessionController < ApplicationController
       scope: scope,
       state: session[:login_time]
     }
+    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
+    # descriptions to display to the user how the oauth params are used
     @oauth_param_description = [
       {param: :client_id, description: "The client_id issued by the VA API Platform team", required: true},
       {param: :nonce, description: "Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value."},
@@ -28,7 +28,6 @@ class SessionController < ApplicationController
       {param: :scope, description: "The information for which your app is requesting access.  Should include <code>openid</code>.  <code>launch/patient</code> is used to get the patient id to use as a param for Health API requests.  <code>profile</code> returns user information like name and email.  The <code>patient/*</code> scopes give access to each of the specific APIs".html_safe},
       {param: :state, description: "Can be used as a nonce for security or as app state information."}
     ]
-    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
   end
 
   def callback
