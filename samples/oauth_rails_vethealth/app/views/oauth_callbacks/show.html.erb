@@ -5,92 +5,85 @@
   Now with the user identity verified by <em>ID.me</em>, we will post our client secret to receive a token we can use to access the Health API.
 </p>
 
-<% if @oauth_callback.verified_state? %>
-    <p>
-    To finish authentication, the server <code>POST</code>s to <code><%= @oauth_callback.oauth_url %></code>.
-    </p>
-    <p>
-        This is the basic auth for the post:
-        <pre><code>
-    {
-        <% @oauth_callback.auth.each do |key, value| %>
-        <%= key %>: <%= value %>
-        <% end %>
-    }
-        </code></pre>
-    </p>
-    <p>
-        This is the body of the post, including the code and state sent from the oauth server:
-        <pre><code>
-    {
-        <% @oauth_callback.post_body.each do |key, value| %>
-        <%= key %>: <%= value %>
-        <% end %>
-    }
-        </code></pre>
-    </p>
-    <% if @oauth_callback.response_code == 200 %>
-        <h3>Successfully authenticated OAuth.</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Response Key</th>
-                    <th scope="col">Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @oauth_callback.response_body.keys.each do |key| %>
-                <tr>
-                    <td><%= key %></td>
-                    <td><%= @oauth_callback.response_body[key] %></td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-        <% if @oauth_callback.authentication %>
-            <% if @oauth_callback.authentication.valid_session? %>
-                <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.  Use this authentication record to set headers for requests to the API.</p>
-            <% else %>
-                <p>The session does not match the oauth response.  These are the issues:</p>
-                <ul>
-                <% @oauth_callback.authentication.session_errors.each do |error| %>
-                    <li><%= error[:message] %></li>
-                <% end %>
-                </ul>
-            <% end %>
-        <% end %>
-        <br/>
-        <% if @oauth_callback.authentication && @oauth_callback.authentication.patient.present? %>
-        <%= link_to 'Use Access Token to explore Health API', health_api_path, class: "btn btn-primary" %>
-        <% else %>
-        <div class="alert alert-danger" role="alert">
-            Cannot access Health APIs with a test user that has no patient id.
-            <%= link_to 'Use one of these test accounts.', 'https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md#health-api-accounts', target: '_blank' %>
-        </div>
-        <% end %>
-        <%= link_to 'Logout to Create New Session', logout_path, class: "btn btn-outline-danger" %>
-    <% else %>
-        <%# bad response for oauth'ing %>
-        <% if @oauth_callback.response_code/400 == 1 %>
-            <h3>Failed to authenticate response.</h3>
-            <dl>
-                <dt><%= @oauth_callback.response_body['error'] %></dt>
-                <dd><%= @oauth_callback.response_body['error_description'] %></dd>
-            </dl>
-        <% else %>
-            <h3>Bad Response from Oauth Server</h3>
-            <p>Response Code <code><%= @oauth_callback.response_code %></code></p>
-            <pre><code>
-            <%# TODO this was previously response.body --- support string? %>
-                <%= @oauth_callback.response_body %>
-            </code></pre>
-        <% end %>
-        <%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>
+<p>
+To finish authentication, the server <code>POST</code>s to <code><%= @oauth_callback.oauth_url %></code>.
+</p>
+<p>
+    This is the basic auth for the post:
+    <pre><code>
+{
+    <% @oauth_callback.auth.each do |key, value| %>
+    <%= key %>: <%= value %>
     <% end %>
+}
+    </code></pre>
+</p>
+<p>
+    This is the body of the post, including the code and state sent from the oauth server:
+    <pre><code>
+{
+    <% @oauth_callback.post_body.each do |key, value| %>
+    <%= key %>: <%= value %>
+    <% end %>
+}
+    </code></pre>
+</p>
+<% if @oauth_callback.response_code == 200 %>
+    <h3>Successfully authenticated OAuth.</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Response Key</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @oauth_callback.response_body.keys.each do |key| %>
+            <tr>
+                <td><%= key %></td>
+                <td><%= @oauth_callback.response_body[key] %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% if @oauth_callback.authentication %>
+        <% if @oauth_callback.authentication.valid_session? %>
+            <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.  Use this authentication record to set headers for requests to the API.</p>
+        <% else %>
+            <p>The session does not match the oauth response.  These are the issues:</p>
+            <ul>
+            <% @oauth_callback.authentication.session_errors.each do |error| %>
+                <li><%= error[:message] %></li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+    <br/>
+    <% if @oauth_callback.authentication && @oauth_callback.authentication.patient.present? %>
+    <%= link_to 'Use Access Token to explore Health API', health_api_path, class: "btn btn-primary" %>
+    <% else %>
+    <div class="alert alert-danger" role="alert">
+        Cannot access Health APIs with a test user that has no patient id.
+        <%= link_to 'Use one of these test accounts.', 'https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md#health-api-accounts', target: '_blank' %>
+    </div>
+    <% end %>
+    <%= link_to 'Logout to Create New Session', logout_path, class: "btn btn-outline-danger" %>
 <% else %>
-    <p>
-        The time of login was sent in the "state" parameter, but the returned state does not match <%= session[:login_time] %>!
-    </p>
+    <%# bad response for oauth'ing %>
+    <% if @oauth_callback.response_code/400 == 1 %>
+        <h3>Failed to authenticate response.</h3>
+        <dl>
+            <dt><%= @oauth_callback.response_body['error'] %></dt>
+            <dd><%= @oauth_callback.response_body['error_description'] %></dd>
+        </dl>
+    <% else %>
+        <h3>Bad Response from Oauth Server</h3>
+        <p>Response Code <code><%= @oauth_callback.response_code %></code></p>
+        <pre><code>
+        <%# TODO this was previously response.body --- support string? %>
+            <%= @oauth_callback.response_body %>
+        </code></pre>
+    <% end %>
     <%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>
 <% end %>
 
