@@ -15,3 +15,5 @@ The main page of the app will ask you to log in through `ID.me`.  [These test ac
 After successfully logging in to the OAuth server it will open the the designated callback page in your app.  Typically this endpoint would set up a session and redirect to the main functionality of your app.  In this app, instead of redirecting, the callback information is all shown and explained.
 
 Once the callback page shows a new session, you can follow the link to explore the Health API.  Click on any of the links to have the `auth_token` used to request data for the logged in user from the given API endpoints.  The raw json returned will be shown and any internal links to other APIs will become links inside this app to see the result of that API.
+
+#### TODO redo for use of new models

@@ -29,6 +29,7 @@ class SessionController < ApplicationController
   end
 
   def callback
+    # TODO review these comments
     # display content of the callback, post to oauth, and resulting data (including token) received from oauth
     # this controller is heavier than a typical callback enpdpoint would be to support showing all that data (as well as supporting refreshing the page), for another callback example see https://github.com/department-of-veterans-affairs/vets-api-clients/tree/master/samples/oauth_rails_vetverification
     if params[:code].nil?
@@ -39,56 +40,15 @@ class SessionController < ApplicationController
       end
       redirect_to(login_path) and return
     end
-    @verified_state = params[:state].to_i == session[:login_time]
-    @body = {
+    oauth = OauthCallback.create!(
+      verified_state: params[:state].to_i == session[:login_time],
       code: params[:code],
       state: params[:state],
-      grant_type: 'authorization_code',
-      redirect_uri: 'http://localhost:3000/callback'
-    }
-    @post_url = 'https://dev-api.va.gov/oauth2/token'
-    auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    @auth = auth.dup
-    @auth[:password] = "<Client Secret found in application.yml>"
-    @authentication = nil
-
-    # set oauth_response and oauth_response_code
-    if session[:oauth_code]
-      # we are reloading the page so we don't want to make a stale request
-      @oauth_response_code = session[:oauth_code]
-      @oauth_response =
-        if session[:oauth_response].is_a? Hash
-          # response was not saved as a Authentication model
-          if @oauth_response_code == 200
-            # 200 OK means it was a successful request but session was found invalid
-            attributes = Authentication.attributes_from_oauth(oauth_post)
-            @authentication = Authentication.new(attributes)
-          end
-          session[:oauth_response]
-        else
-          # session[:oauth_response] is an array of keys, so get data from saved session
-          @authentication = Authentication.find(session[:id])
-          hide_sensitive_data(@authentication.attributes.reject { |k,v| %w(id created_at updated_at).include?(k) })
-        end
-      @authentication.validate_session(session) if @authentication
-    else
-      oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
-      @oauth_response = hide_sensitive_data(oauth_post.to_h)
-      @oauth_response_code = oauth_post.code
-      # save oauth_post to support refreshing this page
-      session[:oauth_code] = @oauth_response_code
-      session[:oauth_response] = @oauth_response
-
-      if oauth_post.ok?
-        attributes = Authentication.attributes_from_oauth(oauth_post)
-        @authentication = Authentication.new(attributes)
-        if @authentication.validate_session(session)
-          @authentication.save!
-          session[:id] = @authentication.id
-          session[:oauth_response] = attributes.keys # don't store the sensitive data in the session
-        end
-      end
-    end
+      oauth_url: 'https://dev-api.va.gov/oauth2/token'
+    )
+    oauth.fetch_access_token!(session)
+    session[:id] = oauth.authentication.id if oauth.authentication
+    redirect_to oauth_callback_path(oauth)
   end
 
   def logout
@@ -103,13 +63,6 @@ class SessionController < ApplicationController
   end
 
 private
-  def hide_sensitive_data(response_hash)
-    new_hash = response_hash.dup
-    new_hash['access_token'] = "<secret token for accessing API>"
-    new_hash['id_token'] = "<JWT data including Vet's name>"
-    new_hash
-  end
-
   def scope
     %w(
       openid

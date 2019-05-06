@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   root 'session#login'
 
   get '/login', to: 'session#login'
   get '/callback', to: 'session#callback'
   get '/logout', to: 'session#logout'
-  
+
   resources :authentications, only: [:show]
+  resources :oauth_callbacks, only: [:show]
 
   get '/health_api', to: 'health_api#index'
   scope 'health_api' do

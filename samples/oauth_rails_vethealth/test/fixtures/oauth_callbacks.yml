@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  verified_state: false
+  code: MyString
+  state: MyString
+  response_body: MyString
+  response_code: 1
+  oauth_url: MyString
+
+two:
+  verified_state: false
+  code: MyString
+  state: MyString
+  response_body: MyString
+  response_code: 1
+  oauth_url: MyString

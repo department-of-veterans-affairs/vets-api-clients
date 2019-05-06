@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_141259) do
+ActiveRecord::Schema.define(version: 2019_05_06_202503) do
 
   create_table "authentications", force: :cascade do |t|
     t.string "access_token"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2019_05_06_141259) do
     t.string "id_token"
     t.string "state"
     t.string "patient"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "oauth_callback_id"
+    t.index ["oauth_callback_id"], name: "index_authentications_on_oauth_callback_id"
+  end
+
+  create_table "oauth_callbacks", force: :cascade do |t|
+    t.boolean "verified_state"
+    t.string "code"
+    t.string "state"
+    t.string "oauth_url"
+    t.string "response_body_raw"
+    t.integer "response_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

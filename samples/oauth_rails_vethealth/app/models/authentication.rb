@@ -1,5 +1,6 @@
 class Authentication < ApplicationRecord
   serialize :id_token
+  belongs_to :oauth_callback, optional: true
 
   attr_reader :session_errors
 
