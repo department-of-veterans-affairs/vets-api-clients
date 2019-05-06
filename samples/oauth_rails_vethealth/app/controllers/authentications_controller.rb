@@ -1,4 +1,6 @@
 class AuthenticationsController < ApplicationController
+  before_action :require_auth
+
   def show
     @authentication =
       if params[:id].blank?

@@ -1,6 +1,4 @@
 class SessionController < ApplicationController
-  before_action :require_auth, only: :show
-
   def login
     reset_session
     # create a url to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/health/docs/authorization#authorization-code-flow
