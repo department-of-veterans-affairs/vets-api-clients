@@ -19,15 +19,15 @@ class HealthApiController < ApplicationController
     @api_response = HealthApiResponse.new(
       api_name: params[:api_name],
       id: params[:id],
-      access_token: @session.access_token
+      access_token: @authentication.access_token
     )
   end
 
   def search_api_by_param
     @api_response = HealthApiResponse.new(
       api_name: params[:api_name],
-      id: @session.patient,
-      access_token: @session.access_token,
+      id: @authentication.patient,
+      access_token: @authentication.access_token,
       action: :search,
       page: params[:page] || 1,
       count: params[:count] || 10

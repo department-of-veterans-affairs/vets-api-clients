@@ -12,7 +12,7 @@ class SessionController < ApplicationController
     scope = 'openid profile launch/patient patient/Patient.read patient/AllergyIntolerance.read patient/Condition.read patient/DiagnosticReport.read patient/Immunization.read patient/Medication.read patient/MedicationOrder.read patient/MedicationStatement.read patient/Observation.read patient/Procedure.read'
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
-      nonce: Session.generate_nonce(nonce_base),
+      nonce: Authentication.generate_nonce(nonce_base),
       redirect_uri: 'http://localhost:3000/callback',
       # response_mode: 'fragment',
       response_type: 'code',
@@ -54,7 +54,7 @@ class SessionController < ApplicationController
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
     @auth = auth.dup
     @auth[:password] = "<Client Secret found in application.yml>"
-    @session = nil
+    @authentication = nil
 
     # set oauth_response and oauth_response_code
     if session[:oauth_code]
@@ -62,19 +62,19 @@ class SessionController < ApplicationController
       @oauth_response_code = session[:oauth_code]
       @oauth_response = 
         if session[:oauth_response].is_a? Hash
-          # response was not saved as a Session model
+          # response was not saved as a Authentication model
           if @oauth_response_code == 200
             # 200 OK means it was a successful request but session was found invalid
-            attributes = Session.attributes_from_oauth(oauth_post)
-            @session = Session.new(attributes)
+            attributes = Authentication.attributes_from_oauth(oauth_post)
+            @authentication = Authentication.new(attributes)
           end
           session[:oauth_response]
         else
           # session[:oauth_response] is an array of keys, so get data from saved session
-          @session = Session.find(session[:id])
-          hide_sensitive_data(@session.attributes.reject { |k,v| %w(id created_at updated_at).include?(k) })
+          @authentication = Authentication.find(session[:id])
+          hide_sensitive_data(@authentication.attributes.reject { |k,v| %w(id created_at updated_at).include?(k) })
         end
-      @session.validate_session(session) if @session
+      @authentication.validate_session(session) if @authentication
     else
       oauth_post = HTTParty.post(@post_url, { basic_auth: auth, body: @body })
       @oauth_response = hide_sensitive_data(oauth_post.to_h)
@@ -84,11 +84,11 @@ class SessionController < ApplicationController
       session[:oauth_response] = @oauth_response
 
       if oauth_post.ok?
-        attributes = Session.attributes_from_oauth(oauth_post)
-        @session = Session.new(attributes)
-        if @session.validate_session(session)
-          @session.save!
-          session[:id] = @session.id
+        attributes = Authentication.attributes_from_oauth(oauth_post)
+        @authentication = Authentication.new(attributes)
+        if @authentication.validate_session(session)
+          @authentication.save!
+          session[:id] = @authentication.id
           session[:oauth_response] = attributes.keys # don't store the sensitive data in the session
         end
       end
@@ -97,7 +97,7 @@ class SessionController < ApplicationController
 
   def logout
     if session[:id]
-      sesh = Session.find(session[:id])
+      sesh = Authentication.find(session[:id])
       if Time.zone.now < sesh.expires_at
         sesh.expires_at = Time.zone.now
         sesh.save!
@@ -107,11 +107,11 @@ class SessionController < ApplicationController
   end
 
   def show
-    @session =
+    @authentication =
       if params[:id].blank?
-        Session.find(session[:id])
+        Authentication.find(session[:id])
       else
-        Session.find(params[:id])
+        Authentication.find(params[:id])
       end
   end
 

@@ -15,13 +15,13 @@
         <% end %>
     </tbody>
 </table>
-<% if @session %>
-    <% if @session.valid_session? %>
-        <p>Session was saved with ID <code><%= @session.id %></code>.  Use this session record to authenticate requests to the API.</p>
+<% if @authentication %>
+    <% if @authentication.valid_session? %>
+        <p>Authentication was saved with ID <code><%= @authentication.id %></code>.  Use this authentication record to set headers for requests to the API.</p>
     <% else %>
         <p>The session does not match the oauth response.  These are the issues:</p>
         <ul>
-        <% @session.session_errors.each do |error| %>
+        <% @authentication.session_errors.each do |error| %>
             <li><%= error[:message] %></li>
         <% end %>
         </ul>

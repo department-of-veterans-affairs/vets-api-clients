@@ -8,7 +8,7 @@
     <% if @oauth_response_code == 200 %>
         <%= render partial: 'oauth_response' %>
         <br/>
-        <% if @session && @session.patient.present? %>
+        <% if @authentication && @authentication.patient.present? %>
         <%= link_to 'Use Access Token to explore Health API', health_api_path, class: "btn btn-primary" %>
         <% else %>
         <div class="alert alert-danger" role="alert">

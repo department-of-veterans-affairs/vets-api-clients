@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_145504) do
+ActiveRecord::Schema.define(version: 2019_05_06_141259) do
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "authentications", force: :cascade do |t|
     t.string "access_token"
     t.string "token_type"
     t.datetime "expires_at"
     t.string "scope"
     t.string "id_token"
     t.string "state"
+    t.string "patient"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "patient"
   end
 
 end

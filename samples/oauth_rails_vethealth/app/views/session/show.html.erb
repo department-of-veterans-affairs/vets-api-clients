@@ -1,20 +1,20 @@
 <div class="row">
     <h1 class="col-12">
-    <% if @session.id == session[:id] %>
-        Current Session Information
+    <% if @authentication.id == session[:id] %>
+        Current Authentication Information
     <% else %>
-        Details for Session <%= @session.id %>
+        Details for Authentication <%= @authentication.id %>
     <% end %>
     </h1>
     <%= link_to '&larr; Back to API'.html_safe, health_api_path, class: 'btn btn-sm btn-outline-primary' %>
     <p class="lead">
         This session information is returned from OAuth after the user has successfully
         authenticated.  The information is stored on the server and the <code>id</code>
-        for the <code>Session</code> object is stored in the browser session (Rails
+        for the <code>Authentication</code> object is stored in the browser session (Rails
         default is an http_only cookie).  The <%= link_to 'Health API Controller', health_api_path %>
-        loads the <code>Session</code> object and uses a <code>before_action</code> to
+        loads the <code>Authentication</code> object and uses a <code>before_action</code> to
         validate the session and know which token to use for API requests.  The values
-        stored in the <code>Session</code> object are shown below with an explination of
+        stored in the <code>Authentication</code> object are shown below with an explination of
         how they are used.
     </p>
 </div>
@@ -35,12 +35,12 @@
                     This should be added to the header of each request as <code>Authorization: Bearer <em>access_token</em></code>.
                     This is hidden here because this value is best kept secret on the server.
                     If you want to see it, open up <code>rails console</code> and call <code>access_token</code>
-                    on the <code>Session</code> object with ID <code><%= @session.id %></code>.
+                    on the <code>Authentication</code> object with ID <code><%= @authentication.id %></code>.
                 </td>
             </tr>
             <tr>
                 <th>token_type</th>
-                <td><%= @session.token_type %></td>
+                <td><%= @authentication.token_type %></td>
                 <td>
                     This should be <code>Bearer</code> for the Authorization Code Flow used to verify your
                     app.
@@ -48,14 +48,14 @@
             </tr>
             <tr>
                 <th>expires_at</th>
-                <td><%= @session.expires_at %></td>
+                <td><%= @authentication.expires_at %></td>
                 <td>
                     This is the timestamp for when the token will no longer be valid to make requests.
                 </td>
             </tr>
             <tr>
                 <th>scope</th>
-                <td><%= @session.scope.gsub(' ', '<br>').html_safe %></td>
+                <td><%= @authentication.scope.gsub(' ', '<br>').html_safe %></td>
                 <td>
                     This is the list of scopes requested with the authentication request.  It is a space-separated
                     list, but &lt;br&gt; tags replace the spaces for layout here.
@@ -63,7 +63,7 @@
             </tr> 
             <tr>
                 <th>state</th>
-                <td><%= @session.state %></td>
+                <td><%= @authentication.state %></td>
                 <td>
                     This is the value passed in with the authentication request.  It can be used for verifying
                     authenticity or storing app state information.
@@ -71,7 +71,7 @@
             </tr>
             <tr>
                 <th>patient</th>
-                <td><%= @session.patient %></td>
+                <td><%= @authentication.patient %></td>
                 <td>
                     This is the <em>patient identifier</em> used as the search param for the Health APIs.
                 </td>
@@ -80,7 +80,7 @@
                 <th>id_token</th>
                 <td>
                     <small><pre>
-<%= JSON.pretty_generate @session.parsed_id_token %>
+<%= JSON.pretty_generate @authentication.parsed_id_token %>
                     </pre></small>
                 </td>
                 <td>

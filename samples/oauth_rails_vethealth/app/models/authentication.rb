@@ -1,4 +1,4 @@
-class Session < ApplicationRecord
+class Authentication < ApplicationRecord
   serialize :id_token
 
   attr_reader :session_errors
@@ -30,23 +30,23 @@ class Session < ApplicationRecord
   end
 
   def authentic?(session)
-    @authentic ||= (self.parsed_id_token['nonce'] == Session.generate_nonce(session[:nonce_key]))
+    @authentic ||= (self.parsed_id_token['nonce'] == Authentication.generate_nonce(session[:nonce_key]))
   end
 
   def validate_session(session)
-    @session_errors = []
+    @authentication_errors = []
     if expired?
-      @session_errors << { type: :expired, message: 'The session has expired.' }
+      @authentication_errors << { type: :expired, message: 'The session has expired.' }
     end
     unless authentic?(session)
-      @session_errors << { type: :inauthentic, message: 'The token is not authentic!' }
+      @authentication_errors << { type: :inauthentic, message: 'The token is not authentic!' }
     end
     @validated = true
-    @session_errors.empty?
+    @authentication_errors.empty?
   end
 
   def valid_session?
-    return @session_errors.empty? if @validated
+    return @authentication_errors.empty? if @validated
     raise "#validate_session must be called first!"
   end
 end
