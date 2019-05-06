@@ -23,14 +23,6 @@ class OauthCallback < ApplicationRecord
     }
   end
 
-  def response_body
-    return @response_body if @response_body
-    @response_body = response_body_raw.dup
-    @response_body['access_token'] = "<secret token for accessing API>"
-    @response_body['id_token'] = "<JWT data including Vet's name>" # TODO review if we want to hide this?  showing in session view page
-    @response_body
-  end
-
   def fetch_access_token!(session)
     oauth_post = HTTParty.post(self.oauth_url, { basic_auth: auth(false), body: post_body })
     self.response_body_raw = oauth_post.to_h
@@ -44,5 +36,13 @@ class OauthCallback < ApplicationRecord
         self.authentication.save!
       end
     end
+  end
+
+  def response_body
+    return @response_body if @response_body
+    @response_body = response_body_raw.dup
+    @response_body['access_token'] = "<secret token for accessing API>"
+    @response_body['id_token'] = "<JWT data including Vet's name>" # TODO review if we want to hide this?  showing in session view page
+    @response_body
   end
 end
