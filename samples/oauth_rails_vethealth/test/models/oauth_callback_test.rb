@@ -38,7 +38,42 @@ class OauthCallbackTest < ActiveSupport::TestCase
     assert_equal(response, body)
   end
 
-  test '#fetch_access_token! sets code and state' do
-    skip
+  test '#fetch_access_token! sets response_body and response_code' do
+    oauth_url = 'http://www.posthere.com'
+    fake_body = {
+      'key1' => 'one',
+      'key2' => 'keto'
+    }
+    http_code = 500
+    stub_request(:post, oauth_url).to_return(body: fake_body.to_json, status: http_code, headers: { content_type: 'application/json' })
+    subject = OauthCallback.new(state: '124324523', code: '1234', oauth_url: oauth_url)
+
+    session = {}
+    subject.fetch_access_token!(session)
+
+    assert_equal(http_code, subject.response_code)
+    fake_body.each do |key, value|
+      assert_equal(value, subject.response_body[key])
+    end
+  end
+
+  test '#fetch_access_token! sets authentication when response is OK' do
+    nonce_base = SecureRandom.base64(20)
+    payload = { 'nonce' => Authentication.generate_nonce(nonce_base) }
+    oauth_url = 'http://www.posthere.com'
+    fake_body = {
+      'access_token' => 'thisISanACCESStoken',
+      'token_type' => 'bearer',
+      'expires_at' => Time.zone.now.to_i,
+      'id_token' => JWT.encode(payload, nil, 'none')
+    }
+    http_code = 200
+    stub_request(:post, oauth_url).to_return(body: fake_body.to_json, status: http_code, headers: { content_type: 'application/json' })
+    subject = OauthCallback.new(state: '124324523', code: '1234', oauth_url: oauth_url)
+
+    session = { nonce_key: nonce_base }
+    subject.fetch_access_token!(session)
+
+    refute_nil subject.authentication
   end
 end
