@@ -3,7 +3,6 @@ class OauthCallback < ApplicationRecord
 
   has_one :authentication
 
-  # TODO make these real
   def auth(protect_secrets=true)
     pass =
       if protect_secrets
@@ -15,7 +14,7 @@ class OauthCallback < ApplicationRecord
   end
 
   def post_body
-    {
+    @post_body ||= {
       code: self.code,
       state: self.state,
       grant_type: 'authorization_code',
@@ -41,8 +40,8 @@ class OauthCallback < ApplicationRecord
   def response_body
     return @response_body if @response_body
     @response_body = response_body_raw.dup
+    # the access_token allows requests to be made in the logged-in users name, so don't expose it to the web
     @response_body['access_token'] = "<secret token for accessing API>"
-    @response_body['id_token'] = "<JWT data including Vet's name>" # TODO review if we want to hide this?  showing in session view page
     @response_body
   end
 end
