@@ -25,7 +25,8 @@
 </table>
 <% if @oauth_callback.authentication %>
     <% if @oauth_callback.authentication.valid_session? %>
-        <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.  Use this authentication record to set headers for requests to the API.</p>
+        <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.
+        Use this <%= link_to 'authentication record', authentication_path(@oauth_callback.authentication.id) %> to set headers for requests to the API.</p>
     <% else %>
         <p>The session does not match the oauth response.  These are the issues:</p>
         <ul>

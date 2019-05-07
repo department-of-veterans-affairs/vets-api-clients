@@ -6,16 +6,20 @@
         Details for Authentication <%= @authentication.id %>
     <% end %>
     </h1>
-    <%= link_to '&larr; Back to API'.html_safe, health_api_path, class: 'btn btn-sm btn-outline-primary' %>
-    <p class="lead">
+    <%= link_to 'Explore the API', health_api_path, class: 'btn btn-sm btn-outline-primary' %>
+    <p class="lead col-12">
         This session information is returned from OAuth after the user has successfully
-        authenticated.  The information is stored on the server and the <code>id</code>
+        authenticated.
+    </p>
+    <p>
+        The information is stored on the server and the <code>id</code>
         for the <code>Authentication</code> object is stored in the browser session (Rails
         default is an http_only cookie).  The <%= link_to 'Health API Controller', health_api_path %>
         loads the <code>Authentication</code> object and uses a <code>before_action</code> to
         validate the session and know which token to use for API requests.  The values
         stored in the <code>Authentication</code> object are shown below with an explination of
         how they are used.
+        <%= link_to 'Click here', oauth_callback_path(@authentication.oauth_callback_id) %> to see the callback process that generated this <code>Authentication</code>.
     </p>
 </div>
 <div class="row">
@@ -60,7 +64,7 @@
                     This is the list of scopes requested with the authentication request.  It is a space-separated
                     list, but &lt;br&gt; tags replace the spaces for layout here.
                 </td>
-            </tr> 
+            </tr>
             <tr>
                 <th>state</th>
                 <td><%= @authentication.state %></td>
@@ -91,3 +95,4 @@
         </tbody>
     </table>
 </div>
+<%= link_to 'Explore the API', health_api_path, class: 'btn btn-sm btn-primary' %>
