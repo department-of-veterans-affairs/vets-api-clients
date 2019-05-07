@@ -13,7 +13,7 @@ class HealthApiResponse
     else
       raise "action must be one of the symbols :search or :read"
     end
-    
+
     @api_response = HTTParty.get(@target, headers: { Authorization: "Bearer #{access_token}" })
   end
 
