@@ -48,6 +48,6 @@ class Authentication < ApplicationRecord
 
   def valid_session?
     return @authentication_errors.empty? if @validated
-    raise "#validate_session must be called first!"
+    raise '#validate_session must be called first!'
   end
 end

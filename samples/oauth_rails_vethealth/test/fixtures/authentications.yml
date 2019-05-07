@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+# one:
+#   access_token: MyString
+#   token_type: MyString
+#   expires_at: 2019-04-16 18:20:02
+#   scope: MyString
+#   id_token: MyString
+#   state: MyString
+#   patient: MyString
+
+# two:
+#   access_token: MyString
+#   token_type: MyString
+#   expires_at: 2019-04-16 18:20:02
+#   scope: MyString
+#   id_token: MyString
+#   state: MyString
+#   patient: MyString
