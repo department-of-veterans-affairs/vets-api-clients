@@ -42,4 +42,9 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to oauth_callback_url(oauth_callback)
     oauth_callback.delete
   end
+
+  test "#logout redirects to the login page" do
+    get logout_url
+    assert_redirected_to login_url
+  end
 end
