@@ -21,7 +21,7 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     assert_match error_description, flash[:alert]
   end
 
-  test "#callback should create a callback and redirect" do
+  test "#callback should create a callback, set an Authentication id in session, and redirect" do
     get login_url #login will set the nonce key in the session
     nonce_base = session[:nonce_key]
     payload = { 'nonce' => Authentication.generate_nonce(nonce_base) }
@@ -40,6 +40,7 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     end
     oauth_callback = OauthCallback.where(code: code, state: state, response_body_raw: oauth_body).first
     assert_redirected_to oauth_callback_url(oauth_callback)
+    assert_equal(session[:id], oauth_callback.authentication.id)
     oauth_callback.delete
   end
 
