@@ -88,7 +88,17 @@ class HealthApiResponseTest < ActiveSupport::TestCase
     navs = HealthApiResponse.new(action: :search, api_name: 'api_navs', id: 'x324', access_token: 'a_token').api_navs
     assert_equal(4, navs.count)
     refute_includes(navs.collect{ |nav| nav[:name] }, 'self')
-    # TODO test count and page for navs
+    navs.each do |nav|
+      assert_equal('10', nav[:count])
+      case nav[:name]
+      when 'first', 'prev'
+        assert_equal('1', nav[:page])
+      when 'next'
+        assert_equal('3', nav[:page])
+      when 'last'
+        assert_equal('4', nav[:page])
+      end
+    end
   end
 
   test "#api_navs returns nil for non searchs" do
