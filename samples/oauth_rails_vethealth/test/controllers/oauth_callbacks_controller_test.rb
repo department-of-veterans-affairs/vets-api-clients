@@ -53,4 +53,26 @@ class OauthCallbacksControllerTest < ActionDispatch::IntegrationTest
 
     subject.delete
   end
+
+  test "#show the OauthCallback has response code is OK" do
+    body = { 'something' => 'anything', 'abcdef' => 'ghijklm' }
+    subject = OauthCallback.create!(
+      state: '12342121342',
+      code: 'kode',
+      verified_state: true,
+      response_code: 200,
+      response_body_raw: body
+    )
+
+    get oauth_callback_url(subject.id)
+
+    assert_template :show
+    body.each do |key, value|
+      assert_match key, @response.body
+      assert_match value, @response.body
+    end
+    assert_match "Successfully authenticated", @response.body
+
+    subject.delete
+  end
 end
