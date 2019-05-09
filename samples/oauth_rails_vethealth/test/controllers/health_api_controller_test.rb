@@ -53,4 +53,22 @@ class HealthApiControllerTest < ActionDispatch::IntegrationTest
     assert_match key, @response.body
     assert_match value, @response.body
   end
+
+  test "#api_by_param should show api_by_param page" do
+    oauth_login
+
+    status = 200
+    key, value = 'hoo', 'ray'
+    api_name = 'BestApi'
+    id = 'theBestId'
+    stub_request(:get, /https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{api_name}\/#{id}/).
+      to_return(status: status, body: { key => value }.to_json, headers: { content_type: 'application/json' })
+
+    get "/health_api/api_response/#{api_name}/#{id}"
+    assert_response :success
+    assert_template :api_by_param
+    assert_match api_name, @response.body
+    assert_match key, @response.body
+    assert_match value, @response.body
+  end
 end
