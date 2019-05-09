@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_015604) do
+ActiveRecord::Schema.define(version: 2019_05_07_134505) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "access_token"
@@ -19,6 +19,29 @@ ActiveRecord::Schema.define(version: 2019_04_11_015604) do
     t.string "scope"
     t.string "id_token"
     t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "test_users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "ssn"
+    t.date "birth_date"
+    t.string "edipi"
+    t.string "poa"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "test_veterans", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "ssn"
+    t.date "birth_date"
+    t.string "edipi"
+    t.string "poa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

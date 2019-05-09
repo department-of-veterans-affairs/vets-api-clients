@@ -4,7 +4,7 @@ class AuthController < ApplicationController
     nonce_base = SecureRandom.base64(20)
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
-    scope = 'openid profile service_history.read disability_rating.read veteran_status.read'
+    scope = 'openid profile service_history.read disability_rating.read veteran_status.read claim.read'
     oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: digest(nonce_base),
@@ -51,7 +51,7 @@ class AuthController < ApplicationController
     end
     sesh.save!
     session[:id] = sesh.id
-    redirect_to verify_path
+    redirect_to user_path
   end
 
   def logout

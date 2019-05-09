@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'auth#login'
 
   get '/login', to: 'auth#login'
@@ -8,4 +6,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout'
 
   get '/verify', to: 'verification#show'
+  get '/user', to: 'users#index'
+  resources :claims, only: [:index, :show]
 end
