@@ -38,10 +38,9 @@ class OauthCallback < ApplicationRecord
   end
 
   def response_body
-    return @response_body if @response_body
-    @response_body = response_body_raw.dup
-    # the access_token allows requests to be made in the logged-in users name, so don't expose it to the web
-    @response_body['access_token'] = "<secret token for accessing API>"
-    @response_body
+    @response_body ||= response_body_raw.dup.tap do |body|
+       # the access_token allows requests to be made in the logged-in users name, so don't expose it to the web
+       body['access_token'] = "<secret token for accessing API>"
+    end
   end
 end
