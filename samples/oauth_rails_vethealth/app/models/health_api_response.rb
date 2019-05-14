@@ -22,8 +22,8 @@ class HealthApiResponse
   end
 
   def response_string
-    # use JSON pretty_generate to add readable whitespace and gsub api links to be links with the test app
-    @response_string ||= JSON.pretty_generate(@api_response.to_h).gsub(/\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/, "<a href=\"/health_api/api_response/\\2/\\3\">\\1\/\\2\/\\3</a>")
+    # use JSON pretty_generate to add readable whitespace and gsub api links to be links within the test app
+    @response_string ||= JSON.pretty_generate(@api_response.to_h).gsub(dev_api_url_regex, "<a href=\"/health_api/api_response/\\2/\\3\">\\1\/\\2\/\\3</a>")
   end
 
   def api_navs
@@ -52,4 +52,8 @@ private
     end
   end
 
+  def dev_api_url_regex
+    # this has 3 match groups, the url base, the API, and the id
+    /\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/
+  end
 end
