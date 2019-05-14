@@ -29,11 +29,11 @@ class AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     oauth_login
     get authentication_url(session[:id])
 
-    authentication = Authentication.find(session[:id])
-
     assert_response :success
     assert_template :show
-    assert_match('Current Authentication Information', @request.body)
-    refute_match(authenication.access_token, @request.body)
+    assert_match('Current Authentication Information', @response.body)
+
+    authentication = Authentication.find(session[:id])
+    refute_match(authentication.access_token, @response.body)
   end
 end
