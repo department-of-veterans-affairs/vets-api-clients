@@ -9,17 +9,9 @@ class Authentication < ApplicationRecord
   end
 
   def self.attributes_from_oauth(response)
-    attributes_array = response.map do |key,value|
-      clean_value =
-        case key
-        when 'expires_at'
-          Time.zone.at(value)
-        else
-          value
-        end
-      [key, clean_value]
-    end
-    Hash[attributes_array]
+    attributes = response.to_h
+    attributes['expires_at'] = Time.zone.at(response['expires_at'])
+    attributes
   end
 
   def parsed_id_token
