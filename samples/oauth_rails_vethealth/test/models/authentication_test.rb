@@ -15,6 +15,7 @@ class AuthenticationTest < ActiveSupport::TestCase
     assert attributes.is_a?(Hash)
     assert attributes['expires_at'].is_a?(ActiveSupport::TimeWithZone)
   end
+
   test "#parsed_id_token returns a hash" do
     payload = { 'key' => 'value', 'some' => 'thing' }
     subject = Authentication.new(id_token: JWT.encode(payload, nil, 'none'))
@@ -47,13 +48,7 @@ class AuthenticationTest < ActiveSupport::TestCase
     refute subject.authentic?(fake_session)
   end
 
-  test '#valid_session? raises an exception if #validate_session is not run' do
-    subject = Authentication.new
-    exception = assert_raises { subject.valid_session? }
-    assert_equal('#validate_session must be called first!', exception.message)
-  end
-
-  test '#valid_session? is true when #validate_session is true' do
+  test '#validate_session is true when the token has a good nonce and the expires_at time has not been eclipsed' do
     base = SecureRandom.base64(20)
     payload = { 'nonce' => Authentication.generate_nonce(base) }
     subject = Authentication.new(
@@ -62,10 +57,9 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     assert subject.validate_session(fake_session)
-    assert subject.valid_session?
   end
 
-  test '#valid_session? is false when #validate_session is false with a bad nonce' do
+  test '#validate_session is false with a bad nonce' do
     base = SecureRandom.base64(20)
     payload = { 'nonce' => 'SUPER_FAKE_NONCE_THAT_FAILS' }
     subject = Authentication.new(
@@ -74,10 +68,9 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     refute subject.validate_session(fake_session)
-    refute subject.valid_session?
   end
 
-  test '#valid_session? is false when #validate_session is false with a bad expires_at' do
+  test '#validate_session is false with a bad expires_at' do
     base = SecureRandom.base64(20)
     payload = { 'nonce' => Authentication.generate_nonce(base) }
     subject = Authentication.new(
@@ -86,6 +79,5 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     refute subject.validate_session(fake_session)
-    refute subject.valid_session?
   end
 end

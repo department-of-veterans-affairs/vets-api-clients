@@ -24,7 +24,7 @@
     </tbody>
 </table>
 <% if @oauth_callback.authentication %>
-    <% if @oauth_callback.authentication.valid_session? %>
+    <% if @oauth_callback.authentication.authentication_errors.empty? %>
         <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.
         Use this <%= link_to 'authentication record', authentication_path(@oauth_callback.authentication.id) %> to set headers for requests to the API.</p>
     <% else %>

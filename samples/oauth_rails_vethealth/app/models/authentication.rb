@@ -2,7 +2,7 @@ class Authentication < ApplicationRecord
   serialize :id_token
   belongs_to :oauth_callback, optional: true
 
-  attr_reader :session_errors
+  attr_reader :authentication_errors
 
   def self.generate_nonce(base)
     Digest::SHA256.hexdigest(base + ENV['va_developer_client_secret'])
@@ -26,20 +26,19 @@ class Authentication < ApplicationRecord
     @authentic ||= (self.parsed_id_token['nonce'] == Authentication.generate_nonce(session[:nonce_key]))
   end
 
+  # ensure session corresponds to this Authentication
   def validate_session(session)
+    return @authentication_errors.empty? unless @authentication_errors.nil?
     @authentication_errors = []
     if expired?
+      # this session should be expired because this Authentication is
       @authentication_errors << { type: :expired, message: 'The session has expired.' }
     end
     unless authentic?(session)
+      # this session is not authentic because it's nonce_base does not correspond to this authentication
       @authentication_errors << { type: :inauthentic, message: 'The token is not authentic!' }
     end
-    @validated = true
+    # this is valid if there were no errors found
     @authentication_errors.empty?
-  end
-
-  def valid_session?
-    return @authentication_errors.empty? if @validated
-    raise '#validate_session must be called first!'
   end
 end
