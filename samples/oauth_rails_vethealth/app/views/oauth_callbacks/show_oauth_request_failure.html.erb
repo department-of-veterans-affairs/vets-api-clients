@@ -1,0 +1,21 @@
+<h1 class="display-2">Callback <em>Failed</em></h1>
+<p class="lead">
+    Now with the user identity verified by <em>ID.me</em>, we will make a
+    post to the Authorization Server with our client id and secret in the
+    authorization header.
+    The response will include a token we can use to access the Health API.
+</p>
+<%= render partial: 'post_data' %>
+<h3>
+    Error posting grant to Oauth Server.
+    <small>Response Code <code><%= @oauth_callback.response_code %></code></small>
+</h3>
+<div class="card">
+    <p class="card-text">
+        <pre><code>
+<%= @oauth_callback.response_body_raw %>
+        </code></pre>
+    </p>
+</div>
+<br>
+<%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>

@@ -1,0 +1,25 @@
+<div class="card">
+  <h5 class="card-header <%= header_bg_style(api_response) %>">
+    <code>GET</code> request to <code><%= api_response.target %></code>
+  </h5>
+  <div class="card-body">
+  <% if api_response.api_navs.present? %>
+      <p class="card-text">Showing <%= api_response.count %> entries from page <%= api_response.page %>.<br><small>Use the buttons to see more pages.</small></p>
+      <% api_response.api_navs.each do |nav| %>
+      <%= link_to nav[:name], search_api_path(params[:api_name], params: { page: nav[:page], count: nav[:count] }), class: 'btn btn-primary btn-sm col-1'%>
+      &nbsp;
+      <% end %>
+    <hr>
+  <% end %>
+    <p class="card-title">
+        Response Result <code><%= api_response.code %></code>
+        <br>
+        <small>Click on links to see the result of a request to that URL.</small>
+    </p>
+    <p class="card-text">
+        <pre><code>
+<%= api_response.response_string.html_safe %>
+        </code></pre>
+    </p>
+  </div>
+</div>

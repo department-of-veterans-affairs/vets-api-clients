@@ -1,0 +1,34 @@
+<%= render partial: 'health_api_header' %>
+
+<div class="row">
+    <p class="lead">
+        Once a Veteran has given your app permission through OAuth,
+        you can use the returned <code>access_token</code> to make
+        requests to APIs.
+    </p>
+    <p>    
+        The <code>access_token</code> is added to the header of all
+        requests as <code>Authorization: "Bearer <em>access_token</em>"</code>.
+        The below links make a request to the search endpoint of an API using
+        the <code>patient's identifier</code> as a parameter.  From there you can
+        follow links in the response to see related API calls based on resource
+        ids.
+        <br>
+        <strong>
+            Keep in mind that the information returned is Protected Health
+            Information and/or Personally Identifiable Information and you
+            should keep in mind the legal ramifications of how you use it with
+            real Veteran information.
+        </strong>
+    </p>
+</div>
+
+<div class="row">
+    <dl>
+        <% @apis.each do |api| %>
+        <dd>
+            <%= link_to api[:text], search_api_path(api[:uri_segment]) %>
+        </dd>
+        <% end %>
+    </dd>
+</div>
