@@ -30,7 +30,7 @@
     <% else %>
         <p>The session does not match the Authentication (id: <%= @oauth_callback.authentication.id %>) associated with the oauth response.  These are the issues:</p>
         <ul>
-        <% @oauth_callback.authentication.session_errors.each do |error| %>
+        <% @oauth_callback.authentication.authentication_errors.each do |error| %>
             <li><%= error[:message] %></li>
         <% end %>
         </ul>
