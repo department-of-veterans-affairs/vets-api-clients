@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class OauthCallbacksControllerTest < ActionDispatch::IntegrationTest
-  # test "#show returns oauth callback information" do
-
   test "#show returns show_unverified_state if OauthCallback cannot verify state" do
     subject = OauthCallback.create!(state: '12321421', code: 'coda')
 
@@ -54,7 +52,7 @@ class OauthCallbacksControllerTest < ActionDispatch::IntegrationTest
     subject.delete
   end
 
-  test "#show the OauthCallback has response code is OK" do
+  test "#show the OauthCallback when response code is OK" do
     body = { 'something' => 'anything', 'abcdef' => 'ghijklm' }
     subject = OauthCallback.create!(
       state: '12342121342',
@@ -73,6 +71,53 @@ class OauthCallbacksControllerTest < ActionDispatch::IntegrationTest
     end
     assert_match "Successfully authenticated", @response.body
 
+    subject.delete
+  end
+
+  def oauth_login(code)
+    get login_url
+    nonce_base = session[:nonce_key]
+    payload = { 'nonce' => Authentication.generate_nonce(nonce_base) }
+    oauth_body = {
+      'access_token' => 'thisISanACCESStoken',
+      'expires_at' => (Time.zone.now + 1.hour).to_i,
+      'id_token' => JWT.encode(payload, nil, 'none')
+    }
+    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+      to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
+
+    get callback_url, params: { code: code, state: session[:login_time] }
+  end
+
+  test "#show Authentication when authentication is present for OauthCallback" do
+    code = 'good authentication'
+    oauth_login(code)
+    subject = OauthCallback.find_by_code(code)
+
+    get oauth_callback_url(subject.id)
+
+    assert_template :show
+    assert_match authentication_path(subject.authentication.id), @response.body
+
+    subject.authentication.delete
+    subject.delete
+  end
+
+  test "#show Authentication errors when authentication is present for OauthCallback but session does not match" do
+    code = 'bad authentication'
+    oauth_login(code)
+    subject = OauthCallback.find_by_code(code)
+
+    subject.authentication.expires_at = (Time.zone.now - 1.hour)
+    subject.authentication.save!
+
+    get oauth_callback_url(subject.id)
+
+    assert_template :show
+    assert_match(/The session does not match/, @response.body)
+    assert_match(/The session has expired/, @response.body)
+
+    subject.authentication.delete
     subject.delete
   end
 end
