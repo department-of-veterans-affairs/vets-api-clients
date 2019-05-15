@@ -57,6 +57,7 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     assert subject.validate_session(fake_session)
+    assert subject.authentication_errors.empty?
   end
 
   test '#validate_session is false with a bad nonce' do
@@ -68,6 +69,8 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     refute subject.validate_session(fake_session)
+    assert_equal(1, subject.authentication_errors.count)
+    assert_equal(:inauthentic, subject.authentication_errors.first[:type])
   end
 
   test '#validate_session is false with a bad expires_at' do
@@ -79,5 +82,7 @@ class AuthenticationTest < ActiveSupport::TestCase
     )
     fake_session = { nonce_key: base }
     refute subject.validate_session(fake_session)
+    assert_equal(1, subject.authentication_errors.count)
+    assert_equal(:expired, subject.authentication_errors.first[:type])
   end
 end
