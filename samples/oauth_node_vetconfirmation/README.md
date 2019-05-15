@@ -10,7 +10,7 @@ An explanation of how this works and choices made can be found [here](https://de
 ## Installation
 
 * Clone this repository
-* `cd samples/node`
+* `cd samples/oauth_node_vetconfirmation`
 * `npm i`
 
 ## Usage
