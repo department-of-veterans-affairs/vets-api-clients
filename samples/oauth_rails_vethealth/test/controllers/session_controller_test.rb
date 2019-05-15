@@ -41,11 +41,34 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     oauth_callback = OauthCallback.where(code: code, state: state, response_body_raw: oauth_body).first
     assert_redirected_to oauth_callback_url(oauth_callback)
     assert_equal(session[:id], oauth_callback.authentication.id)
+    oauth_callback.authentication.delete
     oauth_callback.delete
   end
 
   test "#logout redirects to the login page" do
     get logout_url
     assert_redirected_to login_url
+  end
+
+  test '#logout deletes session keys used for authentication' do
+    ### login logic ###
+    get login_url
+    nonce_base = session[:nonce_key]
+    oauth_body = {
+      'access_token' => 'thisISanACCESStoken',
+      'token_type' => 'bearer',
+      'expires_at' => (Time.zone.now + 1.hour).to_i,
+      'id_token' => JWT.encode({ 'nonce' => Authentication.generate_nonce(nonce_base) }, nil, 'none'),
+      'patient' => 'health_api_controller_test_patient'
+    }
+    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+      to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
+
+    get callback_url, params: { code: 'logout test', state: '12345676453242345' }
+    ### successfully logged in and set session ###
+    get logout_url
+    assert_nil session[:login_time]
+    assert_nil session[:nonce_key]
+    assert_nil session[:id]
   end
 end
