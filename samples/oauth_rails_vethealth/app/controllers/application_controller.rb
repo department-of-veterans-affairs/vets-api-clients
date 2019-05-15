@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
     if @authentication.nil?
       Rails.logger.warn "No Authentication found"
       flash.notice = "Login required"
-      redirect_to(login_path) and return
+      redirect_to(logout_path) and return
     elsif !@authentication.validate_session(session)
       Rails.logger.warn "Authentication #{@authentication.id} expired"
       flash.notice = "Login expired, please login again"
-      redirect_to(login_path) and return
+      redirect_to(logout_path) and return
     end
   end
 end

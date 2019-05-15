@@ -1,13 +1,16 @@
 class SessionController < ApplicationController
   def login
-    reset_session
+    if session[:login_time].nil?
+      # set values in session for validating Oauth, but allow new tabs without resetting these values
+      nonce_base = SecureRandom.base64(20)
+      session[:nonce_key] = nonce_base
+      session[:login_time] = Time.zone.now.to_i
+    end
+
     # create a url to the oauth server based on the "Authorization Code Flow" described here https://developer.va.gov/explore/health/docs/authorization#authorization-code-flow
-    nonce_base = SecureRandom.base64(20)
-    session[:nonce_key] = nonce_base
-    session[:login_time] = Time.zone.now.to_i
     @oauth_params = {
       client_id: ENV['va_developer_client_id'],
-      nonce: Authentication.generate_nonce(nonce_base),
+      nonce: Authentication.generate_nonce(session[:nonce_key]),
       redirect_uri: 'http://localhost:3000/callback',
       # response_mode: 'fragment',
       response_type: 'code',
@@ -15,6 +18,7 @@ class SessionController < ApplicationController
       state: session[:login_time]
     }
     @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
+
     # descriptions to display to the user how the oauth params are used
     @oauth_param_description = [
       {param: :client_id, description: "The client_id issued by the VA API Platform team", required: true},
@@ -35,7 +39,7 @@ class SessionController < ApplicationController
       else
         flash.notice = "The callback page is for oauth responses, please login first."
       end
-      redirect_to(login_path) and return
+      redirect_to(logout_path) and return
     end
     oauth = OauthCallback.create!(
       verified_state: params[:state].to_i == session[:login_time],
@@ -49,12 +53,15 @@ class SessionController < ApplicationController
   end
 
   def logout
-    if session[:id]
-      sesh = Authentication.find(session[:id])
+    flash.keep
+    if session[:id] && sesh = Authentication.where(id: session[:id]).first
       if Time.zone.now < sesh.expires_at
         sesh.expires_at = Time.zone.now
         sesh.save!
       end
+    end
+    %i(nonce_key login_time id).each do |expire_session_key|
+      session.delete(expire_session_key)
     end
     redirect_to login_path
   end
