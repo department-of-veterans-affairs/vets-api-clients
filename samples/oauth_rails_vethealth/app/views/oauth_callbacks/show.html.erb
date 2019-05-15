@@ -28,7 +28,7 @@
         <p>Authentication was saved with ID <code><%= @oauth_callback.authentication.id %></code>.
         Use this <%= link_to 'authentication record', authentication_path(@oauth_callback.authentication.id) %> to set headers for requests to the API.</p>
     <% else %>
-        <p>The session does not match the oauth response.  These are the issues:</p>
+        <p>The session does not match the Authentication (id: <%= @oauth_callback.authentication.id %>) associated with the oauth response.  These are the issues:</p>
         <ul>
         <% @oauth_callback.authentication.session_errors.each do |error| %>
             <li><%= error[:message] %></li>
