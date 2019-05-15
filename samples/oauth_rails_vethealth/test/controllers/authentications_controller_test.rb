@@ -20,9 +20,9 @@ class AuthenticationsControllerTest < ActionDispatch::IntegrationTest
     get callback_url, params: { code: code, state: state }
   end
 
-  test 'redirect to login without an authentication in session' do
+  test 'redirect to logout without an authentication in session' do
     get authentication_url(100)
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
   end
 
   test '#show gives authenication details' do

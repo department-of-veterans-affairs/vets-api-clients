@@ -19,15 +19,15 @@ class HealthApiControllerTest < ActionDispatch::IntegrationTest
     get callback_url, params: { code: code, state: state }
   end
 
-  test 'all pages should redirect to login without an authentication in session' do
+  test 'all pages should redirect to logout without an authentication in session' do
     get index_url
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
 
     get search_api_url('ApiName')
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
 
     get '/health_api/api_response/ApiName/2'
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
   end
 
   test "#index should show index page" do

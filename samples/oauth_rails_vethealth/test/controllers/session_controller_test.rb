@@ -7,16 +7,16 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
     assert_template :login
   end
 
-  test "#callback should redirect to login without a code" do
+  test "#callback should redirect to logout without a code" do
     get callback_url
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
     assert_match /callback page is for oauth responses/, flash[:notice]
   end
 
-  test "#callback should redirect to login without a code and show error" do
+  test "#callback should redirect to logout without a code and show error" do
     error, error_description = 'uh oh', 'bad times'
     get callback_url, params: { error: error, error_description: error_description }
-    assert_redirected_to login_url
+    assert_redirected_to logout_url
     assert_match error, flash[:alert]
     assert_match error_description, flash[:alert]
   end
