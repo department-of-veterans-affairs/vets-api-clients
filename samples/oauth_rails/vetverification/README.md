@@ -19,7 +19,7 @@ Once a valid session has been created, you can use `rails console` to explore th
 Ex: `Session.last.veteran_verification.confirmed_status_response['data']['attributes']['veteran_status']` will return "confirmed" (if the veteran status is confirmed).
 
 ## This is how the app was created
-1. rails new oauth_rails_vetverification
+1. rails new vetverification
 2. use figaro to set up application config to hold keys
 3. build app features to login and request veteran verification data 
     * login action on auth_controller
