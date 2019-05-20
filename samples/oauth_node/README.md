@@ -9,8 +9,8 @@ An explanation of how this works and choices made can be found [here](https://de
 
 ## Installation
 
-* Clones this repository
-* `cd oauth/node`
+* Clone this repository
+* `cd samples/oauth_node`
 * `npm i`
 
 ## Usage
