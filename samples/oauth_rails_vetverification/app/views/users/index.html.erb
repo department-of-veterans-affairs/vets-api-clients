@@ -18,4 +18,11 @@
       <% end %>
     </table>
   <% end %>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
 </div>
+

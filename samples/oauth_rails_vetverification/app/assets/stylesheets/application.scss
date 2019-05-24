@@ -12,4 +12,9 @@
  *
  */
 
- @import "bootstrap";
+@import "bootstrap";
+
+#access_token {
+  overflow-wrap: anywhere;
+  width: 100%  
+}

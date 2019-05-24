@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Vets-API</a>
+      <% if @session.present?%>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to 'Logout', logout_path, class: "btn btn-primary btn-sm" %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
