@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/verify', to: 'verification#show'
   get '/user', to: 'users#index'
   resources :claims, only: [:index, :show]
+  get '/claims_forms/526', to: 'claims#form_526'
 end

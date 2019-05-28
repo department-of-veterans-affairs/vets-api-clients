@@ -12,6 +12,12 @@ class ClaimsController < ApplicationController
     @claim = TestUser.claim(params[:id], @session)
   end
 
+  def form_526
+    @schema = JSON.parse(SchemaService.get_schema('526').body)
+  end
+
+  private
+  
   def setup_from_session
     @session = Session.where(id: session[:id]).first
     @name = @session.id_token_attributes['name']
