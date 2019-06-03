@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import { withAuth } from '@okta/okta-react';
 import React, { Component } from 'react';
 import { Header, Message } from 'semantic-ui-react';
 import JSONPretty from 'react-json-pretty';
+import { SignedIn } from './Authentication';
 import config from './.samples.config';
 import 'react-json-pretty/JSONPretty.monikai.styl';
 require('react-json-pretty/JSONPretty.adventure_time.styl');
 
-export default withAuth(class DisabilityRating extends Component {
+class DisabilityRating extends Component {
   constructor(props) {
     super(props);
     this.state = { history: null, failed: null };
@@ -34,7 +34,7 @@ export default withAuth(class DisabilityRating extends Component {
   async getDisabilityRating() {
     if (!this.state.rating) {
       try {
-        const accessToken = await this.props.auth.getAccessToken();
+        const accessToken = this.props.user.access_token;
         /* global fetch */
         const response = await fetch(config.resourceServer.disabilityRatingUrl, {
           headers: {
@@ -85,4 +85,6 @@ export default withAuth(class DisabilityRating extends Component {
       </div>
     );
   }
-});
+}
+
+export default SignedIn.wrapComponent(DisabilityRating);

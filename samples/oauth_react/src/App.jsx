@@ -15,10 +15,11 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react';
+import { Authentication, ImplicitCallback, SignedIn, SignedOut } from './Authentication';
 import { Container } from 'semantic-ui-react';
 import config from './.samples.config';
 import Home from './Home';
+import UserHome from './UserHome';
 import ServiceHistory from './ServiceHistory';
 import DisabilityRating from './DisabilityRating';
 import Navbar from './Navbar';
@@ -28,22 +29,21 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Security
-          issuer={config.oidc.issuer}
-          client_id={config.oidc.clientId}
-          redirect_uri={config.oidc.redirectUri}
-          scope={config.oidc.scope}
-          idp={config.oidc.idp}
-        >
+        <Authentication OidcSettings={config.oidcSettings}>
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>
-            <Route path="/" exact component={Home} />
             <Route path="/implicit/callback" component={ImplicitCallback} />
-            <SecureRoute path="/servicehistory" component={ServiceHistory} />
-            <SecureRoute path="/disabilityrating" component={DisabilityRating} />
-            <SecureRoute path="/profile" component={Profile} />
+            <SignedOut>
+              <Route path="/" exact component={Home} />
+            </SignedOut>
+            <SignedIn>
+              <Route path="/" exact component={UserHome} />
+              <Route path="/servicehistory" component={ServiceHistory} />
+              <Route path="/disabilityrating" component={DisabilityRating} />
+              <Route path="/profile" component={Profile} />
+            </SignedIn>
           </Container>
-        </Security>
+        </Authentication>
       </Router>
     );
   }

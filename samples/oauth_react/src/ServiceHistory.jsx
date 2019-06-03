@@ -13,15 +13,20 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import { withAuth } from '@okta/okta-react';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Header, Message } from 'semantic-ui-react';
 import JSONPretty from 'react-json-pretty';
+import { SignedIn } from './Authentication';
 import config from './.samples.config';
 import 'react-json-pretty/JSONPretty.monikai.styl';
 require('react-json-pretty/JSONPretty.adventure_time.styl');
 
-export default withAuth(class ServiceHistory extends Component {
+class ServiceHistory extends Component {
+  static propTypes = {
+    user: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.state = { history: null, failed: null };
@@ -34,7 +39,7 @@ export default withAuth(class ServiceHistory extends Component {
   async getServiceHistory() {
     if (!this.state.history) {
       try {
-        const accessToken = await this.props.auth.getAccessToken();
+        const accessToken = this.props.user.access_token;
         /* global fetch */
         const response = await fetch(config.resourceServer.serviceHistoryUrl, {
           headers: {
@@ -85,4 +90,6 @@ export default withAuth(class ServiceHistory extends Component {
       </div>
     );
   }
-});
+}
+
+export default SignedIn.wrapComponent(ServiceHistory);
