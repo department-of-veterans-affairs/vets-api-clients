@@ -1,0 +1,14 @@
+<div class='container'>
+  <h3 class='h3 text-center'>Active Intent to File</h3>
+  <% if @itf.present? %>
+    <ul>
+      <li><b>Creation Date: </b><%= @itf["attributes"]["creation_date"] %></li>
+      <li><b>Expiration Date: </b><%= @itf["attributes"]["expiration_date"] %></li>
+      <li><b>Type: </b><%= @itf["attributes"]["type"] %></li>
+      <li><b>Status: </b><%= @itf["attributes"]["status"] %></li>
+    </ul>
+  <% else %>
+    <%= link_to 'Submit ITF', submit_itf_claims_path, class: 'btn btn-primary' %>
+  <% end %>
+  <%= link_to 'Back to User', user_url %>
+</div>

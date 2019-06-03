@@ -1,0 +1,31 @@
+<div class='container'>
+  <h1 class='text-center'>Welcome</h1>
+  <p class='text-center'>
+    <%= link_to 'My Claims', claims_path, class: 'btn btn-primary' %>
+    <%= link_to 'View Active ITF', active_itf_path, class: 'btn btn-warning' %>
+    <%= link_to 'Submit ITF', submit_itf_path, class: 'btn btn-info', data: {method: :post} %>
+  </p>
+</div>
+
+<div class='col-md-4 offset-md-4'>
+  <% if @user && @user.test_veterans.present? %>
+    <h3 class="h3 text-center">Veterans I Represent</h3>
+    <table class='table'>
+      <% @user.test_veterans.each do |veteran| %>
+        <tr>
+          <td><%= veteran.first_name %> <%= veteran.last_name %></td>
+          <td class='text-right'><%= link_to 'View claims', claims_url(user_id: veteran.id) %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
+</div>
+
