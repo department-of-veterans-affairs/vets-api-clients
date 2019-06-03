@@ -1,0 +1,13 @@
+<div class='container'>
+  <div class='row'>
+    <h3 class='h3 text-center'>Claim Details</h3>
+    <table class='table table-stripped'>
+      <% @claim['attributes'].each do |key, value| %>
+        <tr>
+          <td><%= key %></td> 
+          <td><%= value %></td> 
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
