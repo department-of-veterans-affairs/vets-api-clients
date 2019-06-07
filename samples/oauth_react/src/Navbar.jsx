@@ -32,7 +32,7 @@ class Navbar extends Component {
               <Menu.Item id="servicehistory-button" as="a" href="/servicehistory">Service History</Menu.Item>
               <Menu.Item id="disability-button" as="a" href="/disabilityrating">Disability Rating</Menu.Item>
               <Menu.Item id="profile-button" as="a" href="/profile">Profile</Menu.Item>
-              <Menu.Item id="logout-button" as="a"><SignOutButton as="a" className="tertiary">Log Out</SignOutButton></Menu.Item>
+              <Menu.Item id="logout-button" as="a"><SignOutButton as="a">Log Out</SignOutButton></Menu.Item>
             </SignedIn>
             <SignedOut>
               <Menu.Item><SignInButton as="a">Log In</SignInButton></Menu.Item>

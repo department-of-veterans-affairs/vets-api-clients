@@ -28,8 +28,6 @@ class Profile extends Component {
   }
 
   renderProfileDetails() {
-    console.log(this.props.user);
-
     const Claim = ({claimName, claimValue}) => {
       const claimId = `claim-${claimName}`;
       return <tr key={claimName}><td>{claimName}</td><td id={claimId}>{claimValue}</td></tr>;
@@ -37,24 +35,22 @@ class Profile extends Component {
 
     return (
       <div>
-        <div>
-          <Header as="h1"><Icon name="drivers license outline" /> My User Profile (ID Token Claims) </Header>
-          <p>
-            Below is the information from your ID token. This information is shared with this third party application when you sign in.
-          </p>
-          <Table>
-            <thead>
-              <tr>
-                <th>Claim</th><th>Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(this.props.user.profile).map((claim, idx) => {
-                return Claim({claimName: claim[0], claimValue: claim[1]});
-              })}
-            </tbody>
-          </Table>
-        </div>
+        <Header as="h1"><Icon name="drivers license outline" /> My User Profile (ID Token Claims) </Header>
+        <p>
+          Below is the information from your ID token. This information is shared with this third party application when you sign in.
+        </p>
+        <Table>
+          <thead>
+            <tr>
+              <th>Claim</th><th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(this.props.user.profile).map((claim, idx) => {
+              return Claim({claimName: claim[0], claimValue: claim[1]});
+            })}
+          </tbody>
+        </Table>
       </div>
     );
   }

@@ -65,27 +65,16 @@ class ImplicitCallback extends Component {
   }
 }
 
-
-class AuthenticationState extends Component {
+// Renders it's children only if the authentication context can provides an
+// authenticated user. That user object is passed to the children of the
+// SignedIn element as a prop. This allows any element that requires access to
+// the authenticated user to obtain it without having to integrate with the
+// AuthenticationContext.
+class SignedIn extends Component {
   static contextType = AuthenticationContext;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      authenticated: false,
-    }
-  }
-
-  componentDidMount() {
-    if ((this.state.authenticated === true) && (this.context.user == null)) {
-      this.setState({authenticated: false});
-    } else if ((this.state.authenticated === false) && (this.context.user != null)) {
-      this.setState({authenticated: true});
-    }
-  }
-}
-
-class SignedIn extends AuthenticationState {
+  // Renders it's children with a `user` prop. This allows any component that
+  // requires access to the authenticated
   render() {
     if (this.context.user == null) {
       return null;
@@ -103,7 +92,11 @@ class SignedIn extends AuthenticationState {
   }
 }
 
-class SignedOut extends AuthenticationState {
+// Render's it's children only if the authentication context cannot provide an
+// authenticated user.
+class SignedOut extends Component {
+  static contextType = AuthenticationContext;
+
   render() {
     if (this.context.user == null) {
       return this.props.children;
@@ -113,6 +106,7 @@ class SignedOut extends AuthenticationState {
   }
 }
 
+// Renders an element of the type named by it's `as` prop (or a Button by default).
 class Mimic extends Component {
   constructor(props) {
     super(props);
