@@ -1,13 +1,46 @@
-<div class='container'>
+<div class='container-fluid'>
   <div class='row'>
-    <h3 class='h3 text-center'>Claim Details</h3>
-    <table class='table table-stripped'>
-      <% @claim['attributes'].each do |key, value| %>
-        <tr>
-          <td><%= key %></td> 
-          <td><%= value %></td> 
-        </tr>
+    <div class='col-md-6'>
+      <div class='row'>
+        <div class='col-md-10'>
+          <h3 class='h3'>Claim Details</h3>
+        </div>
+        <div class='col-md-2'>
+          <span class="pill pill-<%= @claim['attributes']['status']&.downcase %>">
+            <%= @claim['attributes']['status'] %> 
+          </span>
+        </div>
+      </div>
+      <table class='table table-stripped'>
+        <% @claim['attributes'].each do |key, value| %>
+          <% next if value.is_a? Array %>
+          <tr>
+            <td><%= key %></td> 
+            <td><%= value %></td> 
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class='col-md-6'>
+      <div class='row'>
+        <div class='col-md-10'>
+          <h3 class='h3'>Supporting Documents</h3>
+        </div>
+        <div class='col-md-2'>
+        </div>
+      </div>
+      <% if @claim['attributes']['supporting_documents'].present? %>
+        <table class='table table-stripped'>
+        </table>
       <% end %>
-    </table>
+      <%= form_tag update_supporting_document_claim_path(@claim), multipart: true do %>
+        <label>Supporting Document</label>
+        <div class='form-group'>
+          <%= file_field_tag :attachment, class: 'form-input' %>
+        </div>
+        <%= submit_tag 'Upload', class: 'btn btn-primary'%>
+      <% end %>
+    </div>
   </div>
 </div>
+

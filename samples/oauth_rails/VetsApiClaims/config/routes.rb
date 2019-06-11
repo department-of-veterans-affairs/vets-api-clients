@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   get '/claims/active_itf', to: 'claims#active_itf', as: :active_itf
   post '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
   resources :claims, only: [:index, :show] do
+    member do
+      post :update_supporting_document
+    end
   end
 end

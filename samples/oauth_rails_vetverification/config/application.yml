@@ -1,0 +1,5 @@
+va_developer_client_id: 0oa3w3908yguaAmUF2p7 
+va_developer_client_secret: pk8szspRTeqSosqAxDqbAq3bR1ezwPjFMs0lKssn
+va_developer_api_key:  bPdQ77BmBkqQc5zWCB12e5vD8fa67LH8
+vets_api_url: 'https://dev-api.va.gov'
+debug_access_token: true
