@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       post :update_supporting_document
     end
   end
+  get '/claims_forms/526', to: 'claims#form_526'
 end

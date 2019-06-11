@@ -21,6 +21,10 @@ class ClaimsController < ApplicationController
     redirect_to active_itf_url
   end
 
+  def form_526
+    @schema = JSON.parse(SchemaService.get_schema('526').body)
+  end
+
   def update_supporting_document
     puts '-------'
     puts params.inspect
