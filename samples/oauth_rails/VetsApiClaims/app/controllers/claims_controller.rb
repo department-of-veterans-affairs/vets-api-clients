@@ -22,7 +22,7 @@ class ClaimsController < ApplicationController
   end
 
   def form_526
-    @schema = JSON.parse(SchemaService.get_schema('526').body)
+    @schema = JSON.parse(SchemaService.get_schema('526').body)['data'][0]
   end
 
   def update_supporting_document
