@@ -35,7 +35,7 @@ class Navbar extends Component {
               <Menu.Item id="logout-button" as="a"><SignOutButton as="a">Log Out</SignOutButton></Menu.Item>
             </SignedIn>
             <SignedOut>
-              <Menu.Item><SignInButton as="a">Log In</SignInButton></Menu.Item>
+              <Menu.Item as="a"><SignInButton as="a">Log In</SignInButton></Menu.Item>
             </SignedOut>
           </Container>
         </Menu>

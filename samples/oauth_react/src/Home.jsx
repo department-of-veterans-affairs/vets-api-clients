@@ -14,7 +14,7 @@
  */
 
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Button, Header } from 'semantic-ui-react';
 import { SignInButton } from './Authentication';
 
 class Home extends Component {
@@ -28,7 +28,7 @@ class Home extends Component {
             Log in below to authenticate using your VA credentials and grant this application
             access to your VA data (service history and disability rating).
           </p>
-          <SignInButton id="login-button" primary>Log In</SignInButton>
+          <SignInButton id="login-button" primary as={Button}>Log In</SignInButton>
         </div>
       </div>
     );

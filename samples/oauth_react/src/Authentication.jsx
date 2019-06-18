@@ -5,7 +5,6 @@
 
 import React, { Component } from 'react';
 import { Log, UserManager } from 'oidc-client';
-import { Button } from 'semantic-ui-react';
 
 const AuthenticationContext = React.createContext({user: null});
 
@@ -106,29 +105,35 @@ class SignedOut extends Component {
   }
 }
 
-// Renders an element of the type named by it's `as` prop (or a Button by default).
-class Mimic extends Component {
+// Intended to be used as a base class for an interactive UI element. Renders
+// an element of the type named by it's `as` prop, with an overridable
+// `onClick` event handler.
+class ClickableMimic extends Component {
   constructor(props) {
+    if (props.as == null) {
+      throw new Error("the `as` property is required.");
+    }
+
     super(props);
     this.onClick = this.onClick.bind(this);
   }
 
   render() {
-    const ElementType = this.props.as || Button;
+    const ElementType = this.props.as;
     return (
       <ElementType onClick={this.onClick} {...this.props}>{this.props.children}</ElementType>
     );
   }
 }
 
-class SignInButton extends Mimic {
+class SignInButton extends ClickableMimic {
   static contextType = AuthenticationContext;
   onClick() {
     this.context.userManager.signinRedirect();
   }
 }
 
-class SignOutButton extends Mimic {
+class SignOutButton extends ClickableMimic {
   static contextType = AuthenticationContext;
   onClick() {
     this.context.userManager.signoutRedirect();
