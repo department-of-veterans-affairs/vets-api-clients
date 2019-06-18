@@ -13,7 +13,7 @@ class Authentication extends Component {
   constructor(props) {
     super(props);
     this.state = {authenticated: false, user: null};
-    this.userManager = new UserManager(this.props.OidcSettings);
+    this.userManager = new UserManager(this.props.oidcSettings);
     this.userManager.events.addUserLoaded((user) => {
       console.log('user loaded, changing Authentication state');
       this.setState({authenticated: true, user: user});

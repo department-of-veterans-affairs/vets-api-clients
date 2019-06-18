@@ -1,15 +1,13 @@
 # OAuth React Sample Application
 
 This example shows how to integrate with the VA API platform OAuth implementation and use 
-an OAuth token to make API calls. It is a Reacth single page application, built on top of the 
-Okta React Library and based on their sample application.
+an OAuth token to make API calls. It is a React single page application, built on top of
+the open source `oidc-client` library.
 
 ## Prerequisites
 
-Before running this sample, you will need the following:
-
-* Access to the deptva-eval Okta org or an equivalently configured Okta org.
-* An Okta appliciation, configured for a single-page app.
+Before running this sample, you will need an OAuth client application ID. You can obtain one
+by signing up through [the developer portal](https://developer.va.gov).
 
 ## Running This Example
 
@@ -19,29 +17,27 @@ Install dependencies:
 npm install
 ```
 
-Now you need to gather the following information from the Okta Developer Console:
-
-- **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
-- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
-- **API Endpoints** - These are the URLs of the veteran verification API operations that the application calls. May be your local vets-api instance or a dev/staging API endpoint.
-
 Now place these values into the file `src/.samples.config.js` that was created for you in this project:
 
 ```javascript
 export default {
   oidc: {
-    clientId: '{clientId}',
-    issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-    redirectUri: 'http://localhost:8080/implicit/callback',
+    authority: 'https://deptva-eval.okta.com/oauth2/default/.well-known/openid-configuration',
+    client_id: '{client_id}',
+    redirect_uri: 'http://localhost:8080/implicit/callback',
     scope: ['openid', 'profile', 'email', 'disability_rating.read', 'service_history.read'],
+    response_type: 'id_token token',
   },
   resourceServer: {
-    serviceHistoryUrl: 'http://localhost:3000/services/veteran_verification/v0/service_history',
-    disabilityRatingUrl: 'http://localhost:3000/services/veteran_verification/v0/disability_rating',
+    serviceHistoryUrl: 'https://dev-api.va.gov/services/veteran_verification/v0/service_history',
+    disabilityRatingUrl: 'https://dev-api.va.gov/services/veteran_verification/v0/disability_rating',
   },
 };
-
 ```
+
+Here the `{client_id}` should be replaced by your OAuth client application ID.
+This config includes the fields needed to auto-configure the [oidc-client npm module](https://www.npmjs.com/package/oidc-client).
+To further customize the integration, you can specify [any of the supported options](https://github.com/IdentityModel/oidc-client-js/wiki#usermanager).
 
 Now start the app server:
 
@@ -56,7 +52,7 @@ To change the port, specify the PORT environment variable:
 PORT=8090 npm start
 ```
 
-If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will redirect you to the Okta hosted sign-in page.
+If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will redirect you to the authorization server.
 
-You can log in with an ID.me test account.
+You can log in with [an ID.me test account](../../test_accounts.md).
 

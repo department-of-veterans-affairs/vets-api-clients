@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Authentication OidcSettings={config.oidcSettings}>
+        <Authentication oidcSettings={config.oidc}>
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>
             <Route path="/implicit/callback" component={ImplicitCallback} />
