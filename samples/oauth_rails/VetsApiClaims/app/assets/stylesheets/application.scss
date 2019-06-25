@@ -24,8 +24,14 @@
 .pill {
   border-radius: 10px;
   padding: 5px;
+  margin-top: 5px;
   &.pill-complete {
     background: #00910C; 
     color: #fff;
   }
+}
+
+.card {
+  margin: 10px;
+  padding: 10px;
 }
