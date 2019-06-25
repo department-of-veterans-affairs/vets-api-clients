@@ -29,13 +29,25 @@
         <div class='col-md-2'>
         </div>
       </div>
-      <% if @claim['attributes']['supporting_documents'].present? %>
-        <table class='table table-stripped'>
-        </table>
+      <% unless @claim['attributes']['supporting_documents'].nil? %>
+        <% if @claim['attributes']['supporting_documents'].any? %>
+          <table class='table table-stripped'>
+            <% @claim['attributes']['supporting_documents'].each do |document| %>
+              <tr>
+                <td><%= document['id'] %></td>
+                <td><%= document['filename'] %></td>
+                <td><%= DateTime.parse(document['uploaded_at']).strftime("%m/%d/%Y") %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% else %>
+          <p class='text-center'>No Documents Uploaded</p>
+        <% end %>
       <% end %>
       <%= form_tag update_supporting_document_claim_path(@claim), multipart: true do %>
         <label>Supporting Document</label>
         <div class='form-group'>
+          <%= hidden_field_tag :evss_id, params[:id] %>
           <%= file_field_tag :attachment, class: 'form-input' %>
         </div>
         <%= submit_tag 'Upload', class: 'btn btn-primary'%>
@@ -43,4 +55,3 @@
     </div>
   </div>
 </div>
-
