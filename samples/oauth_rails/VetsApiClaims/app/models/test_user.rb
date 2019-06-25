@@ -1,5 +1,17 @@
 class TestUser < ApplicationRecord
 
+  def self.stub_headers
+    {
+     'X-VA-SSN' => '796130115',
+     'X-VA-User' => 'mytestapp',
+     'X-VA-First-Name' => 'Tamara',
+     'X-VA-Last-Name' => 'Ellis',
+     'X-VA-Birth-Date' => '1967-06-19',
+     'X-VA-EDIPI' => '1005490754',
+     'X-Consumer-Username' => 'oddball'
+    }
+  end
+
   def headers(token)
     {
      'X-VA-SSN' => ssn,
