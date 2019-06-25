@@ -25,7 +25,7 @@ export default {
     authority: 'https://deptva-eval.okta.com/oauth2/default/.well-known/openid-configuration',
     client_id: '{client_id}',
     redirect_uri: 'http://localhost:8080/implicit/callback',
-    scope: ['openid', 'profile', 'email', 'disability_rating.read', 'service_history.read'],
+    scope: ['openid', 'offline_access', 'profile', 'email', 'disability_rating.read', 'service_history.read'],
     response_type: 'id_token token',
   },
   resourceServer: {

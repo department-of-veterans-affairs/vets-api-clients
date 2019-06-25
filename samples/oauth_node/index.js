@@ -34,7 +34,7 @@ const configurePassport = (client) => {
     {
       client,
       params: {
-        scope: 'openid profile veteran_status.read',
+        scope: 'openid offline_access profile veteran_status.read',
       },
     }, (tokenset, userinfo, done) => {
       done(null, { userinfo, tokenset });

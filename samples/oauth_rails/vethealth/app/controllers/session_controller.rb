@@ -70,6 +70,7 @@ private
   def scope
     %w(
       openid
+      offline_access
       profile
       launch/patient
       patient/Patient.read
