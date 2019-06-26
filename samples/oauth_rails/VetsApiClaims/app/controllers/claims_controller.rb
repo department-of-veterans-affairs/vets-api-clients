@@ -21,6 +21,16 @@ class ClaimsController < ApplicationController
     redirect_to active_itf_url
   end
 
+  def form_526
+    @schema = JSON.parse(SchemaService.get_schema('526').body)['data'][0]
+  end
+
+  def update_supporting_document
+    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v0/forms/526/#{params[:id]}/attachments", {attachment: params[:attachment]}, TestUser.stub_headers)
+    JSON.parse(response&.body)['data']
+    redirect_to claim_path(params[:id])
+  end
+
   private
 
   def setup_from_session
