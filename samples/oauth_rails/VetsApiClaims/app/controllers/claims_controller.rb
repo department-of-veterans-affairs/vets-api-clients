@@ -1,5 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :setup_from_session
+  before_action :check_expired_session
   def index
     if @veteran.present?
       @claims = @user.claims_for(@veteran, @session)
@@ -39,5 +40,9 @@ class ClaimsController < ApplicationController
     name_parts = @name.split(' ')
     @user = TestUser.where('lower(first_name) = ? AND  lower(last_name) = ?', name_parts.first.downcase, name_parts.last.downcase).first
     @veteran = TestVeteran.find params[:user_id] if params[:user_id].present?
+  end
+
+  def check_expired_session
+    @session = @session.token_refresh if @session.expired?
   end
 end
