@@ -45,7 +45,7 @@ export default class Status extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Enter Guid to get status</Text>
-        <StatusForm setGuid={this.handleSubmit} />
+        <StatusForm setGuid={this.handleSubmit} guid={this.props.guid} />
         {response
             && (
             <View style={styles.codeBlock}>

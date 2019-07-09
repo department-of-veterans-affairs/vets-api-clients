@@ -48,26 +48,28 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       status: 'loaded',
+      guid: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(formState) {
-    console.log(formState);
-    this.setState({ status: 'submitting' });
-    console.log(metadataFromState(formState));
-    api.actions.uploadDocument(metadataFromState(formState), formState.files).then((results) => {
-      console.log(results);
+    api.actions.uploadDocument(metadataFromState(formState), formState.files).then((response) => {
+      console.log(response);
+      this.setState({
+        status: 'documentStatus',
+        guid: response.data.attributes.guid,
+      });
     });
   }
 
   render() {
-    const { status } = this.state;
+    const { status, guid } = this.state;
     let content = null;
     switch (status) {
       case 'documentStatus': {
         content = (
-          <Status />
+          <Status guid={guid} />
         );
         break;
       }

@@ -4,8 +4,9 @@ import { labelClasses, inputClasses } from './styles/formClasses';
 export default class StatusForm extends React.Component {
   constructor(props) {
     super(props);
+    const { guid } = this.props;
     this.state = {
-      guid: null,
+      guid: guid,
     };
     this.handleChange = this.handleChange.bind(this);
   }

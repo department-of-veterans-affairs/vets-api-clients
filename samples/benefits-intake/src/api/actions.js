@@ -27,8 +27,8 @@ export function getUploadStatus(guid) {
 }
 
 export function uploadDocument(metadata, files) {
-  getLocation().then((locationRes) => {
-    const { location, guid } = locationRes.data.attributes;
+  return getLocation().then((locationRes) => {
+    const { location } = locationRes.data.attributes;
 
     const data = new FormData();
     data.append('metadata', metadata);
@@ -38,12 +38,7 @@ export function uploadDocument(metadata, files) {
       data.append(name, file);
     });
 
-    fetch(location, { method: 'PUT', body: data })
-      .then(() => {
-        getUploadStatus(guid).then((statusResponse) => {
-          const { status } = statusResponse.data.attributes;
-          console.log(status);
-        });
-      });
+    fetch(location, { method: 'PUT', body: data });
+    return locationRes;
   });
 }
