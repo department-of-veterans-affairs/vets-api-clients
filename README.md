@@ -16,7 +16,7 @@ Note that the Health (FHIR / Argonaut) APIs for access to veteran health records
 - The [Address Validation](https://developer.va.gov/explore/verification/docs/address_validation) service (for VA internal use only) provides methods to both standardize and validate addresses.
 
 ### Appeals Status*
-- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. Currently for VA internal use only, but third-party access is coming soon.
+- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. Currently for VA internal use only.
 
 ### Authorization (OpenID Connect)
 - For [Health](https://developer.va.gov/explore/health/docs/authorization) and [Veteran Verification](https://developer.va.gov/explore/verification/docs/authorization).  The VA API Platform uses the OpenID Connect standard to allow Veterans to authorize third-party applications to access data on their behalf. 
