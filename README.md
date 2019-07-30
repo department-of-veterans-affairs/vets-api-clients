@@ -16,7 +16,7 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 - The [Address Validation](https://developer.va.gov/explore/verification/docs/address_validation) service (for VA internal use only) provides methods to both standardize and validate addresses.
 
 ### Appeals Status*
-- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. Currently for VA internal use only.
+- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API (for VA internal use only) to request the status of a Veteran's benefits claim appeal. 
 
 ### Benefits Claims
 - Use the [Claims](https://developer.va.gov/explore/benefits/docs/claims) (Auto-Establishment) API to submit a Veteran's benefits claim via EVSS (Electronic Veterans Self-Service), and to request the status of a Veteran's benefits claim.
