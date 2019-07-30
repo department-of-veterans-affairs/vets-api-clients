@@ -11,12 +11,13 @@ Third-party access to vets-api is available to anyone with a developer token (AP
 Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records are not yet in production; dev access in sandbox using mock patient data is available, and we expect these APIs to be in production by fall of 2019.
 
 ## Available Services
+\* APIs marked with an asterisk are currently for internal VA use only.
 
 ### Address Validation*
-- The [Address Validation](https://developer.va.gov/explore/verification/docs/address_validation) service (for VA internal use only) provides methods to both standardize and validate addresses.
+- The [Address Validation](https://developer.va.gov/explore/verification/docs/address_validation) service provides methods to both standardize and validate addresses.
 
 ### Appeals Status*
-- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API (for VA internal use only) to request the status of a Veteran's benefits claim appeal. 
+- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. 
 
 ### Benefits Claims
 - Use the [Claims](https://developer.va.gov/explore/benefits/docs/claims) (Auto-Establishment) API to submit a Veteran's benefits claim via EVSS (Electronic Veterans Self-Service), and to request the status of a Veteran's benefits claim.
@@ -44,7 +45,6 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 
 - The [Veteran Confirmation](https://developer.va.gov/explore/verification/docs/veteran_confirmation) endpoint allows third-parties to request confirmation from the VA of an individual's Veteran status after receiving authorization to do so using an Open ID Connect flow.
 
-\* APIs marked with an asterisk are currently for internal VA use only.
 
 ## Requesting Access
-If you have any questions after consulting the [API documentation](https://developer.va.gov/explore) and [applying](https://developer.va.gov/apply) for a developer key or OAuth credentials, please email api@va.gov for assistance.  You will receive a human reply within 24 hours.
+If you have any questions, please email api@va.gov for assistance.  You will receive a human reply within 24 hours.
