@@ -1,6 +1,6 @@
 # vets-api-clients
 
-Welcome to the public-facing repository for **VA Lighthouse APIs**.  For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).
+Welcome to the public-facing repository for **Department of Veterans Affairs (VA) Lighthouse APIs**.  For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).
 
 If you would like to improve or suggest **edits to API documentation** for the VA APIs, please visit [this repo](https://github.com/department-of-veterans-affairs/developer-portal/tree/master/src/content/apiDocs).
 
@@ -8,7 +8,7 @@ If you would like to improve or suggest **edits to API documentation** for the V
 
 Third-party access to vets-api is available to anyone with a developer token (API key), which can be obtained via a [quick application form](https://developer.va.gov/apply).  Production access will be granted later by scheduling a [demo of your application](https://developer.va.gov/go-live) for stakeholders.
 
-Note that the Health (FHIR / Argonaut) APIs for access to veteran health records are not yet in production; dev access in sandbox using mock patient data is available, and we expect these APIs to be in production by fall of 2019.
+Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records are not yet in production; dev access in sandbox using mock patient data is available, and we expect these APIs to be in production by fall of 2019.
 
 ## Available Services
 
