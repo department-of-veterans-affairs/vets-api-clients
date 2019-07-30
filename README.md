@@ -47,4 +47,4 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 
 
 ## Requesting Access
-If you have any questions or need further assistance, please email our team at api@va.gov. You will receive a human reply within 24 hours.
+If you have any questions or need further assistance, please email our team at api@va.gov. You will receive a human reply within 24 hours.  Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
