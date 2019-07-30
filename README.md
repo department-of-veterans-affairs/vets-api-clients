@@ -24,20 +24,25 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 ### Benefits Intake (fka Document Upload Service)
 - The [Benefits Intake](https://developer.va.gov/explore/benefits/docs/benefits) API allows authorized third-party systems used by Veteran Service Organizations and agencies to upload claim documents (scanned to PDF) directly to the Veterans Benefits Administration's (VBA) claims intake process.
 
-### Disability Rating
-- The [Disability Rating](https://developer.va.gov/explore/verification/docs/disability_rating) API allows third-parties to access the disability rating of a Veteran after receiving authorization to do so using an Open ID Connect flow.
-
 ### Facilities
 - Use the [Facilities](https://developer.va.gov/explore/facilities/docs/facilities) API to find contact info, location, hours of operation, available services and other relevant information about a specific VA facility. 
 
-### Health (currently dev only)
+### Health (Dev only)
 - Use the [Health APIs](https://developer.va.gov/explore/health/docs/argonaut) to allow Veterans to view their medical records, schedule an appointment, find a specialty facility, and share their information with caregivers and providers.
 
-### Service History
-- The [Service History](https://developer.va.gov/explore/verification/docs/service_history) API allows third-parties to access the service history of a Veteran after receiving authorization to do so using an Open ID Connect flow.
+### Veteran Verification
 
-### Veteran Confirmation
-- The [Veteran Confirmation](https://developer.va.gov/explore/verification/docs/veteran_confirmation) API allows third-parties to request confirmation from the VA of an individual's Veteran status after receiving authorization to do so using an Open ID Connect flow.
+- The [Veteran Verification](https://developer.va.gov/explore/verification) API empowers Veterans to access their service history, Veteran status, discharge information and disability rating and put that information to work for them.
+
+#### Disability Rating
+- The [Disability Rating](https://developer.va.gov/explore/verification/docs/disability_rating) endpoint allows third-parties to access the disability rating of a Veteran after receiving authorization to do so using an Open ID Connect flow.
+
+#### Service History
+- The [Service History](https://developer.va.gov/explore/verification/docs/service_history) endpoint allows third-parties to access the service history of a Veteran after receiving authorization to do so using an Open ID Connect flow.
+
+#### Veteran Confirmation
+
+- The [Veteran Confirmation](https://developer.va.gov/explore/verification/docs/veteran_confirmation) endpoint allows third-parties to request confirmation from the VA of an individual's Veteran status after receiving authorization to do so using an Open ID Connect flow.
 
 \* APIs marked with an asterisk are currently for internal VA use only.
 
