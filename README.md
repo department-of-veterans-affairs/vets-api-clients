@@ -2,7 +2,7 @@
 
 Welcome to the public-facing repository for **Department of Veterans Affairs (VA) Lighthouse APIs**.  For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).
 
-If you would like to improve or suggest **edits to API documentation** for the VA APIs, please visit [this repo](https://github.com/department-of-veterans-affairs/developer-portal/tree/master/src/content/apiDocs).
+If you would like to improve or suggest **edits to API documentation** for the VA APIs, please visit the [APIs repo](https://github.com/department-of-veterans-affairs/vets-api) or the [Developer Portal repo](https://github.com/department-of-veterans-affairs/developer-portal).
 
 **Materials in this repo may be outdated as of July 2019.** This repository contains resources for accessing vets-api as a third-party client. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  Again, please refer to the [developer portal](https://developer.va.gov/explore) linked above for current docs.
 
