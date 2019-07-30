@@ -1,10 +1,10 @@
 # vets-api-clients
 
-Welcome to the public-facing repository for **Department of Veterans Affairs (VA) Lighthouse APIs**.  For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).
+⚠️ **Materials in this repo may be outdated as of July 2019.** This repository contains resources for accessing vets-api as a third-party client. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  **For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).**
+
+Welcome to the repository for consumers of **Department of Veterans Affairs (VA) Lighthouse APIs**.  
 
 If you would like to improve or suggest **edits to API documentation** for the VA APIs, please visit the [APIs repo](https://github.com/department-of-veterans-affairs/vets-api) or the [Developer Portal repo](https://github.com/department-of-veterans-affairs/developer-portal).
-
-**Materials in this repo may be outdated as of July 2019.** This repository contains resources for accessing vets-api as a third-party client. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  Again, please refer to the [developer portal](https://developer.va.gov/explore) linked above for current docs.
 
 Third-party access to vets-api is available to anyone with a developer token (API key), which can be obtained via a [quick application form](https://developer.va.gov/apply).  Production access will be granted later by scheduling a [demo of your application](https://developer.va.gov/go-live) for stakeholders.
 
@@ -18,9 +18,6 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 ### Appeals Status*
 - Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. Currently for VA internal use only.
 
-### Authorization (OpenID Connect)
-- For [Health](https://developer.va.gov/explore/health/docs/authorization) and [Veteran Verification](https://developer.va.gov/explore/verification/docs/authorization).  The VA API Platform uses the OpenID Connect standard to allow Veterans to authorize third-party applications to access data on their behalf. 
-
 ### Benefits Claims
 - Use the [Claims](https://developer.va.gov/explore/benefits/docs/claims) (Auto-Establishment) API to submit a Veteran's benefits claim via EVSS (Electronic Veterans Self-Service), and to request the status of a Veteran's benefits claim.
 
@@ -29,7 +26,6 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 
 ### Disability Rating
 - The [Disability Rating](https://developer.va.gov/explore/verification/docs/disability_rating) API allows third-parties to access the disability rating of a Veteran after receiving authorization to do so using an Open ID Connect flow.
-
 
 ### Facilities
 - Use the [Facilities](https://developer.va.gov/explore/facilities/docs/facilities) API to find contact info, location, hours of operation, available services and other relevant information about a specific VA facility. 
