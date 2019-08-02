@@ -48,7 +48,7 @@ class ClaimsController < ApplicationController
   end
 
   def update_supporting_document
-    response = RestClient.post("#{ENV['vets_api_url']}/services/claims/v0/forms/526/#{params[:id]}/attachments", {attachment: params[:attachment]}, TestUser.stub_headers)
+    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v0/forms/526/#{params[:id]}/attachments", {attachment: params[:attachment]}, TestUser.stub_headers)
     JSON.parse(response&.body)['data']
     redirect_to claim_path(params[:id])
   end

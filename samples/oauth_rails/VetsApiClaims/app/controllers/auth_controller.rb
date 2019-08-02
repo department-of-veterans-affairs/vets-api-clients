@@ -6,15 +6,15 @@ class AuthController < ApplicationController
     session[:login_time] = Time.zone.now.to_i
     scope = 'openid profile offline_access claim.read claim.write'
     oauth_params = {
-      client_id: ENV['va_developer_client_id'],
+      client_id: Figaro.env.va_developer_client_id,
       nonce: digest(nonce_base),
-      redirect_uri: "#{ENV['URL'] || 'http://localhost:3000'}/callback",
+      redirect_uri: "#{Figaro.env.URL || 'http://localhost:3000'}/callback",
       # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
       response_type: 'code',
       scope: scope,
       state: session[:login_time]
     }
-    @oauth_url = "#{ENV['vets_api_url']}/oauth2/authorization?#{oauth_params.to_query}"
+    @oauth_url = "#{Figaro.env.vets_api_url}/oauth2/authorization?#{oauth_params.to_query}"
   end
 
   def callback
@@ -30,10 +30,10 @@ class AuthController < ApplicationController
       grant_type: 'authorization_code',
       code: params[:code],
       state: params[:state],
-      redirect_uri: "#{ENV['URL'] || 'http://localhost:3000'}/callback"
+      redirect_uri: "#{Figaro.env.URL || 'http://localhost:3000'}/callback"
     }
-    auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    response = HTTParty.post("#{ENV['vets_api_url']}/oauth2/token", { basic_auth: auth, body: body })
+    auth = { username: Figaro.env.va_developer_client_id, password: Figaro.env.va_developer_client_secret }
+    response = HTTParty.post("#{Figaro.env.vets_api_url}/oauth2/token", { basic_auth: auth, body: body })
     if response.code/400 == 1
       flash.alert = "Login failed because #{response['error']}."
       Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
@@ -62,6 +62,6 @@ class AuthController < ApplicationController
 private
   # helper method to always digest the same
   def digest(value)
-    Digest::SHA256.hexdigest(value + ENV['va_developer_client_secret'])
+    Digest::SHA256.hexdigest(value + Figaro.env.va_developer_client_secret)
   end
 end
