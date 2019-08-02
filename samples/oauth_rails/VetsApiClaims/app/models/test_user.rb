@@ -1,4 +1,5 @@
 class TestUser < ApplicationRecord
+  has_many :test_veterans
 
   def self.stub_headers
     {
@@ -7,55 +8,63 @@ class TestUser < ApplicationRecord
      'X-VA-First-Name' => 'Tamara',
      'X-VA-Last-Name' => 'Ellis',
      'X-VA-Birth-Date' => '1967-06-19',
-     'X-VA-EDIPI' => '1005490754',
      'X-Consumer-Username' => 'oddball'
     }
   end
 
-  def headers(token)
+  def headers(token, user)
     {
-     'X-VA-SSN' => ssn,
+     'X-VA-SSN' => user.ssn,
      'X-VA-User' => 'mytestapp',
-     'X-VA-First-Name' => first_name,
-     'X-VA-Last-Name' => last_name,
-     'X-VA-Birth-Date' => birth_date.to_s,
-     'X-VA-EDIPI' => edipi,
+     'X-VA-First-Name' => user.first_name,
+     'X-VA-Last-Name' => user.last_name,
+     'X-VA-Birth-Date' => user.birth_date.to_s,
      'X-Consumer-Username' => 'oddball',
      'Authorization' => "Bearer #{token}"
     }
   end
 
-  def claims_for(user, session)
-    response = RestClient.get("#{Figaro.env.vets_api_url}/services/claims/v1/claims", headers(session.access_token))
+  def self.claims(session)
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/claims", {'Authorization' => "Bearer #{session.access_token}"})
     JSON.parse(response&.body)['data']
   end
 
-  def test_veterans
-    TestVeteran.where(poa: self.poa)
+  def claims_for(user, session)
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/claims", headers(session.access_token, user))
+    JSON.parse(response&.body)['data']
+  end
+
+  def self.claim(claim_id, session)
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/claims/#{claim_id}", {'Authorization' => "Bearer #{session.access_token}"})
+    JSON.parse(response&.body)['data']
+  end
+
+  def claim_for(claim_id, user, session)
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/claims/#{claim_id}", headers(session.access_token, user))
+    JSON.parse(response&.body)['data']
   end
 
   def active_itf(session)
-    response = RestClient.get("#{Figaro.env.vets_api_url}/services/claims/v1/forms/0966/active?type=compensation", {'Authorization' => "Bearer #{session.access_token}"})
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/forms/0966/active?type=compensation", {'Authorization' => "Bearer #{session.access_token}"})
+    JSON.parse(response&.body)['data']
+  end
+
+  def active_itf_for(user, session)
+    response = RestClient.get("#{ENV['vets_api_url']}/services/claims/v1/forms/0966/active?type=compensation", headers(session.access_token, user))
     JSON.parse(response&.body)['data']
   end
 
   def submit_itf(session)
-    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v1/forms/0966", submit_type, {'Authorization' => "Bearer #{session.access_token}"})
+    response = RestClient.post("#{ENV['vets_api_url']}/services/claims/v1/forms/0966", submit_type, {'Authorization' => "Bearer #{session.access_token}"})
+    JSON.parse(response&.body)['data']
+  end
+
+  def submit_itf_for(user, session)
+    response = RestClient.post("#{ENV['vets_api_url']}/services/claims/v1/forms/0966", submit_type, headers(session.access_token, user))
     JSON.parse(response&.body)['data']
   end
 
   def submit_type
     {data: { attributes: { type: 'compensation'} } }.to_json
   end
-
-  def self.claims(session)
-    response = RestClient.get("#{Figaro.env.vets_api_url}/services/claims/v1/claims", {'Authorization' => "Bearer #{session.access_token}"})
-    JSON.parse(response&.body)['data']
-  end
-
-  def self.claim(claim_id, session)
-    response = RestClient.get("#{Figaro.env.vets_api_url}/services/claims/v1/claims/#{claim_id}", {'Authorization' => "Bearer #{session.access_token}"})
-    JSON.parse(response&.body)['data']
-  end
-
 end

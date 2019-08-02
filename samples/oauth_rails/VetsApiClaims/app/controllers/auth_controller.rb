@@ -4,17 +4,17 @@ class AuthController < ApplicationController
     nonce_base = SecureRandom.base64(20)
     session[:nonce_key] = nonce_base
     session[:login_time] = Time.zone.now.to_i
-    scope = 'openid profile service_history.read disability_rating.read veteran_status.read claim.read claim.write'
+    scope = 'openid profile offline_access claim.read claim.write'
     oauth_params = {
       client_id: ENV['va_developer_client_id'],
       nonce: digest(nonce_base),
-      redirect_uri: 'http://localhost:3000/callback',
+      redirect_uri: "#{ENV['URL'] || 'http://localhost:3000'}/callback",
       # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
       response_type: 'code',
       scope: scope,
       state: session[:login_time]
     }
-    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
+    @oauth_url = "#{ENV['vets_api_url']}/oauth2/authorization?#{oauth_params.to_query}"
   end
 
   def callback
@@ -30,10 +30,10 @@ class AuthController < ApplicationController
       grant_type: 'authorization_code',
       code: params[:code],
       state: params[:state],
-      redirect_uri: 'http://localhost:3000/callback'
+      redirect_uri: "#{ENV['URL'] || 'http://localhost:3000'}/callback"
     }
     auth = { username: ENV['va_developer_client_id'], password: ENV['va_developer_client_secret'] }
-    response = HTTParty.post('https://dev-api.va.gov/oauth2/token', { basic_auth: auth, body: body })
+    response = HTTParty.post("#{ENV['vets_api_url']}/oauth2/token", { basic_auth: auth, body: body })
     if response.code/400 == 1
       flash.alert = "Login failed because #{response['error']}."
       Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"

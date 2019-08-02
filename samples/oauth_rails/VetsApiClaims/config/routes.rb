@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'auth#logout'
 
   get '/user', to: 'users#index'
+  post '/user', to: 'users#create'
+  delete '/user', to: 'users#destroy'
   get '/claims/active_itf', to: 'claims#active_itf', as: :active_itf
-  post '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
+  get '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
   resources :claims, only: [:index, :show] do
     member do
       post :update_supporting_document

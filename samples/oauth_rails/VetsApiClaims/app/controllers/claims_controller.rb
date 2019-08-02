@@ -1,24 +1,46 @@
 class ClaimsController < ApplicationController
   before_action :setup_from_session
+
   def index
     if @veteran.present?
       @claims = @user.claims_for(@veteran, @session)
     else
       @claims = TestUser.claims(@session)
     end
+  rescue
+    redirect_back(fallback_location: root_path, alert: "This user has no claims")
   end
 
   def show
-    @claim = TestUser.claim(params[:id], @session)
+    if @veteran.present?
+      @claim = @user.claim_for(params[:id], @veteran, @session)
+    else
+      @claim = TestUser.claim(params[:id], @session)
+    end
+  rescue
+    redirect_back(fallback_location: root_path, alert: "You don't have access to this claim")
   end
 
   def active_itf
-    @itf = @user.active_itf(@session)
+    if @veteran.present?
+      @itf = @user.active_itf_for(@veteran, @session)
+    else
+      @itf = @user.active_itf(@session)
+    end
+  rescue
+    redirect_back(fallback_location: root_path, alert: "No Active ITF Exists")
   end
 
   def submit_itf
-    @itf = @user.submit_itf(@session)
-    redirect_to active_itf_url
+    if @veteran.present?
+      @itf = @user.submit_itf_for(@veteran, @session)
+      redirect_to active_itf_url(user_id: params[:user_id])
+    else
+      @itf = @user.submit_itf(@session)
+      redirect_to active_itf_url
+    end
+  rescue
+    redirect_back(fallback_location: root_path, alert: "Failure to submit ITF")
   end
 
   def form_526
@@ -26,7 +48,7 @@ class ClaimsController < ApplicationController
   end
 
   def update_supporting_document
-    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v0/forms/526/#{params[:id]}/attachments", {attachment: params[:attachment]}, TestUser.stub_headers)
+    response = RestClient.post("#{ENV['vets_api_url']}/services/claims/v0/forms/526/#{params[:id]}/attachments", {attachment: params[:attachment]}, TestUser.stub_headers)
     JSON.parse(response&.body)['data']
     redirect_to claim_path(params[:id])
   end
@@ -38,6 +60,7 @@ class ClaimsController < ApplicationController
     @name = @session.id_token_attributes['name']
     name_parts = @name.split(' ')
     @user = TestUser.where('lower(first_name) = ? AND  lower(last_name) = ?', name_parts.first.downcase, name_parts.last.downcase).first
+    @user = TestUser.create(first_name: name_parts.first.downcase, last_name: name_parts.last.downcase) unless @user
     @veteran = TestVeteran.find params[:user_id] if params[:user_id].present?
   end
 end
