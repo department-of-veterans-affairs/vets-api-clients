@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module VerificationHelper
   def badge_class(veteran_confirmed)
     if veteran_confirmed.nil?
@@ -13,7 +15,7 @@ module VerificationHelper
     if veteran_confirmed.nil?
       'Unreachable'
     elsif veteran_confirmed
-      'Confirmed' 
+      'Confirmed'
     else
       'Unconfirmed'
     end

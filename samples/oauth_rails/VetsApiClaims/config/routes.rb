@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'auth#login'
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   delete '/user', to: 'users#destroy'
   get '/claims/active_itf', to: 'claims#active_itf', as: :active_itf
   get '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
-  resources :claims, only: [:index, :show] do
+  resources :claims, only: %i[index show] do
     member do
       post :update_supporting_document
     end

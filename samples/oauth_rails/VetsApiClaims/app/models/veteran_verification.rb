@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VeteranVerification
   attr_reader :errors
 
@@ -9,6 +11,7 @@ class VeteranVerification
 
   def confirmed_status
     return nil if confirmed_status_response.code != 200
+
     confirmed_status_response['data']['attributes']['veteran_status'] == 'confirmed'
   end
 
@@ -18,6 +21,7 @@ class VeteranVerification
 
   def service_histories
     return @service_histories if @service_histories
+
     @service_histories =
       if service_histories_response.code == 200
         service_histories_response['data'].collect { |data| ServiceHistory.new(data) }
@@ -35,9 +39,10 @@ class VeteranVerification
 
     @disability_ratings = []
     return @disability_ratings if disability_ratings_response.code != 200
+
     disability_ratings_response['data'].each do |rating|
       modified_rating = {}
-      rating['attributes'].each do |key,value|
+      rating['attributes'].each do |key, value|
         modified_rating[key] =
           if key == 'effective_date'
             Time.zone.parse(value)
@@ -54,11 +59,12 @@ class VeteranVerification
     @disability_ratings_response = get('disability_rating', allow: [402])
   end
 
-private
+  private
+
   def get(endpoint, version: 0, allow: [])
-    response = HTTParty.get("https://#{@env_prefix}api.va.gov/services/veteran_verification/v#{version}/#{endpoint}", { headers: @authed_header })
+    response = HTTParty.get("https://#{@env_prefix}api.va.gov/services/veteran_verification/v#{version}/#{endpoint}", headers: @authed_header)
     if response.code != 200 && allow.exclude?(response.code)
-      @errors << {message: "Accessing #{endpoint} API returned #{Rack::Utils::HTTP_STATUS_CODES[response.code]}", error_objects: response['errors']}
+      @errors << { message: "Accessing #{endpoint} API returned #{Rack::Utils::HTTP_STATUS_CODES[response.code]}", error_objects: response['errors'] }
     end
     response
   end

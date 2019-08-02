@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestVeteran < ApplicationRecord
   belongs_to :test_user
 
