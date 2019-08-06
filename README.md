@@ -46,5 +46,5 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 - The [Veteran Confirmation](https://developer.va.gov/explore/verification/docs/veteran_confirmation) endpoint allows third-parties to request confirmation from the VA of an individual's Veteran status after receiving authorization to do so using an Open ID Connect flow.
 
 
-## Requesting Access
+## Further Assistance
 If you have any questions or need further assistance, please email our team at api@va.gov. You will receive a human reply within 24 hours.  Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
