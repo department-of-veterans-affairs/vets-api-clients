@@ -15,6 +15,9 @@ class Authd
      */
     public function handle($request, Closure $next)
     {
+        if(null == $request->session()->get('id') or (null !== $request->session()->get('expires_at') and $request->session()->get('expires_at') < time())) {
+            return redirect('/');
+        }
         return $next($request);
     }
 }

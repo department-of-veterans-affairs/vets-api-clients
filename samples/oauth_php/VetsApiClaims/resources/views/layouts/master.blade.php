@@ -42,7 +42,7 @@
               <nav class="site-header__nav">
                 <ul class="site-header__nav-list">
                   <li class="site-header__nav-item">
-                    <a class="site-header__nav-item__link " href="/documentation">Documentation</a>
+                    <a class="site-header__nav-item__link " href="https://developer.va.gov" target="_BLANK">Documentation</a>
                   </li>
                   @if(null !== Session::get('expires_at') and Session::get('expires_at') > time())
                       <li class="site-header__nav-item">

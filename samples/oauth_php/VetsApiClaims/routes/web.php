@@ -13,6 +13,6 @@
 
 Route::get('/', 'HomeController@getIndex');
 Route::get('/callback', 'HomeController@getCallback');
-Route::get('/claims', 'ClaimsController@index');
-Route::get('/verification', 'VeteranVerificationController@index');
+Route::get('/claims', ['middleware' => 'oauth_auth', 'uses' => 'ClaimsController@index']);
+Route::get('/verification', ['middleware' => 'oauth_auth', 'uses' => 'VeteranVerificationController@index']);
 Route::get('/logout', 'HomeController@destroy');
