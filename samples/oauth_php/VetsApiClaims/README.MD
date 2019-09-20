@@ -13,5 +13,9 @@ This will install artisan
   - VA_CLIENT_SECRET
   - DB_DATABASE
 
-Running the APP
+## Running the APP
 - at the command line run `php artisan serve --port=3000`
+
+
+## Notes
+To demonstrate techniques, the app uses php's curl as part of the Oauth flow, but when consuming the api (ex. Claims) the app used the PHP Guzzle library. https://guzzle.readthedocs.io/en/latest/index.html 
