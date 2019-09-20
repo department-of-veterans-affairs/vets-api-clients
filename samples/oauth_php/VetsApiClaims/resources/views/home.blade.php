@@ -1,22 +1,5 @@
 @extends('layouts.master')
 @section('content')
-@if(null !== Session::get('expires_at') and Session::get('expires_at') > time())
-<div class="site-top-nav-wrapper site-l-wrapper ">
-  <nav class="site-header__nav">
-    <ul class="site-header__nav-list">
-      <li class="site-header__nav-item">
-        <a class="site-header__nav-item__link " href="https://developer.va.gov">Documentation</a>
-      </li>
-      @if(null !== Session::get('expires_at') and Session::get('expires_at') > time())
-          <li class="site-header__nav-item">
-            <a class="site-header__nav-item__link " href="/claims">View Claims</a>
-          </li>
-      @endif
-    </ul>
-  </nav>
-</div>
-
-@endif
 
 <div class="site-hero clip-bottom">
   <div class="site-l-wrapper">

@@ -7,11 +7,11 @@ use App\OauthSession;
 
 class HomeController extends Controller
 {
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         $nonce_base = bin2hex(random_bytes(20));
-        session(['nonce_key' => $nonce_base]);
-        session(['login_time' => time()]);
+        $request->session()->put('nonce_key', $nonce_base);
+        $request->session()->put('login_time', time());
         $scope = 'openid profile offline_access claim.read claim.write service_history.read disability_rating.read veteran_status.read';
         $oauth_params = [
           'client_id' => env('VA_CLIENT_ID'),
@@ -19,7 +19,7 @@ class HomeController extends Controller
           'redirect_uri' => "http://localhost:3000/callback",
           'response_type' => 'code',
           'scope' => $scope,
-          'state' => session('login_time')
+          'state' => $request->session()->get('login_time')
         ];
         $oauth_url = env('VETS_API_URL') . "/oauth2/authorization?" . http_build_query($oauth_params);
         return view('home', ['oauth_url' => $oauth_url]);
@@ -30,8 +30,8 @@ class HomeController extends Controller
       if ($request->input('code') == null) {
         return redirect("/");  
       };
-      if ((int)$request->input('state') != session('login_time')) {
-        session(['Invalid state' => 'Invalid State']);
+      if ((int)$request->input('state') != $request->session()->get('login_time')) {
+        $request->session()->put('Invalid state', 'Invalid State');
         return redirect("/");
       }
       $body = [
@@ -52,11 +52,11 @@ class HomeController extends Controller
       curl_close($curl);
       $response = json_decode( $res, true );
       if ($httpcode / 400 == 1) {
-        session(['alert' => "Login failed because " . $response['error']]);
+        $request->session()->put('alert',  "Login failed because " . $response['error']);
         return redirect("/");
       }
       if ($httpcode != 200) {
-        session(['alert' => "Authorization did not receive OK response.  Response in logs."]);
+        $request->session()->put('alert', "Authorization did not receive OK response.  Response in logs.");
         return redirect("/");
       }
       $sesh = new OauthSession();
@@ -67,15 +67,9 @@ class HomeController extends Controller
       $sesh->id_token = $response['id_token'];
       $sesh->state = $response['state'];
       $sesh->refresh_token = $response['refresh_token'];
-      # unless sesh.id_token_attributes['nonce'] == digest(session[:nonce_key])
-      #   flash.alert = 'Inauthentic token received.'
-      #   session(['alert' => "Inauthentic token received."]);
-      #   redirect_to(login_path) && return
-      # end
-      # sesh.save!
       $sesh->save();
-      session(['id' => $sesh->id, 'expires_at' => $sesh->expires_at]);
-      #$request->session()->put('id', 'value');
+      $request->session()->put('id', $sesh->id);
+      $request->session()->put('expires_at', $sesh->expires_at);
       return redirect("/claims");
     }
 

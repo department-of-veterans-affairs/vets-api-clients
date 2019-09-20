@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\OauthSession;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class VeteranVerificationController extends Controller
 {
@@ -12,16 +14,9 @@ class VeteranVerificationController extends Controller
         if (null !== session('id') and null !== session('expires_at') ) {
             $oauth_session = OauthSession::find(session('id'));
             $url = env('VETS_API_URL') . '/services/veteran_verification/v0/status';
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Authorization: Bearer ' . $oauth_session->access_token
-            ));
-            $res = curl_exec($curl);
-            $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-            curl_close($curl);
-            $status = json_decode( $res, true );
+            $client = new Client(['headers' => ['Authorization' => 'Bearer ' . $oauth_session->access_token]]);
+            $response = $client->request('GET', $url);
+            $status = json_decode($response->getBody()->getContents(), true);
             return view('veteran_status', ['status' => $status['data']]);
         } 
     }

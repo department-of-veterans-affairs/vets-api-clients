@@ -24,6 +24,10 @@ class CreateSessionsTable extends Migration
             $table->string('refresh_token', 255);
             $table->timestamps();
         });
+        Schema::table('oauth_sessions', function(Blueprint $table)
+        {
+            $table->primary('id');
+        });
     }
 
     /**
