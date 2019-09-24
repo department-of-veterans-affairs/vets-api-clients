@@ -47,7 +47,7 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 
 
 ## Further Assistance
-If you have any questions or need further assistance, please visit our (support page)[https://developer.va.gov/support], where you can contact us and peruse the FAQ. You will receive a human reply within 24 hours.  Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQ. You will receive a human reply within 24 hours. Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
 
 ## Incident and Outage Awareness (Statuspage)
 Please visit and subscribe to alerts from the [VA Lighthouse Statuspage](https://valighthouse.statuspage.io/) for up-to-the minute reports on API and gateway functionality. Currently monitoring the dev environment only, with production coming soon.
