@@ -1,6 +1,6 @@
 # vets-api-clients
 
-⚠️ **Materials in this repo may be outdated as of July 2019.** This repository contains resources for accessing VA APIs. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  **For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).**
+⚠️ **Materials in this repo may be outdated as of September 2019.** This repository contains resources for accessing VA APIs. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  **For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).**
 
 Welcome to the repository for consumers of **Department of Veterans Affairs (VA) Lighthouse APIs**.  
 
@@ -46,8 +46,13 @@ Note that the Health (FHIR / Argonaut) APIs for access to Veteran health records
 - The [Veteran Confirmation](https://developer.va.gov/explore/verification/docs/veteran_confirmation) endpoint allows third-parties to request confirmation from the VA of an individual's Veteran status after receiving authorization to do so using an Open ID Connect flow.
 
 
-## Further Assistance
+## Learn More
+
+### Further Assistance
 If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQ. You will receive a human reply within 24 hours. Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
 
-## Incident and Outage Awareness (Statuspage)
-Please visit and subscribe to alerts from the [VA Lighthouse Statuspage](https://valighthouse.statuspage.io/) for up-to-the minute reports on API and gateway functionality. Currently monitoring the dev environment only, with production coming soon.
+### Incident and Outage Awareness (Statuspage)
+Please visit and subscribe to alerts from the [VA Lighthouse Statuspage](https://valighthouse.statuspage.io/) for up-to-the minute reports on API and gateway functionality. VA currently offers real-time information for our development environments. We are still working on plans to monitor production and staging environments.
+
+### Lighthouse Newletter Updates (GovDelivery)
+Subscribe to the [VA Lighthouse newsletter](https://public.govdelivery.com/accounts/USVAOIT/subscriber/new?topic_id=USVAOIT_20) to receive regular program updates.
