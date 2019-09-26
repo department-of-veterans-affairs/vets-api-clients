@@ -20,7 +20,7 @@
             <div class="site-header__masthead">
               <div class="site-header__logo" id="extended-logo">
                 <em class="site-header__logo-text">
-                  <a class="site-header__logo-link" title="VA.gov Design System homepage" href="/"><strong class="vads-u-display--block small-screen:vads-u-display--inline">Lighthouse</strong> <span class="vads-u-display--none small-screen:vads-u-display--inline">|</span> Oauth Example - PHP</a>
+                  <a class="site-header__logo-link" title="VA.gov Design System homepage" href="/"><strong class="vads-u-display--block small-screen:vads-u-display--inline">Lighthouse</strong> <span class="vads-u-display--none small-screen:vads-u-display--inline">|</span> OAuth Example - PHP</a>
                 </em>
               </div>
               <div class="site-header__utility-links">
@@ -28,7 +28,7 @@
                 @if(null !== Session::get('expires_at') and Session::get('expires_at') > time())
                     <a href="/logout" class="usa-button site-button-inverse">Logout</a>
                 @else
-                    <a href="{{$oauth_url}}" class="usa-button site-button-inverse">Oauth Login</a>
+                    <a href="{{$oauth_url}}" class="usa-button site-button-inverse">OAuth Login</a>
                     <a href="https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md" class="usa-button vads-u-margin--0" target="_BLANK">Test Users</a>
                 @endif
               </div>
