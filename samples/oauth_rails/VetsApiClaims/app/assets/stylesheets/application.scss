@@ -12,7 +12,17 @@
  *
  */
 
-@import "bootstrap";
+/*
+ *= require_tree .
+ *= require_self
+ */
+h1.main {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+}
+
+main {
+  min-height: 625px;
+}
 
 #access_token {
   border: 1px solid #000;
@@ -34,4 +44,14 @@
 .card {
   margin: 10px;
   padding: 10px;
+}
+
+table a {
+  color: #0071BB;
+  font-weight: bold;
+  text-decoration: none;
+  transition: none;
+  &.danger {
+    color: #981b1e;
+  }
 }

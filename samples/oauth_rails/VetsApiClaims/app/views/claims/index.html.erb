@@ -1,32 +1,18 @@
-<div class='container'>
+<div class="site-l-wrapper">
   <h3 class='h3 text-center'>Claims for <%= @veteran.present? ? @veteran.name : @name %></h3>
-  <table class='table table-striped'>
-    <tr>
-      <th>evss id</td> 
-      <th>date filed</td> 
-      <th>min est date</td> 
-      <th>max est date</td> 
-      <th>open</td>
-      <th>waiver submitted</td> 
-      <th>documents needed</td> 
-      <th>development letter sent</td> 
-      <th>decision letter sent</td> 
-      <th>requested decision</td> 
-      <th>claim type</td> 
-      <th>status</td>
-    </tr>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Evss Id</td> 
+        <th scope="col">Open</td>
+        <th scope="col">Claim Type</td> 
+        <th scope="col">Status</td>
+      </tr>
+    </thead>
     <% @claims.each do |claim| %>
       <tr>
         <td><%= link_to claim['attributes']["evss_id"], claim_path(id: claim['attributes']["evss_id"], user_id: params[:user_id]) %></td> 
-        <td><%= claim['attributes']["date_filed"] %></td> 
-        <td><%= claim['attributes']["min_est_date"] %></td> 
-        <td><%= claim['attributes']["max_est_date"] %></td> 
         <td><%= claim['attributes']["open"] %></td>
-        <td><%= claim['attributes']["waiver_submitted"] %></td> 
-        <td><%= claim['attributes']["documents_needed"] %></td> 
-        <td><%= claim['attributes']["development_letter_sent"] %></td> 
-        <td><%= claim['attributes']["decision_letter_sent"] %></td> 
-        <td><%= claim['attributes']["requested_decision"] %></td> 
         <td><%= claim['attributes']["claim_type"] %></td> 
         <td><%= claim['attributes']["status"] %></td>
       </tr>

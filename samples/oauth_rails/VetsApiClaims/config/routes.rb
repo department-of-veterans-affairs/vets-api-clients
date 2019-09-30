@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'auth#login'
+  root 'pages#index'
 
   get '/login', to: 'auth#login'
   get '/callback', to: 'auth#callback'

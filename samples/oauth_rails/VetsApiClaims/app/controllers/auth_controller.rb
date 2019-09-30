@@ -37,7 +37,7 @@ class AuthController < ApplicationController
     if response.code / 400 == 1
       flash.alert = "Login failed because #{response['error']}."
       Rails.logger.warn "Response was 4XX.  This was response:\n    #{response}"
-      redirect_to(login_path) && return
+      redirect_to(root_path) && return
     end
     if response.code != 200
       flash.alert = 'Authorization did not receive OK response.  Response in logs.'
@@ -47,7 +47,7 @@ class AuthController < ApplicationController
     sesh = Session.new_from_oauth(response)
     unless sesh.id_token_attributes['nonce'] == digest(session[:nonce_key])
       flash.alert = 'Inauthentic token received.'
-      redirect_to(login_path) && return
+      redirect_to(root_path) && return
     end
     sesh.save!
     session[:id] = sesh.id
@@ -56,13 +56,7 @@ class AuthController < ApplicationController
 
   def logout
     session[:id] = nil
-    redirect_to login_path
+    redirect_to root_path
   end
 
-  private
-
-  # helper method to always digest the same
-  def digest(value)
-    Digest::SHA256.hexdigest(value + Figaro.env.va_developer_client_secret)
-  end
 end
