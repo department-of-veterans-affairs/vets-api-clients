@@ -1,0 +1,8 @@
+<div class="site-l-wrapper">
+  <h3 class='h3 text-center'>Upload Documents</h3>
+  <%= form_for @document, html: { multipart: true } do |f| %>
+    <%= file_field_tag :upload %>
+
+    <%= f.submit 'Upload' %>
+  <% end %>
+</div>

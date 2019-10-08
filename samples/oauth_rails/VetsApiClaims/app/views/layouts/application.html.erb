@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OauthRailsVetverification</title>
+    <title>Lighthouse API Ruby Sample</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://s3-us-gov-west-1.amazonaws.com/dev-design.va.gov/assets/stylesheets/application.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -47,7 +49,7 @@
     <% end %>
     <main>
       <div class="large-screen:vads-u-padding-x--0">
-        <% if @session.present? %>
+        <% if @session.present? && !@session.expired? %>
           <div class="site-top-nav-wrapper site-l-wrapper ">
             <nav class="site-header__nav">
               <ul class="site-header__nav-list">
@@ -60,6 +62,9 @@
                   </li>
                   <li class="site-header__nav-item">
                     <a class="site-header__nav-item__link " href="/verification">Veteran Verification</a>
+                  </li>
+                  <li class="site-header__nav-item">
+                    <%= link_to 'Benefits Intake', documents_path, class: 'site-header__nav-item__link' %>
                   </li>
                 <% end %>
               </ul>
@@ -75,7 +80,6 @@
         <div class="medium-screen:vads-u-display--flex medium-screen:vads-u-justify-content--space-between vads-u-align-items--center">
           <div>
             <ul class="site-footer__links">
-              <li class="site-footer__links__item"><a href="/documentation/whats-new">What’s new?</a></li>
               <li class="site-footer__links__item"><a href="http://www.va.gov/playbook/" target="_blank">VA.gov playbook</a></li>
               <li class="site-footer__links__item"><a target="_blank" href="https://www.section508.va.gov/">Accessibility</a></li>
               <li class="site-footer__links__item"><a href="http://www.va.gov/web/" target="_blank">Web governance &amp; policies</a></li>
@@ -83,7 +87,7 @@
             </ul>
           </div>
           <div class="footer-seal">
-            <a href="https://va.gov" class="site-footer__logo" title="Go to VA.gov"><%= image_tag('va-logo-white.png', alt: "U.S. Department of Veterans Affairs logo") %></a>
+            <a href="https://va.gov" class="site-footer__logo" title="Go to VA.gov"><%= image_tag('https://s3-us-gov-west-1.amazonaws.com/dev-design.va.gov/assets/img/va-logo-white.png', alt: "U.S. Department of Veterans Affairs logo") %></a>
           </div>
         </div>
       </div>
