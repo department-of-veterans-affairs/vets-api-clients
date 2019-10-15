@@ -26,7 +26,7 @@
           </div>
           <div class="site-header__utility-links">
 
-            <% if @session.present? %>
+            <% if @session.present? && !@session.expired? %>
               <%= link_to 'Logout', logout_path, class: "usa-button site-button-inverse" %>
             <% else %>
               <%= link_to 'OAuth Login', @oauth_url, class: "usa-button site-button-inverse" %>

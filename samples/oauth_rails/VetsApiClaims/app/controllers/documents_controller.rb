@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   before_action :setup_from_session
 
   def index
-    @documents = Document.where(username: @session.id_token_attributes[:preferred_username])
+    @documents = Document.all.order(created_at: :asc) # where(username: @session.id_token_attributes[:preferred_username])
   end
 
   def new
@@ -28,13 +28,14 @@ class DocumentsController < ApplicationController
   def update
     @document = Document.find params[:id]
     file_contents = File.read( params[:upload].tempfile.path )
-    encoded = Base64.encode64(file_contents)
+    content = build_content(file_contents.chop)
+    encoded = Base64.encode64(content)
     RestClient.put(@document.location,
-                         "data:application/pdf;base64,#{encoded}",
+                         "data:multipart/form-data;base64,#{encoded}",
                          {'Content-Encoding': 'base64',
                           'Content-Type': 'application/pdf'
     }
-                        )
+                    )
     redirect_to documents_path
   end
 
@@ -68,5 +69,21 @@ class DocumentsController < ApplicationController
     @document = Document.find params[:id]
     @document.destroy
     redirect_to documents_path
+  end
+
+  private
+  def build_content(content)
+    ["------WebKitFormBoundaryVfOwzCyvug0JmWYo",
+     'Content-Disposition: form-data; name="metadata"; filename="metadata.json"',
+     "Content-Type: application/json",
+     "",
+     '{"veteranFirstName": "Jane","veteranLastName": "Doe","fileNumber": "012345678","zipCode": "97202","source": "MyVSO","docType": "21-22"}',
+     '------WebKitFormBoundaryVfOwzCyvug0JmWYo',
+     'Content-Disposition: form-data; name="content"; filename="VBA200996_201902.pdf"',
+     'Content-Type: application/pdf',
+     "",
+     content.chomp("\r\n"),
+     '------WebKitFormBoundaryVfOwzCyvug0JmWYo--',
+    ].join("\r\n") + "\r\n"
   end
 end

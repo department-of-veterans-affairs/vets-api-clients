@@ -6,8 +6,8 @@
         <th scope="col">GUID</td> 
         <th scope="col">Status</td>
         <th scope="col">Code</td>
-        <th scope="col">Location</td>
         <th scope="col">Updated At</td>
+        <th scope="col">Location</td>
         <th scope="col"></td>
         <th scope="col"></td>
         <th scope="col"></td>
@@ -25,7 +25,6 @@
         <td><%= link_to 'Delete', document_path(document), data: { confirm: 'Are you sure you want to remove this document? A copy will remain on AWS.' }, method: :delete  %></td>
         <td><%= link_to 'Download', download_document_path(document) %></td>
         <td><%= link_to 'Update Status', update_status_document_path(document) %></td>
-
       </tr>
     <% end %>
   </table>
