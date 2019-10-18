@@ -1,6 +1,6 @@
 ## VA Lighthouse Benefits Intake API - Document Processing
 
-This document provides some details about how documents are processed by VA and its affiliates after they are submitted via the Benefits Intake API.  Please visit the Lighthouse [developer portal](https://developer.va.gov/explore/benefits/docs/benefits) for the latest documentation and release notes.
+This document provides some details about how documents are processed by VA and its affiliates after they are submitted via the Benefits Intake API.  Please visit the VA Lighthouse [developer portal](https://developer.va.gov/explore/benefits/docs/benefits) for the latest documentation and release notes.
 
 A key fact for API users to understand is that once a submission reaches "received" status, it enters a workflow which involves human interaction/processing of the submitted documents. Therefore the expected time until submission status changes to either "processing" or "success" may be measured on the order of hours/days rather than seconds/minutes. API users should adjust their expectations accordingly. For example, frequent polling for status updates beyond the "received" status is not warranted.
 
