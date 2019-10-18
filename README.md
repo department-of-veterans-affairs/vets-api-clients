@@ -1,6 +1,6 @@
 # vets-api-clients
 
-⚠️ **Materials in this repo may be outdated as of July 2019.** This repository contains resources for accessing VA APIs. It includes API specifications, sample clients, and general access information.   Anything older than April 2019 may be considered deprecated.  **For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).**
+⚠️ **Materials in this repo may be outdated as of October 2019.** This repository contains resources for accessing VA APIs. It includes API specifications, sample clients, and general access information.   Anything **older than April 2019** may be considered deprecated.  **For the most up-to-date API documentation, please visit [developer.va.gov/explore](https://developer.va.gov/explore).**
 
 Welcome to the repository for consumers of **Department of Veterans Affairs (VA) Lighthouse APIs**.  
 
