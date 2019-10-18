@@ -1,4 +1,4 @@
-# vets-api Go Client
+# VA Lighthouse APIvets-api Go Client
 
 This package is a vets-api client written in [Go](https://golang.org) as well as sample implementations.
 
