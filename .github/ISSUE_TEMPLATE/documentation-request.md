@@ -1,5 +1,4 @@
 ## VA Lighthouse API Documentation Request
-
 ---
 name: 📖 Documentation Request
 about: For requesting new documentation or updates on the VA Lighthouse API Platform
