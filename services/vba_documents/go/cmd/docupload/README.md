@@ -1,7 +1,7 @@
 docupload
 ========
 
-# VA Lighthouse API documentation is now at [developer.va.gov](https://developer.va.gov)
+## VA Lighthouse API documentation is now at [developer.va.gov](https://developer.va.gov)
 `docupload` is a utility that demonstrates how to upload a document (sample.pdf) to the VBA documents service via the vets-api.
 
 ## Usage
