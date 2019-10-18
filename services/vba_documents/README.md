@@ -1,4 +1,4 @@
-# Benefits Intake API (fka VBA Document Upload Service)
+# VA Lighthouse Benefits Intake API (fka VBA Document Upload Service)
 
 ⚠️ **This documentation is deprecated.  Please consult the VA Lighthouse [Developer Portal](https://developer.va.gov/explore/benefits/docs/benefits) for up-to-date docs.**
 Sample clients and API documentation for the VBA document upload service.
