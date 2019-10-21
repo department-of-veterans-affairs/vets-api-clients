@@ -1,4 +1,5 @@
 # vets-api sample cURL client
+## VA Lighthouse API documentation is now at [developer.va.gov](https://developer.va.gov)
 
 ## Configuration
 
@@ -19,7 +20,7 @@ You must provide your vets-api authentication token via an environment variable,
 export VETS_API_TOKEN=your-token-value
 ```
 
-You may specify an alternate vets-api endpoint by setting the `VETS_API_URL` environment variable. If unset, the client will use the production API URL: https://api.vets.gov/.
+You may specify an alternate vets-api endpoint by setting the `VETS_API_URL` environment variable. If unset, the client will use the production API URL: https://api.va.gov/.
 
 ### Usage
 

@@ -3,6 +3,8 @@ name: 😡😐😀 General Feedback
 about: For general feedback on the VA API Platform
 ---
 
+## VA Lighthouse General Feedback
+
 ⚠️ Please read before submitting: As this is a public forum, please do not include any sensitive information (such as your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, Name, Address, Phone Number, Social Security Number, Medical Record Number, etc).
 
 

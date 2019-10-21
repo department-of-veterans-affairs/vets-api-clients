@@ -1,4 +1,4 @@
-## VA API Terms of Service 
+## VA Lighthouse API Terms of Service 
 
 ### This content has been moved.
 

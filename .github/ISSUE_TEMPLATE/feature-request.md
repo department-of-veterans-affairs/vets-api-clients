@@ -3,6 +3,8 @@ name: 💡 Feature Request
 about: For requesting new features or enhancements on the VA API Platform
 ---
 
+## VA Lighthouse API Feature Request
+
 ⚠️ Please read before submitting: As this is a public forum, please do not include any sensitive information (such as your VA API OAuth Client ID, VA API OAuth Client Secret, VA API key, Name, Address, Phone Number, Social Security Number, Medical Record Number, etc).
 
 
