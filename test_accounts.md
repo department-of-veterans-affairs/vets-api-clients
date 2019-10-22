@@ -4,15 +4,15 @@ These are test accounts you can use to test OAuth APIs by logging in with them t
 
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
-| Email | Password | Last Name | First Name | Branch | Discharge | Gender | Birthdate |
-|---|---|---|---|---|---|---|---|
-| va.api.user+idme.001@gmail.com | Password1234! | Ellis | Tamara | Army | Honorable | female | 1967-06-19 |
-| va.api.user+idme.002@gmail.com | Password1234! | Moore | Janet | Navy | Honorable | female | 1949-05-06 |
-| va.api.user+idme.003@gmail.com | Password1234! | Le | Ralph | Marines | Dishonorable | male | 1948-10-30 |
-| va.api.user+idme.004@gmail.com | Password1234! | Gray | Jesse | Air Force | Honorable | male | 1954-12-15 |
-| va.api.user+idme.005@gmail.com | Password1234! | Foster | Pauline | Marines | Honorable | female | 1976-06-09 |
-| va.api.user+idme.006@gmail.com | Password1234! | Freeman | Russell | Army/Airforce | Honrable/Dishonorable | male | 1969-11-05 |
-| va.api.user+idme.007@gmail.com | Password1234! | John | Doe | Non-Veteran |
+| Email | Password | Last Name | First Name | Branch | Discharge | Gender | Birthdate | Mock SSN |
+|---|---|---|---|---|---|---|---|---|
+| va.api.user+idme.001@gmail.com | Password1234! | Ellis | Tamara | Army | Honorable | female | 1967-06-19 | 796130115 |
+| va.api.user+idme.002@gmail.com | Password1234! | Moor | Janet | Navy | Honorable | female | 1949-05-06 | 796127677
+| va.api.user+idme.003@gmail.com | Password1234! | Le | Ralph | Marines | Dishonorable | male | 1948-10-30 | 796378782 |
+| va.api.user+idme.004@gmail.com | Password1234! | Gray | Jesse | Air Force | Honorable | male | 1954-12-15 | 796378881 | 
+| va.api.user+idme.005@gmail.com | Password1234! | Foster | Pauline | Marines | Honorable | female | 1976-06-09 | 796330625	|
+| va.api.user+idme.006@gmail.com | Password1234! | Freeman | Russell | Army/Airforce | Honrable/Dishonorable | male | 1969-11-05 | 796149080 |
+| va.api.user+idme.007@gmail.com | Password1234! | John | Doe | Non-Veteran | n/a |
 
 ## Health API Accounts
 
