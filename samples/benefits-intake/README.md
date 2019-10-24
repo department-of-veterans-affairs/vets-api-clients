@@ -1,6 +1,6 @@
 ### Description
 ---
-The project is meant to serve as an example of the benefits intake api available at [here](https://developer.va.gov).
+The project is meant to serve as an example of the VA Lighthouse Benefits Intake API available [here](https://developer.va.gov).
 
 ### Installation
 ---
