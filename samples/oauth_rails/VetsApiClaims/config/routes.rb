@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'auth#login'
+  root 'pages#index'
 
   get '/login', to: 'auth#login'
   get '/callback', to: 'auth#callback'
@@ -18,4 +18,10 @@ Rails.application.routes.draw do
     end
   end
   get '/claims_forms/526', to: 'claims#form_526'
+  resources :documents do
+    member do
+      get :download
+      get :update_status
+    end
+  end
 end

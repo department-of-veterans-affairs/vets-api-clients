@@ -1,4 +1,4 @@
-<div class='container'>
+<div class="site-l-wrapper">
   <h1 class='text-center'>Welcome</h1>
   <p class='text-center'>
     <%= link_to 'My Claims', claims_path, class: 'btn btn-primary' %>
@@ -8,32 +8,53 @@
   </p>
 </div>
 
-<div class='col-md-4 offset-md-4'>
+<div class='vads-l-grid-container'>
   <%= form_tag({controller: "users", action: "create"}, method: "post") do %>
-    <%= label_tag(:first_name, "First Name:") %>
-    <%= text_field_tag(:first_name) %>
-    <br/>
-    <%= label_tag(:last_name, "Last Name:") %>
-    <%= text_field_tag(:last_name) %>
-    <br/>
-    <%= label_tag(:ssn, "Social Security Number:") %>
-    <%= text_field_tag(:ssn) %>
-    <br/>
-    <%= label_tag(:birth_date, "Date of Birth:") %>
-    <%= text_field_tag(:birth_date) %>
-    <br/>
-    <%= submit_tag("Add Veteran") %>
+    <div class="vads-l-row">
+      <div class="vads-l-col--6">
+        <%= label_tag(:first_name, "First Name:") %>
+        <%= text_field_tag(:first_name, nil, class: 'usa-input') %>
+      </div>
+      <div class="vads-l-col--6">
+        <%= label_tag(:last_name, "Last Name:") %>
+        <%= text_field_tag(:last_name) %>
+      </div>
+    </div>
+    <div class="vads-l-row">
+      <div class="vads-l-col--6">
+        <%= label_tag(:ssn, "Social Security Number:") %>
+        <%= text_field_tag(:ssn) %>
+      </div>
+      <div class="vads-l-col--6">
+        <%= label_tag(:birth_date, "Date of Birth:") %>
+        <%= text_field_tag(:birth_date) %>
+      </div>
+    </div>
+    <div class="vads-l-row">
+      <div class="vads-l-col--12 text-center">
+        <%= submit_tag("Add Veteran") %>
+      </div>
+    </div>
   <% end %>
   <% if @user && @user.test_veterans.present? %>
     <h3 class="h3 text-center">Veterans I Represent</h3>
-    <table class='table'>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
       <% @user.test_veterans.each do |veteran| %>
         <tr>
           <td><%= veteran.first_name %> <%= veteran.last_name %></td>
-          <td class='text-right'><%= link_to 'View claims', claims_url(user_id: veteran.id) %></td>
-          <td class='text-right'><%= link_to 'Active ITF', active_itf_url(user_id: veteran.id) %></td>
-          <td class='text-right'><%= link_to 'Submit ITF', submit_itf_url(user_id: veteran.id) %></td>
-          <td class='text-right'><%= link_to 'Delete',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td class='text-center'><%= link_to 'View claims', claims_url(user_id: veteran.id) %></td>
+          <td class='text-center'><%= link_to 'Active ITF', active_itf_url(user_id: veteran.id) %></td>
+          <td class='text-center'><%= link_to 'Submit ITF', submit_itf_url(user_id: veteran.id) %></td>
+          <td class='text-center'><%= link_to 'Delete',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger' %></td>
         </tr>
       <% end %>
     </table>

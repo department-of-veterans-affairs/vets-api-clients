@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ClaimsController < ApplicationController
+  before_action :require_auth
   before_action :setup_from_session
 
   def index
@@ -47,6 +48,7 @@ class ClaimsController < ApplicationController
 
   def form_526
     @schema = JSON.parse(SchemaService.get_schema('526').body)['data'][0]
+    puts @schema.inspect
   end
 
   def update_supporting_document
