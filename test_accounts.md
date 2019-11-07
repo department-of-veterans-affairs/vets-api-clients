@@ -13,9 +13,9 @@ These are test accounts you can use to test OAuth APIs by logging in with them t
 | va.api.user+idme.005@gmail.com | Password1234! | Foster | Pauline | Marines | Honorable | female | 1976-06-09 |
 | va.api.user+idme.006@gmail.com | Password1234! | Freeman | Russell | Army/Airforce | Honrable/Dishonorable | male | 1969-11-05 |
 | va.api.user+idme.007@gmail.com | Password1234! | John | Doe | Non-Veteran |
-| va.api.user+idme.008@gmail.com | Password1234! | Greg | Anderson | <no service episodes> | <no service episodes> | male | 1933-04-05 |
 | va.api.user+idme.009@gmail.com | Password1234! | Denise | George | Army | Honorable | female | 1993-07-19 |
 | va.api.user+idme.010@gmail.com | Password1234! | Terrence | Montgomery | Air Force Reserve & Army Reserve | Honorable | male | 1969-06-11 |
+<!-- User not set up yet | va.api.user+idme.008@gmail.com | Password1234! | Greg | Anderson | <no service episodes> | <no service episodes> | male | 1933-04-05 | -->
 
 ## Health API Accounts
 
