@@ -1,10 +1,10 @@
 ### Description
 ---
-The project is meant to serve as an example of the benefits intake api available at [here](https://developer.va.gov).
+The project serves as an example of the [benefits intake api](https://developer.va.gov).
 
 ### Installation
 ---
-- preqs 
+- pre-reqs 
   - [yarn](https://yarnpkg.com/lang/en/docs/install/) 
   - [expo-cli](https://docs.expo.io/versions/latest/workflow/expo-cli/).
 ```
