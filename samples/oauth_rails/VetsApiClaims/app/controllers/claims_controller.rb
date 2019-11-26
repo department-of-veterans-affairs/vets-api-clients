@@ -5,21 +5,13 @@ class ClaimsController < ApplicationController
   before_action :setup_from_session
 
   def index
-    @claims = if @veteran.present?
-                @user.claims_for(@veteran, @session)
-              else
-                TestUser.claims(@session)
-              end
+    @claims = claims_service.claims
   rescue StandardError
     redirect_back(fallback_location: root_path, alert: 'This user has no claims')
   end
 
   def show
-    @claim = if @veteran.present?
-               @user.claim_for(params[:id], @veteran, @session)
-             else
-               TestUser.claim(params[:id], @session)
-             end
+    @claim = claims_service.claim(params[:id])
   rescue StandardError
     redirect_back(fallback_location: root_path, alert: "You don't have access to this claim")
   end
@@ -35,11 +27,10 @@ class ClaimsController < ApplicationController
   end
 
   def submit_itf
+    itf_service.submit_itf
     if @veteran.present?
-      @itf = @user.submit_itf_for(@veteran, @session)
       redirect_to active_itf_url(user_id: params[:user_id])
     else
-      @itf = @user.submit_itf(@session)
       redirect_to active_itf_url
     end
   rescue StandardError
@@ -58,6 +49,14 @@ class ClaimsController < ApplicationController
   end
 
   private
+
+  def claims_service
+    @claims_service ||= ClaimsService.new(@session.access_token, @veteran)
+  end
+
+  def itf_service
+    @itf_service ||= ItfService.new(@session.access_token, @veteran)
+  end
 
   def setup_from_session
     @session = Session.where(id: session[:id]).first
