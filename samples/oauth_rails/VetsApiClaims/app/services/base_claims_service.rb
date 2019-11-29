@@ -35,7 +35,7 @@ class BaseClaimsService
     JSON.parse(response&.body)['data']
   end
 
-  def get(path, request_headers)
+  def get(path, request_headers = nil)
     get_data(RestClient.get(path, request_headers))
   end
 

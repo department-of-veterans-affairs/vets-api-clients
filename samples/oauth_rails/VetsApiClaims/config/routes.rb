@@ -17,7 +17,8 @@ Rails.application.routes.draw do
       post :update_supporting_document
     end
   end
-  get '/claims_forms/526', to: 'claims#form_526'
+  get '/claims_forms/:form_number', to: 'claims#form', as: :form
+  post '/claims_forms/:form_number/submit', to: 'claims#form_submit', as: :form_submit
   resources :documents do
     member do
       get :download

@@ -2,6 +2,7 @@
 
 class ClaimsController < ApplicationController
   before_action :require_auth
+  skip_before_action :verify_authenticity_token, only: [:form_submit]
   before_action :setup_from_session
 
   def index
@@ -37,9 +38,14 @@ class ClaimsController < ApplicationController
     redirect_back(fallback_location: root_path, alert: 'Failure to submit ITF')
   end
 
-  def form_526
-    @schema = JSON.parse(SchemaService.get_schema('526').body)['data'][0]
-    puts @schema.inspect
+  def submit_poa; end
+
+  def form
+    @schema = schema_service.schema(params[:form_number])[0]
+  end
+
+  def form_submit
+    byebug
   end
 
   def update_supporting_document
@@ -50,12 +56,20 @@ class ClaimsController < ApplicationController
 
   private
 
+  def schema_service
+    @schema_service ||= SchemaService.new(@session.access_token)
+  end
+
   def claims_service
     @claims_service ||= ClaimsService.new(@session.access_token, @veteran)
   end
 
   def itf_service
     @itf_service ||= ItfService.new(@session.access_token, @veteran)
+  end
+
+  def poa_service
+    @poa_service ||= PoaService.new(@session.access_token)
   end
 
   def setup_from_session

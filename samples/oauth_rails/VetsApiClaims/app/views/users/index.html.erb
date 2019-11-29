@@ -4,7 +4,7 @@
     <%= link_to 'My Claims', claims_path, class: 'btn btn-primary' %>
     <%= link_to 'View Active ITF', active_itf_path, class: 'btn btn-warning' %>
     <%= link_to 'Submit ITF', submit_itf_path, class: 'btn btn-info', data: {method: :post} %>
-    <%= link_to 'Submit 526', claims_forms_526_path, class: 'btn btn-success', data: {turbolinks: "false"} %>
+    <%= link_to 'Submit 526', form_path(form_number: '526'), class: 'btn btn-success', data: {turbolinks: "false"} %>
   </p>
 </div>
 
@@ -68,4 +68,3 @@
     <div class='well' id='access_token'><%= @session.access_token %></div>
   <% end %>
 </div>
-
