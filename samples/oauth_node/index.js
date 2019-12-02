@@ -3,21 +3,48 @@ const session = require('express-session');
 const { Issuer, Strategy } = require('openid-client');
 const passport = require('passport');
 const https = require('https');
+const fs = require('fs');
+const yargs = require('yargs');
+
+const appConfig = yargs.usage('A sample application for testing the Lighthouse OAuth flow')
+  .options({
+    local: {
+      boolean: true,
+      default: false,
+      description: 'Flag to use OpenID configuration for the localhost OAuth proxy instead of the dev environment proxy',
+      required: false,
+    }
+  })
+  .wrap(yargs.terminalWidth())
+  .argv;
 
 const ROOT_URL = 'https://dev-api.va.gov/oauth2/.well-known/openid-configuration';
-const client_id = 'FAKE CLIENT ID';
-const client_secret = 'FAKE CLIENT SECRET';
+const {
+  client_id,
+  client_secret,
+  identity_provider
+} = JSON.parse(fs.readFileSync("./config.json", "utf8"));
 
 const createClient = async () => {
   Issuer.defaultHttpOptions = { timeout: 2500 };
-  return Issuer.discover(ROOT_URL).then(issuer => {
-    return new issuer.Client({
-      client_id,
-      client_secret,
-      redirect_uris: [
-        'http://localhost:8080/auth/cb'
-      ],
-    });
+  let issuer;
+  if (appConfig.local) {
+    console.log("Loading local metadata...");
+    
+    // this metadata is identical to ROOT_URL except http://localhost:7100 replaces https://dev-api.va.gov
+    const metadata = JSON.parse(fs.readFileSync("./local-metadata.json", "utf8"));
+    issuer = new Issuer(metadata);
+  } else {
+    console.log("Loading dev metadata...");
+    issuer = await Issuer.discover(ROOT_URL);
+  }
+
+  return new issuer.Client({
+    client_id,
+    client_secret,
+    redirect_uris: [
+      'http://localhost:8080/auth/cb'
+    ],
   });
 }
 
@@ -30,12 +57,17 @@ const configurePassport = (client) => {
     done(null, user);
   });
 
+  let strategyParams = {
+    scope: 'openid profile veteran_status.read'
+  };
+  if (identity_provider) {
+    strategyParams.idp = identity_provider;
+  }
+
   passport.use('oidc', new Strategy(
     {
       client,
-      params: {
-        scope: 'openid profile veteran_status.read',
-      },
+      params: strategyParams,
     }, (tokenset, userinfo, done) => {
       done(null, { userinfo, tokenset });
     }
