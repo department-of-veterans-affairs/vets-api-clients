@@ -43,6 +43,10 @@ class BaseClaimsService
     get_data(RestClient.post(path, params, request_headers))
   end
 
+  def put(path, params, request_headers)
+    get_data(RestClient.put(path, params, request_headers))
+  end
+
   def authorization_header
     { 'Authorization' => "Bearer #{@token}" }
   end

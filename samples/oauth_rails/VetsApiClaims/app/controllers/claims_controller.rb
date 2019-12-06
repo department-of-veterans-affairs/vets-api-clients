@@ -45,7 +45,29 @@ class ClaimsController < ApplicationController
   end
 
   def form_submit
-    byebug
+    # this will need to be refactored to handle different types of forms
+    poa_response = poa_service.submit_poa(
+      params[:poaFirstName],
+      params[:poaLastName],
+      params[:poaCode]
+    )
+    render json: poa_response
+  end
+
+  def form_show
+    # this will need to be refactored to handle different types of forms
+    @form_number = params[:form_number]
+    @form = poa_service.poa(params[:id])
+  rescue StandardError
+    redirect_back(
+      fallback_location: root_path,
+      alert: 'No poa exists with that ID'
+    )
+  end
+
+  def poa_upload
+    poa_service.supporting_document(params[:id], params[:attachment])
+    redirect_to form_show_path('2122', params[:id])
   end
 
   def update_supporting_document

@@ -32,8 +32,10 @@
         $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
         console.log(formData)
         console.log(this.state.form)
-        debugger
-        this.state.form.formElement.submit()
+        $.post(`${window.location.pathname}/submit`, formData, function(data) {
+          window.location.href = `${window.location.pathname}/${data.id}`
+        })
+
       }
 
       render() {
