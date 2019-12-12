@@ -17,10 +17,7 @@
           <input type="file" name="attachment" id="attachment" value="">
 
           <input type="submit" name="submit" id="submit" value="Upload">
-
-
         </form>
-
       </div>
     </div>
 </div>
