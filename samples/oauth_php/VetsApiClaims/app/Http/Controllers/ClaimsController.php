@@ -23,7 +23,6 @@ class ClaimsController extends Controller
 
     public function poa_form(Request $request)
     {
-        error_log($request);
         return view('poa_form', []);
     }
 
@@ -39,8 +38,6 @@ class ClaimsController extends Controller
 
     public function poa_form_upload(Request $request, $id)
     {
-        error_log('test');
-        error_log($request->attachment);
         return redirect()->route('poa_form_show', ['id' => $id]);
     }
 
