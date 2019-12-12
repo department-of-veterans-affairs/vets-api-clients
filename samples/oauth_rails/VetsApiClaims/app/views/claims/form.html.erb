@@ -30,8 +30,6 @@
       onSubmit = function({formData}, e) {
 
         $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
-        console.log(formData)
-        console.log(this.state.form)
         $.post(`${window.location.pathname}/submit`, formData, function(data) {
           window.location.href = `${window.location.pathname}/${data.id}`
         })
