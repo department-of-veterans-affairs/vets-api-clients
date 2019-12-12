@@ -49,6 +49,9 @@
                         <a class="site-header__nav-item__link " href="/claims">View Claims</a>
                       </li>
                       <li class="site-header__nav-item">
+                        <a class="site-header__nav-item__link " href="/poa_form">Submit 2122</a>
+                      </li>
+                      <li class="site-header__nav-item">
                         <a class="site-header__nav-item__link " href="/verification">Veteran Verification</a>
                       </li>
                   @endif
