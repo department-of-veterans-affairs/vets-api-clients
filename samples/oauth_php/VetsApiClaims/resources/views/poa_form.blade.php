@@ -7,11 +7,11 @@
         <form action="/poa" method="post">
           {{ csrf_field() }}
           <label for="poaCode">poaCode</label>
-          <input type="text" name="poaCode" id="poaCode" value="">
+          <input required type="text" name="poaCode" id="poaCode" value="">
           <label for="poaFirstName">poaFirstName</label>
-          <input type="text" name="poaFirstName" id="poaFirstName" value="">
+          <input required type="text" name="poaFirstName" id="poaFirstName" value="">
           <label for="poaLastName">poaLastName</label>
-          <input type="text" name="poaLastName" id="poaLastName" value="">
+          <input required type="text" name="poaLastName" id="poaLastName" value="">
           <input type="submit" name="submit" id="submit" >
         </form>
       </div>
