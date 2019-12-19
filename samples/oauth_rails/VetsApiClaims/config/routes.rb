@@ -17,7 +17,12 @@ Rails.application.routes.draw do
       post :update_supporting_document
     end
   end
-  get '/claims_forms/526', to: 'claims#form_526'
+  scope '/claims_forms/:form_number' do
+    get '/', to: 'claims#form', as: :form
+    get '/:id',  to: 'claims#form_show', as: :form_show
+    post '/submit', to: 'claims#form_submit', as: :form_submit
+  end
+  post '/claims_forms/2122/:id/upload', to: 'claims#poa_upload', as: :poa_upload
   resources :documents do
     member do
       get :download
