@@ -6,10 +6,7 @@ class Session < ApplicationRecord
 
   def self.new_from_oauth(response)
     response['expires_at'] = response['expires_in'].seconds.from_now
-    attributes_array = response.map do |key, value|
-      [key, value]
-    end
-    Session.new(Hash[attributes_array])
+    Session.new(response)
   end
 
   def expired?
