@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
 class Session < ApplicationRecord
+
+  attr_accessor :expires_in
+
   def self.new_from_oauth(response)
-    attributes_array = response.map do |key, value|
-      clean_value =
-        if key == 'expires_at'
-          Time.zone.at(value)
-        else
-          value
-        end
-      [key, clean_value]
-    end
-    Session.new(Hash[attributes_array])
+    response['expires_at'] = response['expires_in'].seconds.from_now
+    Session.new(response)
   end
 
   def expired?
