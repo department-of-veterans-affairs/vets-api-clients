@@ -62,7 +62,7 @@ class HomeController extends Controller
       $sesh = new OauthSession();
       $sesh->access_token = $response['access_token'];
       $sesh->token_type = $response['token_type'];
-      $sesh->expires_at = $response['expires_at'];
+      $sesh->expires_at = time() + $response['expires_in'];
       $sesh->scope = $response['scope'];
       $sesh->id_token = $response['id_token'];
       $sesh->state = $response['state'];
