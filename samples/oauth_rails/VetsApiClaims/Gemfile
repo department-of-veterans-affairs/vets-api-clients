@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails' # required for rails 5.1+
 gem 'jwt'
 gem 'pg'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'rails', '~> 5.2.3'
 gem 'rest-client'
 gem 'sass-rails', '~> 5.0'
