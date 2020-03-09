@@ -2,17 +2,41 @@
 
 An explanation of how this works and choices made can be found [here](https://developer.va.gov/oauth).
 
-## Requirements
+## Installation with Docker
+
+```
+cd samples/oauth_node
+
+docker build -t oauth-node-sample-client .
+
+docker run --rm -d -p 8080:8080 \
+  -e CLIENT_ID=FAKE_CLIENT_ID \
+  -e CLIENT_SECRET=FAKE_CLIENT_SECRET \
+  oauth-node-sample-client
+```
+
+Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` with your ID and secret.
+
+## Installation without Docker
+
+### Requirements
 
 * [Node 10.x.x or greater](https://nodejs.org/en/)
 * [NPM](https://www.npmjs.com/get-npm)
 
-## Installation
+```
+cd samples/oauth_node
+npm i
+```
 
-* Clone this repository
-* `cd samples/oauth_node`
-* `npm i`
+Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` in `.env` with your ID and secret.
+
+```
+node index.js
+```
 
 ## Usage
 
-Replace 'FAKE CLIENT ID' and 'FAKE CLIENT SECRET' with your client\_id and client\_secret for VA OAuth then run `node index.js`. You should be able to navigate to `http://localhost:8080/auth` to login and `http://localhost:8080/status` to see the logged in users veteran status. You can use any account in from our supplied [test accounts](../../test-accounts.md) to try it out. 
+Navigate to `http://localhost:8080/auth` to login and `http://localhost:8080/status` to see the logged in users veteran status.
+
+Use any account from the supplied [test accounts](../../test_accounts.md).

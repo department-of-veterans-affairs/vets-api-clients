@@ -21,6 +21,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "openid-client": "^2.4.5",
-    "passport": "^0.4.0"
+    "passport": "^0.4.0",
+    "dotenv": "^8.2.0"
   }
 }
