@@ -76,6 +76,14 @@ const verifyVeteranStatus = async (req, res, next) => {
   }
 };
 
+const wrapAuth = async (req, res, next) => {
+  //Passport or OIDC don't seem to set 'err' if our Auth Server sets them in the URL as params so we need to do this to catch that instead of relying on callback
+  if (req.query.error) {
+    return next(req.query.error_description);
+  }
+  passport.authenticate("oidc", { successRedirect: "/", failureRedirect: "/"});
+};
+
 const startApp = (client) => {
   const app = express();
   const port = 8080;
@@ -88,10 +96,7 @@ const startApp = (client) => {
   app.get('/status', verifyVeteranStatus);
 
   app.get('/auth', passport.authenticate('oidc'));
-  app.get(
-    '/auth/cb',
-    passport.authenticate('oidc', { successRedirect: '/', failureRedirect: '/'})
-  );
+  app.get('/auth/cb', wrapAuth);
 
   app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 }
