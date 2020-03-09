@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const { Issuer, Strategy } = require('openid-client');
@@ -5,8 +6,9 @@ const passport = require('passport');
 const https = require('https');
 
 const ROOT_URL = 'https://dev-api.va.gov/oauth2/.well-known/openid-configuration';
-const client_id = 'FAKE CLIENT ID';
-const client_secret = 'FAKE CLIENT SECRET';
+
+const client_id = process.env.CLIENT_ID;
+const client_secret = process.env.CLIENT_SECRET;
 
 const createClient = async () => {
   Issuer.defaultHttpOptions = { timeout: 2500 };
