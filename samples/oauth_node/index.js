@@ -81,7 +81,7 @@ const wrapAuth = async (req, res, next) => {
   if (req.query.error) {
     return next(req.query.error_description);
   }
-  passport.authenticate("oidc", { successRedirect: "/", failureRedirect: "/"});
+  passport.authenticate("oidc", { successRedirect: "/", failureRedirect: "/"})(req, res, next);
 };
 
 const startApp = (client) => {
