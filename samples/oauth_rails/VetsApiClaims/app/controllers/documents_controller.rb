@@ -10,7 +10,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    res = RestClient.post("https://dev-api.va.gov/services/vba_documents/v0/uploads", nil,  apikey: Figaro.env.va_api_key)
+    res = RestClient.post("#{Figaro.env.vets_api_url}/services/vba_documents/v1/uploads", nil,  apikey: Figaro.env.va_developer_api_key)
     parsed = JSON.parse(res.body)['data']
     Document.create(
       guid: parsed['attributes']['guid'],
@@ -41,7 +41,7 @@ class DocumentsController < ApplicationController
 
   def update_status
     document = Document.find params[:id]
-    res = RestClient.get("https://dev-api.va.gov/services/vba_documents/v0/uploads/#{document.guid}",  apikey: Figaro.env.va_api_key)
+    res = RestClient.get("#{Figaro.env.vets_api_url}/services/vba_documents/v1/uploads/#{document.guid}",  apikey: Figaro.env.va_developer_api_key)
     parsed = JSON.parse(res.body)['data']
     document.update(
       status: parsed['attributes']['status'],
@@ -56,7 +56,7 @@ class DocumentsController < ApplicationController
     document = Document.find params[:id]
     raw = RestClient::Request.execute(
       method: :get,
-      url: "https://dev-api.va.gov/services/vba_documents/v0/uploads/#{document.guid}/download",
+      url: "#{Figaro.env.vets_api_url}/services/vba_documents/v1/uploads/#{document.guid}/download",
       raw_response: true,
       headers: {
         apikey: Figaro.env.va_api_key
