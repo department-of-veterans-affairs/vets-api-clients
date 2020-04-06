@@ -1,0 +1,160 @@
+#!/usr/bin/env node
+
+var crypto = require('crypto');
+var restify = require('restify');
+var request = require('request');
+var program = require('commander');
+var opn = require('opn');
+
+// Setup
+
+program
+  .option('-c, --client_id <client id>', 'OIDC Client ID', '')
+  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov', '')
+  .option('-s, --scopes <space separated list of scopes>', 'Space separated list of scopes', 'openid profile email')
+  .option('-r, --redirect_uri <redirect uri>', 'redirect uri', 'http://localhost:8080/redirect')
+  .parse(process.argv);
+  
+if (
+  !program.client_id || !program.auth_server || 
+  !program.scopes || !program.redirect_uri
+) {
+  program.help();
+  process.exit(1);
+}  
+  
+const server = restify.createServer({
+  name: 'myapp',
+  version: '1.0.0'
+});
+
+server.use(restify.plugins.acceptParser(server.acceptable));
+server.use(restify.plugins.queryParser());
+server.use(restify.plugins.bodyParser());
+server.listen(8080);
+
+server.get('/redirect', redirectHandler);
+
+// execute auth code flow with pkce
+var codeVerifier = uuid();
+console.log('Created Code Verifier (v): ' + codeVerifier + '\n');
+var codeChallenge = base64url(
+  crypto.createHash('sha256').update(codeVerifier).digest('base64')
+);
+console.log('Created Code Challenge ($): ' + codeChallenge + '\n');
+var authorizeUrl = buildAuthorizeUrl(codeVerifier, codeChallenge);
+console.log('About to call Authorize URL: ' + authorizeUrl + '\n');
+
+console.log('press any key to continue...');
+keypress().then(() => {
+  // Step 1: call authorize endpoint where user will authenticate
+  opn(authorizeUrl);
+});
+
+// Step 2: Auth server redirects back to this app with an auth code
+async function redirectHandler(req, res, next) {
+  var body = '<html><body><h4>OAuth2 authorize complete. ' + 
+    'You can close this tab.</h4></body></html>';
+  res.writeHead(200, {
+      'Content-Length': Buffer.byteLength(body),
+      'Content-Type': 'text/html'
+  });
+  res.write(body);
+  res.end();
+
+  console.log('\nGot code (α): ' + req.query.code + '\n');
+
+  console.log('press any key to continue...');
+  await keypress();
+
+  var form = {
+    grant_type: 'authorization_code',
+    redirect_uri: program.redirect_uri,
+    client_id: program.client_id,
+    code: req.query.code,
+    code_verifier: codeVerifier
+  };
+  
+  console.log('\nCalling /token endpoint with:');
+  console.log('client_id: ' + form.client_id);
+  console.log('code_verifier (v): ' + form.code_verifier);
+  console.log('code (α): ' + form.code + '\n');
+  
+  console.log(
+    'Here is the complete form post that will be sent to the /token endpoint:'
+  );
+  console.log(form);
+  console.log();
+
+  console.log('press any key to continue...');
+  await keypress();
+  
+  // Step 3: call token endpoint to exchange code for tokens
+  request.post(
+    { 
+      url: program.auth_server + '/oauth2/token', 
+      form: form 
+    },
+    function (err, httpResponse, body) {
+      var tokenResponse = JSON.parse(body);
+      tokenResponseHandler(tokenResponse);
+      return next();
+    }
+  );
+}
+
+async function tokenResponseHandler(tokenResponse) {
+  console.log('\nGot token response:');
+  console.log(tokenResponse);
+  console.log();
+
+  console.log('press any key to continue...');
+  await keypress();  
+
+  console.log('\nCalling /userinfo endpoint with access token\n');
+  
+  // Step 4: use the access_token to hit the /userinfo endpoint
+  request.get(
+    program.auth_server + '/oauth2/userinfo', 
+    { auth: { bearer: tokenResponse.access_token } }, 
+    function (err, httpResponse, body) {
+      console.log(JSON.parse(body));
+      process.exit(0);
+    }
+  );
+}
+
+function uuid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' + 
+    s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' + 
+    s4() + '_' + s4() + '_' + s4()
+}
+
+function base64url(str){
+    return str.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
+}
+
+function buildAuthorizeUrl(codeVerifier, codeChallenge) {
+	var authorizeUrl = program.auth_server + '/oauth2/authorization?' +
+    'client_id=' + program.client_id + '&' +
+    'response_type=code&' +
+    'scope=' + program.scopes + '&' +
+    'redirect_uri=' + program.redirect_uri + '&' +
+    'state=' + uuid() + '&' +
+    'code_challenge_method=S256&' + 
+    'code_challenge=' + codeChallenge;
+  return authorizeUrl;
+}
+
+async function keypress() {
+  process.stdin.setRawMode(true)
+  return new Promise(resolve => process.stdin.once('data', () => {
+    process.stdin.setRawMode(false)
+    resolve()
+  }))
+}
