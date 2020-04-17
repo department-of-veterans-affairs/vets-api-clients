@@ -6,10 +6,10 @@ class HealthApiResponse
     case action
     when :search
       @page, @count = page, count
-      @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param_name}=#{id}&page=#{page}&_count=#{count}"
+      @target = "https://sandbox-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param_name}=#{id}&page=#{page}&_count=#{count}"
     when :read
       @page, @count = nil, nil
-      @target = "https://dev-api.va.gov/services/argonaut/v0/#{api_name}/#{id}"
+      @target = "https://sandbox-api.va.gov/services/argonaut/v0/#{api_name}/#{id}"
     else
       raise "action must be one of the symbols :search or :read"
     end
@@ -54,6 +54,6 @@ private
 
   def dev_api_url_regex
     # this has 3 match groups, the url base, the API, and the id
-    /\"(https:\/\/dev-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/
+    /\"(https:\/\/sandbox-api.va.gov\/services\/argonaut\/v0)\/(\w+)\/(.+)\"/
   end
 end

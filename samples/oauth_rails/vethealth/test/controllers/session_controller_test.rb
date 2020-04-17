@@ -31,7 +31,7 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
       'expires_at' => (Time.zone.now + 1.hour).to_i,
       'id_token' => JWT.encode(payload, nil, 'none')
     }
-    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+    stub_request(:post, "https://sandbox-api.va.gov/oauth2/token").
       to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
 
     code, state = '12345abcdef', '123456789'
@@ -61,7 +61,7 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
       'id_token' => JWT.encode({ 'nonce' => Authentication.generate_nonce(nonce_base) }, nil, 'none'),
       'patient' => 'health_api_controller_test_patient'
     }
-    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+    stub_request(:post, "https://sandbox-api.va.gov/oauth2/token").
       to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
 
     get callback_url, params: { code: 'logout test', state: '12345676453242345' }

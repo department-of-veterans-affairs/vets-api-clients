@@ -5,7 +5,7 @@ const { Issuer, Strategy } = require('openid-client');
 const passport = require('passport');
 const https = require('https');
 
-const ROOT_URL = 'https://dev-api.va.gov/oauth2/.well-known/openid-configuration';
+const ROOT_URL = 'https://sandbox-api.va.gov/oauth2/.well-known/openid-configuration';
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -48,7 +48,7 @@ const verifyVeteranStatus = async (req, res, next) => {
   if (req.session && req.session.passport && req.session.passport.user) {
     const veteranStatus = await new Promise((resolve, reject) => {
       https.get(
-        'https://dev-api.va.gov/services/veteran_verification/v0/status',
+        'https://sandbox-api.va.gov/services/veteran_verification/v0/status',
         { headers: {'Authorization': `Bearer ${req.session.passport.user.tokenset.access_token}`} },
         (res) => {
           let rawData = '';

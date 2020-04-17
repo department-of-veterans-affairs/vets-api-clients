@@ -29,8 +29,8 @@ export default {
     response_type: 'id_token token',
   },
   resourceServer: {
-    serviceHistoryUrl: 'https://dev-api.va.gov/services/veteran_verification/v0/service_history',
-    disabilityRatingUrl: 'https://dev-api.va.gov/services/veteran_verification/v0/disability_rating',
+    serviceHistoryUrl: 'https://sandbox-api.va.gov/services/veteran_verification/v0/service_history',
+    disabilityRatingUrl: 'https://sandbox-api.va.gov/services/veteran_verification/v0/disability_rating',
   },
 };
 ```

@@ -47,7 +47,7 @@ class HealthApiResponseTest < ActiveSupport::TestCase
     body = {
       id: 1234,
       attributes: {
-        link: "https://dev-api.va.gov/services/argonaut/v0/#{api_name}/1234"
+        link: "https://sandbox-api.va.gov/services/argonaut/v0/#{api_name}/1234"
       }
     }
     stub_request(:get, /dev-api\.va\.gov/).
@@ -62,23 +62,23 @@ class HealthApiResponseTest < ActiveSupport::TestCase
       link: [
         {
           relation: "first",
-          url: "https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=1&_count=10"
+          url: "https://sandbox-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=1&_count=10"
         },
         {
           relation: "prev",
-          url: "https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=1&_count=10"
+          url: "https://sandbox-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=1&_count=10"
         },
         {
           relation: "self",
-          url: "https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=2&_count=10"
+          url: "https://sandbox-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=2&_count=10"
         },
         {
           relation: "next",
-          url: "https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=3&_count=10"
+          url: "https://sandbox-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=3&_count=10"
         },
         {
           relation: "last",
-          url: "https://dev-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=4&_count=10"
+          url: "https://sandbox-api.va.gov/services/argonaut/v0/DiagnosticReport?patient=59&page=4&_count=10"
         }
       ]
     }

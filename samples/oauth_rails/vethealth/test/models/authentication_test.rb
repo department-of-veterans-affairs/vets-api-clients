@@ -6,7 +6,7 @@ class AuthenticationTest < ActiveSupport::TestCase
       expires_at: Time.zone.now.to_i,
       something: 'just a value'
     }
-    url = 'https://dev-api.va.gov/oauth2/token'
+    url = 'https://sandbox-api.va.gov/oauth2/token'
     stub_request(:post, url).
       to_return(body: response_body.to_json, headers: { content_type: 'application/json' })
     httparty_response = HTTParty.post(url, { body: {matters: false}.to_json } )
