@@ -13,7 +13,7 @@ class AuthenticationsControllerTest < ActionDispatch::IntegrationTest
       'scope' => 'some scope values',
       'patient' => 'health_api_controller_test_patient'
     }
-    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+    stub_request(:post, "https://sandbox-api.va.gov/oauth2/token").
       to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
 
     code, state = '12345abcdef', '123456789'

@@ -17,7 +17,7 @@ class SessionController < ApplicationController
       scope: scope,
       state: session[:login_time]
     }
-    @oauth_url = "https://dev-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
+    @oauth_url = "https://sandbox-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
 
     # descriptions to display to the user how the oauth params are used
     @oauth_param_description = [
@@ -45,7 +45,7 @@ class SessionController < ApplicationController
       verified_state: params[:state].to_i == session[:login_time],
       code: params[:code],
       state: params[:state],
-      oauth_url: 'https://dev-api.va.gov/oauth2/token'
+      oauth_url: 'https://sandbox-api.va.gov/oauth2/token'
     )
     oauth.fetch_access_token!(session)
     session[:id] = oauth.authentication.id if oauth.authentication

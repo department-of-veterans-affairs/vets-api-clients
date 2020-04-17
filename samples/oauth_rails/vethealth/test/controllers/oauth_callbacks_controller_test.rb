@@ -83,7 +83,7 @@ class OauthCallbacksControllerTest < ActionDispatch::IntegrationTest
       'expires_at' => (Time.zone.now + 1.hour).to_i,
       'id_token' => JWT.encode(payload, nil, 'none')
     }
-    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+    stub_request(:post, "https://sandbox-api.va.gov/oauth2/token").
       to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
 
     get callback_url, params: { code: code, state: session[:login_time] }

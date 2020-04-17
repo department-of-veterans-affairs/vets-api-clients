@@ -1,4 +1,4 @@
 # TODO put your client id and client secret here and remove the `.EXAMPLE` extension
 va_developer_client_id: 
 va_developer_client_secret: 
-vets_api_url: 'https://dev-api.va.gov'
+vets_api_url: 'https://sandbox-api.va.gov'

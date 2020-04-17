@@ -12,7 +12,7 @@ class HealthApiControllerTest < ActionDispatch::IntegrationTest
       'id_token' => JWT.encode(payload, nil, 'none'),
       'patient' => 'health_api_controller_test_patient'
     }
-    stub_request(:post, "https://dev-api.va.gov/oauth2/token").
+    stub_request(:post, "https://sandbox-api.va.gov/oauth2/token").
       to_return(body: oauth_body.to_json, headers: { content_type: 'application/json' })
 
     code, state = '12345abcdef', '123456789'
@@ -42,7 +42,7 @@ class HealthApiControllerTest < ActionDispatch::IntegrationTest
     oauth_login
 
     status, key, value = 200, 'tests', 'work'
-    stub_request(:get, /https:\/\/dev-api.va.gov\/services\/argonaut\/v0\//).
+    stub_request(:get, /https:\/\/sandbox-api.va.gov\/services\/argonaut\/v0\//).
       to_return(status: status, body: { key => value, 'link' => [] }.to_json, headers: { content_type: 'application/json' })
 
     api_name = 'Horticulture'
@@ -61,7 +61,7 @@ class HealthApiControllerTest < ActionDispatch::IntegrationTest
     key, value = 'hoo', 'ray'
     api_name = 'BestApi'
     id = 'theBestId'
-    stub_request(:get, /https:\/\/dev-api.va.gov\/services\/argonaut\/v0\/#{api_name}\/#{id}/).
+    stub_request(:get, /https:\/\/sandbox-api.va.gov\/services\/argonaut\/v0\/#{api_name}\/#{id}/).
       to_return(status: status, body: { key => value }.to_json, headers: { content_type: 'application/json' })
 
     get "/health_api/api_response/#{api_name}/#{id}"
