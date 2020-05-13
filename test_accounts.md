@@ -18,6 +18,8 @@ curl -X GET \
 
 ```
 
+The Non-Veteran user 007 has Power of Attorney for Veteran user 001, 003, 004, 005 and 006.
+
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
 | First Name | Middle Name | Last Name | Sex | Birthdate  | SSN       | Email                          | Password      | Representative                | Branch (Discharge) |
