@@ -2,9 +2,9 @@
 
 These are test accounts you can use to test OAuth APIs by logging in with them through the ID.me sandbox environment that is connected to sandbox-api.va.gov.  When signing in with a test account, Step 2 will ask how you want to receive an authentication code and you can just click "continue" for the verification to be automatically populated in Step 3.
 
-## Representative Oauth
+## Representative OAuth
 
-The purpose behind Representative Oauth is to allow you to login as a Representative user who holds power of attorney (PoA) for a particular veteran through the Oauth and ID.me system and then user the token you've collected to essentially access that Veteran's data (currently only available in our [Claims V1 API's](https://developer.va.gov/explore/benefits/docs/claims?version=current)), this process involves us looking at which Office of General Counsel (OGC) PoA code the veteran has and matching it to the PoA code the Representative is authorized to access. Example of a Representatie curl command is provided below.
+The purpose behind Representative OAuth is to allow you to login as a Representative user who holds power of attorney (PoA) for a particular veteran through the OAuth and ID.me system and then user the token you've collected to essentially access that Veteran's data (currently only available in our [Claims V1 API's](https://developer.va.gov/explore/benefits/docs/claims?version=current)), this process involves us looking at which Office of General Counsel (OGC) PoA code the veteran has and matching it to the PoA code the Representative is authorized to access. Example of a Representatie cURL command is provided below.
 
 ```
 curl -X GET \
@@ -18,7 +18,7 @@ curl -X GET \
 
 ```
 
-The Representative users 001 and 007 has Power of Attorney for Veteran users 001, 003, 004, 005 and 006. This is meant to demonstrate how both a Veteran and a Non-Veteran can be granted power of attorney access
+The Representative users 001 and 007 have Power of Attorney for Veteran users 001, 003, 004, 005 and 006. This is meant to demonstrate how both a Veteran and a Non-Veteran can be granted power of attorney access
 
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
