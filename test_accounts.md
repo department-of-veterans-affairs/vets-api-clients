@@ -18,7 +18,7 @@ curl -X GET \
 
 ```
 
-The Non-Veteran user 007 has Power of Attorney for Veteran user 001, 003, 004, 005 and 006.
+The Representative users 001 and 007 has Power of Attorney for Veteran users 001, 003, 004, 005 and 006. This is meant to demonstrate how both a Veteran and a Non-Veteran can be granted power of attorney access
 
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
