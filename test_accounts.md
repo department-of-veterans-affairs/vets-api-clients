@@ -4,7 +4,7 @@ These are test accounts you can use to test OAuth APIs by logging in with them t
 
 ## Representative Oauth
 
-The purpose behind Representative Oauth is to allow you to login as one of 3 types of users (VSO, Attorney or Claim Agent) who holds power of attorney (PoA) for a particular veteran through the Oauth and ID.me system and then user the token you've collected to essentially access that Veteran's data (currently only available in our [Claims V1 API's](https://developer.va.gov/explore/benefits/docs/claims?version=current)), this process involves us looking at which Office of General Counsel (OGC) PoA code the veteran has and matching it to the PoA code the Representative is authorized to access. Example of a Representatie curl command is provided below.
+The purpose behind Representative Oauth is to allow you to login as a Representative user who holds power of attorney (PoA) for a particular veteran through the Oauth and ID.me system and then user the token you've collected to essentially access that Veteran's data (currently only available in our [Claims V1 API's](https://developer.va.gov/explore/benefits/docs/claims?version=current)), this process involves us looking at which Office of General Counsel (OGC) PoA code the veteran has and matching it to the PoA code the Representative is authorized to access. Example of a Representatie curl command is provided below.
 
 ```
 curl -X GET \
@@ -22,76 +22,76 @@ The Non-Veteran user 007 has Power of Attorney for Veteran user 001, 003, 004, 0
 
 **Do not modify any of the attributes for these test accounts, including passwords.** 
 
-| First Name | Middle Name | Last Name | Sex | Birthdate  | SSN       | Email                          | Password      | Representative                | Branch (Discharge) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TAMARA     | E           | ELLIS     | F | 1967-06-19 | 796130115 | va.api.user+idme.001@gmail.com | Password1234! | va.api.user+idme.007@gmail.com | Army (Honorable) |
-| JANET      | L           | MOORE     | F | 1949-05-06 | 796127677 | va.api.user+idme.002@gmail.com | Password1234! | | Navy (Honorable) |
-| RALPH      | E           | LEE       | M | 1948-10-30 | 796378782 | va.api.user+idme.003@gmail.com | Password1234! | va.api.user+idme.007@gmail.com | Marines (Dishonorable) |
-| JESSE      |             | GRAY      | M | 1954-12-15 | 796378881 | va.api.user+idme.004@gmail.com | Password1234! | va.api.user+idme.007@gmail.com | Airforce (Honorable) |
-| PAULINE    | E           | FOSTER    | F | 1976-06-09 | 796330625 | va.api.user+idme.005@gmail.com | Password1234! | va.api.user+idme.007@gmail.com | Marines (Honorable) |
-| RUSSELL    | James       | FREEMAN   | M | 1969-11-05 | 796149080 | va.api.user+idme.006@gmail.com | Password1234! | va.api.user+idme.007@gmail.com | Army/Airforce (Honorable/Dishonorable) |
-| DOE        |             | JOHN      | M |            |           | va.api.user+idme.007@gmail.com | Password1234! | | Non-Veteran |
-| GREG       | A           | ANDERSON  | M | 1933-04-05 | 796121200 | va.api.user+idme.008@gmail.com | Password1234! | | Inactive |
-| GEORGE     |             | DENISE    | M | 1993-07-19 |           | va.api.user+idme.009@gmail.com | Password1234! | | Army (Honrable) |
-| MONTGOMERY |             | TERRENCE  | M | 1969-06-11 |           | va.api.user+idme.010@gmail.com | Password1234! | | Airforce/Army (Honrable) |
-| HECTOR     | J           | ALLEN     | M | 1932-02-05 | 796126859 | va.api.user+idme.011@gmail.com | Password1234! | | |
-| ANDREA     | L           | MITCHELL  | F | 1959-12-01 | 796127781 | va.api.user+idme.012@gmail.com | Password1234! | | |
-| KENNETH    | William     | ANDREWS   | M | 1990-02-20 | 796295980 | va.api.user+idme.013@gmail.com | Password1234! | | |
-| ALFREDO    | M           | ARMSTRONG | M | 1993-06-08 | 796012476 | va.api.user+idme.014@gmail.com | Password1234! | | |
-| FRANK      | LEE         | ARNOLD    | M | 1980-02-20 | 796143510 | va.api.user+idme.015@gmail.com | Password1234! | | |
-| ERIC       | Victor      | BISHOP    | M | 1963-07-05 | 796169727 | va.api.user+idme.016@gmail.com | Password1234! | | |
-| JERRY      | M           | BROOKS    | M | 1947-09-25 | 796148937 | va.api.user+idme.017@gmail.com | Password1234! | | |
-| EDDIE      | J           | CALDWELL  | M | 1933-10-27 | 796121086 | va.api.user+idme.018@gmail.com | Password1234! | | |
-| DEBBIE     | M           | CAMPBELL  | F | 1963-07-26 | 796249005 | va.api.user+idme.019@gmail.com | Password1234! | | |
-| CHAD       | E           | BARRETT   | M | 1975-05-12 | 796263749 | va.api.user+idme.020@gmail.com | Password1234! | | |
-| KYLE       | M           | COLE      | M | 1936-11-20 | 796131752 | va.api.user+idme.021@gmail.com | Password1234! | | |
-| MARGIE     |             | CURTIS    | F | 1953-02-11 | 796163672 | va.api.user+idme.022@gmail.com | Password1234! | | |
-| WILLIAM    | C           | DANIELS   | M | 1937-03-07 | 796127196 | va.api.user+idme.023@gmail.com | Password1234! | | |
-| WALTER     | TYLER       | DAVIS     | M | 1987-01-30 | 796143570 | va.api.user+idme.024@gmail.com | Password1234! | | |
-| WESLEY     | Watson      | FORD      | M | 1986-05-06 | 796043735 | va.api.user+idme.025@gmail.com | Password1234! | | |
-| MELVIN     | V           | FREEMAN   | M | 1971-11-19 | 796184750 | va.api.user+idme.026@gmail.com | Password1234! | | |
-| HERBERT    | MICHAEL     | GARDNER   | M | 1983-02-21 | 796122369 | va.api.user+idme.027@gmail.com | Password1234! | | |
-| SAM        | ROBERT      | GARDNER   | M | 1969-06-23 | 796246997 | va.api.user+idme.028@gmail.com | Password1234! | | |
-| JESSE      | J           | GEORGE    | M | 1950-01-31 | 796330163 | va.api.user+idme.029@gmail.com | Password1234! | | |
-| SIDNEY     | A           | GIBSON    | M | 1933-08-04 | 796127094 | va.api.user+idme.030@gmail.com | Password1234! | | |
-| JUNE       | R           | HARRIS    | F | 1955-12-27 | 796184459 | va.api.user+idme.031@gmail.com | Password1234! | | |
-| JEFFERY    | J           | HAYES     | M | 1937-09-25 | 796131729 | va.api.user+idme.032@gmail.com | Password1234! | | |
-| EVERETT    | Avery       | HORTON    | M | 1982-04-23 | 796377148 | va.api.user+idme.033@gmail.com | Password1234! | | |
-| MATHEW     | A           | HOWELL    | M | 1927-01-18 | 796131275 | va.api.user+idme.034@gmail.com | Password1234! | | |
-| JULIO      | E           | HUNTER    | M | 1951-11-18 | 796378321 | va.api.user+idme.035@gmail.com | Password1234! | | |
-| JESUS      | A           | BARRETT   | M | 1947-06-29 | 796127587 | va.api.user+idme.036@gmail.com | Password1234! | | |
-| DARYL      | F           | LAWRENCE  | M | 1953-02-15 | 796153447 | va.api.user+idme.037@gmail.com | Password1234! | | |
-| MELVIN     | R           | MARSHALL  | M | 1992-08-27 | 796147495 | va.api.user+idme.038@gmail.com | Password1234! | | |
-| ALFREDO    | J           | MORALES   | M | 1950-01-14 | 796122472 | va.api.user+idme.039@gmail.com | Password1234! | | |
-| HARRY      | J           | OLSON     | M | 1979-06-20 | 796136308 | va.api.user+idme.040@gmail.com | Password1234! | | |
-| CHRISTIAN  | Fitzgerald  | PATTERSON | M | 1964-03-04 | 796218467 | va.api.user+idme.041@gmail.com | Password1234! | | |
-| JESSIE     | F           | PRICE     | M | 1934-04-07 | 796126978 | va.api.user+idme.042@gmail.com | Password1234! | | |
-| ANA        | D           | RAY       | F | 1994-06-07 | 796025480 | va.api.user+idme.043@gmail.com | Password1234! | | |
-| JENNY      | Kadeshia    | REID      | F | 1984-02-19 | 796364561 | va.api.user+idme.044@gmail.com | Password1234! | | |
-| MARTIN     | Ray         | REID      | M | 1977-07-04 | 796018229 | va.api.user+idme.045@gmail.com | Password1234! | | |
-| MATTIE     | May         | REID      | F | 1964-04-14 | 796109651 | va.api.user+idme.046@gmail.com | Password1234! | | |
-| WILLARD    | J           | RILEY     | M | 1959-02-25 | 796013145 | va.api.user+idme.047@gmail.com | Password1234! | | |
-| THEODORE   | Matthew     | ROBERTS   | M | 1986-02-28 | 796019724 | va.api.user+idme.048@gmail.com | Password1234! | | |
-| JO         | M           | ROBERTSON | F | 1954-09-27 | 796044205 | va.api.user+idme.049@gmail.com | Password1234! | | |
-| ARTHUR     | E           | ROSE      | M | 1954-05-26 | 796220828 | va.api.user+idme.050@gmail.com | Password1234! | | |
-| SALVADOR   | H           | SIMS      | M | 1933-12-28 | 796013160 | va.api.user+idme.051@gmail.com | Password1234! | | |
-| SAM        | Lee         | SPENCER   | M | 1965-03-26 | 796053870 | va.api.user+idme.052@gmail.com | Password1234! | | |
-| FREDERICK  | Bradley     | SCOTT     | M | 1993-01-11 | 796128747 | va.api.user+idme.053@gmail.com | Password1234! | | |
-| PENNY      | M           | SCOTT     | F | 1961-12-22 | 796128750 | va.api.user+idme.054@gmail.com | Password1234! | | |
-| RAY        | A           | SCOTT     | M | 1978-04-19 | 796128748 | va.api.user+idme.055@gmail.com | Password1234! | | |
-| DWAYNE     | E           | SPENCER   | M | 1958-02-24 | 796153369 | va.api.user+idme.056@gmail.com | Password1234! | | |
-| BRIAN      | J           | STEPHENS  | M | 1939-08-20 | 796127242 | va.api.user+idme.057@gmail.com | Password1234! | | |
-| RUTH       | Reyes       | STEPHENS  | F | 1982-07-10 | 796018805 | va.api.user+idme.058@gmail.com | Password1234! | | |
-| DAVE       | A           | STEWART   | M | 1992-04-22 | 796110951 | va.api.user+idme.059@gmail.com | Password1234! | | |
-| VERNON     | D           | WAGNER    | M | 1965-07-15 | 796140369 | va.api.user+idme.060@gmail.com | Password1234! | | |
-| KENT       | L           | WARREN    | M | 1936-07-14 | 796127160 | va.api.user+idme.061@gmail.com | Password1234! | | |
-| JEFF       | Terrel      | WATSON    | M | 1968-01-05 | 796246757 | va.api.user+idme.062@gmail.com | Password1234! | | |
-| RUSSELL    | Renee       | WATSON    | M | 1961-09-02 | 796079018 | va.api.user+idme.063@gmail.com | Password1234! | | |
-| GLEN       | Lee         | WELLS     | M | 1971-12-08 | 796231077 | va.api.user+idme.064@gmail.com | Password1234! | | |
-| LEONARD    | A           | WHEELER   | M | 1959-11-01 | 796017172 | va.api.user+idme.065@gmail.com | Password1234! | | |
-| LEONA      | C           | WILSON    | F | 1948-09-28 | 796066619 | va.api.user+idme.066@gmail.com | Password1234! | | |
-| JAMIE      | J           | WOOD      | F | 1945-05-24 | 796060339 | va.api.user+idme.067@gmail.com | Password1234! | | |
-| TOMMY      | V           | WRIGHT    | M | 1996-11-17 | 796030117 | va.api.user+idme.068@gmail.com | Password1234! | | |
+| First Name | Middle Name | Last Name | Sex | Birthdate  | SSN       | Email                          | Password    |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| TAMARA     | E           | ELLIS     | F | 1967-06-19 | 796130115 | va.api.user+idme.001@gmail.com | Password1234! |
+| JANET      | L           | MOORE     | F | 1949-05-06 | 796127677 | va.api.user+idme.002@gmail.com | Password1234! |
+| RALPH      | E           | LEE       | M | 1948-10-30 | 796378782 | va.api.user+idme.003@gmail.com | Password1234! |
+| JESSE      |             | GRAY      | M | 1954-12-15 | 796378881 | va.api.user+idme.004@gmail.com | Password1234! |
+| PAULINE    | E           | FOSTER    | F | 1976-06-09 | 796330625 | va.api.user+idme.005@gmail.com | Password1234! |
+| RUSSELL    | James       | FREEMAN   | M | 1969-11-05 | 796149080 | va.api.user+idme.006@gmail.com | Password1234! |
+| DOE        |             | JOHN      | M |            |           | va.api.user+idme.007@gmail.com | Password1234! |
+| GREG       | A           | ANDERSON  | M | 1933-04-05 | 796121200 | va.api.user+idme.008@gmail.com | Password1234! |
+| GEORGE     |             | DENISE    | M | 1993-07-19 |           | va.api.user+idme.009@gmail.com | Password1234! |
+| MONTGOMERY |             | TERRENCE  | M | 1969-06-11 |           | va.api.user+idme.010@gmail.com | Password1234! |
+| HECTOR     | J           | ALLEN     | M | 1932-02-05 | 796126859 | va.api.user+idme.011@gmail.com | Password1234! |
+| ANDREA     | L           | MITCHELL  | F | 1959-12-01 | 796127781 | va.api.user+idme.012@gmail.com | Password1234! |
+| KENNETH    | William     | ANDREWS   | M | 1990-02-20 | 796295980 | va.api.user+idme.013@gmail.com | Password1234! |
+| ALFREDO    | M           | ARMSTRONG | M | 1993-06-08 | 796012476 | va.api.user+idme.014@gmail.com | Password1234! |
+| FRANK      | LEE         | ARNOLD    | M | 1980-02-20 | 796143510 | va.api.user+idme.015@gmail.com | Password1234! |
+| ERIC       | Victor      | BISHOP    | M | 1963-07-05 | 796169727 | va.api.user+idme.016@gmail.com | Password1234! |
+| JERRY      | M           | BROOKS    | M | 1947-09-25 | 796148937 | va.api.user+idme.017@gmail.com | Password1234! |
+| EDDIE      | J           | CALDWELL  | M | 1933-10-27 | 796121086 | va.api.user+idme.018@gmail.com | Password1234! |
+| DEBBIE     | M           | CAMPBELL  | F | 1963-07-26 | 796249005 | va.api.user+idme.019@gmail.com | Password1234! |
+| CHAD       | E           | BARRETT   | M | 1975-05-12 | 796263749 | va.api.user+idme.020@gmail.com | Password1234! |
+| KYLE       | M           | COLE      | M | 1936-11-20 | 796131752 | va.api.user+idme.021@gmail.com | Password1234! |
+| MARGIE     |             | CURTIS    | F | 1953-02-11 | 796163672 | va.api.user+idme.022@gmail.com | Password1234! |
+| WILLIAM    | C           | DANIELS   | M | 1937-03-07 | 796127196 | va.api.user+idme.023@gmail.com | Password1234! |
+| WALTER     | TYLER       | DAVIS     | M | 1987-01-30 | 796143570 | va.api.user+idme.024@gmail.com | Password1234! |
+| WESLEY     | Watson      | FORD      | M | 1986-05-06 | 796043735 | va.api.user+idme.025@gmail.com | Password1234! |
+| MELVIN     | V           | FREEMAN   | M | 1971-11-19 | 796184750 | va.api.user+idme.026@gmail.com | Password1234! |
+| HERBERT    | MICHAEL     | GARDNER   | M | 1983-02-21 | 796122369 | va.api.user+idme.027@gmail.com | Password1234! |
+| SAM        | ROBERT      | GARDNER   | M | 1969-06-23 | 796246997 | va.api.user+idme.028@gmail.com | Password1234! |
+| JESSE      | J           | GEORGE    | M | 1950-01-31 | 796330163 | va.api.user+idme.029@gmail.com | Password1234! |
+| SIDNEY     | A           | GIBSON    | M | 1933-08-04 | 796127094 | va.api.user+idme.030@gmail.com | Password1234! |
+| JUNE       | R           | HARRIS    | F | 1955-12-27 | 796184459 | va.api.user+idme.031@gmail.com | Password1234! |
+| JEFFERY    | J           | HAYES     | M | 1937-09-25 | 796131729 | va.api.user+idme.032@gmail.com | Password1234! |
+| EVERETT    | Avery       | HORTON    | M | 1982-04-23 | 796377148 | va.api.user+idme.033@gmail.com | Password1234! |
+| MATHEW     | A           | HOWELL    | M | 1927-01-18 | 796131275 | va.api.user+idme.034@gmail.com | Password1234! |
+| JULIO      | E           | HUNTER    | M | 1951-11-18 | 796378321 | va.api.user+idme.035@gmail.com | Password1234! |
+| JESUS      | A           | BARRETT   | M | 1947-06-29 | 796127587 | va.api.user+idme.036@gmail.com | Password1234! |
+| DARYL      | F           | LAWRENCE  | M | 1953-02-15 | 796153447 | va.api.user+idme.037@gmail.com | Password1234! |
+| MELVIN     | R           | MARSHALL  | M | 1992-08-27 | 796147495 | va.api.user+idme.038@gmail.com | Password1234! |
+| ALFREDO    | J           | MORALES   | M | 1950-01-14 | 796122472 | va.api.user+idme.039@gmail.com | Password1234! |
+| HARRY      | J           | OLSON     | M | 1979-06-20 | 796136308 | va.api.user+idme.040@gmail.com | Password1234! |
+| CHRISTIAN  | Fitzgerald  | PATTERSON | M | 1964-03-04 | 796218467 | va.api.user+idme.041@gmail.com | Password1234! |
+| JESSIE     | F           | PRICE     | M | 1934-04-07 | 796126978 | va.api.user+idme.042@gmail.com | Password1234! |
+| ANA        | D           | RAY       | F | 1994-06-07 | 796025480 | va.api.user+idme.043@gmail.com | Password1234! |
+| JENNY      | Kadeshia    | REID      | F | 1984-02-19 | 796364561 | va.api.user+idme.044@gmail.com | Password1234! |
+| MARTIN     | Ray         | REID      | M | 1977-07-04 | 796018229 | va.api.user+idme.045@gmail.com | Password1234! |
+| MATTIE     | May         | REID      | F | 1964-04-14 | 796109651 | va.api.user+idme.046@gmail.com | Password1234! |
+| WILLARD    | J           | RILEY     | M | 1959-02-25 | 796013145 | va.api.user+idme.047@gmail.com | Password1234! |
+| THEODORE   | Matthew     | ROBERTS   | M | 1986-02-28 | 796019724 | va.api.user+idme.048@gmail.com | Password1234! |
+| JO         | M           | ROBERTSON | F | 1954-09-27 | 796044205 | va.api.user+idme.049@gmail.com | Password1234! |
+| ARTHUR     | E           | ROSE      | M | 1954-05-26 | 796220828 | va.api.user+idme.050@gmail.com | Password1234! |
+| SALVADOR   | H           | SIMS      | M | 1933-12-28 | 796013160 | va.api.user+idme.051@gmail.com | Password1234! |
+| SAM        | Lee         | SPENCER   | M | 1965-03-26 | 796053870 | va.api.user+idme.052@gmail.com | Password1234! |
+| FREDERICK  | Bradley     | SCOTT     | M | 1993-01-11 | 796128747 | va.api.user+idme.053@gmail.com | Password1234! |
+| PENNY      | M           | SCOTT     | F | 1961-12-22 | 796128750 | va.api.user+idme.054@gmail.com | Password1234! |
+| RAY        | A           | SCOTT     | M | 1978-04-19 | 796128748 | va.api.user+idme.055@gmail.com | Password1234! |
+| DWAYNE     | E           | SPENCER   | M | 1958-02-24 | 796153369 | va.api.user+idme.056@gmail.com | Password1234! |
+| BRIAN      | J           | STEPHENS  | M | 1939-08-20 | 796127242 | va.api.user+idme.057@gmail.com | Password1234! |
+| RUTH       | Reyes       | STEPHENS  | F | 1982-07-10 | 796018805 | va.api.user+idme.058@gmail.com | Password1234! |
+| DAVE       | A           | STEWART   | M | 1992-04-22 | 796110951 | va.api.user+idme.059@gmail.com | Password1234! |
+| VERNON     | D           | WAGNER    | M | 1965-07-15 | 796140369 | va.api.user+idme.060@gmail.com | Password1234! |
+| KENT       | L           | WARREN    | M | 1936-07-14 | 796127160 | va.api.user+idme.061@gmail.com | Password1234! |
+| JEFF       | Terrel      | WATSON    | M | 1968-01-05 | 796246757 | va.api.user+idme.062@gmail.com | Password1234! |
+| RUSSELL    | Renee       | WATSON    | M | 1961-09-02 | 796079018 | va.api.user+idme.063@gmail.com | Password1234! |
+| GLEN       | Lee         | WELLS     | M | 1971-12-08 | 796231077 | va.api.user+idme.064@gmail.com | Password1234! |
+| LEONARD    | A           | WHEELER   | M | 1959-11-01 | 796017172 | va.api.user+idme.065@gmail.com | Password1234! |
+| LEONA      | C           | WILSON    | F | 1948-09-28 | 796066619 | va.api.user+idme.066@gmail.com | Password1234! |
+| JAMIE      | J           | WOOD      | F | 1945-05-24 | 796060339 | va.api.user+idme.067@gmail.com | Password1234! |
+| TOMMY      | V           | WRIGHT    | M | 1996-11-17 | 796030117 | va.api.user+idme.068@gmail.com | Password1234! |
 
 ## Health API Accounts
 
