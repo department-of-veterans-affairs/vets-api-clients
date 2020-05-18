@@ -1,0 +1,22 @@
+<header class="site-header" role="banner">
+  <div class="site-l-wrapper">
+    <div class="site-header__masthead">
+      <div class="site-header__logo" id="extended-logo">
+        <em class="site-header__logo-text">
+          <a class="site-header__logo-link" title="VA.gov Design System homepage" href="/">
+            <strong class="vads-u-display--block small-screen:vads-u-display--inline">Lighthouse</strong>
+            <span class="vads-u-display--none small-screen:vads-u-display--inline"> | OAuth Example - Node</span>
+          </a>
+        </em>
+      </div>
+      <div class="site-header__utility-links">
+        <% if (tokenset && tokenset.access_token) { %>
+          <a href="/auth" class="usa-button site-button-inverse">Logout</a>
+        <% } else { %>
+          <a href="/auth" class="usa-button site-button-inverse">OAuth Login</a>
+          <a href="https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md" class="usa-button vads-u-margin--0" target="_BLANK">Test Users</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</header>

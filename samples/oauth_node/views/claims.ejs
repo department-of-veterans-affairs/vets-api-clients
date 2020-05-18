@@ -1,0 +1,41 @@
+<html>
+  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      <div class="large-screen:vads-u-padding-x--0">
+        <%- include('./partials/main_nav') %>
+        <div class="site-l-wrapper">
+          <% if (user) { %>
+            <h3 class='h3 text-center'>Claims For <%= user %></h3> 
+          <% } else { %>
+            <h3 class='h3 text-center'>My Claims</h3> 
+          <% } %>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Date</td>
+                <th scope="col">Evss Id</td>
+                <th scope="col">Open</td>
+                <th scope="col">Claim Type</td>
+                <th scope="col">Status</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% claims.forEach(claim => { %>
+                <tr>
+                  <td><%= claim.attributes.date_filed %></td>
+                  <td><a href=`<%= claim.id %>`><%= claim.id %></a></td>
+                  <td><%= claim.attributes.open %></td>
+                  <td><%= claim.attributes.claim_type %></td>
+                  <td><%= claim.attributes.status %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>
