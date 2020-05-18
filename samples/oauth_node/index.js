@@ -86,6 +86,10 @@ const wrapAuth = async (req, res, next) => {
   passport.authenticate("oidc", { successRedirect: "/home", failureRedirect: "/"})(req, res, next);
 };
 
+const loggedIn = (req) => {
+  return req.session && req.session.passport && req.session.passport.user;
+}
+
 const startApp = (client) => {
   const app = express();
   const port = 8080;
@@ -106,7 +110,7 @@ const startApp = (client) => {
 
   app.get('/', (req, res) => {
     var user = {};
-    if (req.session && req.session.passport && req.session.passport.user) {
+    if (loggedIn(req)) {
       user = req.session.passport.user;
       req.session.user = req.session.passport.user;
       req.session.tokenset = user.tokenset;
@@ -123,9 +127,9 @@ const startApp = (client) => {
   })
 
   app.get('/home', (req, res) => {
-    if (req.session && req.session.passport && req.session.passport.user) {
-      let users = [];
-      let sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans`;
+    if (loggedIn(req)) {
+      const users = [];
+      const sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans`;
       const tokenset = req.session.passport.user.tokenset;
       db.all(sql, [], (err, rows) => {
         if (err) {
@@ -134,7 +138,7 @@ const startApp = (client) => {
         rows.forEach((row) => {
           users.push(row)
         });
-        res.render('home', { tokenset: tokenset, users: users });
+        res.render('home', { tokenset, users });
       });
 
     } else {
@@ -143,7 +147,7 @@ const startApp = (client) => {
   });
 
   app.get('/claims', (req, res) => {
-    if (req.session && req.session.passport && req.session.passport.user) {
+    if (loggedIn(req)) {
       const tokenset = req.session.passport.user.tokenset;
       axios.get(`https://${env}-api.va.gov/services/claims/v1/claims`, {
         headers: {
@@ -163,9 +167,9 @@ const startApp = (client) => {
 
   app.get('/claims/for/:id', (req, res) => {
     if (req.session && req.session.passport && req.session.passport.user) {
-      var id = req.params.id;
-      let users = [];
-      let sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans where id = ?`;
+      const id = req.params.id;
+      const users = [];
+      const sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans where id = ?`;
       const tokenset = req.session.passport.user.tokenset;
       db.get(sql, [id], (err, row) => {
         if (err) {
