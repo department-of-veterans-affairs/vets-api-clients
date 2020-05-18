@@ -51,7 +51,7 @@ const verifyVeteranStatus = async (req, res, next) => {
   if (req.session && req.session.passport && req.session.passport.user) {
     const veteranStatus = await new Promise((resolve, reject) => {
       https.get(
-        'https://sandbox-api.va.gov/services/veteran_verification/v0/status',
+        `https://${env}-api.va.gov/services/veteran_verification/v0/status`,
         { headers: {'Authorization': `Bearer ${req.session.passport.user.tokenset.access_token}`} },
         (res) => {
           let rawData = '';
@@ -146,7 +146,7 @@ const startApp = (client) => {
   app.get('/claims', (req, res) => {
     if (req.session && req.session.passport && req.session.passport.user) {
       const tokenset = req.session.passport.user.tokenset;
-      axios.get('https://sandbox-api.va.gov/services/claims/v1/claims', {
+      axios.get(`https://${env}-api.va.gov/services/claims/v1/claims`, {
         headers: {
           Authorization: `Bearer ${tokenset.access_token}`
         }
@@ -156,7 +156,6 @@ const startApp = (client) => {
       })
       .catch(error => {
         console.log(error)
-        console.log('Iam error')
       })
     } else {
       res.redirect('/auth'); // Redirect the user to login if they are not
@@ -173,7 +172,7 @@ const startApp = (client) => {
         if (err) {
           throw err;
         }
-        axios.get('https://sandbox-api.va.gov/services/claims/v1/claims', {
+        axios.get(`https://${env}-api.va.gov/services/claims/v1/claims`, {
           headers: {
             Authorization: `Bearer ${tokenset.access_token}`,
             'X-VA-First-Name': row.first_name,
