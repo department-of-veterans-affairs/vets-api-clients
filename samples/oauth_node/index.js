@@ -1,6 +1,5 @@
 require('dotenv').config();
 const axios = require('axios');
-
 const express = require('express');
 const session = require('express-session');
 const { Issuer, Strategy } = require('openid-client');
@@ -95,7 +94,7 @@ const startApp = (client) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log('Connected to the in-memory SQlite database.');
+    console.log('Connected to SQlite database.');
   });
 
   app.set('view engine', 'ejs')
