@@ -1,0 +1,64 @@
+<html>
+  <%- include('./partials/head') %>
+  <body>
+    <%- include('./partials/header') %>
+    <main>
+      <div class="large-screen:vads-u-padding-x--0">
+        <%- include('./partials/main_nav') %>
+        <div class="site-l-wrapper">
+          <div class="vads-l-grid-container">
+            <form action="/users" accept-charset="UTF-8" method="post">
+              <div class="vads-l-row">
+                <div class="vads-l-col--6">
+                  <label for="first_name">First Name:</label>
+                  <input type="text" name="first_name" id="first_name" class="usa-input">
+                </div>
+                <div class="vads-l-col--6">
+                  <label for="last_name">Last Name:</label>
+                  <input type="text" name="last_name" id="last_name">
+                </div>
+              </div>
+              <div class="vads-l-row">
+                <div class="vads-l-col--6">
+                  <label for="ssn">Social Security Number:</label>
+                  <input type="text" name="ssn" id="ssn">
+                </div>
+                <div class="vads-l-col--6">
+                  <label for="birth_date">Date of Birth:</label>
+                  <input type="text" name="birth_date" id="birth_date">
+                </div>
+              </div>
+              <div class="vads-l-row">
+                <div class="vads-l-col--12 text-center">
+                  <input type="submit" name="commit" value="Add Veteran" data-disable-with="Add Veteran">
+                </div>
+              </div>
+            </form>
+          </div>
+
+        <div>
+          <h3 class="h3 text-center">Veterans I Represent</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</td>
+                <th></td>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.forEach(user => { %>
+                <tr>
+                  <td><%= user.first_name%> <%= user.last_name%></td>
+                  <td><a href='/claims/for/<%= user.id %>'>View Claims</a></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </main>
+    <%- include('./partials/footer') %>
+  </body>
+</html>
+

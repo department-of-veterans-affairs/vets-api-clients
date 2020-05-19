@@ -4,8 +4,7 @@
   "description": "Example OAuth Client with VA API Platform",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,10 +17,18 @@
   },
   "homepage": "https://github.com/department-of-veterans-affairs/vets-api-clients#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "openid-client": "^2.4.5",
     "passport": "^0.4.0",
-    "dotenv": "^8.2.0"
+    "pug": "^2.0.4",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }

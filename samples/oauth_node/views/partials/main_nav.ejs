@@ -1,0 +1,23 @@
+<div class="site-top-nav-wrapper site-l-wrapper ">
+  <nav class="site-header__nav">
+    <ul class="site-header__nav-list">
+      <li class="site-header__nav-item">
+        <a class="site-header__nav-item__link " href="https://developer.va.gov" target="_BLANK">Documentation</a>
+      </li>
+      <% if (tokenset && tokenset.access_token) { %>
+        <li class="site-header__nav-item">
+          <a class="site-header__nav-item__link" href="/claims">View Claims</a>
+        </li>
+        <li class="site-header__nav-item">
+          <a class="site-header__nav-item__link" href="/status">Veteran Verification</a>
+        </li>
+        <li class="site-header__nav-item">
+          <a class="site-header__nav-item__link" href="/coming_soon">Benefits Intake</a>
+        </li>
+        <li class="site-header__nav-item">
+          <a class='site-header__nav-item__link' href="coming_soon">Power of Attorney </a>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+</div>
