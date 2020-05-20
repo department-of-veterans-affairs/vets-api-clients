@@ -180,7 +180,8 @@ const startApp = (client) => {
       const id = req.params.id;
       const users = [];
       const sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans where id = ?`;
-      const tokenset = req.session.passport.user.toke.get(sql, [id], (err, row) => {
+      const tokenset = req.session.passport.user.tokenset;
+      db.get(sql, [id], (err, row) => {
         if (err) {
           throw err;
         }
