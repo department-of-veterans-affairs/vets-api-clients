@@ -12,6 +12,7 @@ docker build -t oauth-node-sample-client .
 docker run --rm -d -p 8080:8080 \
   -e CLIENT_ID=FAKE_CLIENT_ID \
   -e CLIENT_SECRET=FAKE_CLIENT_SECRET \
+  -e ENVIRONMENT=sandbox \
   oauth-node-sample-client
 ```
 
