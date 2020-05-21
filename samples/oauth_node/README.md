@@ -15,7 +15,6 @@ cp .env.sample .env
 
 ```
 docker build -t oauth-node-sample-client .
-
 docker run --rm -d -p 8080:8080 oauth-node-sample-client
 ```
 
@@ -39,7 +38,6 @@ Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` with your ID and secret.
 
 ```
 npm i
-
 node index.js
 ```
 
