@@ -46,6 +46,16 @@ const configurePassport = (client) => {
   ));
 }
 
+const userDetails = async (req, res, next) => {
+  if (req.session && req.session.passport && req.session.passport.user) {
+    res.send(req.session.passport.user);
+    next();
+  } else {
+    res.redirect('/auth'); // Redirect the user to login if they are not
+    next();
+  }
+}
+
 const verifyVeteranStatus = async (req, res, next) => {
   if (req.session && req.session.passport && req.session.passport.user) {
     const veteranStatus = await new Promise((resolve, reject) => {
@@ -121,7 +131,7 @@ const startApp = (client) => {
   });
 
   app.get('/status', verifyVeteranStatus);
-
+  app.get('/userdetails', userDetails);
   app.get('/coming_soon', (req, res) => {
     res.render('coming_soon', { tokenset: {} } )
   })
