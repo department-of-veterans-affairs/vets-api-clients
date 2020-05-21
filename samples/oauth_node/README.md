@@ -6,6 +6,8 @@ An explanation of how this works and choices made can be found [here](https://de
 
 ```
 cd samples/oauth_node
+Copy .env.sample to .env
+Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` and `ENVIRONMENT` in your copy of `.env` with your ID and secret and target deploy environment
 
 docker build -t oauth-node-sample-client .
 
@@ -37,6 +39,5 @@ node index.js
 
 ## Usage
 
-Navigate to `http://localhost:8080/auth` to login and `http://localhost:8080/status` to see the logged in users veteran status.
-
+Navigate to `http://localhost:8080/auth` to login and `http://localhost:8080/status` to see the logged in users veteran status
 Use any account from the supplied [test accounts](../../test_accounts.md).
