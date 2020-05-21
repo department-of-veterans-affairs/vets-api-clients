@@ -9,6 +9,9 @@ RUN npm install
 
 # Bundle app source
 COPY index.js ./
+COPY db ./db/
+COPY views ./views/
+COPY .env ./
 
 EXPOSE 8080
 
