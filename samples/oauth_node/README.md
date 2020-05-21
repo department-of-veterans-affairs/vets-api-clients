@@ -2,13 +2,25 @@
 
 An explanation of how this works and choices made can be found [here](https://developer.va.gov/oauth).
 
-## Installation with Docker
+## Configuration
+
+Use the provided `.env.sample` template to configure the client.
 
 ```
 cd samples/oauth_node
+cp .env.sample .env
+```
 
+## Running with Docker
+
+```
 docker build -t oauth-node-sample-client .
+docker run --rm -d -p 8080:8080 oauth-node-sample-client
+```
 
+Optionally override configuration using environment variables.
+
+```
 docker run --rm -d -p 8080:8080 \
   -e CLIENT_ID=FAKE_CLIENT_ID \
   -e CLIENT_SECRET=FAKE_CLIENT_SECRET \
@@ -18,7 +30,7 @@ docker run --rm -d -p 8080:8080 \
 
 Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` with your ID and secret.
 
-## Installation without Docker
+## Running without Docker
 
 ### Requirements
 
@@ -26,18 +38,11 @@ Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` with your ID and secret.
 * [NPM](https://www.npmjs.com/get-npm)
 
 ```
-cd samples/oauth_node
 npm i
-```
-
-Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` in `.env` with your ID and secret.
-
-```
 node index.js
 ```
 
 ## Usage
 
-Navigate to `http://localhost:8080/auth` to login and `http://localhost:8080/status` to see the logged in users veteran status.
-
+Navigate to `http://localhost:8080 to begin using the client.
 Use any account from the supplied [test accounts](../../test_accounts.md).
