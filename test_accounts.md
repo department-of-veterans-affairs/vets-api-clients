@@ -100,88 +100,91 @@ The Representative users 001 (Tamara Ellis) and 007 (John Doe) have Power of Att
 
 These users have a variety of synthetic health records defined for use with the VA Argonaut Health APIs.
 
-| Email | Password      | Last Name | First Name | Gender | Birthdate |
-|---|---|---|---|---|---|
-| va.api.user+idme.101@gmail.com | Password1234! | Harris789      | Sheba703     | F | 1926-01-08 |
-| va.api.user+idme.102@gmail.com | Password1234! | Ruelas156      | Mariano761   | M | 1907-11-20 |
-| va.api.user+idme.103@gmail.com | Password1234! | Valentín837    | Lorenzo669   | M | 1942-01-11 |
-| va.api.user+idme.104@gmail.com | Password1234! | Schmeler639    | Porfirio146  | M | 1916-06-15 |
-| va.api.user+idme.105@gmail.com | Password1234! | Windler79      | Moshe758     | M | 1917-03-05 |
-| va.api.user+idme.106@gmail.com | Password1234! | Goyette777     | Wayne846     | M | 1947-05-30 |
-| va.api.user+idme.107@gmail.com | Password1234! | Renner328      | Ned189       | M | 1993-09-06 |
-| va.api.user+idme.108@gmail.com | Password1234! | Kuhic920       | Harvey63     | M | 1927-10-21 |
-| va.api.user+idme.109@gmail.com | Password1234! | Bergstrom287   | Jewell855    | M | 1945-10-19 |
-| va.api.user+idme.110@gmail.com | Password1234! | Ferry570       | Bryan958     | M | 1939-01-24 |
-| va.api.user+idme.111@gmail.com | Password1234! | Iglesias873    | Gilberto712  | M | 1926-04-05 |
-| va.api.user+idme.112@gmail.com | Password1234! | Rohan584       | Al123        | M | 1996-12-07 |
-| va.api.user+idme.113@gmail.com | Password1234! | Hermann103     | Chadwick722  | M | 1947-07-31 |
-| va.api.user+idme.114@gmail.com | Password1234! | Mayer370       | Luis923      | M | 1969-07-03 |
-| va.api.user+idme.115@gmail.com | Password1234! | Cruickshank494 | Aurelio227   | M | 1995-02-06 |
-| va.api.user+idme.116@gmail.com | Password1234! | Terry864       | Jefferey580  | M | 1957-03-11 |
-| va.api.user+idme.117@gmail.com | Password1234! | Mann644        | Taylor21   
-| va.api.user+idme.118@gmail.com | Password1234! | Gutmann970     | Julius90     | M | 1947-11-13 |
-| va.api.user+idme.119@gmail.com | Password1234! | Kautzer186     | Carlita746   | F | 1998-01-27 |
-| va.api.user+idme.120@gmail.com | Password1234! | Reilly981      | Herb645      | M | 1993-10-14 |
-| va.api.user+idme.121@gmail.com | Password1234! | Considine820   | Emmaline88   | F | 1914-03-08 |
-| va.api.user+idme.122@gmail.com | Password1234! | Leal292        | Gerardo48    | M | 1944-01-21 |
-| va.api.user+idme.123@gmail.com | Password1234! | Keebler762     | Boris111     | M | 1939-08-25 |
-| va.api.user+idme.124@gmail.com | Password1234! | Mata817        | Vicente970   | M | 1919-01-11 |
-| va.api.user+idme.125@gmail.com | Password1234! | Quigley282     | Danilo179    | M | 1992-01-25 |
-| va.api.user+idme.126@gmail.com | Password1234! | McCullough561  | Kendrick479  | M | 1992-01-25 |
-| va.api.user+idme.127@gmail.com | Password1234! | Bednar518      | Jarrett354   | M | 1908-10-09 |
-| va.api.user+idme.128@gmail.com | Password1234! | Kris249        | Alex454      | F | 1940-11-11 |
-| va.api.user+idme.129@gmail.com | Password1234! | Mosciski958    | Titus37      | M | 1942-04-15 |
-| va.api.user+idme.130@gmail.com | Password1234! | Bechtelar572   | Ricardo560   | M | 1935-11-14 |
-| va.api.user+idme.131@gmail.com | Password1234! | Vela532        | Miguel815    | M | 1983-08-10 |
-| va.api.user+idme.132@gmail.com | Password1234! | Walsh511       | Cletus494    | M | 1937-07-19 |
-| va.api.user+idme.133@gmail.com | Password1234! | Stark857       | Mariano761   | M | 1913-02-01 |
-| va.api.user+idme.134@gmail.com | Password1234! | Bartell116     | Lorenzo669   | M | 1961-04-27 |
-| va.api.user+idme.135@gmail.com | Password1234! | Runte676       | Renaldo199   | M | 1968-12-09 |
-| va.api.user+idme.136@gmail.com | Password1234! | Lang846        | Art115       | M | 1947-04-24 |
-| va.api.user+idme.137@gmail.com | Password1234! | Walter473      | Hai304       | M | 1950-11-26 |
-| va.api.user+idme.138@gmail.com | Password1234! | Abernathy524   | Ollie731     | M | 1970-11-10 |
-| va.api.user+idme.139@gmail.com | Password1234! | Schaden604     | Tyler508     | M | 1987-10-03 |
-| va.api.user+idme.140@gmail.com | Password1234! | Brekke496      | Dan465       | M | 1987-01-29 |
-| va.api.user+idme.141@gmail.com | Password1234! | Kiehn525       | Elmer371     | M | 1935-11-23 |
-| va.api.user+idme.142@gmail.com | Password1234! | Nader710       | Marcelino726 | M | 1923-08-28 |
-| va.api.user+idme.143@gmail.com | Password1234! | Barrows492     | Rebecca981   | F | 1962-11-08 |
-| va.api.user+idme.144@gmail.com | Password1234! | Hartmann983    | Darryl392    | M | 1945-04-18 |
-| va.api.user+idme.145@gmail.com | Password1234! | Hickle134      | Lavern240    | M | 1910-09-14 |
-| va.api.user+idme.146@gmail.com | Password1234! | McKenzie376    | Damian46     | M | 1963-04-29 |
-| va.api.user+idme.147@gmail.com | Password1234! | Mosciski958    | Vance413     | M | 1960-12-13 |
-| va.api.user+idme.148@gmail.com | Password1234! | Fritsch593     | Hoyt490      | M | 1976-03-24 |
-| va.api.user+idme.149@gmail.com | Password1234! | Wolff180       | Tobias236    | M | 1970-11-14 |
-| va.api.user+idme.150@gmail.com | Password1234! | Bartell116     | Shane235     | M | 1958-11-10 |
-| va.api.user+idme.151@gmail.com | Password1234! | Batz141        | Jc393        | M | 1975-09-06 |
-| va.api.user+idme.152@gmail.com | Password1234! | Stroman228     | Emery884     | M | 1913-06-06 |
-| va.api.user+idme.153@gmail.com | Password1234! | Raynor401      | Florentino8  | M | 1950-04-06 |
-| va.api.user+idme.154@gmail.com | Password1234! | Roberts511     | Alvaro283    | M | 1935-08-02 |
-| va.api.user+idme.155@gmail.com | Password1234! | Greenfelder433 | Derrick232   | M | 1947-12-17 |
-| va.api.user+idme.156@gmail.com | Password1234! | Terry864       | Jon665       | M | 1984-11-02 |
-| va.api.user+idme.157@gmail.com | Password1234! | Buckridge80    | Cornelius968 | M | 1920-06-29 |
-| va.api.user+idme.158@gmail.com | Password1234! | Olson653       | Elias404     | M | 1918-01-01 |
-| va.api.user+idme.159@gmail.com | Password1234! | Auer97         | Ethan766     | M | 1986-07-09 |
-| va.api.user+idme.160@gmail.com | Password1234! | Barrows492     | Raymundo71   | M | 1997-06-21 |
-| va.api.user+idme.161@gmail.com | Password1234! | Sanford861     | Chet188      | M | 1928-04-17 |
-| va.api.user+idme.162@gmail.com | Password1234! | Lueilwitz711   | Nicholas495  | M | 1919-02-04 |
-| va.api.user+idme.163@gmail.com | Password1234! | Little434      | Silas208     | M | 1924-07-29 |
-| va.api.user+idme.164@gmail.com | Password1234! | Dietrich576    | Douglas31    | M | 1914-06-11 |
-| va.api.user+idme.165@gmail.com | Password1234! | Haag279        | Geraldo282   | M | 1996-10-07 |
-| va.api.user+idme.166@gmail.com | Password1234! | Bartoletti50   | Melvin857    | M | 1995-06-24 |
-| va.api.user+idme.167@gmail.com | Password1234! | Prohaska837    | Freeman822   | M | 1915-05-08 |
-| va.api.user+idme.168@gmail.com | Password1234! | Herman763      | Gino587      | M | 1936-10-09 |
-| va.api.user+idme.169@gmail.com | Password1234! | Gorczany269    | Jasper743    | M | 1976-09-08 |
-| va.api.user+idme.170@gmail.com | Password1234! | Jacobson885    | Alonso270    | M | 1935-07-06 |
-| va.api.user+idme.171@gmail.com | Password1234! | Cronin387      | Anibal473    | M | 1916-12-02 |
-| va.api.user+idme.172@gmail.com | Password1234! | Gerhold939     | Stevie682    | M | 1948-02-17 |
-| va.api.user+idme.173@gmail.com | Password1234! | Wintheiser220  | Andres25     | M | 1941-05-01 |
-| va.api.user+idme.174@gmail.com | Password1234! | Hayes766       | Dante562     | M | 1909-08-01 |
-| va.api.user+idme.175@gmail.com | Password1234! | Aufderhar910   | Pasquale620  | M | 1931-03-25 |
-| va.api.user+idme.176@gmail.com | Password1234! | Schultz619     | Alonso270    | M | 1922-01-10 |
-| va.api.user+idme.177@gmail.com | Password1234! | Hirthe744      | Emilio417    | M | 1961-06-17 |
-| va.api.user+idme.178@gmail.com | Password1234! | Williamson769  | Foster87     | M | 1938-08-11 |
-| va.api.user+idme.179@gmail.com | Password1234! | O'Kon634       | Charley358   | M | 1992-08-17 |
-| va.api.user+idme.180@gmail.com | Password1234! | Hegmann834     | Drew592      | M | 1981-07-09 |
-| va.api.user+idme.181@gmail.com | Password1234! | Miller503      | Forrest301   | M | 1978-09-26 |
-| va.api.user+idme.182@gmail.com | Password1234! | Cronin387      | Ward668      | M | 1939-03-04 |
-| va.api.user+idme.183@gmail.com | Password1234! | Simonis280     | Reynaldo722  | M | 1909-04-04 |
+<ins>The password for all users is:</ins>  Password1234!
+
+|First Name |Last Name  |Gender |Birthdate   |Email |
+|--- |--- |--- |--- |--- |
+||||||
+|Sheba703|Harris789|F|1926-01-08|va.api.user+idme.101@gmail.com|
+|Mariano761|Ruelas156|M|1907-11-20|va.api.user+idme.102@gmail.com|
+|Lorenzo669|Valentín837|M|1942-01-11|va.api.user+idme.103@gmail.com|
+|Porfirio146|Schmeler639|M|1916-06-15|va.api.user+idme.104@gmail.com|
+|Moshe758|Windler79|M|1917-03-05|va.api.user+idme.105@gmail.com|
+|Wayne846|Goyette777|M|1947-05-30|va.api.user+idme.106@gmail.com|
+|Ned189|Renner328|M|1993-09-06|va.api.user+idme.107@gmail.com|
+|Harvey63|Kuhic920|M|1927-10-21|va.api.user+idme.108@gmail.com|
+|Jewell855|Bergstrom287|M|1945-10-19|va.api.user+idme.109@gmail.com|
+|Bryan958|Ferry570|M|1939-01-24|va.api.user+idme.110@gmail.com|
+|Gilberto712|Iglesias873|M|1926-04-05|va.api.user+idme.111@gmail.com|
+|Al123|Rohan584|M|1996-12-07|va.api.user+idme.112@gmail.com|
+|Chadwick722|Hermann103|M|1947-07-31|va.api.user+idme.113@gmail.com|
+|Luis923|Mayer370|M|1969-07-03|va.api.user+idme.114@gmail.com|
+|Aurelio227|Cruickshank494|M|1995-02-06|va.api.user+idme.115@gmail.com|
+|Jefferey580|Terry864|M|1957-03-11|va.api.user+idme.116@gmail.com|
+|Taylor21|Mann644|||va.api.user+idme.117@gmail.com|
+|Julius90|Gutmann970|M|1947-11-13|va.api.user+idme.118@gmail.com|
+|Carlita746|Kautzer186|F|1998-01-27|va.api.user+idme.119@gmail.com|
+|Herb645|Reilly981|M|1993-10-14|va.api.user+idme.120@gmail.com|
+|Emmaline88|Considine820|F|1914-03-08|va.api.user+idme.121@gmail.com|
+|Gerardo48|Leal292|M|1944-01-21|va.api.user+idme.122@gmail.com|
+|Boris111|Keebler762|M|1939-08-25|va.api.user+idme.123@gmail.com|
+|Vicente970|Mata817|M|1919-01-11|va.api.user+idme.124@gmail.com|
+|Danilo179|Quigley282|M|1992-01-25|va.api.user+idme.125@gmail.com|
+|Kendrick479|McCullough561|M|1992-01-25|va.api.user+idme.126@gmail.com|
+|Jarrett354|Bednar518|M|1908-10-09|va.api.user+idme.127@gmail.com|
+|Alex454|Kris249|F|1940-11-11|va.api.user+idme.128@gmail.com|
+|Titus37|Mosciski958|M|1942-04-15|va.api.user+idme.129@gmail.com|
+|Ricardo560|Bechtelar572|M|1935-11-14|va.api.user+idme.130@gmail.com|
+|Miguel815|Vela532|M|1983-08-10|va.api.user+idme.131@gmail.com|
+|Cletus494|Walsh511|M|1937-07-19|va.api.user+idme.132@gmail.com|
+|Mariano761|Stark857|M|1913-02-01|va.api.user+idme.133@gmail.com|
+|Lorenzo669|Bartell116|M|1961-04-27|va.api.user+idme.134@gmail.com|
+|Renaldo199|Runte676|M|1968-12-09|va.api.user+idme.135@gmail.com|
+|Art115|Lang846|M|1947-04-24|va.api.user+idme.136@gmail.com|
+|Hai304|Walter473|M|1950-11-26|va.api.user+idme.137@gmail.com|
+|Ollie731|Abernathy524|M|1970-11-10|va.api.user+idme.138@gmail.com|
+|Tyler508|Schaden604|M|1987-10-03|va.api.user+idme.139@gmail.com|
+|Dan465|Brekke496|M|1987-01-29|va.api.user+idme.140@gmail.com|
+|Elmer371|Kiehn525|M|1935-11-23|va.api.user+idme.141@gmail.com|
+|Marcelino726|Nader710|M|1923-08-28|va.api.user+idme.142@gmail.com|
+|Rebecca981|Barrows492|F|1962-11-08|va.api.user+idme.143@gmail.com|
+|Darryl392|Hartmann983|M|1945-04-18|va.api.user+idme.144@gmail.com|
+|Lavern240|Hickle134|M|1910-09-14|va.api.user+idme.145@gmail.com|
+|Damian46|McKenzie376|M|1963-04-29|va.api.user+idme.146@gmail.com|
+|Vance413|Mosciski958|M|1960-12-13|va.api.user+idme.147@gmail.com|
+|Hoyt490|Fritsch593|M|1976-03-24|va.api.user+idme.148@gmail.com|
+|Tobias236|Wolff180|M|1970-11-14|va.api.user+idme.149@gmail.com|
+|Shane235|Bartell116|M|1958-11-10|va.api.user+idme.150@gmail.com|
+|Jc393|Batz141|M|1975-09-06|va.api.user+idme.151@gmail.com|
+|Emery884|Stroman228|M|1913-06-06|va.api.user+idme.152@gmail.com|
+|Florentino8|Raynor401|M|1950-04-06|va.api.user+idme.153@gmail.com|
+|Alvaro283|Roberts511|M|1935-08-02|va.api.user+idme.154@gmail.com|
+|Derrick232|Greenfelder433|M|1947-12-17|va.api.user+idme.155@gmail.com|
+|Jon665|Terry864|M|1984-11-02|va.api.user+idme.156@gmail.com|
+|Cornelius968|Buckridge80|M|1920-06-29|va.api.user+idme.157@gmail.com|
+|Elias404|Olson653|M|1918-01-01|va.api.user+idme.158@gmail.com|
+|Ethan766|Auer97|M|1986-07-09|va.api.user+idme.159@gmail.com|
+|Raymundo71|Barrows492|M|1997-06-21|va.api.user+idme.160@gmail.com|
+|Chet188|Sanford861|M|1928-04-17|va.api.user+idme.161@gmail.com|
+|Nicholas495|Lueilwitz711|M|1919-02-04|va.api.user+idme.162@gmail.com|
+|Silas208|Little434|M|1924-07-29|va.api.user+idme.163@gmail.com|
+|Douglas31|Dietrich576|M|1914-06-11|va.api.user+idme.164@gmail.com|
+|Geraldo282|Haag279|M|1996-10-07|va.api.user+idme.165@gmail.com|
+|Melvin857|Bartoletti50|M|1995-06-24|va.api.user+idme.166@gmail.com|
+|Freeman822|Prohaska837|M|1915-05-08|va.api.user+idme.167@gmail.com|
+|Gino587|Herman763|M|1936-10-09|va.api.user+idme.168@gmail.com|
+|Jasper743|Gorczany269|M|1976-09-08|va.api.user+idme.169@gmail.com|
+|Alonso270|Jacobson885|M|1935-07-06|va.api.user+idme.170@gmail.com|
+|Anibal473|Cronin387|M|1916-12-02|va.api.user+idme.171@gmail.com|
+|Stevie682|Gerhold939|M|1948-02-17|va.api.user+idme.172@gmail.com|
+|Andres25|Wintheiser220|M|1941-05-01|va.api.user+idme.173@gmail.com|
+|Dante562|Hayes766|M|1909-08-01|va.api.user+idme.174@gmail.com|
+|Pasquale620|Aufderhar910|M|1931-03-25|va.api.user+idme.175@gmail.com|
+|Alonso270|Schultz619|M|1922-01-10|va.api.user+idme.176@gmail.com|
+|Emilio417|Hirthe744|M|1961-06-17|va.api.user+idme.177@gmail.com|
+|Foster87|Williamson769|M|1938-08-11|va.api.user+idme.178@gmail.com|
+|Charley358|O'Kon634|M|1992-08-17|va.api.user+idme.179@gmail.com|
+|Drew592|Hegmann834|M|1981-07-09|va.api.user+idme.180@gmail.com|
+|Forrest301|Miller503|M|1978-09-26|va.api.user+idme.181@gmail.com|
+|Ward668|Cronin387|M|1939-03-04|va.api.user+idme.182@gmail.com|
+|Reynaldo722|Simonis280|M|1909-04-04|va.api.user+idme.183@gmail.com|
