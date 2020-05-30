@@ -3,8 +3,8 @@
 There are three types of test users to choose from, depending on your needs.
 
 1. **Veteran Health** test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). 
-2. **Veteran Non-Health** test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current).  
-1. **Representative** test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current).  
+2. **Veteran Non-Health** test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current).  
+1. **Representative** test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current).  
 
 Use these test accounts to log into the ID.me sandbox environment that is connected to sandbox-api.va.gov. When signing in with a test account, Step 2 will ask how you want to receive an authentication code. Click "continue" for the verification to be automatically populated in Step 3.
 
@@ -106,7 +106,7 @@ These test users have a variety of synthetic health records attached to them and
 
 ## Veteran Non-Health
 
-These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current). 
+These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). 
 
 **Password for all ID.met accounts: Password1234!**
 
@@ -177,7 +177,7 @@ These test users have a variety of synthetic VA records such as service history 
 
 ## Representative
 
-These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
+These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
 **Both Veterans and non-Veterans can be Representatives.**
 
