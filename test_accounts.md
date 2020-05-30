@@ -10,7 +10,8 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
 
-##Veteran Health
+## Veteran Health
+
 These test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current).
 
 **Password for all ID.met accounts: Password1234!**
@@ -103,7 +104,8 @@ These test users have a variety of synthetic health records attached to them and
 |va.api.user+idme.183@gmail.com|Reynaldo722|Simonis280|M|1909-04-04|
 
 
-##Veteran Non-Health
+## Veteran Non-Health
+
 These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current). 
 
 **Password for all ID.met accounts: Password1234!**
@@ -173,7 +175,8 @@ These test users have a variety of synthetic VA records such as service history 
 |va.api.user+idme.061@gmail.com|Kent|L|Warren|M|1936-07-14|796127160|
 |va.api.user+idme.062@gmail.com|Jeff|Terrel|Watson|M|1968-01-05|796246757|
 
-##Representative
+## Representative
+
 These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API] (https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
 **Both Veterans and non-Veterans can be Representatives.**
