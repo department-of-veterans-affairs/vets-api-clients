@@ -46,7 +46,7 @@ public class Main {
 
     public static String buildPayload(String filePath) {
         try {
-            byte[] data = Files.readAllBytes(Paths.get("/Users/charley/Downloads/Small.pdf"));
+            byte[] data = Files.readAllBytes(Paths.get(filePath));
             String binaryData = new String(data);
             String newLine = "\r\n";
             String payload = "------WebKitFormBoundaryVfOwzCyvug0JmWYo"
