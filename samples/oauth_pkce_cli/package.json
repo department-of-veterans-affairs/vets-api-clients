@@ -5,9 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "commander": "^2.19.0",
-    "opn": "https://github.com/dogeared/opn.git",
+    "opn": "git+https://github.com/dogeared/opn.git",
     "request": "^2.88.0",
-    "restify": "^7.2.2"
+    "restify": "^8.5.1"
   },
   "devDependencies": {},
   "scripts": {
