@@ -1,6 +1,6 @@
 dir="oauth_php/VetsApiClaims"
+echo "### update: $dir"
 (
-  echo "### update: $dir"
   cd "samples/$dir"
   composer update
 )
@@ -9,8 +9,8 @@ dir="oauth_php/VetsApiClaims"
 RAILS_PROJECTS="oauth_rails/VetsApiClaims oauth_rails/vethealth oauth_rails/vetverification"
 for dir in $RAILS_PROJECTS
 do
+  echo "### update: $dir"
   (
-    echo "### update: $dir"
     cd "samples/$dir"
     bin/bundle update
   )
