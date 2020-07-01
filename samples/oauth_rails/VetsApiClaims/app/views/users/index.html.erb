@@ -1,15 +1,37 @@
 <div class="site-l-wrapper">
-  <h1 class='text-center'>Welcome</h1>
-  <p class='text-center'>
-    <%= link_to 'My Claims', claims_path, class: 'btn btn-primary' %>
-    <%= link_to 'View Active ITF', active_itf_path, class: 'btn btn-warning' %>
-    <%= link_to 'Submit ITF', submit_itf_path, class: 'btn btn-info', data: {method: :post} %>
-    <%= link_to 'Submit 526', form_path(form_number: '526'), class: 'btn btn-success', data: {turbolinks: "false"} %>
-    <%= link_to 'Submit 2122', form_path(form_number: '2122'), class: 'btn btn-success', data: {turbolinks: "false"} %>
-  </p>
+  <h3 class='text-center'>Veterans Represented by <%= @name %></h3>
 </div>
 
 <div class='vads-l-grid-container'>
+  
+  <% if @user && @user.test_veterans.present? %>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th class='text-center' scope="col">Claims</th>
+          <th class='text-center' scope="col">ITF</th>
+          <th class='text-center' scope="col">POA</th>
+          <th class='text-center' scope="col">Form 0966</th>
+          <th class='text-center' scope="col">Form 526</th>
+          <th class='text-center' scope="col">Form 2122</th>
+          <th class='text-center' scope="col">Delete User</th>
+        </tr>
+      </thead>
+      <% @user.test_veterans.each do |veteran| %>
+        <tr>
+          <td><%= veteran.first_name %> <%= veteran.last_name %></td>
+          <td class='text-center'><%= link_to 'View', claims_url(user_id: veteran.id) %></td>
+          <td class='text-center'><%= link_to 'Active', active_itf_url(user_id: veteran.id) %></td>	
+          <td class='text-center'><%= link_to 'Active', active_poa_url(user_id: veteran.id) %></td>	
+          <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '0966'), data: {turbolinks: "false"} %></td>	
+          <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '526'), data: {turbolinks: "false"} %></td>	
+          <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></td>
+          <td class='text-center'><%= link_to 'Remove',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger' %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
   <%= form_tag({controller: "users", action: "create"}, method: "post") do %>
     <div class="vads-l-row">
       <div class="vads-l-col--6">
@@ -33,32 +55,9 @@
     </div>
     <div class="vads-l-row">
       <div class="vads-l-col--12 text-center">
-        <%= submit_tag("Add Veteran") %>
+        <%= submit_tag("Add A Veteran") %>
       </div>
     </div>
-  <% end %>
-  <% if @user && @user.test_veterans.present? %>
-    <h3 class="h3 text-center">Veterans I Represent</h3>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <% @user.test_veterans.each do |veteran| %>
-        <tr>
-          <td><%= veteran.first_name %> <%= veteran.last_name %></td>
-          <td class='text-center'><%= link_to 'View claims', claims_url(user_id: veteran.id) %></td>
-          <td class='text-center'><%= link_to 'Active ITF', active_itf_url(user_id: veteran.id) %></td>
-          <td class='text-center'><%= link_to 'Submit ITF', submit_itf_url(user_id: veteran.id) %></td>
-          <td class='text-center'><%= link_to 'Delete',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger' %></td>
-        </tr>
-      <% end %>
-    </table>
   <% end %>
 </div>
 <div class='col-md-6 offset-md-3'>

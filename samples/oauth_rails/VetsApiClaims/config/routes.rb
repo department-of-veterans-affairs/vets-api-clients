@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/user', to: 'users#destroy'
   get '/claims/active_itf', to: 'claims#active_itf', as: :active_itf
   get '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
+  get '/claims/active_poa', to: 'claims#active_poa', as: :active_poa
   resources :claims, only: %i[index show] do
     member do
       post :update_supporting_document

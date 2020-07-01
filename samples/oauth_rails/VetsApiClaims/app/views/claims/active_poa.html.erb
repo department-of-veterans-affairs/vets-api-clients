@@ -1,0 +1,21 @@
+<div class="site-l-wrapper">
+  <h3 class='h3 text-center'>Power of Attorney for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+  <%= render partial: "menu" %>
+  <% if @poa.present? %>
+    <ul>
+      <% @poa["attributes"].each do |key, value| %>
+        <li><b><%= key.capitalize %>: </b><%= value %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= link_to 'Submit 2122', form_url(user_id: @veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %>
+  <% end %>
+</div>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
+</div>

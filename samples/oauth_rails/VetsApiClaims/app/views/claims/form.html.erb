@@ -1,3 +1,6 @@
+<h3 class='h3 text-center'>Submit <%= @schema['description'].gsub('Schema','') %> for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+  <%= render partial: "menu" %>
+
 <div class="site-l-wrapper">
   <div id='root' />
 </div>
@@ -54,3 +57,11 @@
       document.getElementById('root')
   );
 </script>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
+</div>

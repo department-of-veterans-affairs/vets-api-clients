@@ -19,49 +19,39 @@ class ClaimsController < ApplicationController
 
   def active_itf
     @itf = if @veteran.present?
-             @user.active_itf_for(@veteran, @session)
+             itf_service.active_itf_for(@veteran)
            else
-             @user.active_itf(@session)
+             itf_service.user_active_itf
            end
   rescue StandardError
     redirect_back(fallback_location: root_path, alert: 'No Active ITF Exists')
   end
 
-  def submit_itf
-    itf_service.submit_itf
-    if @veteran.present?
-      redirect_to active_itf_url(user_id: params[:user_id])
-    else
-      redirect_to active_itf_url
-    end
+  def active_poa
+    @poa = if @veteran.present?
+             poa_service.active_poa_for(@veteran)
+           else
+             poa_service.user_active_poa
+           end
   rescue StandardError
-    redirect_back(fallback_location: root_path, alert: 'Failure to submit ITF')
+    redirect_back(fallback_location: root_path, alert: 'No Active ITF Exists')
   end
-
-  def submit_poa; end
 
   def form
     @schema = schema_service.schema(params[:form_number])[0]
   end
 
   def form_submit
-    # this will need to be refactored to handle different types of forms
-    poa_response = poa_service.submit_poa(
-      params[:poaFirstName],
-      params[:poaLastName],
-      params[:poaCode]
-    )
-    render json: poa_response
+    render json: schema_service.submit_form(params)
   end
 
   def form_show
-    # this will need to be refactored to handle different types of forms
     @form_number = params[:form_number]
-    @form = poa_service.poa(params[:id])
+    @form = schema_service.show(params)
   rescue StandardError
     redirect_back(
       fallback_location: root_path,
-      alert: 'No poa exists with that ID'
+      alert: 'No payload exists with that ID'
     )
   end
 
@@ -71,7 +61,7 @@ class ClaimsController < ApplicationController
   end
 
   def update_supporting_document
-    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v0/forms/526/#{params[:id]}/attachments", { attachment: params[:attachment] }, TestUser.stub_headers)
+    response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v1/forms/526/#{params[:id]}/attachments", { attachment: params[:attachment] })
     JSON.parse(response&.body)['data']
     redirect_to claim_path(params[:id])
   end
@@ -79,7 +69,7 @@ class ClaimsController < ApplicationController
   private
 
   def schema_service
-    @schema_service ||= SchemaService.new(@session.access_token)
+    @schema_service ||= SchemaService.new(@session.access_token, @veteran)
   end
 
   def claims_service
@@ -91,7 +81,7 @@ class ClaimsController < ApplicationController
   end
 
   def poa_service
-    @poa_service ||= PoaService.new(@session.access_token)
+    @poa_service ||= PoaService.new(@session.access_token, @veteran)
   end
 
   def setup_from_session
