@@ -14,7 +14,7 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 These test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current).
 
-**Password for all ID.met accounts: Password1234!**
+**Password for all ID.me accounts: Password1234!**
 
 
 |Email|First Name|Last Name|Sex|Birthdate|
@@ -108,7 +108,7 @@ These test users have a variety of synthetic health records attached to them and
 
 These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current) and [Veteran Verification API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current). 
 
-**Password for all ID.met accounts: Password1234!**
+**Password for all ID.me accounts: Password1234!**
 
 
 |Email|First Name|Middle Name|Last Name|Sex| Birthdate |SSN|
@@ -181,9 +181,9 @@ These test users have Power of Attorney (POA) for specific Veterans and can be u
 
 **Both Veterans and non-Veterans can be Representatives.**
 
-Test user 007 (John Doe) is a non-Veteran with Power of Attorney for Veteran test users 001, 003, 004, 005, and 006 (Tamara Ellis, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman).
+Test user 007 (John Doe) is a non-Veteran with Power of Attorney for Veteran test users 001, 002, 003, 004, 005, and 006 (Tamara Ellis, Janet Moore,Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). User 007 does not have PoA for test user 008 (Greg Anderson), so any attempt to read or write data for that user should return a 401 "Not Authorized" error.
 
-Test user 001 (Tamara Ellis) is both a Veteran and a Representative with Power of Attorney for Veteran test users 003, 004, 005, and 006 (Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). In addition to accessing the VA data for the Veterans Tamara represents, she can also access her own personal VA data. 
+Test user 001 (Tamara Ellis) is both a Veteran and a Representative with Power of Attorney for Veteran test users 002, 003, 004, 005, and 006 (Janet Moore, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). In addition to accessing the VA data for the Veterans Tamara represents, she can also access her own personal VA data. User 001 does not have PoA for test user 008 (Greg Anderson), so any attempt to read or write data for that user should return a 401 "Not Authorized" error.
 
 Example of a Representative cURL command is provided below.
 
@@ -200,7 +200,7 @@ curl -X GET \
 
 ```
 
-**Password for all ID.met accounts: Password1234!**
+**Password for all ID.me accounts: Password1234!**
 
 
 |Email|First Name|Middle Name|Last Name|Sex| Birthdate |SSN|
