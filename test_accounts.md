@@ -181,9 +181,9 @@ These test users have Power of Attorney (POA) for specific Veterans and can be u
 
 **Both Veterans and non-Veterans can be Representatives.**
 
-Test user 007 (John Doe) is a non-Veteran with Power of Attorney for Veteran test users 001, 002, 003, 004, 005, and 006 (Tamara Ellis, Janet Moore,Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). User 007 does not have PoA for test user 008 (Greg Anderson), so any attempt to read or write data for that user should return a 401 "Not Authorized" error.
+Test user 007 (John Doe) is a non-Veteran with Power of Attorney for Veteran test users 001, 002, 003, 004, 005, and 006 (Tamara Ellis, Janet Moore, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). If test user 007 attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
 
-Test user 001 (Tamara Ellis) is both a Veteran and a Representative with Power of Attorney for Veteran test users 002, 003, 004, 005, and 006 (Janet Moore, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). In addition to accessing the VA data for the Veterans Tamara represents, she can also access her own personal VA data. User 001 does not have PoA for test user 008 (Greg Anderson), so any attempt to read or write data for that user should return a 401 "Not Authorized" error.
+Test user 001 (Tamara Ellis) is both a Veteran and a Representative with Power of Attorney for Veteran test users 002, 003, 004, 005, and 006 (Janet Moore, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). In addition to accessing the VA data for the Veterans Tamara represents, she can also access her own personal VA data. If test user 001 attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
 
 Example of a Representative cURL command is provided below.
 
