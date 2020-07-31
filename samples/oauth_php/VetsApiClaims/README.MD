@@ -10,9 +10,9 @@
 ##Setup
 
 This will install artisan
-- composer global require "laravel/installer"
+- `composer global require "laravel/installer"`
 - Copy the .env.example file to just env
-- `php composure install`
+- `composer install`
 - `php artisan key:generate`
 - `touch database/database.sqlite`
 - Replace the values of the following keys with your unique values
