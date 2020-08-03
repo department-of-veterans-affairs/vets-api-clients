@@ -12,7 +12,7 @@
     "react-dom": "^16.13.1",
     "react-json-pretty": "^1.7.6",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.0.17",
+    "react-scripts": "3.4.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.77.2",
     "snq": "^1.0.3"
@@ -23,5 +23,17 @@
     "test": "echo 'Tests not yet implemented' && exit 1",
     "eject": "react-scripts eject",
     "postinstall": "node post-install.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
