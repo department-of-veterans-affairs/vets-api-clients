@@ -1,4 +1,4 @@
-<h3 class='h3 text-center'>Submit <%= @schema['description'].gsub('Schema','') %> for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+<h3 class='h3 text-center'>Submit 2122 Power of Attorney for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
   <%= render partial: "menu" %>
 
 <div class="site-l-wrapper">
@@ -12,7 +12,25 @@
 
 
 <script type="text/babel">
-  let schema = <%=raw @schema.to_json %>;
+  let schema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Form 2122 Schema",
+    "type": "object",
+    "required": [
+      "serviceOrganization"
+    ],
+    "properties": {
+      "serviceOrganization": {
+        "type": "object",
+        "required": [
+          "poaCode"
+        ],
+        "properties": {
+          "poaCode":          { "type": "string" }
+        }
+      }
+    }
+  }
   schema.properties['authenticity_token'] = {type: 'string'}
   const uiSchema = {
     authenticity_token: {'ui:widget': 'hidden'}

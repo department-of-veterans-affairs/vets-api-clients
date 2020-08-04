@@ -3,28 +3,12 @@
 class PoaService < BaseClaimsService
   POA_PATH = "#{BASE_PATH}/forms/2122"
 
-  def build_payload(first_name, last_name, poa)
-    {
-      data: {
-        attributes: {
-          poaFirstName: first_name,
-          poaLastName: last_name,
-          poaCode: poa
-        }
-      }
-    }.to_json
+  def user_active_poa
+    get("#{POA_PATH}/active", authorization_header)
   end
 
-  def submit_poa(first_name, last_name, poa)
-    post(
-      POA_PATH,
-      build_payload(first_name, last_name, poa),
-      authorization_header
-    )
-  end
-
-  def poa(poa_id)
-    get("#{POA_PATH}/#{poa_id}", authorization_header)
+  def active_poa_for(user)
+    get("#{POA_PATH}/active", headers(user))
   end
 
   def supporting_document(poa_id, attachment)

@@ -12,12 +12,16 @@ Rails.application.routes.draw do
   delete '/user', to: 'users#destroy'
   get '/claims/active_itf', to: 'claims#active_itf', as: :active_itf
   get '/claims/submit_itf', to: 'claims#submit_itf', as: :submit_itf
+  get '/claims/active_poa', to: 'claims#active_poa', as: :active_poa
   resources :claims, only: %i[index show] do
     member do
       post :update_supporting_document
     end
   end
   scope '/claims_forms/:form_number' do
+    get '/minimum', to: 'claims#form_2122', as: :form_2122
+    post '/minimum/submit', to: 'claims#form_submit', as: :minimum_form_submit
+    get '/minimum/:id',  to: 'claims#form_show', as: :minimum_form_show
     get '/', to: 'claims#form', as: :form
     get '/:id',  to: 'claims#form_show', as: :form_show
     post '/submit', to: 'claims#form_submit', as: :form_submit

@@ -3,7 +3,8 @@
     <div class='col-12'>
       <div class='row'>
         <div class='col-md-10'>
-          <h3 class='h3'>Claim Details</h3>
+        <h3 class='h3 text-center'>Claim Details for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+        <%= render partial: "menu" %>
         </div>
         <div class='col-md-2'>
           <span class="pill pill-<%= @claim['attributes']['status']&.downcase %>">
@@ -58,4 +59,12 @@
       <% end %>
     </div>
   </div>
+</div>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
 </div>
