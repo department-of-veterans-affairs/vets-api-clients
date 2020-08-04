@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     end
   end
   scope '/claims_forms/:form_number' do
+    get '/minimum', to: 'claims#form_2122', as: :form_2122
+    post '/minimum/submit', to: 'claims#form_submit', as: :minimum_form_submit
+    get '/minimum/:id',  to: 'claims#form_show', as: :minimum_form_show
     get '/', to: 'claims#form', as: :form
     get '/:id',  to: 'claims#form_show', as: :form_show
     post '/submit', to: 'claims#form_submit', as: :form_submit

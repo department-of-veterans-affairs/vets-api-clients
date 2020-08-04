@@ -1,0 +1,85 @@
+<h3 class='h3 text-center'>Submit 2122 Power of Attorney for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+  <%= render partial: "menu" %>
+
+<div class="site-l-wrapper">
+  <div id='root' />
+</div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+
+
+<script type="text/babel">
+  let schema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Form 2122 Schema",
+    "type": "object",
+    "required": [
+      "serviceOrganization"
+    ],
+    "properties": {
+      "serviceOrganization": {
+        "type": "object",
+        "required": [
+          "poaCode"
+        ],
+        "properties": {
+          "poaCode":          { "type": "string" }
+        }
+      }
+    }
+  }
+  schema.properties['authenticity_token'] = {type: 'string'}
+  const uiSchema = {
+    authenticity_token: {'ui:widget': 'hidden'}
+  }
+
+  const log = (type) => console.log.bind(console, type);
+  const Form = JSONSchemaForm.default;
+
+  class SchemaForm extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          form: null
+        }
+        this.onSubmit = this.onSubmit.bind(this)
+      }
+
+      onSubmit = function({formData}, e) {
+
+        $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
+        $.post(`${window.location.pathname}/submit`, formData, function(data) {
+          window.location.href = `${window.location.pathname}/${data.id}`
+        })
+
+      }
+
+      render() {
+          return (
+            <Form schema={schema}
+              uiSchema={uiSchema}
+              onSubmit={this.onSubmit}
+              method='post'
+              action={`${window.location.pathname}/submit`}
+              ref={(form) => this.state.form = form}
+              onError={log("errors")} />
+          );
+      }
+  }
+
+  ReactDOM.render(
+      <SchemaForm />,
+      document.getElementById('root')
+  );
+</script>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
+</div>

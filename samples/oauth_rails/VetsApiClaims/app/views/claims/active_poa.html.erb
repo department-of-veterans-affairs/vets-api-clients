@@ -7,8 +7,6 @@
         <li><b><%= key.capitalize %>: </b><%= value %></li>
       <% end %>
     </ul>
-  <% else %>
-    <%= link_to 'Submit 2122', form_url(user_id: @veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %>
   <% end %>
 </div>
 <div class='col-md-6 offset-md-3'>

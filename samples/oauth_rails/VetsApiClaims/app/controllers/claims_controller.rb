@@ -41,6 +41,9 @@ class ClaimsController < ApplicationController
     @schema = schema_service.schema(params[:form_number])[0]
   end
 
+  def form_2122
+  end
+
   def form_submit
     render json: schema_service.submit_form(params)
   end
@@ -57,6 +60,7 @@ class ClaimsController < ApplicationController
 
   def poa_upload
     poa_service.supporting_document(params[:id], params[:attachment])
+  rescue
     redirect_to form_show_path('2122', params[:id])
   end
 

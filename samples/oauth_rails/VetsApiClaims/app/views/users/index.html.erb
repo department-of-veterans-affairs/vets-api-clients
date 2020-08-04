@@ -14,7 +14,8 @@
           <th class='text-center' scope="col">POA</th>
           <th class='text-center' scope="col">Form 0966</th>
           <th class='text-center' scope="col">Form 526</th>
-          <th class='text-center' scope="col">Form 2122</th>
+          <th class='text-center' scope="col">Form 2122 (upload)</th>
+          <th class='text-center' scope="col">Form 2122 (signature)</th>
           <th class='text-center' scope="col">Delete User</th>
         </tr>
       </thead>
@@ -26,6 +27,7 @@
           <td class='text-center'><%= link_to 'Active', active_poa_url(user_id: veteran.id) %></td>	
           <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '0966'), data: {turbolinks: "false"} %></td>	
           <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '526'), data: {turbolinks: "false"} %></td>	
+          <td class='text-center'><%= link_to 'Submit', form_2122_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></td>
           <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></td>
           <td class='text-center'><%= link_to 'Remove',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger' %></td>
         </tr>
