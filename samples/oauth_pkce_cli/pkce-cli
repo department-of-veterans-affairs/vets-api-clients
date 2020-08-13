@@ -10,7 +10,7 @@ var opn = require('opn');
 
 program
   .option('-c, --client_id <client id>', 'OIDC Client ID', '')
-  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov', '')
+  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov/oauth2/veteran-verification-apis/v1', '')
   .option('-s, --scopes <space separated list of scopes>', 'Space separated list of scopes', 'openid profile email')
   .option('-r, --redirect_uri <redirect uri>', 'redirect uri', 'http://localhost:8080/redirect')
   .parse(process.argv);
@@ -92,7 +92,7 @@ async function redirectHandler(req, res, next) {
   // Step 3: call token endpoint to exchange code for tokens
   request.post(
     { 
-      url: program.auth_server + '/oauth2/token', 
+      url: program.auth_server + '/token', 
       form: form 
     },
     function (err, httpResponse, body) {
@@ -115,7 +115,7 @@ async function tokenResponseHandler(tokenResponse) {
   
   // Step 4: use the access_token to hit the /userinfo endpoint
   request.get(
-    program.auth_server + '/oauth2/userinfo', 
+    program.auth_server + '/userinfo', 
     { auth: { bearer: tokenResponse.access_token } }, 
     function (err, httpResponse, body) {
       console.log(JSON.parse(body));
@@ -140,7 +140,7 @@ function base64url(str){
 }
 
 function buildAuthorizeUrl(codeVerifier, codeChallenge) {
-	var authorizeUrl = program.auth_server + '/oauth2/authorization?' +
+	var authorizeUrl = program.auth_server + '/authorization?' +
     'client_id=' + program.client_id + '&' +
     'response_type=code&' +
     'scope=' + program.scopes + '&' +
