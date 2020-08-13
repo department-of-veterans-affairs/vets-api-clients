@@ -24,7 +24,7 @@ It follows these steps:
 7. Displays the tokens returned from the `token` endpoint
 8. Uses the returned access token to call the `userinfo` endpoint
 
-## Before the first execution of pkce-cli run
+## Initialize
 ```
 npm install
 ```
