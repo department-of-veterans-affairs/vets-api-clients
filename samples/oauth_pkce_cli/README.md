@@ -24,6 +24,11 @@ It follows these steps:
 7. Displays the tokens returned from the `token` endpoint
 8. Uses the returned access token to call the `userinfo` endpoint
 
+Before the first execution of pkce-cli run
+```
+npm install
+```
+
 ## Usage
 
 ```
@@ -36,17 +41,10 @@ Options:
   -r, --redirect_uri <redirect uri>              redirect uri (default: "http://localhost:8080/redirect")
   -h, --help                                     output usage information
 ```
-If you have issues running the usage statement above run
-
-```
-npm install
-```
-and then retry.
 
 ## Run
 
 ```
-npm install
 ./pkce-cli \
   --client_id 00000000000000000000 \
   --auth_server https://sandbox-api.va.gov \
