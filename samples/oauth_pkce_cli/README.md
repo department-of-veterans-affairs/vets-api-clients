@@ -24,7 +24,7 @@ It follows these steps:
 7. Displays the tokens returned from the `token` endpoint
 8. Uses the returned access token to call the `userinfo` endpoint
 
-Before the first execution of pkce-cli run
+## Before the first execution of pkce-cli run
 ```
 npm install
 ```
@@ -36,7 +36,7 @@ Usage: pkce-cli [options]
 
 Options:
   -c, --client_id <client id>                    OIDC Client ID (default: "")
-  -a, --auth_server <auth server url>            ex: https://sandbox-api.va.gov (default: "")
+  -a, --auth_server <auth server url>            ex: https://sandbox-api.va.gov/oauth2/veteran-verification-apis/v1 (default: "")
   -s, --scopes <space separated list of scopes>  Space separated list of scopes (default: "")
   -r, --redirect_uri <redirect uri>              redirect uri (default: "http://localhost:8080/redirect")
   -h, --help                                     output usage information
@@ -47,7 +47,7 @@ Options:
 ```
 ./pkce-cli \
   --client_id 00000000000000000000 \
-  --auth_server https://sandbox-api.va.gov \
+  --auth_server https://sandbox-api.va.gov/oauth2/veteran-verification-apis/v1 \
   --scopes "openid profile email" \
   --redirect_uri http://localhost:8080/redirect 
 ```
@@ -59,7 +59,7 @@ Created Code Verifier (v): 0233_39e5_6b3d_70b6_087f_b675_cc62_b178_ce21_577f_d66
 
 Created Code Challenge ($): Y3LBgtM-gcL_gEw-TGt26uOqNtnBO2nWXEwm_GC5Oh4
 
-Calling Authorize URL: https://sandbox-api.va.gov/oauth2/v1/authorization?client_id=00000000000000000000&response_type=code&scope=openid profile email&redirect_uri=http://localhost:8080/redirect&state=f3a5_f3a7_051f_2f97_f147_272a_d074_86fb_7d08_8650_3d8b&code_challenge_method=S256&code_challenge=Y3LBgtM-gcL_gEw-TGt26uOqNtnBO2nWXEwm_GC5Oh4
+Calling Authorize URL: https://sandbox-api.va.gov/oauth2/veteran-verification-apis/v1/authorization?client_id=00000000000000000000&response_type=code&scope=openid profile email&redirect_uri=http://localhost:8080/redirect&state=f3a5_f3a7_051f_2f97_f147_272a_d074_86fb_7d08_8650_3d8b&code_challenge_method=S256&code_challenge=Y3LBgtM-gcL_gEw-TGt26uOqNtnBO2nWXEwm_GC5Oh4
 
 Got code (α): C3LZZVjIYkOsjh42XTpZ
 
