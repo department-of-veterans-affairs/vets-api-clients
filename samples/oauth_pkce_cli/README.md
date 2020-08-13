@@ -36,6 +36,12 @@ Options:
   -r, --redirect_uri <redirect uri>              redirect uri (default: "http://localhost:8080/redirect")
   -h, --help                                     output usage information
 ```
+If you have issues running the usage statement above run
+
+```
+npm install
+```
+and then retry.
 
 ## Run
 
@@ -48,7 +54,7 @@ npm install
   --redirect_uri http://localhost:8080/redirect 
 ```
 
-You'll get output like this:
+You'll get output like this, along with prompts to continue, as well as a browser session being initiated to authenticate a user:
 
 ```
 Created Code Verifier (v): 0233_39e5_6b3d_70b6_087f_b675_cc62_b178_ce21_577f_d661
