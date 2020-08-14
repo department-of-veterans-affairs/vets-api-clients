@@ -25,7 +25,7 @@ docker run --rm -d -p 8080:8080 \
   -e CLIENT_ID=FAKE_CLIENT_ID \
   -e CLIENT_SECRET=FAKE_CLIENT_SECRET \
   -e ENVIRONMENT=sandbox \
-  -e AUDIENCE=api://default
+  -e AUDIENCE=api://default \
   oauth-node-sample-client
 ```
 
