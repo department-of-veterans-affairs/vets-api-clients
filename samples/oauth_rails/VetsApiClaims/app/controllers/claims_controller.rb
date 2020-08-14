@@ -7,14 +7,14 @@ class ClaimsController < ApplicationController
 
   def index
     @claims = claims_service.claims
-  rescue StandardError
-    redirect_back(fallback_location: root_path, alert: 'This user has no claims')
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def show
     @claim = claims_service.claim(params[:id])
-  rescue StandardError
-    redirect_back(fallback_location: root_path, alert: "You don't have access to this claim")
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def active_itf
@@ -23,8 +23,8 @@ class ClaimsController < ApplicationController
            else
              itf_service.user_active_itf
            end
-  rescue StandardError
-    redirect_back(fallback_location: root_path, alert: 'No Active ITF Exists')
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def active_poa
@@ -33,29 +33,33 @@ class ClaimsController < ApplicationController
            else
              poa_service.user_active_poa
            end
-  rescue StandardError
-    redirect_back(fallback_location: root_path, alert: 'No Active ITF Exists')
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def form
     @schema = schema_service.schema(params[:form_number])[0]
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def form_2122
+    super
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def form_submit
     render json: schema_service.submit_form(params)
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def form_show
     @form_number = params[:form_number]
     @form = schema_service.show(params)
-  rescue StandardError
-    redirect_back(
-      fallback_location: root_path,
-      alert: 'No payload exists with that ID'
-    )
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   def poa_upload
@@ -68,6 +72,8 @@ class ClaimsController < ApplicationController
     response = RestClient.post("#{Figaro.env.vets_api_url}/services/claims/v1/forms/526/#{params[:id]}/attachments", { attachment: params[:attachment] })
     JSON.parse(response&.body)['data']
     redirect_to claim_path(params[:id])
+  rescue => e
+    redirect_back(fallback_location: root_path, alert: e.response.to_s )
   end
 
   private
