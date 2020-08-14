@@ -13,6 +13,7 @@ It follows these steps:
     d. a randomly generated state value
     e. the `code challenge`
     f. a response type set to `code` to indicate that we're using the authorization code flow
+    g. the `aud` parameter to indicate the audience of the API calls
 4. Launches a browser with the authorization URL, at which point you will authenticate
 5. Receives the redirect from the authorization url, which includes a `code`
 6. Calls the `token` endpoint with:
@@ -32,6 +33,7 @@ Usage: pkce-cli [options]
 Options:
   -c, --client_id <client id>                    OIDC Client ID (default: "")
   -a, --auth_server <auth server url>            ex: https://sandbox-api.va.gov (default: "")
+  -d, --audience <resource server url>           ex: api://default
   -s, --scopes <space separated list of scopes>  Space separated list of scopes (default: "")
   -r, --redirect_uri <redirect uri>              redirect uri (default: "http://localhost:8080/redirect")
   -h, --help                                     output usage information
@@ -45,6 +47,7 @@ npm install
   --client_id 00000000000000000000 \
   --auth_server https://sandbox-api.va.gov \
   --scopes "openid profile email" \
+  --audience api://default 
   --redirect_uri http://localhost:8080/redirect 
 ```
 
