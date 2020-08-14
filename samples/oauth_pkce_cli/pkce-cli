@@ -11,6 +11,7 @@ var opn = require('opn');
 program
   .option('-c, --client_id <client id>', 'OIDC Client ID', '')
   .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov', '')
+  .option('-d, --audience <resource server url>', 'ex: api://default', '')
   .option('-s, --scopes <space separated list of scopes>', 'Space separated list of scopes', 'openid profile email')
   .option('-r, --redirect_uri <redirect uri>', 'redirect uri', 'http://localhost:8080/redirect')
   .parse(process.argv);
@@ -143,6 +144,7 @@ function buildAuthorizeUrl(codeVerifier, codeChallenge) {
 	var authorizeUrl = program.auth_server + '/oauth2/authorization?' +
     'client_id=' + program.client_id + '&' +
     'response_type=code&' +
+    'aud=' + program.audience + '&' +
     'scope=' + program.scopes + '&' +
     'redirect_uri=' + program.redirect_uri + '&' +
     'state=' + uuid() + '&' +
