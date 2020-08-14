@@ -10,6 +10,7 @@ const env = process.env.ENVIRONMENT;
 const ROOT_URL = `https://${env}-api.va.gov/oauth2/.well-known/openid-configuration`;
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
+const audience = process.env.AUDIENCE;
 var bodyParser = require('body-parser');
 
 const createClient = async () => {
@@ -39,6 +40,7 @@ const configurePassport = (client) => {
       client,
       params: {
         scope: 'openid profile veteran_status.read claim.read',
+        aud: audience,
       },
     }, (tokenset, userinfo, done) => {
       done(null, { userinfo, tokenset });
