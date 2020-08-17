@@ -1,16 +1,17 @@
 class Authentication < ApplicationRecord
   serialize :id_token
   belongs_to :oauth_callback, optional: true
-
+  
+  attr_accessor :expires_in
   attr_reader :authentication_errors
 
   def self.generate_nonce(base)
-    Digest::SHA256.hexdigest(base + ENV['va_developer_client_secret'])
+    Digest::SHA256.hexdigest(base.to_s + ENV['va_developer_client_secret'])
   end
 
   def self.attributes_from_oauth(response)
+    response['expires_at'] = response['expires_in'].seconds.from_now
     attributes = response.to_h
-    attributes['expires_at'] = Time.zone.at(response['expires_at'])
     attributes
   end
 
