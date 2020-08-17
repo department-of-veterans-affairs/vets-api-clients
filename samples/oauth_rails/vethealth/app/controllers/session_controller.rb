@@ -15,6 +15,7 @@ class SessionController < ApplicationController
       # response_mode: 'fragment',
       response_type: 'code',
       scope: scope,
+      aud: ENV['audience'],
       state: session[:login_time]
     }
     @oauth_url = "https://sandbox-api.va.gov/oauth2/authorization?#{@oauth_params.to_query}"
@@ -24,6 +25,7 @@ class SessionController < ApplicationController
       {param: :client_id, description: "The client_id issued by the VA API Platform team", required: true},
       {param: :nonce, description: "Used with id_token to verify token integrity. Ensure the nonce in your id_token is the same as this value."},
       {param: :redirect_uri, description: "The URL you supplied when signing up for access.", required: true},
+      {param: :aud, description: "The URL the resource server your application will make requests to.", required: true},
       # TODO uncomment this description, known issue is causing a 500 if this param is used https://github.com/department-of-veterans-affairs/vets-contrib/issues/1842
       # {param: :response_mode, description: "Either fragment or query, recommended not to use unless you have a specific reason. Defaults to fragment so it can be omitted."},
       {param: :response_type, description: "Set to <code>code</code> to use the Authorization Code Flow.", required: true},

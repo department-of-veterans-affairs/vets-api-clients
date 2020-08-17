@@ -1,3 +1,4 @@
 # TODO put your client id and client secret here and remove the `.EXAMPLE` extension
 va_developer_client_id:
 va_developer_client_secret:
+audience: 'api://default'
