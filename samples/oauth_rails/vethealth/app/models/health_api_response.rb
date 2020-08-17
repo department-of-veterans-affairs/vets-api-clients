@@ -6,10 +6,10 @@ class HealthApiResponse
     case action
     when :search
       @page, @count = page, count
-      @target = "https://sandbox-api.va.gov/services/argonaut/v0/#{api_name}?#{search_param_name}=#{id}&page=#{page}&_count=#{count}"
+      @target = "https://sandbox-api.va.gov/services/fhir/v0/argonaut/data-query/#{api_name}?#{search_param_name}=#{id}&page=#{page}&_count=#{count}"
     when :read
       @page, @count = nil, nil
-      @target = "https://sandbox-api.va.gov/services/argonaut/v0/#{api_name}/#{id}"
+      @target = "https://sandbox-api.va.gov/services/fhir/v0/argonaut/data-query/#{api_name}/#{id}"
     else
       raise "action must be one of the symbols :search or :read"
     end
