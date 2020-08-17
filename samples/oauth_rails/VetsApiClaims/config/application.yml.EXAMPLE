@@ -2,3 +2,4 @@
 va_developer_client_id: 
 va_developer_client_secret: 
 vets_api_url: 'https://sandbox-api.va.gov'
+audience: 'api://default'
