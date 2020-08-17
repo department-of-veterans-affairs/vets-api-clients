@@ -10,19 +10,19 @@ var opn = require('opn');
 
 program
   .option('-c, --client_id <client id>', 'OIDC Client ID', '')
-  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov/oauth2/veteran-verification-apis/v1', '')
+  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov/oauth2', '')
   .option('-s, --scopes <space separated list of scopes>', 'Space separated list of scopes', 'openid profile email')
   .option('-r, --redirect_uri <redirect uri>', 'redirect uri', 'http://localhost:8080/redirect')
   .parse(process.argv);
-  
+
 if (
-  !program.client_id || !program.auth_server || 
+  !program.client_id || !program.auth_server ||
   !program.scopes || !program.redirect_uri
 ) {
   program.help();
   process.exit(1);
-}  
-  
+}
+
 const server = restify.createServer({
   name: 'myapp',
   version: '1.0.0'
@@ -53,7 +53,7 @@ keypress().then(() => {
 
 // Step 2: Auth server redirects back to this app with an auth code
 async function redirectHandler(req, res, next) {
-  var body = '<html><body><h4>OAuth2 authorize complete. ' + 
+  var body = '<html><body><h4>OAuth2 authorize complete. ' +
     'You can close this tab.</h4></body></html>';
   res.writeHead(200, {
       'Content-Length': Buffer.byteLength(body),
@@ -74,12 +74,12 @@ async function redirectHandler(req, res, next) {
     code: req.query.code,
     code_verifier: codeVerifier
   };
-  
+
   console.log('\nCalling /token endpoint with:');
   console.log('client_id: ' + form.client_id);
   console.log('code_verifier (v): ' + form.code_verifier);
   console.log('code (α): ' + form.code + '\n');
-  
+
   console.log(
     'Here is the complete form post that will be sent to the /token endpoint:'
   );
@@ -88,12 +88,12 @@ async function redirectHandler(req, res, next) {
 
   console.log('press any key to continue...');
   await keypress();
-  
+
   // Step 3: call token endpoint to exchange code for tokens
   request.post(
-    { 
-      url: program.auth_server + '/token', 
-      form: form 
+    {
+      url: program.auth_server + '/token',
+      form: form
     },
     function (err, httpResponse, body) {
       var tokenResponse = JSON.parse(body);
@@ -109,14 +109,14 @@ async function tokenResponseHandler(tokenResponse) {
   console.log();
 
   console.log('press any key to continue...');
-  await keypress();  
+  await keypress();
 
   console.log('\nCalling /userinfo endpoint with access token\n');
-  
+
   // Step 4: use the access_token to hit the /userinfo endpoint
   request.get(
-    program.auth_server + '/userinfo', 
-    { auth: { bearer: tokenResponse.access_token } }, 
+    program.auth_server + '/userinfo',
+    { auth: { bearer: tokenResponse.access_token } },
     function (err, httpResponse, body) {
       console.log(JSON.parse(body));
       process.exit(0);
@@ -130,8 +130,8 @@ function uuid() {
       .toString(16)
       .substring(1);
   }
-  return s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' + 
-    s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' + 
+  return s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' +
+    s4() + '_' + s4() + '_' + s4() + '_' + s4() + '_' +
     s4() + '_' + s4() + '_' + s4()
 }
 
@@ -146,7 +146,7 @@ function buildAuthorizeUrl(codeVerifier, codeChallenge) {
     'scope=' + program.scopes + '&' +
     'redirect_uri=' + program.redirect_uri + '&' +
     'state=' + uuid() + '&' +
-    'code_challenge_method=S256&' + 
+    'code_challenge_method=S256&' +
     'code_challenge=' + codeChallenge;
   return authorizeUrl;
 }
