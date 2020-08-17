@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
       # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
       response_type: 'code',
       scope: scope,
+      aud: Figaro.env.audience,
       state: session[:login_time]
     }
     @oauth_url = "#{Figaro.env.vets_api_url}/oauth2/authorization?#{oauth_params.to_query}"
