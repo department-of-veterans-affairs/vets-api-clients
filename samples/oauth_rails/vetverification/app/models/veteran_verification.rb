@@ -50,6 +50,25 @@ class VeteranVerification
     @disability_ratings
   end
 
+  def individual_disability_ratings
+    return @individual_disability_ratings if @individual_disability_ratings
+
+    @individual_disability_ratings = []
+    return @individual_disability_ratings if disability_ratings_response.code != 200
+    disability_ratings_response['data']["attributes"]["individual_ratings"].each do |individual_rating|
+      individual_rating.each do |key, value|
+          if key == 'effective_date'
+            value = Time.zone.parse(value)
+          else
+            value
+          end
+      end
+      @individual_disability_ratings << individual_rating
+    end 
+    Rails.logger.warn @individual_disability_ratings
+    @individual_disability_ratings
+  end
+
   def disability_ratings_response
     @disability_ratings_response = get('disability_rating', allow: [402])
   end

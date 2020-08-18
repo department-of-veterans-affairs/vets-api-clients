@@ -13,11 +13,11 @@
     </div>
     <% end %>
 
-    <% if @veteran_verification.disability_ratings.any? %>
+    <% if @veteran_verification.individual_disability_ratings.any? %>
     <div class="row">
         <h3 class="col-12">Disability</h3>
         <small class="col-12"><%= link_to 'Disability Ratings API Documentation', 'https://developer.va.gov/explore/verification/docs/disability_rating', target: '_blank', title: 'Disability Rating Documentation' %></small>
-        <%= render partial: "disability_rating", collection: @veteran_verification.disability_ratings %>
+        <%= render partial: "disability_rating", collection: @veteran_verification.individual_disability_ratings %>
     </div>
     <% end %>
 
