@@ -1,19 +1,14 @@
 class Session < ApplicationRecord
+
   def self.new_from_oauth(response)
-    attributes_array = response.map do |key,value|
-      clean_value =
-        if key == 'expires_at'
-          Time.zone.at(value)
-        else
-          value
-        end
-      [key, clean_value]
-    end
-    Session.new(Hash[attributes_array])
+    response['expires_in'] = response['expires_in'].seconds.from_now
+    attributes = response.to_h
+    attributes
+    Session.new(Hash[attributes])
   end
 
   def expired?
-    @expired ||= self.expires_at < Time.zone.now
+    @expired ||= self.expires_in < Time.zone.now
   end
 
   def veteran_verification
