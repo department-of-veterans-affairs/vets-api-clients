@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_015604) do
   create_table "sessions", force: :cascade do |t|
     t.string "access_token"
     t.string "token_type"
-    t.datetime "expires_at"
+    t.datetime "expires_in"
     t.string "scope"
     t.string "id_token"
     t.string "state"
