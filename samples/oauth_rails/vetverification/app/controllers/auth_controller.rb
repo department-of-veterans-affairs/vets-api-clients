@@ -12,6 +12,7 @@ class AuthController < ApplicationController
       # response_mode: 'fragment', # defaults to fragment, but this is where it would be changed
       response_type: 'code',
       scope: scope,
+      aud: ENV['audience'],
       state: session[:login_time]
     }
     @oauth_url = "https://sandbox-api.va.gov/oauth2/authorization?#{oauth_params.to_query}"
