@@ -35,7 +35,6 @@ class VeteranVerification
 
     @disability_ratings = []
     return @disability_ratings if disability_ratings_response.code != 200
-    Rails.logger.warn disability_ratings_response['data']
     disability_ratings_response['data']["attributes"].each do |key, value|
       modified_rating = {}
       modified_rating[key] =
@@ -65,7 +64,6 @@ class VeteranVerification
       end
       @individual_disability_ratings << individual_rating
     end 
-    Rails.logger.warn @individual_disability_ratings
     @individual_disability_ratings
   end
 
