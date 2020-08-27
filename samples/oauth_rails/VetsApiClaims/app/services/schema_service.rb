@@ -25,6 +25,6 @@ class SchemaService < BaseClaimsService
   end
 
   def show(params)
-    get("#{BASE_PATH}/forms/#{params['form_number']}/#{params['id']}", authorization_header)
+    get("#{BASE_PATH}/forms/#{params['form_number']}/#{params['id']}?type=#{params['type']}", authorization_header)
   end
 end
