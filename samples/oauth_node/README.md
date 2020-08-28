@@ -1,6 +1,6 @@
 # Node Sample Application
 
-An explanation of how this works and choices made can be found [here](https://developer.va.gov/oauth).
+This application demonstrates how to get up and running with our OAuth system using the steps required for authentication and authorization.
 
 ## Configuration
 
