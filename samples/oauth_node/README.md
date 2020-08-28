@@ -1,6 +1,6 @@
 # Node Sample Application
 
-This application demonstrates how to get up and running with our OAuth system using the steps required for authentication and authorization.
+This application demonstrates the steps toward authentication and authorization for our OAuth system.
 
 ## Configuration
 
