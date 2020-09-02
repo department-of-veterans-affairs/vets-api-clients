@@ -9,6 +9,7 @@ the open source `oidc-client` library.
 Before running this sample, you will need an OAuth client application ID. You can obtain one
 by signing up through [the developer portal](https://developer.va.gov).
 
+
 ## Running This Example
 
 Install dependencies:
@@ -25,7 +26,7 @@ export default {
     authority: 'https://deptva-eval.okta.com/oauth2/default/.well-known/openid-configuration',
     client_id: '{client_id}',
     redirect_uri: 'http://localhost:8080/implicit/callback',
-    scope: ['openid', 'profile', 'email', 'disability_rating.read', 'service_history.read'],
+    scope: 'openid profile email disability_rating.read service_history.read',
     response_type: 'id_token token',
   },
   resourceServer: {
