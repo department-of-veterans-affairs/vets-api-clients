@@ -8,23 +8,23 @@ class ClaimsController < ApplicationController
   def index
     @claims = claims_service.claims
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def show
     @claim = claims_service.claim(params[:id])
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def active_itf
     @itf = if @veteran.present?
-             itf_service.active_itf_for(@veteran)
+             itf_service.active_itf_for(@veteran, params[:type])
            else
-             itf_service.user_active_itf
+             itf_service.user_active_itf(params[:type])
            end
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def active_poa
@@ -34,32 +34,32 @@ class ClaimsController < ApplicationController
              poa_service.user_active_poa
            end
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def form
     @schema = schema_service.schema(params[:form_number])[0]
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def form_2122
-    super
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def form_submit
     render json: schema_service.submit_form(params)
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def form_show
     @form_number = params[:form_number]
+    params['id'] = 'active' if @form_number == '0966'
     @form = schema_service.show(params)
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   def poa_upload
@@ -73,7 +73,7 @@ class ClaimsController < ApplicationController
     JSON.parse(response&.body)['data']
     redirect_to claim_path(params[:id])
   rescue => e
-    redirect_back(fallback_location: root_path, alert: e.response.to_s )
+    redirect_back(fallback_location: root_path, alert: e&.response.to_s )
   end
 
   private

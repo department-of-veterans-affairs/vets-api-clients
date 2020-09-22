@@ -10,25 +10,29 @@
         <tr>
           <th scope="col">Name</th>
           <th class='text-center' scope="col">Claims</th>
-          <th class='text-center' scope="col">ITF</th>
+          <th class='text-center' scope="col">Active ITF</th>
           <th class='text-center' scope="col">POA</th>
           <th class='text-center' scope="col">Form 0966</th>
           <th class='text-center' scope="col">Form 526</th>
-          <th class='text-center' scope="col">Form 2122 (upload)</th>
-          <th class='text-center' scope="col">Form 2122 (signature)</th>
+          <th class='text-center' scope="col">Form 2122</th>
           <th class='text-center' scope="col">Delete User</th>
         </tr>
       </thead>
       <% @user.test_veterans.each do |veteran| %>
         <tr>
           <td><%= veteran.first_name %> <%= veteran.last_name %></td>
-          <td class='text-center'><%= link_to 'View', claims_url(user_id: veteran.id) %></td>
-          <td class='text-center'><%= link_to 'Active', active_itf_url(user_id: veteran.id) %></td>	
-          <td class='text-center'><%= link_to 'Active', active_poa_url(user_id: veteran.id) %></td>	
+          <td class='text-center'><%= link_to 'View', claims_url(user_id: veteran.try(:id)) %></td>
+          <td class='text-center'>
+            <%= link_to 'Compensation', active_itf_url(user_id: veteran.try(:id), type: 'compensation') %></br>
+            <%= link_to 'Pension', active_itf_url(user_id: veteran.try(:id), type: 'pension') %></br>
+            <%= link_to 'Burial', active_itf_url(user_id: veteran.try(:id), type: 'burial') %>
+          </td>	
+          <td class='text-center'><%= link_to 'Active', active_poa_url(user_id: veteran.try(:id)) %></td>	
           <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '0966'), data: {turbolinks: "false"} %></td>	
           <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '526'), data: {turbolinks: "false"} %></td>	
-          <td class='text-center'><%= link_to 'Submit', form_2122_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></td>
-          <td class='text-center'><%= link_to 'Submit', form_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></td>
+          <td class='text-center'><%= link_to 'Submit Upload', form_2122_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %></br>
+            <%= link_to 'Submit Signature', form_url(user_id: veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %>
+          </td>
           <td class='text-center'><%= link_to 'Remove',  { action: :destroy, id: veteran.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger' %></td>
         </tr>
       <% end %>

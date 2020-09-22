@@ -34,7 +34,7 @@
 
         $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
         $.post(`${window.location.pathname}/submit`, formData, function(data) {
-          window.location.href = `${window.location.pathname}/${data.id}`
+          window.location.href = `${window.location.pathname}/${data.id}?type=${data.attributes.type}&${window.location.search.substr(1)}`
         })
 
       }
