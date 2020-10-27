@@ -1,6 +1,6 @@
 ### Description
 ---
-The project is meant to serve as an example of the benefits intake api available at [here](https://developer.va.gov).
+The project is meant to serve as an example of the benefits intake api available at [here](https://developer.va.gov).  The code is JavaScript in the [React Native](https://reactnative.dev/) framework.
 
 ### Installation
 ---
