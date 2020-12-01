@@ -4,21 +4,21 @@ Welcome to the repository for consumers of **Department of Veterans Affairs (VA)
 
 If you would like to improve or suggest **edits to API documentation** for the VA APIs, please visit the [APIs repo](https://github.com/department-of-veterans-affairs/vets-api) or the [Developer Portal repo](https://github.com/department-of-veterans-affairs/developer-portal).
 
-If you are a third party seeking access to VA Lighthouse APIs, you will need to complete a quick application to obtain an API key. Once you have your API key, you can access our APIs in a Sandbox environment. Production access will be granted later by scheduling a [demo of your application](https://developer.va.gov/go-live) for stakeholders.
+If you are a third party seeking access to VA Lighthouse APIs, you will need to complete a quick application to obtain an API key. Once you have your API key, you can access our APIs in a sandbox environment. We grant production access later after scheduling a [demo of your application](https://developer.va.gov/go-live) for stakeholders and ensuring all requirements are met.  
 
 ##  Publicly available APIs
 
 ### Benefits Claims
 
-- Use the [Claims](https://developer.va.gov/explore/benefits/docs/claims) (Auto-Establishment) API to submit a Veteran's benefits claim via EVSS (Electronic Veterans Self-Service), and to request the status of a Veteran's benefits claim.
+- Use the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims) (Auto-Establishment) to submit a Veteran's benefits claim via EVSS (Electronic Veterans Self-Service) or to request the status of a Veteran's benefits claim.
 
 ### Benefits Intake (fka Document Upload Service)
 
-- The [Benefits Intake](https://developer.va.gov/explore/benefits/docs/benefits) API allows authorized third-party systems used by Veteran Service Organizations and agencies to upload claim documents (scanned to PDF) directly to the Veterans Benefits Administration's (VBA) claims intake process.
+- The [Benefits Intake API](https://developer.va.gov/explore/benefits/docs/benefits) allows authorized third-party systems used by Veterans Service Organizations and agencies to upload scanned, PDF claim documents directly to the Veterans Benefits Management System (VBMS) for the Veterans Benefits Administration's (VBA's) claims intake process.
 
 ### Facilities
 
-- Use the [Facilities](https://developer.va.gov/explore/facilities/docs/facilities) API to find contact info, location, hours of operation, available services and other relevant information about a specific VA facility. 
+- Use the [Facilities API](https://developer.va.gov/explore/facilities/docs/facilities) to find the contact info, location, hours of operation, available services, and more for a specific VA facility. 
 
 ### Forms
 
@@ -29,39 +29,39 @@ If you are a third party seeking access to VA Lighthouse APIs, you will need to 
 
 ### Community Care Eligibility 
 
-- Use the [Community Care Eligibility API](https://developer.va.gov/explore/health/docs/community_care?version=current) to allow consumers to provide Veterans the ability to know if they meet the following MISSION Act requirements. For example, if a Veteran needs a service, it will show the nearest VA facility that meets the Veteran’s needs.
+- Use the [Community Care Eligibility API](https://developer.va.gov/explore/health/docs/community_care?version=current) to check a Veteran's community care eligibility based on criteria and requirements defined in the MISSION Act and show the nearest facilities that meet the Veteran's needs based on the services for which they qualify.
 
 ### Veteran Verification
 
-- The [Veteran Verification](https://developer.va.gov/explore/verification) API empowers Veterans to access their service history, Veteran status, discharge information and disability rating and put that information to work for them.
+- The [Veteran Verification API](https://developer.va.gov/explore/verification) accesses or verifies a Veteran's service history, Veteran status, discharge information, and disability rating.
 
 ### Veteran Confirmation API
 
-- Use [this API](https://developer.va.gov/explore/verification/docs/veteran_confirmation?version=current) to confirm Veteran status for a given person with an API key. This can be useful for offering Veterans discounts or other benefits.
+- Use the [Veteran Confirmation API](https://developer.va.gov/explore/verification/docs/veteran_confirmation?version=current) to confirm Veteran status. This can be useful for offering Veterans discounts or other benefits.
 
 ## APIs for internal VA agencies only
 
-#### These APIs are for use by VA departments only. You cannot request an API key or use this API unless you are an authorized VA employee and have a computer with a valid VA intranet IP address.
+#### These APIs are for use by VA departments only. You cannot request an API key or use this API unless you have VA authorization, including access to VA systems or a computer with a valid VA intranet IP address.
 
 ### Address Validation
 
-- The [Address Validation](https://developer.va.gov/explore/verification/docs/address_validation) service provides methods to both standardize and validate addresses.
+- The [Address Validation API](https://developer.va.gov/explore/verification/docs/address_validation) provides methods to both standardize and validate addresses.
 
 ### Appeals Status
 
-- Use the [Appeals Status](https://developer.va.gov/explore/benefits/docs/appeals) API to request the status of a Veteran's benefits claim appeal. 
+- Use the [Appeals Status API](https://developer.va.gov/explore/benefits/docs/appeals) to request the status of a Veteran's benefits claim appeal. 
 
 ### Decision Reviews
 
-- Use the [Decision Reviews](https://developer.va.gov/explore/benefits/docs/appeals) API to interact with a Veteran's decision reviews, also known as benefit appeals.
+- Use the [Decision Reviews API](https://developer.va.gov/explore/benefits/docs/appeals) to interact with a Veteran's decision reviews, also known as benefit appeals.
 
 ### Loan Guaranty
 
--  Use the API to access [VA's Loan Guaranty](https://developer.va.gov/explore/benefits/docs/loan_guaranty?version=current) endpoint to manage VA Home loans, including a home loan guarantee benefit and other housing-related programs to help veterans buy, build, repair, retain, or adapt a home for their own personal occupancy.
+-  Use the [Loan Guaranty API](https://developer.va.gov/explore/benefits/docs/loan_guaranty?version=current) to manage VA Home loans, including a home loan guarantee benefit and other housing-related programs which help Veterans buy, build, repair, retain, or adapt a home for their own personal occupancy.
 
 ## Further Assistance
 
-If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQ. You will receive a human reply within 48 hours. Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQs. You will receive a human reply within 48 hours. Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
 
 ## Incident and Outage Awareness (Statuspage)
 
