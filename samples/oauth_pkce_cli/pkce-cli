@@ -10,7 +10,7 @@ var opn = require('opn');
 
 program
   .option('-c, --client_id <client id>', 'OIDC Client ID', '')
-  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov/oauth2', '')
+  .option('-a, --auth_server <auth server url>', 'ex: https://sandbox-api.va.gov/oauth2', 'https://sandbox-api.va.gov/oauth2')
   .option('-s, --scopes <space separated list of scopes>', 'Space separated list of scopes', 'openid profile email')
   .option('-r, --redirect_uri <redirect uri>', 'redirect uri', 'http://localhost:8080/redirect')
   .parse(process.argv);
