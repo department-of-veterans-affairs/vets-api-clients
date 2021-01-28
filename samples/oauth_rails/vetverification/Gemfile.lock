@@ -234,7 +234,7 @@ DEPENDENCIES
   jwt
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
-  rails (~> 5.2.4)
+  rails (~> 5.2.4.4)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
