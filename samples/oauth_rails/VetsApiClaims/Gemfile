@@ -16,7 +16,7 @@ gem 'jquery-rails' # required for rails 5.1+
 gem 'jwt'
 gem 'pg'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 5.2.4'
 gem 'rest-client'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
