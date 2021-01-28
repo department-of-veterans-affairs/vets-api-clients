@@ -242,7 +242,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma (~> 3.11)
-  rails (~> 5.2.3)
+  rails (~> 5.2.4)
   rest-client
   sass-rails (~> 5.0)
   selenium-webdriver
