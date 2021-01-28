@@ -4,12 +4,12 @@ class ItfService < BaseClaimsService
   ITF_PATH = "#{BASE_PATH}/forms/0966"
   ITF_TYPE = { data: { attributes: { type: 'compensation' } } }.to_json
 
-  def user_active_itf
-    get("#{ITF_PATH}/active?type=compensation", authorization_header)
+  def user_active_itf(type)
+    get("#{ITF_PATH}/active?type=#{type}", authorization_header)
   end
 
-  def active_itf_for(user)
-    get("#{ITF_PATH}/active?type=compensation", headers(user))
+  def active_itf_for(user, type)
+    get("#{ITF_PATH}/active?type=#{type}", headers(user))
   end
 
   def user_submit_itf

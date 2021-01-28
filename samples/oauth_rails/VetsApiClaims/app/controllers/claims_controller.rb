@@ -19,9 +19,9 @@ class ClaimsController < ApplicationController
 
   def active_itf
     @itf = if @veteran.present?
-             itf_service.active_itf_for(@veteran)
+             itf_service.active_itf_for(@veteran, params[:type])
            else
-             itf_service.user_active_itf
+             itf_service.user_active_itf(params[:type])
            end
   rescue => e
     redirect_back(fallback_location: root_path, alert: e&.response.to_s )
