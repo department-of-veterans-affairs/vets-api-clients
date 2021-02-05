@@ -61,7 +61,7 @@ If you are a third party seeking access to VA Lighthouse APIs, you will need to 
 
 ## Further Assistance
 
-If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQs. You will receive a human reply within 48 hours. Additionally, you may open a comment or support request [inside this repo](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQs. You will receive a human reply within 48 hours.
 
 ## Incident and Outage Awareness (Statuspage)
 
