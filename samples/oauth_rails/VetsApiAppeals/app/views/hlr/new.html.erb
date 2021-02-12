@@ -81,7 +81,8 @@
     onSubmit = function ({formData}, e) {
       $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
       $.post(`${window.location.origin}/hlr/create`, formData, function (data) {
-        window.location.href = `${window.location.origin}/hlr/show/${data.id}?type=${data.type}&${window.location.search.substr(1)}`
+        console.log(data);
+        // window.location.href = `${window.location.origin}/hlr/show/${data.id}?type=${data.type}&${window.location.search.substr(1)}`
       })
     }
 
