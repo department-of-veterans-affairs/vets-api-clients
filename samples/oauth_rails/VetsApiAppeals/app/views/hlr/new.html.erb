@@ -1,0 +1,105 @@
+<h3 class='h3 text-center'>Submit <%= @schema['description'].gsub('Schema', '') %>
+  for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+
+<div class="site-l-wrapper">
+  <div id='root'/>
+</div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+<script crossorigin src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+
+<style>
+</style>
+
+<script type="text/babel">
+  let headerSchema = <%= raw @header_schema %>
+  // Fix rails-jsonschema-form not interpreting some header defs correctly
+  for (const d in headerSchema['definitions']) {
+    if ( /^X-/.test(d) ) {
+      headerSchema['definitions'][d]['type'] = 'string';
+    }
+  }
+
+  let schema = <%=raw @schema %>;
+  // Combine header & form data fields together
+  schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
+
+  // Force header fields to top of form
+  schema['definitions']['hlrCreate']['properties'] = {
+    ...{'apikey': {type: 'string'}},
+    ...{'hlrCreateParameters': {"$ref": "#/definitions/hlrCreateParameters"}},
+    ...schema['definitions']['hlrCreate']['properties']
+  };
+
+  // Add/fix fields
+  schema['definitions']['hlrCreate']['properties']['authenticity_token'] = { type: 'string'};
+  schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
+
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not requesting Informal Conference'
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference'
+
+  // Set defaults for single-element enums
+  schema['definitions']['hlrCreateData']['properties']['type']['default'] = 'higherLevelReview';
+  schema['definitions']['hlrCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
+
+  const uiSchema = {
+    authenticity_token: { 'ui:widget': 'hidden' },
+    hlrCreateParameters: {
+      'X-VA-Birth-Date': {"ui:widget": 'date'}
+    },
+    hlrCreateDataAttributes: {
+      oneOf: {
+        items: {
+          informalConference: {'ui:widget': 'hidden'}
+        }
+      }
+    },
+    included: {
+      items: {
+        attributes: {
+          'decisionDate': {'ui:widget': 'date'}
+        }
+      }
+    }
+  };
+
+  const log = (type) => console.log.bind(console, type);
+  const Form = JSONSchemaForm.default;
+
+  class SchemaForm extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        form: null
+      }
+      this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onSubmit = function ({formData}, e) {
+      $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
+      $.post(`${window.location.origin}/hlr/create`, formData, function (data) {
+        window.location.href = `${window.location.origin}/hlr/show/${data.id}?type=${data.type}&${window.location.search.substr(1)}`
+      })
+    }
+
+    render() {
+      return (
+        <Form schema={schema}
+              uiSchema={uiSchema}
+              onSubmit={this.onSubmit}
+              method='post'
+              action={`${window.location.pathname}/submit`}
+              ref={(form) => this.state.form = form}
+              onError={log("errors")}/>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <SchemaForm/>,
+    document.getElementById('root')
+  );
+</script>

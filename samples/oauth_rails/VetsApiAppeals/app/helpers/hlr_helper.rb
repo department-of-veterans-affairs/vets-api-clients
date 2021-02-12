@@ -1,0 +1,2 @@
+module HlrHelper
+end
