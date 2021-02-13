@@ -38,4 +38,17 @@ class HlrController < ApplicationController
     res = http.request(request)
     render json: res.body
   end
+
+  def show
+    url = URI.parse"http://localhost:3000/services/appeals/v1/decision_reviews/higher_level_reviews/#{params[:id]}"
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+    tmp = JSON.parse(res.body)['data']
+    @hlr = {}
+    @hlr['id'] = tmp['id']
+    @hlr['type'] = tmp['type']
+    @hlr.merge! tmp['attributes'].except('formData')
+  end
 end

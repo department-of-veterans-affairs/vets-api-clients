@@ -34,8 +34,9 @@
     ...schema['definitions']['hlrCreate']['properties']
   };
 
+  schema['definitions']['hlrCreate']['required'].push('apikey');
+
   // Add/fix fields
-  schema['definitions']['hlrCreate']['properties']['authenticity_token'] = { type: 'string'};
   schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
 
   schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not requesting Informal Conference'
@@ -46,16 +47,8 @@
   schema['definitions']['hlrCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
 
   const uiSchema = {
-    authenticity_token: { 'ui:widget': 'hidden' },
     hlrCreateParameters: {
       'X-VA-Birth-Date': {"ui:widget": 'date'}
-    },
-    hlrCreateDataAttributes: {
-      oneOf: {
-        items: {
-          informalConference: {'ui:widget': 'hidden'}
-        }
-      }
     },
     included: {
       items: {
@@ -79,10 +72,9 @@
     }
 
     onSubmit = function ({formData}, e) {
-      $('#root_authenticity_token').attr('value', $('meta[name=csrf-token]').attr('content'))
       $.post(`${window.location.origin}/hlr/create`, formData, function (data) {
         console.log(data);
-        // window.location.href = `${window.location.origin}/hlr/show/${data.id}?type=${data.type}&${window.location.search.substr(1)}`
+        window.location.href = `${window.location.origin}/hlr/show/${data.data.id}`
       })
     }
 
