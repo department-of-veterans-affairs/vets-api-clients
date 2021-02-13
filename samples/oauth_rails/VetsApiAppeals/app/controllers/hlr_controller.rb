@@ -9,7 +9,6 @@ class HlrController < ApplicationController
     }
     @schema = res.body
     @header_schema = File.read('/Users/drewfisher/Projects/vets-api/modules/appeals_api/config/schemas/200996_headers.json')
-    @apikey = cookies[:apikey].presence
   end
 
   def create

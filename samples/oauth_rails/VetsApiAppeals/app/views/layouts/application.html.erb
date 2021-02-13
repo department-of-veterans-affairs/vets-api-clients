@@ -23,12 +23,8 @@
             </em>
           </div>
           <div class="site-header__utility-links">
-            <% if @session.present? && !@session.expired? %>
-              <%= link_to 'Logout', logout_path, class: "usa-button site-button-inverse" %>
-            <% else %>
-              <%= link_to 'Set API Key', login_path, class: "usa-button site-button-inverse" %>
-              <a href="https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md" class="usa-button vads-u-margin--0" target="_BLANK">Test Users</a>
-            <% end %>
+            <%= link_to 'Set API Key', login_path, class: "usa-button site-button-inverse" %>
+            <a href="https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md" class="usa-button vads-u-margin--0" target="_BLANK">Test Users</a>
           </div>
         </div>
       </div>
@@ -48,29 +44,18 @@
     <% end %>
     <main>
       <div class="large-screen:vads-u-padding-x--0">
-        <% if @session.present? && !@session.expired? %>
-          <div class="site-top-nav-wrapper site-l-wrapper ">
-            <nav class="site-header__nav">
-              <ul class="site-header__nav-list">
-                <li class="site-header__nav-item">
-                  <a class="site-header__nav-item__link " href="https://developer.va.gov/explore/benefits/docs/claims?version=current" target="_BLANK">Documentation</a>
-                </li>
-                <% if @session.present? %>
-                  <li class="site-header__nav-item">
-                    <a class="site-header__nav-item__link " href="/">Representative</a>
-                  </li>
-                  <li class="site-header__nav-item">
-                    <a class="site-header__nav-item__link " href="/claims">Veteran</a>
-                  </li>
-                  <li class="site-header__nav-item">
-                    <%= link_to 'Benefits Intake', documents_path, class: 'site-header__nav-item__link' %>
-                  </li>
-                <% end %>
-              </ul>
-            </nav>
-          </div>
-
-        <% end %>
+        <div class="site-top-nav-wrapper site-l-wrapper ">
+          <nav class="site-header__nav">
+            <ul class="site-header__nav-list">
+              <li class="site-header__nav-item">
+                <a class="site-header__nav-item__link " href="https://developer.va.gov/explore/appeals" target="_BLANK">Documentation</a>
+              </li>
+              <li class="site-header__nav-item">
+                <a class="site-header__nav-item__link " href="<%= hlr_new_path %>">Submit HLR</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <%= yield %>
       </div>
     </main>
