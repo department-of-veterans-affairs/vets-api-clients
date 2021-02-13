@@ -26,7 +26,7 @@
             <% if @session.present? && !@session.expired? %>
               <%= link_to 'Logout', logout_path, class: "usa-button site-button-inverse" %>
             <% else %>
-              <%= link_to 'Set API Key', @oauth_url, class: "usa-button site-button-inverse" %>
+              <%= link_to 'Set API Key', login_path, class: "usa-button site-button-inverse" %>
               <a href="https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts.md" class="usa-button vads-u-margin--0" target="_BLANK">Test Users</a>
             <% end %>
           </div>

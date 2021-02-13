@@ -29,7 +29,7 @@
 
   // Force header fields to top of form
   schema['definitions']['hlrCreate']['properties'] = {
-    ...{'apikey': {type: 'string'}},
+    ...{'apikey': {type: 'string', default: "<%= @apikey %>"}},
     ...{'hlrCreateParameters': {"$ref": "#/definitions/hlrCreateParameters"}},
     ...schema['definitions']['hlrCreate']['properties']
   };
