@@ -8,7 +8,6 @@ class HlrController < ApplicationController
       http.request(req)
     }
     @schema = res.body
-    @header_schema = File.read('/Users/drewfisher/Projects/vets-api/modules/appeals_api/config/schemas/200996_headers.json')
   end
 
   def create
