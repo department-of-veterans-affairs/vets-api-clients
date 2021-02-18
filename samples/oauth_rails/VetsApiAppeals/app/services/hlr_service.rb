@@ -1,6 +1,6 @@
 class HlrService
   include HTTParty
-  base_uri 'http://localhost:3000/services/appeals/v1/decision_reviews/higher_level_reviews'
+  base_uri "#{Figaro.env.vets_api_url}/services/appeals/v1/decision_reviews/higher_level_reviews"
 
   def schema
     self.class.get '/schema'
