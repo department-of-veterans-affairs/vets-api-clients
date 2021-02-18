@@ -1,4 +1,5 @@
 class HlrController < ApplicationController
+  before_action :require_apikey
   skip_before_action :verify_authenticity_token
 
   def new
@@ -27,5 +28,10 @@ class HlrController < ApplicationController
 
   def service
     @service ||= HlrService.new(@apikey)
+  end
+
+  def require_apikey
+    return unless @apikey.blank?
+    redirect_to '/login', alert: 'Missing API key'
   end
 end
