@@ -14,7 +14,7 @@
   let headerSchema = <%= raw @header_schema %>;
   let schema = <%=raw @schema %>;
 
-  // Fix rails-jsonschema-form not interpreting some header defs correctly
+  // Fix react-jsonschema-form not interpreting some header defs correctly
   for (const d in headerSchema['definitions']) {
     if ( /^X-/.test(d) ) {
       headerSchema['definitions'][d]['type'] = 'string';
