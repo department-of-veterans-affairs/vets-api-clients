@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_apikey
-    @apikey = cookies[:apikey]
+    @apikey = session[:apikey]
   end
 end

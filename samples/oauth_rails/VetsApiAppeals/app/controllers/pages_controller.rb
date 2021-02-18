@@ -4,8 +4,8 @@ class PagesController < ApplicationController
   end
 
   def login
-    cookies[:apikey] = params[:apikey] if params[:apikey].present?
-    @apikey = cookies[:apikey]
+    session[:apikey] = params[:apikey] if params[:apikey].present?
+    @apikey = session[:apikey]
     redirect_to '/' if params[:apikey].present?
   end
 end
