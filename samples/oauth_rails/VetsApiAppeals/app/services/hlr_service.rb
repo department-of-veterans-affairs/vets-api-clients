@@ -2,8 +2,12 @@ class HlrService
   include HTTParty
   base_uri "#{Figaro.env.vets_api_url}/services/appeals/v1/decision_reviews/higher_level_reviews"
 
+  def initialize(apikey)
+    @apikey = apikey
+  end
+
   def schema
-    self.class.get '/schema'
+    self.class.get '/schema', headers: { apikey: @apikey }
   end
 
   def header_schema
@@ -106,11 +110,11 @@ class HlrService
   end
 
   def post(params)
-    get_data(self.class.post '/', body: build_body(params), headers: build_headers(params))
+    get_data(self.class.post('/', body: build_body(params), headers: build_headers(params)))
   end
 
   def get(guid)
-    get_data(self.class.get "/#{guid}")
+    get_data(self.class.get("/#{guid}", headers: { apikey: @apikey }))
   end
 
   private
@@ -120,8 +124,7 @@ class HlrService
   end
 
   def build_body(params = {})
-    body = { data: params.dig('data'), included: params.dig('included') }
-    body.to_json
+    params.slice('data', 'included').to_json
   end
 
   def build_headers(params = {})

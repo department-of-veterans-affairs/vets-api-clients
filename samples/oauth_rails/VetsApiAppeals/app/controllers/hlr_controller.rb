@@ -26,6 +26,6 @@ class HlrController < ApplicationController
   end
 
   def service
-    @service ||= HlrService.new
+    @service ||= HlrService.new(@apikey)
   end
 end
