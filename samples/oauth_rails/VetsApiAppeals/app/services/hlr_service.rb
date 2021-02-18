@@ -3,7 +3,7 @@ class HlrService
   base_uri 'http://localhost:3000/services/appeals/v1/decision_reviews/higher_level_reviews'
 
   def schema
-    get_data(self.class.get '/schema')
+    self.class.get '/schema'
   end
 
   def header_schema
@@ -120,18 +120,7 @@ class HlrService
   end
 
   def build_body(params = {})
-    body = { data: params.dig('data'), included: params.dig('included') }.with_indifferent_access
-
-    # Convert from string to bool to adhere to schema
-    body[:data][:attributes][:informalConference].yield_self { |v| v == 'true' }
-    body[:data][:attributes][:sameOffice].yield_self { |v| v == 'true' }
-
-    # Convert included from an array-like hash (e.g. { "0" => {...}, "1" => {...}, ...} ) to an array of objects
-    included_params = body.delete(:included)
-    body[:included] = []
-    included_params.each do |_, obj|
-      body[:included] << obj
-    end
+    body = { data: params.dig('data'), included: params.dig('included') }
     body.to_json
   end
 

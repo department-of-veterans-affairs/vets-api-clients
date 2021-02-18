@@ -7,7 +7,7 @@ class HlrController < ApplicationController
   end
 
   def create
-    render json: service.post(hlr_params).body
+    render json: service.post(hlr_params)
   end
 
   def show

@@ -9,7 +9,6 @@
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
-<script crossorigin src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 
 <style>
 </style>
@@ -40,8 +39,8 @@
   // Add/fix fields
   schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
 
-  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Requesting Informal Conference'
-  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Not Requesting Informal Conference'
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not Requesting Informal Conference'
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference'
 
   // Set defaults for single-element enums
   schema['definitions']['hlrCreateData']['properties']['type']['default'] = 'higherLevelReview';
@@ -73,9 +72,21 @@
     }
 
     onSubmit = function ({formData}, e) {
-      $.post(`${window.location.origin}/hlr/create`, formData, function (data) {
-        window.location.href = `${window.location.origin}/hlr/show/${data.id}`
+      fetch(`${window.location.origin}/hlr/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       })
+        .then(response => response.json())
+        .then(data => {
+          window.location.href = `${window.location.origin}/hlr/show/${data.id}`
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
     }
 
     render() {
