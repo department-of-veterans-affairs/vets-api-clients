@@ -10,11 +10,9 @@
 <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
 
-<style>
-</style>
-
 <script type="text/babel">
-  let headerSchema = <%= raw @header_schema %>
+  let headerSchema = <%= raw @header_schema %>;
+  let schema = <%=raw @schema %>;
 
   // Fix rails-jsonschema-form not interpreting some header defs correctly
   for (const d in headerSchema['definitions']) {
@@ -23,7 +21,6 @@
     }
   }
 
-  let schema = <%=raw @schema %>;
   // Combine header & form data fields together
   schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
 
@@ -34,13 +31,14 @@
     ...schema['definitions']['hlrCreate']['properties']
   };
 
+  // Require API key
   schema['definitions']['hlrCreate']['required'].push('apikey');
 
   // Add/fix fields
   schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
 
-  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not Requesting Informal Conference'
-  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference'
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not Requesting Informal Conference';
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference';
 
   // Set defaults for single-element enums
   schema['definitions']['hlrCreateData']['properties']['type']['default'] = 'higherLevelReview';
@@ -64,11 +62,11 @@
 
   class SchemaForm extends React.Component {
     constructor(props) {
-      super(props)
+      super(props);
       this.state = {
         form: null
-      }
-      this.onSubmit = this.onSubmit.bind(this)
+      };
+      this.onSubmit = this.onSubmit.bind(this);
     }
 
     onSubmit = function ({formData}, e) {
@@ -82,7 +80,7 @@
       })
         .then(response => response.json())
         .then(data => {
-          window.location.href = `${window.location.origin}/hlr/show/${data.id}`
+          window.location.href = `${window.location.origin}/hlr/show/${data.id}`;
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -94,8 +92,6 @@
         <Form schema={schema}
               uiSchema={uiSchema}
               onSubmit={this.onSubmit}
-              method='post'
-              action={`${window.location.pathname}/submit`}
               ref={(form) => this.state.form = form}
               onError={log("errors")}/>
       );
