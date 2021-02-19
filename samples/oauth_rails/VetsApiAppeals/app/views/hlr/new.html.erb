@@ -37,21 +37,30 @@
   // Add/fix fields
   schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
 
+  // OneOf behaves differently in react-jsonschema-form than the schema defines, so adjust here and compensate
+  // in the controller when checkboxes have no value but schema expects `false`
   schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not Requesting Informal Conference';
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['required'] = ['benefitType', 'veteran'];
   schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference';
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['required'] = ['informalConference', 'benefitType', 'veteran'];
 
   // Set defaults for single-element enums
   schema['definitions']['hlrCreateData']['properties']['type']['default'] = 'higherLevelReview';
   schema['definitions']['hlrCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
+  schema['definitions']['hlrCreateBenefitType']['default'] = 'compensation';
 
   const uiSchema = {
+    apikey: {'ui:widget': 'hidden'},
     hlrCreateParameters: {
-      'X-VA-Birth-Date': {"ui:widget": 'date'}
+      'X-VA-Birth-Date': {'ui:widget': 'date'}
+    },
+    hlrCreateDataAttributes: {
+      oneOf: { items: {informalConference: {'ui:widget': 'radio'}}}
     },
     included: {
       items: {
         attributes: {
-          'decisionDate': {'ui:widget': 'date'}
+          decisionDate: {'ui:widget': 'date'}
         }
       }
     }

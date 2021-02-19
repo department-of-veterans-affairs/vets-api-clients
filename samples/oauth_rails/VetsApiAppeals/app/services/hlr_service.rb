@@ -124,13 +124,16 @@ class HlrService
   end
 
   def build_body(params = {})
+    # Assume that a missing informalConferenceType or sameOffice are false
+    params['data']['attributes']['sameOffice'] = params['data']['attributes']['sameOffice'].presence || false
+    params['data']['attributes']['informalConference'] = params['data']['attributes']['informalConference'].presence || false
     params.slice('data', 'included').to_json
   end
 
   def build_headers(params = {})
     {}.tap do |h|
       h['apikey'] = params['apikey']
-      params.dig('hlrCreateParameters').each do |header, value|
+      params.fetch('hlrCreateParameters', {}).each do |header, value|
         h[header] = value
       end
     end
