@@ -37,9 +37,11 @@
               <li class="site-header__nav-item">
                 <a class="site-header__nav-item__link " href="https://developer.va.gov/explore/appeals" target="_BLANK">Documentation</a>
               </li>
-              <li class="site-header__nav-item">
-                <a class="site-header__nav-item__link " href="<%= hlr_new_path %>">Submit HLR</a>
-              </li>
+              <% if @apikey.present? %>
+                <li class="site-header__nav-item">
+                  <a class="site-header__nav-item__link " href="<%= hlr_new_path %>">Submit HLR</a>
+                </li>
+              <% end %>
             </ul>
           </nav>
         </div>
