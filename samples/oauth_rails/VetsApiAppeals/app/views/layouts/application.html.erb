@@ -29,19 +29,6 @@
         </div>
       </div>
     </header>
-    <% if flash.alert %>
-      <br/>
-      <div class="alert alert-danger" role="alert">
-          <%= flash.alert %>
-      </div>
-    <% end %>
-    <% if flash.notice %>
-      <div class="vads-u-background-color--gold vads-u-padding-y--2 text-center" role="alert">
-          <p class="vads-u-font-size--lg vads-u-margin--0">
-            <strong><%= flash.notice %></strong>
-          </p>
-      </div>
-    <% end %>
     <main>
       <div class="large-screen:vads-u-padding-x--0">
         <div class="site-top-nav-wrapper site-l-wrapper ">
@@ -56,6 +43,20 @@
             </ul>
           </nav>
         </div>
+        <% if flash.alert %>
+          <div class="vads-u-background-color--orange vads-u-padding-y--2 text-center" role="alert">
+            <p class="vads-u-font-size--lg vads-u-margin--0">
+              <strong><%= flash.alert %></strong>
+            </p>
+          </div>
+        <% end %>
+        <% if flash.notice %>
+          <div class="vads-u-background-color--warning-message vads-u-padding-y--2 text-center" role="alert">
+            <p class="vads-u-font-size--lg vads-u-margin--0">
+              <strong><%= flash.notice %></strong>
+            </p>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
