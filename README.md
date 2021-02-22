@@ -61,7 +61,7 @@ If you are a third party seeking access to VA Lighthouse APIs, you will need to 
 
 ## Further Assistance
 
-If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQs. You will receive a human reply within 24 hours.
+If you have any questions or need further assistance, please visit our [support page](https://developer.va.gov/support), where you can contact us and peruse the FAQs. You will receive a human reply within one business day.
 
 ## Incident and Outage Awareness (Statuspage)
 
