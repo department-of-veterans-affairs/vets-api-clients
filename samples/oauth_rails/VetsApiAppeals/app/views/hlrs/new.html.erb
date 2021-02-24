@@ -1,0 +1,114 @@
+<h3 class='h3 text-center'>Submit <%= @schema['description'].gsub('Schema', '') %>
+  for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+
+<div class="site-l-wrapper">
+  <div id='root'/>
+</div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+
+<script type="text/babel">
+  let headerSchema = <%= raw @header_schema %>;
+  let schema = <%=raw @schema %>;
+
+  // Fix react-jsonschema-form not interpreting some header defs correctly
+  for (const d in headerSchema['definitions']) {
+    if ( /^X-/.test(d) ) {
+      headerSchema['definitions'][d]['type'] = 'string';
+    }
+  }
+
+  // Combine header & form data fields together
+  schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
+
+  // Force header fields to top of form
+  schema['definitions']['hlrCreate']['properties'] = {
+    ...{'apikey': {type: 'string', default: "<%= @apikey %>"}},
+    ...{'hlrCreateParameters': {"$ref": "#/definitions/hlrCreateParameters"}},
+    ...schema['definitions']['hlrCreate']['properties']
+  };
+
+  // Require API key
+  schema['definitions']['hlrCreate']['required'].push('apikey');
+
+  // Add/fix fields
+  schema['definitions']['nonBlankStringMaxLength140']['type'] = 'string';
+
+  // OneOf behaves differently in react-jsonschema-form than the schema defines, so adjust here and compensate
+  // in the controller when checkboxes have no value but schema expects `false`
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['title'] = 'Not Requesting Informal Conference';
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][0]['required'] = ['benefitType', 'veteran'];
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['title'] = 'Requesting Informal Conference';
+  schema['definitions']['hlrCreateDataAttributes']['oneOf'][1]['required'] = ['informalConference', 'benefitType', 'veteran'];
+
+  // Set defaults for single-element enums
+  schema['definitions']['hlrCreateData']['properties']['type']['default'] = 'higherLevelReview';
+  schema['definitions']['hlrCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
+  schema['definitions']['hlrCreateBenefitType']['default'] = 'compensation';
+
+  const uiSchema = {
+    apikey: {'ui:widget': 'hidden'},
+    hlrCreateParameters: {
+      'X-VA-Birth-Date': {'ui:widget': 'date'}
+    },
+    hlrCreateDataAttributes: {
+      oneOf: { items: {informalConference: {'ui:widget': 'radio'}}}
+    },
+    included: {
+      items: {
+        attributes: {
+          decisionDate: {'ui:widget': 'date'}
+        }
+      }
+    }
+  };
+
+  const log = (type) => console.log.bind(console, type);
+  const Form = JSONSchemaForm.default;
+
+  class SchemaForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        form: null
+      };
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit = function ({formData}, e) {
+      fetch(`${window.location.origin}/hlrs`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          window.location.href = `${window.location.origin}/hlrs/${data.id}`;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    render() {
+      return (
+        <Form schema={schema}
+              uiSchema={uiSchema}
+              onSubmit={this.onSubmit}
+              ref={(form) => this.state.form = form}
+              onError={log("errors")}/>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <SchemaForm/>,
+    document.getElementById('root')
+  );
+</script>
