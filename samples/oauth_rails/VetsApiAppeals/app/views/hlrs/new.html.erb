@@ -79,7 +79,7 @@
     }
 
     onSubmit = function ({formData}, e) {
-      fetch(`${window.location.origin}/hlr/create`, {
+      fetch(`${window.location.origin}/hlrs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@
       })
         .then(response => response.json())
         .then(data => {
-          window.location.href = `${window.location.origin}/hlr/show/${data.id}`;
+          window.location.href = `${window.location.origin}/hlrs/${data.id}`;
         })
         .catch((error) => {
           console.error('Error:', error);

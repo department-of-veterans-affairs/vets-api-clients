@@ -5,7 +5,7 @@
       <p>
         <% if @apikey.present? %>
           <%= link_to 'Reset API Key', login_path, class: "usa-button usa-button-big" %>
-          <%= link_to 'Submit HLR', hlr_new_path, class: "usa-button usa-button-secondary" %>
+          <%= link_to 'Submit HLR', new_hlr_path, class: "usa-button usa-button-secondary" %>
         <% else %>
           <%= link_to 'Set API Key to get started', login_path, class: "usa-button usa-button-big" %>
         <% end %>

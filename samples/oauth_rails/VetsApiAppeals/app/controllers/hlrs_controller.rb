@@ -1,4 +1,4 @@
-class HlrController < ApplicationController
+class HlrsController < ApplicationController
   before_action :require_apikey
   skip_before_action :verify_authenticity_token
 
