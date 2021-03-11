@@ -1,0 +1,48 @@
+{
+  "apikey":"SECRET_API_KEY_HERE",
+  "hlrCreateParameters":{
+    "X-VA-SSN":"000000000",
+    "X-VA-First-Name":"first",
+    "X-VA-Last-Name":"last",
+    "X-VA-Birth-Date":"1900-01-01"
+  },
+  "data":{
+    "type":"higherLevelReview",
+    "attributes":{
+      "benefitType":"compensation",
+      "veteran":{
+        "address":{"zipCode5":"00000"},
+        "phone":{"areaCode":"555", "phoneNumber":"4567890"}, "timezone":"UTC"},
+        "informalConference":true,
+        "informalConferenceRep":{"name":"repName", "phone":{"areaCode":"555", "phoneNumber":"2223333"}},
+        "sameOffice":true,
+        "informalConferenceTimes":["1000-1230 ET"]
+    }
+  },
+  "included":[{"type":"contestableIssue", "attributes":{"issue":"bad issue", "decisionDate":"1900-01-01"}}],
+  "controller":"hlrs",
+  "action":"create",
+  "hlr":{
+    "apikey":"SECRET_API_KEY_HERE",
+    "hlrCreateParameters":{
+      "X-VA-SSN":"000000000",
+      "X-VA-First-Name":"first",
+      "X-VA-Last-Name":"last",
+      "X-VA-Birth-Date":"1900-01-01"
+    },
+    "data":{
+      "type":"higherLevelReview",
+      "attributes":{
+        "benefitType":"compensation",
+        "veteran":{"address":{"zipCode5":"00000"},
+          "phone":{"areaCode":"555", "phoneNumber":"4567890"},
+          "timezone":"UTC"
+        },
+        "informalConference":true,
+        "informalConferenceRep":{"name":"repName", "phone":{"areaCode":"555", "phoneNumber":"2223333"}},
+        "sameOffice":true,
+        "informalConferenceTimes":["1000-1230 ET"]}
+    },
+    "included":[{"type":"contestableIssue", "attributes":{"issue":"bad issue", "decisionDate":"1900-01-01"}}]
+  }
+}

@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev-api.va.gov/services/appeals/v1/decision_reviews/higher_level_reviews/95aa02ff-01f7-4d4e-8ab8-73bd1cc51c56
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Apikey:
+      - SECRET_API_KEY_HERE
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 Mar 2021 16:15:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Etag:
+      - W/"f69002d8fc753f6d7022612cecb31a92"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 441e0b00-8f16-49f4-a3b0-77aa3063a290
+      X-Runtime:
+      - '0.011726'
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Limit-Minute:
+      - '60'
+      X-Ratelimit-Remaining-Minute:
+      - '57'
+      X-Kong-Upstream-Latency:
+      - '14'
+      X-Kong-Proxy-Latency:
+      - '1'
+      Via:
+      - kong/1.2.2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - TS016f4012=**********************************************************************************************************;
+        Max-Age=900; Path=/
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"95aa02ff-01f7-4d4e-8ab8-73bd1cc51c56","type":"higherLevelReview","attributes":{"status":"submitted","updatedAt":"2021-03-11T00:32:01.231Z","createdAt":"2021-03-11T00:31:53.068Z","formData":{"data":{"type":"higherLevelReview","attributes":{"benefitType":"compensation","veteran":{"address":{"zipCode5":"00000"},"phone":{"areaCode":"555","phoneNumber":"4567890"},"timezone":"UTC"},"informalConference":true,"informalConferenceRep":{"name":"repName","phone":{"areaCode":"555","phoneNumber":"2223333"}},"sameOffice":true,"informalConferenceTimes":["1000-1230
+        ET"]}},"included":[{"type":"contestableIssue","attributes":{"issue":"bad issue","decisionDate":"1900-01-01"}}]}}}}'
+  recorded_at: Thu, 11 Mar 2021 16:15:19 GMT
+recorded_with: VCR 6.0.0
