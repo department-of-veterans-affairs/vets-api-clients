@@ -5,6 +5,13 @@ class HlrsController < ApplicationController
   def new
     @schema = service.schema
     @header_schema = service.header_schema
+
+    if @schema.code == 401
+      session[:apikey] = nil
+      @apikey = nil
+      flash[:alert] = "Invalid API key"
+      redirect_to "/login"
+    end
   end
 
   def create
