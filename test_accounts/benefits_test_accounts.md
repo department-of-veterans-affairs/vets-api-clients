@@ -99,10 +99,4 @@ curl -X GET \
 
 ```
 
-These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Verification API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current). 
-
-**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
-
-**Password for all ID.me accounts: Password1234!**
-
 
