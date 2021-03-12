@@ -1,1 +1,4 @@
 vets_api_url:
+
+test:
+  vets_api_url: https://dev-api.va.gov

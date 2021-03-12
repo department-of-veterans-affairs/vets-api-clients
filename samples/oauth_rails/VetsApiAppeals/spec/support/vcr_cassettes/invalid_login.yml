@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://dev-api.va.gov/services/appeals/v1/decision_reviews/higher_level_reviews/schema
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Apikey:
+      - INVALID_API_KEY
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Thu, 11 Mar 2021 16:21:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '48'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Set-Cookie:
+      - TS016f4012=**********************************************************************************************************;
+        Max-Age=900; Path=/
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid authentication credentials"}'
+  recorded_at: Thu, 11 Mar 2021 16:21:00 GMT
+recorded_with: VCR 6.0.0
