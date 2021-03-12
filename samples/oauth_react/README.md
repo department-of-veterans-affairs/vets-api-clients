@@ -23,7 +23,7 @@ Now place these values into the file `src/.samples.config.js` that was created f
 ```javascript
 export default {
   oidc: {
-    authority: 'https://deptva-eval.okta.com/oauth2/default/.well-known/openid-configuration',
+    authority: 'https://sandbox-api.va.gov/oauth2/veteran-verification/v1/.well-known/openid-configuration',
     client_id: '{client_id}',
     redirect_uri: 'http://localhost:8080/implicit/callback',
     scope: 'openid profile email disability_rating.read service_history.read',
