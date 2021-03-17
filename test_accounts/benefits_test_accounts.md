@@ -78,6 +78,8 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
+**Please note that this is a shared sandbox environment. If you change POA for one of these test accounts from what is documented below, please be respectful of other users and change it back.*
+
 **Both Veterans and non-Veterans can be Representatives.**
 
 Test user 007 (John Doe) is a non-Veteran with Power of Attorney for Veteran test users 001, 002, 003, 004, 005, and 006 (Tamara Ellis, Janet Moore, Ralph Lee, Jess Gray, Pauline Foster, and Russell Freeman). If test user 007 attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
