@@ -78,7 +78,7 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
-**Please note that this is a shared sandbox environment. If you change POA for one of these test accounts from what is documented below, please be respectful of other users and change it back.*
+**Please note that this is a shared sandbox environment. If you change POA for one of these test accounts from what is documented below, please be respectful of other users and change it back.**
 
 **Both Veterans and non-Veterans can be Representatives.**
 
