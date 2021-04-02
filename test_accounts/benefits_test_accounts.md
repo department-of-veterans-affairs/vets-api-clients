@@ -85,7 +85,7 @@ Test user 007 (John Doe) is a non-Veteran that can be added as a POA for any of 
 Also, any of the above Veterans can also be Representatives for another Veteran. In addition to accessing the VA data for those the Veteran represents, he/she can also access his/her own personal VA data. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
 
 Note: Power of attorney is live within the sandbox environment. Who a power of attorney is for each Veteran can, and will, change throughout the day.
-Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/docs/claims?version=current#operations-Power_of_Attorney-post2122) endpoint to update a Veteran's POA before attempting Representative interactions.
+Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/docs/claims?version=current#operations-Power_of_Attorney-post2122) endpoint (ideally as the Veteran directly) to update the Veteran's POA before attempting Representative interactions.
 
 Example of a Representative cURL command is provided below.
 
