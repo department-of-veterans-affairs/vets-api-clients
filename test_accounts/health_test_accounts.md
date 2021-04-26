@@ -8,6 +8,13 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 **Password for all ID.me accounts: Password1234!**
 
+---
+
+**NOTE:**
+Details about Conditions associated to a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx)
+
+---
+
 |Email|ICN|First Name|Last Name|Sex|Birthdate|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |va.api.user+idme.101@gmail.com|32000225|Sheba703|Harris789|F|1926-01-08|
