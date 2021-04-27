@@ -1,5 +1,5 @@
 {
-13:  "apikey":"SECRET_API_KEY_HERE",
+  "apikey":"SECRET_API_KEY_HERE",
   "nodCreateParameters":{
     "X-VA-SSN":"000000000",
     "X-VA-First-Name":"first",
@@ -40,7 +40,7 @@
   "controller":"nods",
   "action":"create",
   "nod":{
-15:    "apikey":"SECRET_API_KEY_HERE",
+  "apikey":"SECRET_API_KEY_HERE",
     "nodCreateParameters":{
       "X-VA-SSN":"000000000",
       "X-VA-First-Name":"first",
