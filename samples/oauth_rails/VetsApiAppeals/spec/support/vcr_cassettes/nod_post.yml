@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://dev-api.va.gov/services/appeals/v1/decision_reviews/notice_of_disagreements/
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"noticeOfDisagreement","attributes":{"veteran":{"homeless":false,"address":{"addressLine1":"123
+        Main St","city":"New York","countryName":"United States","zipCode5":"30012"},"phone":{"areaCode":"555","phoneNumber":"8001111"},"emailAddressText":"user@example.com"},"boardReviewOption":"evidence_submission","timezone":"America/Chicago","socOptIn":false}},"included":[{"type":"contestableIssue","attributes":{"issue":"tinnitus","decisionDate":"1900-01-01"}}]}'
+    headers:
+      Apikey:
+      - OMeVETgZYh5dWsGTYEIqxudF7Dmf4BoT
+      X-Va-Ssn:
+      - '000000000'
+      X-Va-First-Name:
+      - first
+      X-Va-Last-Name:
+      - last
+      X-Va-Birth-Date:
+      - '1900-01-01'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Tue, 27 Apr 2021 15:21:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '279'
+      Connection:
+      - keep-alive
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 95cc66ff-a5f2-4e87-9a42-e5071c68120a
+      X-Runtime:
+      - '0.015585'
+      X-Xss-Protection:
+      - 1; mode=block
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Limit-Minute:
+      - '60'
+      X-Ratelimit-Remaining-Minute:
+      - '59'
+      X-Kong-Upstream-Latency:
+      - '19'
+      X-Kong-Proxy-Latency:
+      - '0'
+      Via:
+      - kong/1.2.2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Set-Cookie:
+      - TS016f4012=01c8917e48f569df23139abe985de4397d5df6a37a1918b9f7c884afad941c4a8c3d15aaeb2b8f36b6ded37c61ebc352e16ea47709;
+        Max-Age=900; Path=/
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"title":"Missing required fields","detail":"One or more
+        expected fields were not found","code":"145","source":{"pointer":"/"},"status":"422","meta":{"missing_fields":["X-VA-Veteran-First-Name","X-VA-Veteran-Last-Name","X-VA-Veteran-SSN","X-VA-Veteran-Birth-Date"]}}]}'
+  recorded_at: Tue, 27 Apr 2021 15:21:02 GMT
+recorded_with: VCR 6.0.0
