@@ -1,0 +1,51 @@
+{
+13:  "apikey":"SECRET_API_KEY_HERE",
+  "nodCreateParameters":{
+    "X-VA-SSN":"000000000",
+    "X-VA-First-Name":"first",
+    "X-VA-Last-Name":"last",
+    "X-VA-Birth-Date":"1900-01-01"
+  },
+  "data": {
+    "type": "noticeOfDisagreement",
+    "attributes": {
+      "veteran": {
+        "homeless": false,
+        "address": {
+          "addressLine1": "123 Main St",
+          "city": "New York",
+          "countryName": "United States",
+          "zipCode5": "30012"
+        },
+        "phone": {
+          "areaCode": "555",
+          "phoneNumber": "8001111"
+        },
+        "emailAddressText": "user@example.com"
+      },
+      "boardReviewOption": "evidence_submission",
+      "timezone": "America/Chicago",
+      "socOptIn": false
+    }
+  },
+  "included": [
+    {
+      "type": "contestableIssue",
+      "attributes": {
+        "issue": "tinnitus",
+        "decisionDate": "1900-01-01"
+      }
+    }
+  ],
+  "controller":"nods",
+  "action":"create",
+  "nod":{
+15:    "apikey":"SECRET_API_KEY_HERE",
+    "nodCreateParameters":{
+      "X-VA-SSN":"000000000",
+      "X-VA-First-Name":"first",
+      "X-VA-Last-Name":"last",
+      "X-VA-Birth-Date":"1900-01-01"
+    }
+  }
+}
