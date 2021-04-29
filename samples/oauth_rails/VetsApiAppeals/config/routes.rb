@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/login', to: 'pages#login'
   post '/login', to: 'pages#login'
   resources :hlrs, only: %i[create new show]
+  resources :nods, only: %i[create new show]
 end
