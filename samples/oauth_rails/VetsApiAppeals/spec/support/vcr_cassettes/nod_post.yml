@@ -9,7 +9,7 @@ http_interactions:
         Main St","city":"New York","countryName":"United States","zipCode5":"30012"},"phone":{"areaCode":"555","phoneNumber":"8001111"},"emailAddressText":"user@example.com"},"boardReviewOption":"evidence_submission","timezone":"America/Chicago","socOptIn":false}},"included":[{"type":"contestableIssue","attributes":{"issue":"tinnitus","decisionDate":"1900-01-01"}}]}'
     headers:
       Apikey:
-      - OMeVETgZYh5dWsGTYEIqxudF7Dmf4BoT
+      - evGzvOdkqRusQ4ynpZZ9OtpOPgiglFU6
       X-Va-Ssn:
       - '000000000'
       X-Va-First-Name:
@@ -26,17 +26,17 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 422
-      message: Unprocessable Entity
+      code: 200
+      message: OK
     headers:
       Date:
-      - Tue, 27 Apr 2021 15:21:04 GMT
+      - Thu, 29 Apr 2021 20:08:22 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '279'
       Connection:
       - keep-alive
+      Etag:
+      - W/"f6f1caf646b976e73dee92262864aa28"
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Vary:
@@ -50,9 +50,9 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Request-Id:
-      - 95cc66ff-a5f2-4e87-9a42-e5071c68120a
+      - 54b80e1c-0c4f-41da-8484-c2d9831bca99
       X-Runtime:
-      - '0.015585'
+      - '0.021043'
       X-Xss-Protection:
       - 1; mode=block
       Access-Control-Allow-Origin:
@@ -62,19 +62,25 @@ http_interactions:
       X-Ratelimit-Remaining-Minute:
       - '59'
       X-Kong-Upstream-Latency:
-      - '19'
+      - '24'
       X-Kong-Proxy-Latency:
-      - '0'
+      - '8'
       Via:
       - kong/1.2.2
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
+      Cache-Control:
+      - no-cache, no-store
+      Pragma:
+      - no-cache
       Set-Cookie:
-      - TS016f4012=01c8917e48f569df23139abe985de4397d5df6a37a1918b9f7c884afad941c4a8c3d15aaeb2b8f36b6ded37c61ebc352e16ea47709;
+      - TS016f4012=0119a2687fbab617c80364b95aa709b92cf9734a4d0e75c5baa3b738ff4349eeff8611435decdb5f3dcd4da8e8af4842ee489b6a63;
         Max-Age=900; Path=/
+      Transfer-Encoding:
+      - chunked
     body:
-      encoding: UTF-8
-      string: '{"errors":[{"title":"Missing required fields","detail":"One or more
-        expected fields were not found","code":"145","source":{"pointer":"/"},"status":"422","meta":{"missing_fields":["X-VA-Veteran-First-Name","X-VA-Veteran-Last-Name","X-VA-Veteran-SSN","X-VA-Veteran-Birth-Date"]}}]}'
-  recorded_at: Tue, 27 Apr 2021 15:21:02 GMT
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"029bb3cb-e142-411a-ab8c-eb6bc14bfe9a","type":"noticeOfDisagreement","attributes":{"status":"pending","updatedAt":"2021-04-29T20:08:22.496Z","createdAt":"2021-04-29T20:08:22.496Z","formData":{"data":{"type":"noticeOfDisagreement","attributes":{"veteran":{"homeless":false,"address":{"addressLine1":"123
+        Main St","city":"New York","countryName":"United States","zipCode5":"30012"},"phone":{"areaCode":"555","phoneNumber":"8001111"},"emailAddressText":"user@example.com"},"boardReviewOption":"evidence_submission","timezone":"America/Chicago","socOptIn":false}},"included":[{"type":"contestableIssue","attributes":{"issue":"tinnitus","decisionDate":"1900-01-01"}}]}}}}'
+  recorded_at: Thu, 29 Apr 2021 20:08:18 GMT
 recorded_with: VCR 6.0.0
