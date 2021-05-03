@@ -9,7 +9,7 @@ http_interactions:
         Main St","city":"New York","countryName":"United States","zipCode5":"30012"},"phone":{"areaCode":"555","phoneNumber":"8001111"},"emailAddressText":"user@example.com"},"boardReviewOption":"evidence_submission","timezone":"America/Chicago","socOptIn":false}},"included":[{"type":"contestableIssue","attributes":{"issue":"tinnitus","decisionDate":"1900-01-01"}}]}'
     headers:
       Apikey:
-      - evGzvOdkqRusQ4ynpZZ9OtpOPgiglFU6
+      - SECRET_API_KEY_HERE
       X-Va-Ssn:
       - '000000000'
       X-Va-First-Name:
@@ -30,13 +30,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 29 Apr 2021 20:08:22 GMT
+      - Mon, 03 May 2021 18:11:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Connection:
       - keep-alive
       Etag:
-      - W/"f6f1caf646b976e73dee92262864aa28"
+      - W/"a8213e3dd467e2ae959332c993ddaa49"
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Vary:
@@ -50,9 +50,9 @@ http_interactions:
       X-Permitted-Cross-Domain-Policies:
       - none
       X-Request-Id:
-      - 54b80e1c-0c4f-41da-8484-c2d9831bca99
+      - ee2ffede-55a4-4a2b-b70c-7a37cd1dd1d0
       X-Runtime:
-      - '0.021043'
+      - '0.025704'
       X-Xss-Protection:
       - 1; mode=block
       Access-Control-Allow-Origin:
@@ -62,9 +62,9 @@ http_interactions:
       X-Ratelimit-Remaining-Minute:
       - '59'
       X-Kong-Upstream-Latency:
-      - '24'
+      - '29'
       X-Kong-Proxy-Latency:
-      - '8'
+      - '16'
       Via:
       - kong/1.2.2
       Strict-Transport-Security:
@@ -74,13 +74,13 @@ http_interactions:
       Pragma:
       - no-cache
       Set-Cookie:
-      - TS016f4012=0119a2687fbab617c80364b95aa709b92cf9734a4d0e75c5baa3b738ff4349eeff8611435decdb5f3dcd4da8e8af4842ee489b6a63;
+      - TS016f4012=0119a2687f66f0e54e3004a035081070f0343c48936e4f28cd5808584faa27fb4df6f6c07e1d78ce24a97590c06b35c64489ebf18a;
         Max-Age=900; Path=/
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"029bb3cb-e142-411a-ab8c-eb6bc14bfe9a","type":"noticeOfDisagreement","attributes":{"status":"pending","updatedAt":"2021-04-29T20:08:22.496Z","createdAt":"2021-04-29T20:08:22.496Z","formData":{"data":{"type":"noticeOfDisagreement","attributes":{"veteran":{"homeless":false,"address":{"addressLine1":"123
+      string: '{"data":{"id":"b7909f64-ef2f-4a98-8795-7005ad32856b","type":"noticeOfDisagreement","attributes":{"status":"pending","updatedAt":"2021-05-03T18:11:12.297Z","createdAt":"2021-05-03T18:11:12.297Z","formData":{"data":{"type":"noticeOfDisagreement","attributes":{"veteran":{"homeless":false,"address":{"addressLine1":"123
         Main St","city":"New York","countryName":"United States","zipCode5":"30012"},"phone":{"areaCode":"555","phoneNumber":"8001111"},"emailAddressText":"user@example.com"},"boardReviewOption":"evidence_submission","timezone":"America/Chicago","socOptIn":false}},"included":[{"type":"contestableIssue","attributes":{"issue":"tinnitus","decisionDate":"1900-01-01"}}]}}}}'
-  recorded_at: Thu, 29 Apr 2021 20:08:18 GMT
+  recorded_at: Mon, 03 May 2021 18:11:10 GMT
 recorded_with: VCR 6.0.0

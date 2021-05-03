@@ -1,6 +1,6 @@
 {
   "apikey":"SECRET_API_KEY_HERE",
-  "nodCreateParameters":{
+  "nodCreateHeadersRoot":{
     "X-VA-SSN":"000000000",
     "X-VA-First-Name":"first",
     "X-VA-Last-Name":"last",
@@ -41,7 +41,7 @@
   "action":"create",
   "nod":{
   "apikey":"SECRET_API_KEY_HERE",
-    "nodCreateParameters":{
+    "nodCreateHeadersRoot":{
       "X-VA-SSN":"000000000",
       "X-VA-First-Name":"first",
       "X-VA-Last-Name":"last",
