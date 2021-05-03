@@ -22,20 +22,20 @@ class NodService
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "X-VA-Veteran-First-Name":      { "$ref": "#/definitions/nodCreateHeadersFirstName" },
-            "X-VA-Veteran-Middle-Initial":  { "$ref": "#/definitions/nodCreateHeadersMiddleInitial" },
-            "X-VA-Veteran-Last-Name":       { "$ref": "#/definitions/nodCreateHeadersLastName" },
-            "X-VA-Veteran-SSN":             { "$ref": "#/definitions/nodCreateHeadersSsn" },
-            "X-VA-Veteran-File-Number":     { "$ref": "#/definitions/nodCreateHeadersFileNumber" },
-            "X-VA-Veteran-Birth-Date":      { "$ref": "#/definitions/nodCreateHeadersBirthDate" },
+            "X-VA-First-Name":      { "$ref": "#/definitions/nodCreateHeadersFirstName" },
+            "X-VA-Middle-Initial":  { "$ref": "#/definitions/nodCreateHeadersMiddleInitial" },
+            "X-VA-Last-Name":       { "$ref": "#/definitions/nodCreateHeadersLastName" },
+            "X-VA-SSN":             { "$ref": "#/definitions/nodCreateHeadersSsn" },
+            "X-VA-File-Number":     { "$ref": "#/definitions/nodCreateHeadersFileNumber" },
+            "X-VA-Birth-Date":      { "$ref": "#/definitions/nodCreateHeadersBirthDate" },
             "X-Consumer-Username":          { "$ref": "#/definitions/nodCreateHeadersConsumerUsername"},
             "X-Consumer-ID":                { "$ref": "#/definitions/nodCreateHeadersConsumerId"}
           },
           "required": [
-            "X-VA-Veteran-First-Name",
-            "X-VA-Veteran-Last-Name",
-            "X-VA-Veteran-SSN",
-            "X-VA-Veteran-Birth-Date"
+            "X-VA-First-Name",
+            "X-VA-Last-Name",
+            "X-VA-SSN",
+            "X-VA-Birth-Date"
           ]
         },
 
@@ -44,7 +44,8 @@ class NodService
           "allOf": [
             { "description": "social security number" },
             { "type": "string", "minLength": 0, "maxLength": 9, "pattern": "^[0-9]{9}$" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -55,7 +56,8 @@ class NodService
               "type": "string",
               "$comment": "can be whitespace, to accommodate those with 1 legal name"
             }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -63,7 +65,8 @@ class NodService
           "allOf": [
             { "description": "middle initial" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -71,7 +74,8 @@ class NodService
           "allOf": [
             { "description": "last name" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -81,7 +85,8 @@ class NodService
             { "minLength": 10 },
             { "maxLength": 10 },
             { "$ref": "#/definitions/nodCreateHeadersDate" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -90,7 +95,8 @@ class NodService
             { "description": "VA file number (c-file / css)" },
             { "maxLength": 9 },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -98,7 +104,8 @@ class NodService
           "allOf": [
             { "description": "Consumer Username (passed from Kong)" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -106,7 +113,8 @@ class NodService
           "allOf": [
             { "description": "Consumer GUID" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ]
+          ],
+          "type": "string"
         },
 
 
@@ -143,7 +151,7 @@ class NodService
   def build_headers(params = {})
     {}.tap do |h|
       h['apikey'] = params['apikey']
-      params.fetch('nodCreateParameters', {}).each do |header, value|
+      params.fetch('nodCreateHeadersRoot', {}).each do |header, value|
         h[header] = value
       end
     end

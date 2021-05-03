@@ -41,18 +41,8 @@
   const uiSchema = {
     apikey: {'ui:widget': 'hidden'},
     nodCreateHeadersRoot: {
-      'nodCreateHeadersBirthDate': {'ui:widget': 'date'}
+      'X-VA-Birth-Date': {'ui:widget': 'date'}
     },
-    nodCreateDataAttributes: {
-      oneOf: { items: {informalConference: {'ui:widget': 'radio'}}}
-    },
-    included: {
-      items: {
-        attributes: {
-          decisionDate: {'ui:widget': 'date'}
-        }
-      }
-    }
   };
 
   const log = (type) => console.log.bind(console, type);
