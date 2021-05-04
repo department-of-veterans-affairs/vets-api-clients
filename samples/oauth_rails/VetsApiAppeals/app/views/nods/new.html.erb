@@ -14,13 +14,6 @@
   let headerSchema = <%= raw @header_schema %>;
   let schema = <%=raw @schema %>;
 
-  // Fix react-jsonschema-form not interpreting some header defs correctly
-  for (const d in headerSchema['definitions']) {
-    if ( /^X-/.test(d) ) {
-      headerSchema['definitions'][d]['type'] = 'string';
-    }
-  }
-
   // Combine header & form data fields together
   schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
 
