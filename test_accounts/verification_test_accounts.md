@@ -28,12 +28,3 @@ These test users have a variety of synthetic VA records such as service history 
 |va.api.user+idme.041@gmail.com|Christian|Fitzgerald|Patterson|M|1964-03-04|796218467|confirmed|confirmed|10|
 |va.api.user+idme.042@gmail.com|Jessie|F|Price|M|1934-04-07|796126978|confirmed|confirmed|10|
 |va.api.user+idme.046@gmail.com|Mattie|May|Reid|F|1964-04-14|796109651|confirmed|confirmed|null|
-|va.api.user+idme.042@gmail.com|Jessie|F|Price|M|1934-04-07|796126978|confirmed|confirmed|40|
-|va.api.user+idme.043@gmail.com|Ana|D|Ray|F|1994-06-07|796025480|confirmed|not confirmed|40|
-|va.api.user+idme.046@gmail.com|Mattie|May|Reid|F|1964-04-14|796109651|confirmed|confirmed|40|
-|va.api.user+idme.049@gmail.com|Jo|M|Robertson|F|1954-09-27|796044205|confirmed|not confirmed|40|
-|va.api.user+idme.050@gmail.com|Arthur|E|Rose|M|1954-05-26|796220828|confirmed|not confirmed|40|
-|va.api.user+idme.052@gmail.com|Sam|Lee|Spencer|M|1965-03-26|796053870|confirmed|not confirmed|40|
-|va.api.user+idme.053@gmail.com|Frederick|Bradley|Scott|M|1993-01-11|796128747|confirmed|not confirmed|40|
-|va.api.user+idme.058@gmail.com|Ruth|Reyes|Stephens|F|1982-07-10|796018805|confirmed|not confirmed|40|
-|va.api.user+idme.059@gmail.com|Dave|A|Stewart|M|1992-04-22|796110951|confirmed|not confirmed|40|
