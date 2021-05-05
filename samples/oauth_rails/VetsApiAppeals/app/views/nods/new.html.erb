@@ -1,0 +1,86 @@
+<h3 class='h3 text-center'>Submit <%= @schema['description'].gsub('Schema', '') %>
+  for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+
+<div class="site-l-wrapper">
+  <div id='root'/>
+</div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+
+<script type="text/babel">
+  let headerSchema = <%= raw @header_schema %>;
+  let schema = <%=raw @schema %>;
+
+  // Combine header & form data fields together
+  schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
+
+  // Force header fields to top of form
+  schema['definitions']['nodCreateRoot']['properties'] = {
+    ...{'apikey': {type: 'string', default: "<%= @apikey %>"}},
+    ...{'nodCreateHeadersRoot': {"$ref": "#/definitions/nodCreateHeadersRoot"}},
+    ...schema['definitions']['nodCreateRoot']['properties']
+  };
+
+  // Require API key
+  schema['definitions']['nodCreateRoot']['required'].push('apikey');
+
+  // Set defaults for single-element enums
+  schema['definitions']['nodCreateData']['properties']['type']['default'] = 'noticeOfDisagreement';
+  schema['definitions']['nodCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
+
+  const uiSchema = {
+    apikey: {'ui:widget': 'hidden'},
+    nodCreateHeadersRoot: {
+      'X-VA-Birth-Date': {'ui:widget': 'date'}
+    },
+  };
+
+  const log = (type) => console.log.bind(console, type);
+  const Form = JSONSchemaForm.default;
+
+  class SchemaForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        form: null
+      };
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit = function ({formData}, e) {
+      fetch(`${window.location.origin}/nods`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          window.location.href = `${window.location.origin}/nods/${data.id}`;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    render() {
+      return (
+        <Form schema={schema}
+              uiSchema={uiSchema}
+              onSubmit={this.onSubmit}
+              ref={(form) => this.state.form = form}
+              onError={log("errors")}/>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <SchemaForm/>,
+    document.getElementById('root')
+  );
+</script>
