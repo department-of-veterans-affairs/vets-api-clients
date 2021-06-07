@@ -1,4 +1,4 @@
-#### May 2021: Please note that this app was written to showcase an implicit OAuth flow that no longer exists.  It does not pass the required `state` parameter per our [authorization documentation](https://developer.va.gov/explore/authorization?api=veteran_verification), and is therefore deprecated until someone can update it. You may want to try the [Node sample app](https://github.com/department-of-veterans-affairs/vets-api-clients/tree/master/samples/oauth_node), which has been updated more recently. 
+#### May 2021: This app was written to showcase an implicit OAuth flow that no longer exists.  It does not pass the required `state` parameter per our [authorization documentation](https://developer.va.gov/explore/authorization?api=veteran_verification), and is therefore deprecated until it is updated. You may want to try the [Node sample app](https://github.com/department-of-veterans-affairs/vets-api-clients/tree/master/samples/oauth_node), which has been updated more recently. 
 
 # OAuth React Sample Application
 
