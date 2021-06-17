@@ -14,6 +14,7 @@ These test users have a variety of synthetic VA records such as service history 
 |va.api.user+idme.005@gmail.com|Pauline|E|Foster|F|1976-06-09|796330625|confirmed|confirmed|60|
 |va.api.user+idme.006@gmail.com|Russell|James|Freeman|M|1969-11-05|796149080|confirmed|confirmed|30|
 |va.api.user+idme.008@gmail.com|Greg|A|Anderson|M|1933-04-05|796121200|not confirmed|not confirmed|50|
+|va.api.user+idme.012@gmail.com|Andrea|L|Mitchell|F|1959-12-01|796127781|confirmed|confirmed|30|
 |va.api.user+idme.013@gmail.com|Kenneth|William|Andrews|M|1990-02-20|796295980|confirmed|confirmed|40|
 |va.api.user+idme.025@gmail.com|Wesley|Watson|Ford|M|1986-05-06|796043735|confirmed|confirmed|100|
 |va.api.user+idme.026@gmail.com|Melvin|V|Freeman|M|1971-11-19|796184750|confirmed|confirmed|100|
