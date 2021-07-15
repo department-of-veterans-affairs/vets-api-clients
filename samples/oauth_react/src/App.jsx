@@ -15,7 +15,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Authentication, ImplicitCallback, SignedIn, SignedOut } from './Authentication';
+import { Authentication, Callback, SignedIn, SignedOut } from './Authentication';
 import { Container } from 'semantic-ui-react';
 import config from './.samples.config';
 import Home from './Home';
@@ -32,7 +32,7 @@ class App extends Component {
         <Authentication oidcSettings={config.oidc}>
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>
-            <Route path="/implicit/callback" component={ImplicitCallback} />
+            <Route path="/implicit/callback" component={Callback} />
             <SignedOut>
               <Route path="/" exact component={Home} />
             </SignedOut>

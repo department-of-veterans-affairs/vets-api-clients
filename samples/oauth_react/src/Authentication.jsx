@@ -41,7 +41,7 @@ class Authentication extends Component {
   }
 }
 
-class ImplicitCallback extends Component {
+class Callback extends Component {
   static contextType = AuthenticationContext;
 
   componentDidMount() {
@@ -140,4 +140,4 @@ class SignOutButton extends ClickableMimic {
   }
 }
 
-export { Authentication, ImplicitCallback, SignInButton, SignOutButton, SignedIn, SignedOut };
+export { Authentication, Callback, SignInButton, SignOutButton, SignedIn, SignedOut };
