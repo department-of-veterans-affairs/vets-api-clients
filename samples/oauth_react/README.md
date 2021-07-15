@@ -27,7 +27,7 @@ export default {
     client_id: '{client_id}',
     redirect_uri: 'http://localhost:8080/implicit/callback',
     scope: 'openid profile email disability_rating.read service_history.read',
-    response_type: 'id_token token',
+    response_type: 'code',
   },
   resourceServer: {
     serviceHistoryUrl: 'https://sandbox-api.va.gov/services/veteran_verification/v0/service_history',
