@@ -32,7 +32,7 @@ class App extends Component {
         <Authentication oidcSettings={config.oidc}>
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>
-            <Route path="/implicit/callback" component={Callback} />
+            <Route path="/callback" component={Callback} />
             <SignedOut>
               <Route path="/" exact component={Home} />
             </SignedOut>
