@@ -1,9 +1,10 @@
 export default {
   oidc: {
+    authority: 'https://sandbox-api.va.gov/oauth2/veteran-verification/v1/.well-known/openid-configuration',
     clientId: '{clientId}',
-    issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-    redirectUri: 'http://localhost:8080/implicit/callback',
-    scope: ['openid', 'profile', 'email', 'disability_rating.read', 'service_history.read'],
+    redirect_uri: '{Okta redirect URI}',
+    scope: 'openid profile disability_rating.read service_history.read',
+    response_type: 'code',
   },
   resourceServer: {
     serviceHistoryUrl: 'http://localhost:3000/services/veteran_verification/v0/service_history',
