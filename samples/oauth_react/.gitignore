@@ -1,8 +1,0 @@
-node_modules
-dist
-npm-debug.log
-.DS_Store
-.vscode
-.samples.config.js
-src/.samples.config.js--
-.samples.config.js--
