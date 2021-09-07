@@ -35,7 +35,7 @@ Details about Conditions associated to a patient can be found in [Test Patient C
 |va.api.user+idme.116@gmail.com|2000167 |Jefferey580|Terry864|M|1957-03-11| ➖ |
 |va.api.user+idme.117@gmail.com|23000219|Taylor21|Mann644||| ➖ |
 |va.api.user+idme.118@gmail.com|35000422|Julius90|Gutmann970|M|1947-11-13| ➖ |
-|va.api.user+idme.119@gmail.com|43000199|Carlita746|Kautzer186|F|1998-01-27| ✔️ |
+|va.api.user+idme.119@gmail.com|43000199|Carlita746|Kautzer186|F|1998-01-27| ➖ |
 |va.api.user+idme.120@gmail.com|43000482|Herb645|Reilly981|M|1993-10-14| ➖ |
 |va.api.user+idme.121@gmail.com|43000466|Emmaline88|Considine820|F|1914-03-08| ➖ |
 |va.api.user+idme.122@gmail.com|43001199|Gerardo48|Leal292|M|1944-01-21| ➖ |
