@@ -1,6 +1,6 @@
 # Sandbox Test Accounts for Health APIs
 
-**Veteran Health** test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current)
+**Veteran Health** test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
 
 Use these test accounts to log into the ID.me sandbox environment that is connected to sandbox-api.va.gov. When signing in with a test account, Step 2 will ask how you want to receive an authentication code. Click "continue" for the verification to be automatically populated in Step 3.
 
