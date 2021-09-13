@@ -74,6 +74,13 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 |va.api.user+idme.061@gmail.com|Kent|L|Warren|M|1936-07-14|796127160|
 |va.api.user+idme.062@gmail.com|Jeff|Terrel|Watson|M|1968-01-05|796246757|
 
+## Test Accounts with Health Data
+These test users have both Claims data and Health data and may be used in both the Claims API and Health API.
+
+|Email|First Name|Last Name|Sex|Birthdate|SSN|
+| :--- | :--- | :--- | :--- | :--- | :--- |
+|va.api.user+idme.101@gmail.com|Sheba703|Harris789|F|1926-01-08|111111111|
+
 ## Representative
 
 These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
