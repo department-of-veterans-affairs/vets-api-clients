@@ -11,7 +11,9 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 ---
 
 **NOTE:**
-Details about Conditions associated to a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx)
+
+ * Details about Conditions associated to a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx)
+ * Details about patient with COVID-19 related test data [below](#covid19-test-data)
 
 ---
 
@@ -100,3 +102,16 @@ Details about Conditions associated to a patient can be found in [Test Patient C
 |va.api.user+idme.181@gmail.com|47000043|Forrest301|Miller503|M|1978-09-26| ➖ |
 |va.api.user+idme.182@gmail.com|47000145|Ward668|Cronin387|M|1939-03-04| ➖ |
 |va.api.user+idme.183@gmail.com|47000289|Reynaldo722|Simonis280|M|1909-04-04| ➖ |
+
+---
+
+## Covid19 Test Data
+
+|Email|ICN|Immunization|Covid Lab Tests|
+| :--- | :--- | :--- | :--- |
+|va.api.user+idme.119@gmail.com|43000199|None| Positive|
+|va.api.user+idme.153@gmail.com|9000682 |2 doses of Moderna | Positive |
+|va.api.user+idme.155@gmail.com|9000756 |Only first dose of Moderna | Negative |
+|va.api.user+idme.172@gmail.com|4001192 |2 doses of Pfizer | Positive |
+
+
