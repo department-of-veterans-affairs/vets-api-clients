@@ -12,8 +12,8 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 **NOTE:**
 
- * Details about Conditions associated to a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
- * Details about patient with COVID-19 related test data [below](#covid19-test-data).
+ * Details about Conditions associated with a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
+ * Details about patients with COVID-19 related test data can be found [below](#covid19-test-data).
 
 ---
 
