@@ -14,6 +14,12 @@
   let headerSchema = <%= raw @header_schema %>;
   let schema = <%=raw @schema %>;
 
+  for (const d in headerSchema['definitions']) {
+    if ( /^X-/.test(d) ) {
+      headerSchema['definitions'][d]['type'] = 'string'
+    }
+  }
+
   // Combine header & form data fields together
   schema['definitions'] = {...headerSchema['definitions'], ...schema['definitions'] };
 
@@ -28,8 +34,8 @@
   schema['definitions']['nodCreateRoot']['required'].push('apikey');
 
   // Set defaults for single-element enums
-  schema['definitions']['nodCreateData']['properties']['type']['default'] = 'noticeOfDisagreement';
-  schema['definitions']['nodCreateContestableIssue']['properties']['type']['default'] = 'contestableIssue';
+  schema['definitions']['nodCreateRoot']['properties']['data']['properties']['type']['default'] = 'noticeOfDisagreement';
+  schema['definitions']['nodCreateRoot']['properties']['included']['items']['properties']['type']['default'] = 'contestableIssue';
 
   const uiSchema = {
     apikey: {'ui:widget': 'hidden'},
