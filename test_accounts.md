@@ -1,10 +1,16 @@
 # Sandbox Test Accounts for VA Lighthouse APIs
 
-Lighthouse provides test accounts for use while developing against the various API offerings.  These test accounts are API-specific.  Select the category of interest below for more information.
+Lighthouse provides test accounts and data you can use to make sure your integration works as planned. These test accounts are specific to each API. They can be used to log in to the ID.me sandbox environment, which is connected to sandbox-api.va.gov.
 
-These test accounts may be used to log into the ID.me sandbox environment that is connected to sandbox-api.va.gov. When signing in with a test account, Step 2 will ask how you want to receive an authentication code. Click "continue" for the verification to be automatically populated in Step 3.
+To log in to the sandbox environment with a test account, make sure you:
 
-**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+  1. Choose an account that is specific to the API you want to test.
+  2. Use ID.me to sign in to the sandbox environment.
+  3. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
+
+**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
+
+Find out more about each API by selecting one below.
 
 ## Health
 
