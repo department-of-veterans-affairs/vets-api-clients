@@ -85,13 +85,11 @@ These test users have both Claims data and Health data and may be used in both t
 
 ## Representatives
 
-These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
+We have two test users, Tamara Ellis and John Doe, who are accredited and can be assigned Power of Attorney (POA) for specific Veterans. They can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
 **Both Veterans and non-Veterans can be Representatives.**
 
-Test user 007 (John Doe) is a non-Veteran that can be added as a POA for any of the above Veterans (if not already). If test user 007 attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
-
-Also, any of the above Veterans can be a Representative for another Veteran. In addition to accessing the VA data for those the Veteran represents, they can also access their own personal VA data. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
+Tamara Ellis, test user 001, is a Veteran. John Doe, test user 007, is not. Both can assigned POA for any of the above Veterans, if not already. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
 
 **Note:** Power of attorney is live within the sandbox environment. The power of attorney for each Veteran can, and will, change throughout the day.
 Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/docs/claims?version=current#operations-Power_of_Attorney-post2122) endpoint  to update the Veteran's POA before attempting Representative interactions.
