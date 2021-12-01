@@ -11,6 +11,7 @@ class NodService
   end
 
   def header_schema
+    # Taken from vets-api appeals 10182 header schema, commit d123c4de3dda49c3ac148081e1a0dadcc5171f5e
     {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "description": "JSON Schema for Notice of Disagreement Creation endpoint headers (Decision Reviews API)",
@@ -22,14 +23,14 @@ class NodService
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "X-VA-First-Name":      { "$ref": "#/definitions/nodCreateHeadersFirstName" },
-            "X-VA-Middle-Initial":  { "$ref": "#/definitions/nodCreateHeadersMiddleInitial" },
-            "X-VA-Last-Name":       { "$ref": "#/definitions/nodCreateHeadersLastName" },
-            "X-VA-SSN":             { "$ref": "#/definitions/nodCreateHeadersSsn" },
-            "X-VA-File-Number":     { "$ref": "#/definitions/nodCreateHeadersFileNumber" },
-            "X-VA-Birth-Date":      { "$ref": "#/definitions/nodCreateHeadersBirthDate" },
-            "X-Consumer-Username":          { "$ref": "#/definitions/nodCreateHeadersConsumerUsername"},
-            "X-Consumer-ID":                { "$ref": "#/definitions/nodCreateHeadersConsumerId"}
+            "X-VA-First-Name":      { "$ref": "#/definitions/X-VA-First-Name" },
+            "X-VA-Middle-Initial":  { "$ref": "#/definitions/X-VA-Middle-Initial" },
+            "X-VA-Last-Name":       { "$ref": "#/definitions/X-VA-Last-Name" },
+            "X-VA-SSN":             { "$ref": "#/definitions/X-VA-SSN" },
+            "X-VA-File-Number":     { "$ref": "#/definitions/X-VA-File-Number" },
+            "X-VA-Birth-Date":      { "$ref": "#/definitions/X-VA-Birth-Date" },
+            "X-Consumer-Username":  { "$ref": "#/definitions/X-Consumer-Username"},
+            "X-Consumer-ID":        { "$ref": "#/definitions/X-Consumer-ID"}
           },
           "required": [
             "X-VA-First-Name",
@@ -39,87 +40,69 @@ class NodService
           ]
         },
 
-
-        "nodCreateHeadersSsn": {
+        "X-VA-SSN": {
           "allOf": [
             { "description": "social security number" },
             { "type": "string", "minLength": 0, "maxLength": 9, "pattern": "^[0-9]{9}$" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersFirstName": {
+        "X-VA-First-Name": {
           "allOf": [
             { "description": "first name" },
             {
               "type": "string",
               "$comment": "can be whitespace, to accommodate those with 1 legal name"
             }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersMiddleInitial": {
+        "X-VA-Middle-Initial": {
           "allOf": [
             { "description": "middle initial" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersLastName": {
+        "X-VA-Last-Name": {
           "allOf": [
             { "description": "last name" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersBirthDate": {
+        "X-VA-Birth-Date": {
           "allOf": [
             { "description": "birth date" },
             { "minLength": 10 },
             { "maxLength": 10 },
             { "$ref": "#/definitions/nodCreateHeadersDate" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersFileNumber": {
+        "X-VA-File-Number": {
           "allOf": [
             { "description": "VA file number (c-file / css)" },
             { "maxLength": 9 },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersConsumerUsername": {
+        "X-Consumer-Username": {
           "allOf": [
             { "description": "Consumer Username (passed from Kong)" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ],
-          "type": "string"
+          ]
         },
 
-
-        "nodCreateHeadersConsumerId": {
+        "X-Consumer-ID": {
           "allOf": [
             { "description": "Consumer GUID" },
             { "$ref": "#/definitions/nodCreateHeadersNonBlankString" }
-          ],
-          "type": "string"
+          ]
         },
 
-
         "nodCreateHeadersDate": { "type": "string", "pattern": "^[0-9]{4}(-[0-9]{2}){2}$" },
-
 
         "nodCreateHeadersNonBlankString": {
           "type": "string",
