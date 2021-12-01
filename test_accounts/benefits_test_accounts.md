@@ -85,7 +85,7 @@ These test users have both Claims data and Health data and may be used in both t
 
 ## Representatives
 
-We have two test users, Tamara Ellis and John Doe, who are accredited and can be assigned Power of Attorney (POA) for specific Veterans. They can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
+There are two test users, Tamara Ellis and John Doe, who are accredited and can be assigned Power of Attorney (POA) for specific Veterans. They can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
 **Both Veterans and non-Veterans can be Representatives.**
 
