@@ -89,7 +89,7 @@ There are two test users, Tamara Ellis and John Doe, who are accredited and can 
 
 **Both Veterans and non-Veterans can be Representatives.**
 
-Tamara Ellis, test user 001, is a Veteran. John Doe, test user 007, is not. Both can assigned POA for any of the above Veterans, if not already. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
+Tamara Ellis, test user 001, is a Veteran. John Doe, test user 007, is not. Both can be assigned POA for any of the above Veterans, if not already. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
 
 **Note:** Power of attorney is live within the sandbox environment. The power of attorney for each Veteran can, and will, change throughout the day.
 Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/docs/claims?version=current#operations-Power_of_Attorney-post2122) endpoint  to update the Veteran's POA before attempting Representative interactions.
