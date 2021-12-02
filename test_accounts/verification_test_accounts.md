@@ -1,8 +1,14 @@
 # Sandbox Test Accounts for Veteran Verification APIs
 
-These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Verification API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current). 
+These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Verification API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current).
 
-**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+To log in to the sandbox environment with a test account, make sure you:
+
+  1. Choose an account that is specific to the API you want to test.
+  2. Use ID.me to sign in to the sandbox environment.
+  3. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
+
+**Do not modify any of the attributes for these test accounts, including passwords**. If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
 **Password for all ID.me accounts: Password1234!**
 

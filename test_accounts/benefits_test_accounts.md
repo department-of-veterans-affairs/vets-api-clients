@@ -4,9 +4,13 @@ These test users have a variety of synthetic VA records and can be used to test 
 
 Power of Attorney (POA) test accounts are also available [here](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md#Representative).
 
-Use these test accounts to log into the ID.me sandbox environment that is connected to sandbox-api.va.gov. When signing in with a test account, Step 2 will ask how you want to receive an authentication code. Click "continue" for the verification to be automatically populated in Step 3.
+To log in to the sandbox environment with a test account, make sure you:
 
-**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
+  1. Choose an account that is specific to the API you want to test.
+  2. Use ID.me to sign in to the sandbox environment.
+  3. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
+
+**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
 ## Veteran Account Information
 
