@@ -8,6 +8,8 @@ Use these test accounts to log into the ID.me sandbox environment that is connec
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact VA Lighthouse Support](https://github.com/department-of-veterans-affairs/vets-api-clients/issues/new/choose).
 
+## Veteran Account Information
+
 **Password for all ID.me accounts: Password1234!**
 
 |Email|First Name|Middle Name|Last Name|Sex| Birthdate |SSN|
@@ -81,22 +83,31 @@ These test users have both Claims data and Health data and may be used in both t
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |va.api.user+idme.101@gmail.com|Sheba703|Harris789|F|1926-01-08|111111111|
 
-## Representative
+## Representatives
 
-These test users have Power of Attorney (POA) for specific Veterans and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
+There are two test users, Tamara Ellis and John Doe, who are accredited and can be assigned Power of Attorney (POA) for specific Veterans. They can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current). During the authentication process, we look up the Office of General Counsel (OGC) POA code associated with the Veteran and validate that the Representative has a matching POA code.
 
 **Both Veterans and non-Veterans can be Representatives.**
 
-Test user 007 (John Doe) is a non-Veteran that can be added as a POA for any of the above Veterans (if not already). If test user 007 attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
+Tamara Ellis, test user 001, is a Veteran. John Doe, test user 007, is not. Both can be assigned POA for any of the above Veterans, if not already. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a `401 Unauthorized` error.
 
-Also, any of the above Veterans can also be Representatives for another Veteran. In addition to accessing the VA data for those the Veteran represents, he/she can also access his/her own personal VA data. If the Representative attempts to read or write data for a Veteran test user they do not have POA for, the server will return a 401 Unauthorized error.
-
-**Note:** Power of attorney is live within the sandbox environment. Who a power of attorney is for each Veteran can, and will, change throughout the day.
+**Note:** Power of attorney is live within the sandbox environment. The power of attorney for each Veteran can, and will, change throughout the day.
 Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/docs/claims?version=current#operations-Power_of_Attorney-post2122) endpoint  to update the Veteran's POA before attempting Representative interactions.
 
-The following are the POA codes associated with both Tamara Ellis and John Doe in sandbox:
-`A1Q`, `095`, `074`, `083`, `1NY`. Any of these POA codes can be assigned to any Veteran in sandbox to then make calls as Tamara Ellis or John Doe on behalf of that Veteran.
+### Representative POA Codes
 
+The following are POA codes associated with both Tamara Ellis and John Doe in sandbox:
+
+ - `095`, `074`, `083`, and `1NY` 
+
+These codes are associated with Veteran Service Organizations and designate Tamara and John as Representatives operating through those organizations. Any of these POA codes can be assigned to any Veteran in sandbox to then make calls as Tamara Ellis or John Doe on behalf of that Veteran.
+
+There are also unique POA codes for Tamara and John when assigning them to act as POA in an _individual_ capacity:
+
+- Tamara Ellis: `A1Q`
+- John Doe: `A1H`
+
+### Example request
 
 Example of a Representative cURL command is provided below.
 
@@ -111,6 +122,8 @@ curl -X GET \
   -H 'cache-control: no-cache'
 
 ```
+
+### Representative Account Information
 
 **Password for all ID.me accounts: Password1234!**
 
