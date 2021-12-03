@@ -11,8 +11,8 @@ Power of Attorney (POA) test accounts are also available [here](https://github.c
 To log in to the sandbox environment using ID.me, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
-  2. Select ID.me to sign in to the sandbox environment.
-  3. Enter the ID.me username and password (*Password1234!*).
+  2. Select **ID.me** to sign in to the sandbox environment.
+  3. Enter the ID.me username and password (**Password1234!**).
   4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
 
 ## Logging in with Login.gov
@@ -20,8 +20,8 @@ To log in to the sandbox environment using ID.me, make sure you:
 To log in to the sandbox environment using Login.gov, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
-  2. Select Login.gov to sign in to the sandbox environment.
-  3. Enter the Login.gov username and password (*Password12345!!!*).
+  2. Select **Login.gov** to sign in to the sandbox environment.
+  3. Enter the Login.gov username and password (**Password12345!!!**).
   4. Use the Login.gov MFA seed to generate a 2FA code using an application like Google Authenticator or Authy.
 
 ## Veteran Account Information
@@ -134,7 +134,6 @@ curl -X GET \
   -H 'X-VA-Last-Name: Ellis' \
   -H 'X-VA-SSN: 796130115' \
   -H 'cache-control: no-cache'
-
 ```
 
 ### Representative Account Information
