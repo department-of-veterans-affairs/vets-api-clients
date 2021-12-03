@@ -4,13 +4,25 @@ These test users have a variety of synthetic VA records and can be used to test 
 
 Power of Attorney (POA) test accounts are also available [here](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md#Representative).
 
-To log in to the sandbox environment with a test account, make sure you:
+**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
+
+## Logging in with ID.me
+
+To log in to the sandbox environment using ID.me, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
-  2. Use ID.me to sign in to the sandbox environment.
-  3. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
+  2. Select ID.me to sign in to the sandbox environment.
+  3. Enter the ID.me username and password (*Password1234!*).
+  4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
 
-**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
+## Logging in with Login.gov
+
+To log in to the sandbox environment using Login.gov, make sure you:
+
+  1. Choose an account that is specific to the API you want to test.
+  2. Select Login.gov to sign in to the sandbox environment.
+  3. Enter the Login.gov username and password (*Password12345!!!*).
+  4. Use the Login.gov MFA seed to generate a 2FA code using an application like Google Authenticator or Authy.
 
 ## Veteran Account Information
 
@@ -81,9 +93,9 @@ To log in to the sandbox environment with a test account, make sure you:
 ## Test Accounts with Health Data
 These test users have both Claims data and Health data and may be used in both the Claims API and Health API.
 
-| First Name | Last Name | Sex  | Birthdate  | SSN       | ID.me Username<br>(Password1234!) | Login.gov Username<br>(Password12345!!!) | Login.gov MFA Seed               |
-| :---       | :---      | :--- | :---       | :---      | :---                              | :---                                     | :---                             |
-| Sheba703   | Harris789 | F    | 1926-01-08 | 111111111 | va.api.user+idme.101@gmail.com    | va.api.user+101@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
+| First Name | Middle Name | Last Name | Sex  | Birthdate  | SSN       | ID.me Username<br>(Password1234!) | Login.gov Username<br>(Password12345!!!) | Login.gov MFA Seed               |
+| :---       | :---        | :---      | :--- | :---       | :---      | :---                              | :---                                     | :---                             |
+| Sheba703   |             | Harris789 | F    | 1926-01-08 | 111111111 | va.api.user+idme.101@gmail.com    | va.api.user+101@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
 
 ## Representatives
 
@@ -130,5 +142,3 @@ curl -X GET \
 | First Name | Middle Name | Last Name | Sex  | Birthdate | SSN  | ID.me Username<br>(Password1234!) | Login.gov Username<br>(Password12345!!!) | Login.gov MFA Seed               |
 | :---       | :---        | :---      | :--- | :---      | :--- | :---                              | :---                                     | :---                             |
 | John       |             | Doe       | M    |           |      | va.api.user+idme.007@gmail.com    | va.api.user+007@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
-
-
