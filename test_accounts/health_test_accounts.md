@@ -118,7 +118,7 @@ To log in to the sandbox environment using Login.gov, make sure you:
 ## Covid19 Test Data
 
 | ICN      | Immunization               | Covid Lab Tests | ID.me Username<br>(Password1234!) | Login.gov Username<br>(Password12345!!!) | Login.gov MFA Seed               |
-| :---     | :---                       | :---            | :---                              | :---                                     | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
+| :---     | :---                       | :---            | :---                              | :---                                     | :---                             |
 | 43000199 | None                       | Positive        | va.api.user+idme.119@gmail.com    | va.api.user+119@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
 | 9000682  | 2 doses of Moderna         | Positive        | va.api.user+idme.153@gmail.com    | va.api.user+153@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
 | 9000756  | Only first dose of Moderna | Negative        | va.api.user+idme.155@gmail.com    | va.api.user+155@gmail.com                | DIN72VD3MUOWJEENIS2FTJZEAROTGBAC |
