@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/login', to: 'pages#login'
   resources :hlrs, only: %i[create new show]
   resources :nods, only: %i[create new show]
+  resources :legacy_appeals, only: %i[index create]
 end
