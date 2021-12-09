@@ -23,7 +23,8 @@ To log in to the sandbox environment using Login.gov, make sure you:
   4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## Veteran Account Information
-
+**Password for all ID.me accounts: Password1234!**
+**Password for all Login.gov accounts: Password12345!!!**
 **NOTE:**
 
  * Details about Conditions associated with a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
