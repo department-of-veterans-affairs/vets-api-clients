@@ -33,8 +33,8 @@ To log in to the sandbox environment using Login.gov, make sure you:
  * Details about Conditions associated with a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
  * Details about patients with COVID-19 related test data can be found [below](#covid19-test-data).
 
-| ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username             | Login.gov MFA Seed          |
-| :---     | :---         | :---           | :--- | :---       | :---                | :---                           | :---                           | :---                        |
+| ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed               |
+| :---     | :---         | :---           | :--- | :---       | :---                | :---                           | :---                      | :---                             |
 | 32000225 | Sheba703     | Harris789      | F    | 1926-01-08 | ✔️                   | va.api.user+idme.101@gmail.com | va.api.user+101@gmail.com | BNBV63ON5ST7BHSU                 |
 | 5000335  | Mariano761   | Ruelas156      | M    | 1907-11-20 | ✔️                   | va.api.user+idme.102@gmail.com | va.api.user+102@gmail.com | GOOXDDJAJYULAHTON444ZSZLVT23KHVF |
 | 25000126 | Lorenzo669   | Valentín837    | M    | 1942-01-11 | ✔️                   | va.api.user+idme.103@gmail.com | va.api.user+103@gmail.com | YVD6IHGH2XLFYPYV773IYCKSCN67QOQ7 |
