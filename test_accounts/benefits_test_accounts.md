@@ -12,7 +12,7 @@ To log in to the sandbox environment using ID.me, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
   2. Select **ID.me** to sign in to the sandbox environment.
-  3. Enter the ID.me username and password (**Password1234!**).
+  3. Enter the ID.me username and password. The password for all ID.me test accounts is: **Password1234!**
   4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
 
 ## Logging in with Login.gov
