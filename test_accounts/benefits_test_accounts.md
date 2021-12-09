@@ -25,7 +25,8 @@ To log in to the sandbox environment using Login.gov, make sure you:
   4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## Veteran Account Information
-
+**Password for all ID.me accounts: Password1234!**
+**Password for all Login.gov accounts: Password12345!!!**
 | First Name | Middle Name | Last Name | Sex  | Birthdate  | SSN       | ID.me Username<br>(Password1234!) | Login.gov Username<br>(Password12345!!!) | Login.gov MFA Seed               |
 | :---       | :---        | :---      | :--- | :---       | :---      | :---                              | :---                                     | :---                             |
 | Tamara     | E           | Ellis     | F    | 1967-06-19 | 796130115 | va.api.user+idme.001@gmail.com    | va.api.user+001@gmail.com                | TODOAVD3MUOWJEENIS2FTJZEAROTGBAC |
