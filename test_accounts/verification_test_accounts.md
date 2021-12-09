@@ -20,7 +20,7 @@ To log in to the sandbox environment using Login.gov, make sure you:
   1. Choose an account that is specific to the API you want to test.
   2. Select **Login.gov** to sign in to the sandbox environment.
   3. Enter the Login.gov username and password (**Password12345!!!**).
-  4. Use the Login.gov MFA seed to generate a 2FA code using an application like Google Authenticator or Authy.
+  4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## Veteran Account Information
 
