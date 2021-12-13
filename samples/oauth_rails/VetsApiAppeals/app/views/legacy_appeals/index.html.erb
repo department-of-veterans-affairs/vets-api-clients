@@ -1,0 +1,80 @@
+<h3 class='h3 text-center'>Get Legacy Appeals
+  for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+
+<div class="site-l-wrapper">
+  <div id='root'/>
+</div>
+
+<style>
+  #root_anyof_select {
+    display: none;
+  }
+</style>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-jsonschema-form/dist/react-jsonschema-form.js"></script>
+
+<script type="text/babel">
+  let schema = <%= raw @header_schema %>;
+
+  // Fix react-jsonschema-form not interpreting some header defs correctly
+  for (const d in schema['definitions']['legacyAppealsIndexParameters']['properties']) {
+    if ( /^X-/.test(d) ) {
+      schema['definitions']['legacyAppealsIndexParameters']['properties'][d]['type'] = 'string'
+    }
+  }
+
+  const uiSchema = {};
+
+  const log = (type) => console.log.bind(console, type);
+  const Form = JSONSchemaForm.default;
+
+  class SchemaForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        form: null
+      };
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onSubmit = function ({formData}, e) {
+      // react-jsonschema-form doesn't play well with default values so we are setting the apikey here...
+      formData['apikey'] = "<%= @apikey %>";
+      fetch(`${window.location.origin}/legacy_appeals/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(data => {
+          data.text().then(function (text) {
+            let prettyFormattedResponse = JSON.stringify(JSON.parse(text), null, 2);
+            document.getElementById('root').innerHTML = `<pre>${prettyFormattedResponse}</pre>`;
+          });
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    render() {
+      return (
+        <Form schema={schema}
+              uiSchema={uiSchema}
+              onSubmit={this.onSubmit}
+              ref={(form) => this.state.form = form}
+              onError={log("errors")}/>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <SchemaForm/>,
+    document.getElementById('root')
+  );
+</script>
