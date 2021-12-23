@@ -9,6 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "ansi-regex": "5.0.1",
     "expo": "^40.0.1",
     "expo-document-picker": "~9.0.1",
     "expo-file-system": "~10.0.0",
