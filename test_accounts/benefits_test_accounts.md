@@ -102,14 +102,14 @@ Please utilize the [POST /forms/2122](https://developer.va.gov/explore/benefits/
 
 The following are POA codes associated with both Tamara Ellis and John Doe in sandbox:
 
- - `095`, `074`, `083`, and `1NY` 
+ - `095`, `074`, `083`, and `1NY`
 
 These codes are associated with Veteran Service Organizations and designate Tamara and John as Representatives operating through those organizations. Any of these POA codes can be assigned to any Veteran in sandbox to then make calls as Tamara Ellis or John Doe on behalf of that Veteran.
 
 There are also unique POA codes for Tamara and John when assigning them to act as POA in an _individual_ capacity:
 
-- Tamara Ellis: `A1Q`
-- John Doe: `A1H`
+- Tamara Ellis: `067`
+- John Doe: `072`
 
 ### Example request
 
