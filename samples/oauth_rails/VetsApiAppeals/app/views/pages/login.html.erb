@@ -1,9 +1,0 @@
-<div class="site-hero clip-bottom">
-  <div class="site-l-wrapper">
-    <%= form_with url: '/login', method: :post do |f| %>
-      <%= f.label 'Api Key' %>
-      <%= f.text_field :apikey, value: @apikey %>
-      <%= f.submit 'Save' %>
-    <% end %>
-  </div>
-</div>
