@@ -57,8 +57,34 @@
         </div>
         </div>
       </div>
+      <div style="max-width: 90%; margin: 3rem auto">
+        <hr>
+        <h3>Session token</h3>
+        <div>
+          <p><strong>Access Token:</strong></p>
+          <div id="access token" style="overflow-x: auto; border: 1px solid #000; padding: 5px">
+            <%= tokenset.access_token %>
+          </div>
+          <button onclick="copyToClipboard()">Copy Token</button>
+          <p><strong>Refresh Token:</strong></p>
+          <%= tokenset.refresh_token %>
+          <p><strong>Scopes:</strong></p>
+          <%= tokenset.scope %>
+        </div>    
+      </div>
     </main>
     <%- include('./partials/footer') %>
+    <script>
+      function copyToClipboard() {
+        const range = document.createRange();
+        range.selectNode(document.getElementById("access token"));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();
+        alert("Copied Token")
+      }
+    </script>
   </body>
 </html>
 

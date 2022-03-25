@@ -38,7 +38,7 @@ const configurePassport = (client) => {
     {
       client,
       params: {
-        scope: 'openid profile veteran_status.read claim.read',
+        scope: 'openid profile offline_access veteran_status.read service_history.read disability_rating.read',
       },
     }, (tokenset, userinfo, done) => {
       done(null, { userinfo, tokenset });
@@ -141,6 +141,7 @@ const startApp = (client) => {
       const users = [];
       const sql = `SELECT id, first_name, last_name, social_security_number, birth_date FROM veterans`;
       const tokenset = req.session.passport.user.tokenset;
+      console.log(`/home - Token: `, tokenset)
       db.all(sql, [], (err, rows) => {
         if (err) {
           throw err;
