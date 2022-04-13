@@ -1,7 +1,0 @@
-<h1 class="display-2">Callback <em>Failed</em></h1>
-<p class="lead">
-    The time of login was sent in the "state" parameter, but the returned state,
-    <%= @oauth_callback.state %>, did not match the <code>login_time</code>
-    stored in the session. <small>(Currently: <%= session[:login_time] %>)</small>
-</p>
-<%= link_to 'Return to Login', login_path, class: "btn btn-primary" %>
