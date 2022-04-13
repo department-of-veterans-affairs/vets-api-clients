@@ -6,7 +6,7 @@ echo "### update: $dir"
 )
 
 
-JS_PROJECTS="benefits-intake oauth_node oauth_php/VetsApiClaims oauth_pkce_cli oauth_react"
+JS_PROJECTS="oauth_node oauth_php/VetsApiClaims oauth_pkce_cli oauth_react"
 for dir in $JS_PROJECTS
 do
   echo "### update: $dir"
