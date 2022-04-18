@@ -1,9 +1,0 @@
-<p class='text-center'>	
-    <%= link_to 'View claims', claims_url(user_id: @veteran.try(:id)) %> | 
-    <%= link_to 'View Active ITF', active_itf_url(user_id: @veteran.try(:id)) %> | 
-    <%= link_to 'View Active POA', active_poa_url(user_id: @veteran.try(:id)) %> |
-    <%= link_to 'Submit 0966', form_url(user_id: @veteran.try(:id), form_number: '0966'), data: {turbolinks: "false"} %> | 	
-    <%= link_to 'Submit 526', form_url(user_id: @veteran.try(:id), form_number: '526'), data: {turbolinks: "false"} %> | 	
-    <%= link_to 'Submit 2122 (upload)', form_2122_url(user_id: @veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %> | 	
-    <%= link_to 'Submit 2122 (signature)', form_url(user_id: @veteran.try(:id), form_number: '2122'), data: {turbolinks: "false"} %>	
-</p>	
