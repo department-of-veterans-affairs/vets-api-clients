@@ -1,0 +1,22 @@
+<div class="site-l-wrapper">
+  <h3 class='h3 text-center'>Intent to File for <%= @veteran.present? ? "#{@veteran.name} requested by #{@name}" : @name %></h3>
+  <%= render partial: "menu" %>
+  <% if @itf.present? %>
+    <ul>
+      <li><b>Creation Date: </b><%= @itf["attributes"]["creation_date"] %></li>
+      <li><b>Expiration Date: </b><%= @itf["attributes"]["expiration_date"] %></li>
+      <li><b>Type: </b><%= @itf["attributes"]["type"] %></li>
+      <li><b>Status: </b><%= @itf["attributes"]["status"] %></li>
+    </ul>
+  <% else %>
+    <%= link_to 'Submit 0966', form_url(user_id: @veteran.try(:id), form_number: '0966'), data: {turbolinks: "false"} %>
+  <% end %>
+</div>
+<div class='col-md-6 offset-md-3'>
+  <% if Figaro.env.debug_access_token? %>
+    <hr />
+    <h3>My session token</h3>
+
+    <div class='well' id='access_token'><%= @session.access_token %></div>
+  <% end %>
+</div>

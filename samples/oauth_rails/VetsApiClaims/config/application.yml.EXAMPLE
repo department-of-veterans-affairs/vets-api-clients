@@ -1,0 +1,5 @@
+# TODO put your client id and client secret here and remove the `.EXAMPLE` extension
+va_developer_client_id: # Claims V1 API Oauth client ID
+va_developer_client_secret: # Claims V1 API Oauth client secret
+va_api_key: # Benefits Intake API Key
+vets_api_url: 'https://sandbox-api.va.gov'

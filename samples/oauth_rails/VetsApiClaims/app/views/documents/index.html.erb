@@ -1,0 +1,34 @@
+<div class="site-l-wrapper">
+  <h3 class='h3 text-center'>Documents</h3>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">GUID</td> 
+        <th scope="col">Status</td>
+        <th scope="col">Code</td>
+        <th scope="col">Updated At</td>
+        <th scope="col">Location</td>
+        <th scope="col"></td>
+        <th scope="col"></td>
+        <th scope="col"></td>
+        <th scope="col"></td>
+      </tr>
+    </thead>
+    <% @documents.each do |document| %>
+      <tr>
+        <td><%= document.guid %></td>
+        <td><%= document.status %></td>
+        <td title="<%= document.detail %>"><%= document.code %></td>
+        <td><%= document.updated_at.strftime("%m/%d/%Y %H:%M%P %Z") %></td>
+        <td><%= link_to 'AWS Link', document.location %></td>
+        <td><%= link_to 'Upload Document', edit_document_path(document) %></td>
+        <td><%= link_to 'Delete', document_path(document), data: { confirm: 'Are you sure you want to remove this document? A copy will remain on AWS.' }, method: :delete  %></td>
+        <td><%= link_to 'Download', download_document_path(document) %></td>
+        <td><%= link_to 'Update Status', update_status_document_path(document) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= form_for Document.new do |f| %>
+    <%= f.submit 'Create New Document', class: "usa-button" %>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><%= service_history.branch_of_service %></h5>
+            <dl>
+                <dt>Joined</dt>
+                <dd><%= service_history.start_date %></dd>
+                <dt>Discharged</dt>
+                <dd><%= service_history.end_date %></dd>
+                <dt>Discharge Reason</dt>
+                <dd><%= service_history.discharge_status %></dd>
+            </dl>
+        </div>
+        <ul class="list-group list-group-flush">
+            <% service_history.deployments.each do |deployment| %>
+            <li class="list-group-item"><strong>Deployed to <%= deployment.location %></strong><br/><%= deployment.start_date %> until <%= deployment.end_date %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>

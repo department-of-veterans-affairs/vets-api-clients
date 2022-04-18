@@ -1,0 +1,23 @@
+<p>
+    To finish authentication, the server <code>POST</code>s to <code><%= @oauth_callback.oauth_url %></code>.
+</p>
+<p>
+    This is the basic auth for the post:
+    <pre><code>
+{
+    <% @oauth_callback.auth.each do |key, value| %>
+    <%= key %>: <%= value %>
+    <% end %>
+}
+    </code></pre>
+</p>
+<p>
+    This is the body of the post, including the code and state sent from the oauth server:
+    <pre><code>
+{
+    <% @oauth_callback.post_body.each do |key, value| %>
+    <%= key %>: <%= value %>
+    <% end %>
+}
+    </code></pre>
+</p>
