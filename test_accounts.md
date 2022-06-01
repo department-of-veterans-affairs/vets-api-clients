@@ -36,4 +36,4 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 ## VA Letters
 
-#### [VA Letter Generator API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/API-11600-AddLetterGenTestAccounts/test_accounts/letter_generator_test_accounts.md)
+#### [VA Letter Generator API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/letter_generator_test_accounts.md)
