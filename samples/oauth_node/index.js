@@ -112,9 +112,9 @@ const startApp = (client) => {
   });
 
   app.set('view engine', 'ejs')
+  app.use(session({ secret, cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(session({ secret, cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }));
   app.use(bodyParser.json()); // support json encoded bodies
   app.use(bodyParser.urlencoded({ extended: true }));
 
