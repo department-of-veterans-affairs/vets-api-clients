@@ -112,6 +112,7 @@ const startApp = (client) => {
   });
 
   app.set('view engine', 'ejs')
+  app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(session({ secret, cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }));
