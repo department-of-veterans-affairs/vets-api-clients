@@ -30,7 +30,6 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 **NOTE:**
  * Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx)
- * Details about Conditions associated with a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
  * Details about patients with COVID-19 related test data can be found [below](#covid19-test-data).
 
 | ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                               |
