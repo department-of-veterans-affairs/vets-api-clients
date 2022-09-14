@@ -1,6 +1,6 @@
 # Sandbox Test Accounts for Health APIs
 
-**Veteran Health** test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
+**Health** test users have a variety of synthetic health records attached to them and can be used to test the [Patient Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
