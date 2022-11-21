@@ -33,3 +33,7 @@ To log in to the sandbox environment using Login.gov, make sure you:
 ## Veteran Verification
 
 #### [Veteran Verification API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/verification_test_accounts.md)
+
+## Direct Deposit Management
+
+#### [Direct Deposit Management API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/direct_deposit_test_accounts.md)
