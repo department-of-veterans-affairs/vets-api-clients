@@ -29,7 +29,8 @@ To log in to the sandbox environment using Login.gov, make sure you:
 **Password for all Login.gov accounts: Password12345!!!**
 
 **NOTE:** Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx). 
-View upcoming changes to the resource data in the [Synthea Health Test Patient Data Spreadsheet](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/upcoming-synthea-health-test-patient-data.xlsx).
+
+View upcoming changes to the resource data in the [Upcoming Health Test Patient Data Spreadsheet](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/upcoming-health-test-patient-data.xlsx).
 
 | ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                               |
 | :---     | :---         | :---           | :--- | :---       | :---                | :---                           | :---                      | :---                                                                                                                                                                                                             |
