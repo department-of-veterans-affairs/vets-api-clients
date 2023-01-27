@@ -1,6 +1,6 @@
 # Sandbox Test Accounts for Health APIs
 
-**Veteran Health** test users have a variety of synthetic health records attached to them and can be used to test the [Veteran Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
+**Health** test users have a variety of synthetic health records attached to them and can be used to test the [Patient Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
@@ -31,8 +31,6 @@ To log in to the sandbox environment using Login.gov, make sure you:
 **NOTE:**
  * Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx).
    * View upcoming changes to the resource data in the [Synthea Health Test Patient Data Spreadsheet](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/upcoming-synthea-health-test-patient-data.xlsx).
- * Details about Conditions associated with a patient can be found in [Test Patient Conditions](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ramosan-add-patient-conditions/test_accounts/health_test_account_conditions.xlsx).
- * Details about patients with COVID-19 related test data can be found [below](#covid19-test-data).
 
 | ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                               |
 | :---     | :---         | :---           | :--- | :---       | :---                | :---                           | :---                      | :---                                                                                                                                                                                                             |
@@ -119,12 +117,3 @@ To log in to the sandbox environment using Login.gov, make sure you:
 | 47000043 | Forrest301   | Miller503      | M    | 1978-09-26 | ➖                   | va.api.user+idme.181@gmail.com | va.api.user+181@gmail.com | [QIHRFMN4NCUBSHKV76GFR36RF3BGVTQQ](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B181%40gmail.com%29?secret=QIHRFMN4NCUBSHKV76GFR36RF3BGVTQQ) |
 | 47000145 | Ward668      | Cronin387      | M    | 1939-03-04 | ➖                   | va.api.user+idme.182@gmail.com | va.api.user+182@gmail.com | [CK4KSSAQ3IVPSTWO3N6NOZBBBXKMMNVE](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B182%40gmail.com%29?secret=CK4KSSAQ3IVPSTWO3N6NOZBBBXKMMNVE) |
 | 47000289 | Reynaldo722  | Simonis280     | M    | 1909-04-04 | ➖                   | va.api.user+idme.183@gmail.com | va.api.user+183@gmail.com | [EV3V4UVGOMU3G46WANZ7COW4Z5RY57CK](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B183%40gmail.com%29?secret=EV3V4UVGOMU3G46WANZ7COW4Z5RY57CK) |
-
-## Covid19 Test Data
-
-| ICN      | Immunization               | Covid Lab Tests | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                              |
-| :---     | :---                       | :---            | :---                           | :---                      | :---                                                                                                                                                                                                            |
-| 43000199 | None                       | Positive        | va.api.user+idme.119@gmail.com | va.api.user+119@gmail.com | [3JKNNGLCNHAZZ67JRQI4BBIA25XCTKTS](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B119%40gmail.com%29?secret=3JKNNGLCNHAZZ67JRQI4BBIA25XCTKTS) |
-| 9000682  | 2 doses of Moderna         | Positive        | va.api.user+idme.153@gmail.com | va.api.user+153@gmail.com | [WNRJQOPIZSGPEOAIRQ5TJ5MAWR46FVXO](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B153%40gmail.com%29?secret=WNRJQOPIZSGPEOAIRQ5TJ5MAWR46FVXO) |
-| 9000756  | Only first dose of Moderna | Negative        | va.api.user+idme.155@gmail.com | va.api.user+155@gmail.com | [7VG5USISJP5HTLGX5YULBQUBOZRRWT3X](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B155%40gmail.com%29?secret=7VG5USISJP5HTLGX5YULBQUBOZRRWT3X) |
-| 4001192  | 2 doses of Pfizer          | Positive        | va.api.user+idme.172@gmail.com | va.api.user+172@gmail.com | [QNHB5X2KZVC66MDKFNOTNCA3BEAX2W5L](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B172%40gmail.com%29?secret=QNHB5X2KZVC66MDKFNOTNCA3BEAX2W5L) |
