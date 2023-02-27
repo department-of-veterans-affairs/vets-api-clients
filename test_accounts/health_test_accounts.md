@@ -30,8 +30,6 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 **NOTE:** Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx). 
 
-View upcoming changes to the resource data in the [Upcoming Health Test Patient Data Spreadsheet](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/upcoming-health-test-patient-data.xlsx).
-
 | ICN      | First Name   | Last Name      | Sex  | Birthdate  | Clinical Health API | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                               |
 | :---     | :---         | :---           | :--- | :---       | :---                | :---                           | :---                      | :---                                                                                                                                                                                                             |
 | 32000225 | Sheba703     | Harris789      | F    | 1926-01-08 | ✔️                   | va.api.user+idme.101@gmail.com | va.api.user+101@gmail.com | [BNBV63ON5ST7BHSU](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B101%40gmail.com%29?secret=BNBV63ON5ST7BHSU)                                 |
