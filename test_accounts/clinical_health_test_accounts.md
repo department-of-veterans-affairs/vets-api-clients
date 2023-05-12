@@ -2,7 +2,7 @@
 
 All Health test patients below can be used to test the Clinical Health API in sandbox. A subset of these patients can also be used for testing patient $match, which uses demographic information to find a matching patient in the VA's Master Patient Index (MPI) and returns a patient resource/ICN.
 
-http://build.fhir.org/patient-operation-match.html
+https://hl7.org/fhir/r4/patient-operation-match.html
 
 Supported resources: MedicationDispense, Condition, MedicationRequest, Observation, Patient, Practitioner.
 
