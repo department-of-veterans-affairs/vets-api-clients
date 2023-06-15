@@ -1,6 +1,6 @@
-# Sandbox Test Accounts for Veteran Verification APIs
+# Sandbox Test Accounts for Veteran Service History & Eligibility API
 
-These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Verification API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current).
+These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Service History & Eligibility API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current).
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
