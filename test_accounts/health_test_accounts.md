@@ -1,4 +1,4 @@
-# Sandbox Test Accounts for Patient Health APIs
+# Sandbox Test Accounts for Patient Health API
 
 **Health** test users have a variety of synthetic health records attached to them and can be used to test the [Patient Health API](https://developer.va.gov/explore/health/docs/fhir?version=current). A small subset of these users can also be used for testing the [Clinical Health API](https://developer.va.gov/explore/health/docs/clinical_health?version=current).
 
