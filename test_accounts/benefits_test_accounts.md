@@ -1,6 +1,8 @@
-# Sandbox Test Accounts for Benefits Claims API
+# Sandbox test accounts for benefits and appeals APIs
 
-These test users have a variety of synthetic VA records and can be used to test the [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current).
+These test users have a variety of synthetic VA records and can be used to test the following benefits-related APIs: 
+* [Benefits Claims API](https://developer.va.gov/explore/benefits/docs/claims?version=current) 
+* [Decision Reviews API](https://developer.va.gov/explore/api/decision-reviews/docs?version=current)
 
 Power of Attorney (POA) test accounts are also available [here](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md#Representative).
 
