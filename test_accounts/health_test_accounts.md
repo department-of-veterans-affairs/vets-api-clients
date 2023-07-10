@@ -30,7 +30,6 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 **NOTE:** Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx). 
 
-**The table below reflects updated synthetic test data as of 2/28/23.**
 
 | ICN      | First Name   | Last Name      | Sex | Birthdate  | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                               |
 | :---     | :---         |:---------------|:----| :---       | :---                           | :---                      | :---                                                                                                                                                                                                             |
