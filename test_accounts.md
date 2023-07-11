@@ -1,4 +1,4 @@
-# Sandbox Test Accounts for VA Lighthouse APIs
+# Sandbox test accounts for VA Lighthouse APIs
 
 Lighthouse provides test accounts and data you can use to make sure your integration works as planned. These test accounts are specific to each API and login method. Both ID.me and Login.gov connect to sandbox-api.va.gov. If you use Login.gov, you’ll need an application that generates multi-factor authentication codes, such as Google Authenticator or Authy.
 
@@ -22,14 +22,8 @@ To log in to the sandbox environment using Login.gov, make sure you:
   3. Enter the Login.gov username and password. The password for all Login.gov test accounts is: **Password12345!!!**
   4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
-## Health
+## [Health APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
 
-#### [Health APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
+## [Benefits and Appeals APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md)
 
-## Benefits
-
-#### [Claims API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md)
-
-## Veteran Verification
-
-#### [Veteran Verification API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/verification_test_accounts.md)
+## [Veteran Verification API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/verification_test_accounts.md)
