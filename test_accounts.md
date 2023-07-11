@@ -26,4 +26,4 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 ## [Benefits and Appeals APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md)
 
-## [Veteran Verification API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/verification_test_accounts.md)
+## [Veteran Service History and Eligibility API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/verification_test_accounts.md)
