@@ -24,7 +24,7 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
 ## [Patient Health API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
 
-## [Community Care Eligibility API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/ea90b93492a20c110e93b1bdaa91b34bc73ad435/test_accounts/community_care_test_accounts.md)
+## [Community Care Eligibility API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/community_care_test_accounts.md)
 
 ## [Benefits and Appeals APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md)
 
