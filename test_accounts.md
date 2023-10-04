@@ -22,7 +22,9 @@ To log in to the sandbox environment using Login.gov, make sure you:
   3. Enter the Login.gov username and password. The password for all Login.gov test accounts is: **Password12345!!!**
   4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
-## [Health APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
+## [Patient Health API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
+
+## [Community Care Eligibility API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/community_care_test_accounts.md)
 
 ## [Benefits and Appeals APIs](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md)
 
