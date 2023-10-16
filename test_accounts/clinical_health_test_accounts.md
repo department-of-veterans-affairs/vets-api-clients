@@ -4,7 +4,7 @@ All Health test patients below can be used to test the Clinical Health API in sa
 
 https://hl7.org/fhir/r4/patient-operation-match.html
 
-Supported resources: MedicationDispense, Condition, MedicationRequest, Observation, Patient, Practitioner.
+Supported resources: AllergyIntolerance, MedicationDispense, Condition, MedicationRequest, Observation, Patient, Practitioner.
 
 **Do not modify any of the attributes for these test accounts.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
