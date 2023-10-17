@@ -60,7 +60,7 @@ const verifyVeteranStatus = async (req, res, next) => {
   if (req.session && req.session.passport && req.session.passport.user) {
     const veteranStatus = await new Promise((resolve, reject) => {
       https.get(
-        `https://${env}-api.va.gov/services/veteran_verification/v0/status`,
+        `https://${env}-api.va.gov/services/veteran_verification/v2/status`,
         { headers: {'Authorization': `Bearer ${req.session.passport.user.tokenset.access_token}`} },
         (res) => {
           let rawData = '';
