@@ -24,6 +24,11 @@ It follows these steps:
 7. Displays the tokens returned from the `token` endpoint
 8. Uses the returned access token to call the `userinfo` endpoint
 
+### Requirements
+
+* [Node 16.x.x is currently confirmed working version](https://nodejs.org/en/)
+* [NPM](https://www.npmjs.com/get-npm)
+
 ## Initialize
 ```
 npm install
