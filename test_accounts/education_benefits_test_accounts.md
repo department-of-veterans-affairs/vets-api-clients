@@ -1,6 +1,6 @@
-# Sandbox Test Accounts for Benefits Education API
+# Sandbox Test Accounts for Education Benefits API
 
-These test users have a variety of synthetic VA records and can be used to test the [Benefits Education API](https://github.com/department-of-veterans-affairs/lighthouse-benefits-education).
+These test users have a variety of synthetic VA records and can be used to test the [Education Benefits API](https://github.com/department-of-veterans-affairs/lighthouse-benefits-education).
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
