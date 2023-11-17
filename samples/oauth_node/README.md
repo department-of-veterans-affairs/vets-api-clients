@@ -34,7 +34,7 @@ Replace `FAKE_CLIENT_ID` and `FAKE_CLIENT_SECRET` with your ID and secret.
 
 ### Requirements
 
-* [Node 10.x.x or greater](https://nodejs.org/en/)
+* [Node 16.x.x is currently confirmed working version](https://nodejs.org/en/)
 * [NPM](https://www.npmjs.com/get-npm)
 
 ```
