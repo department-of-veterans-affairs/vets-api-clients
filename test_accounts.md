@@ -10,7 +10,7 @@ To log in to the sandbox environment using ID.me, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
   2. Select **ID.me** to sign in to the sandbox environment.
-  3. Enter the ID.me username and password. The password for all ID.me test accounts is: **Password1234!**
+  3. Enter the ID.me username and password. The credentials are provided via email upon developer portal signup.
   4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
 
 ## Logging in with Login.gov
@@ -19,7 +19,7 @@ To log in to the sandbox environment using Login.gov, make sure you:
 
   1. Choose an account that is specific to the API you want to test.
   2. Select **Login.gov** to sign in to the sandbox environment.
-  3. Enter the Login.gov username and password. The password for all Login.gov test accounts is: **Password12345!!!**
+  3. Enter the Login.gov username and password. The credentials are provided via email upon developer portal signup.
   4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## [Patient Health API](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/health_test_accounts.md)
