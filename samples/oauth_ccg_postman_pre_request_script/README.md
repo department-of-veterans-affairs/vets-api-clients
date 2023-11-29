@@ -13,7 +13,7 @@ The Postman CCG Pre-request Script simplifies the interaction process for develo
     a. In Postman, set the following global variables along with their corresponding values. Refer to the instructions on https://developer.va.gov/explore/api/benefits-claims/client-credentials for obtaining the values.
 
     - aud
-    - client_id
+    - clientId
     - privatePem
     - scope
 
