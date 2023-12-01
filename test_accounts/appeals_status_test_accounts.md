@@ -8,7 +8,7 @@ The authentication model for the [Appeals Status API (v1)](https://developer.va.
 - [Authorization code flow](https://developer.va.gov/explore/api/appeals-status/authorization-code)
 - [Client Credentials Grant (CCG)](https://developer.va.gov/explore/api/appeals-status/client-credentials)
 
-Passwords for all test accounts can be found on the [developer portal](link-will-go-here-once-page-created).
+Login information for all test accounts can be found on the [developer portal](link-will-go-here-once-page-created).
 
 ## Veteran Test Accounts
 
