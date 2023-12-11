@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "93b95ceb-785c-403e-abdc-12b7de491c68",
+		"name": "CCG Pre-request Script",
+		"description": "Postman CCG Pre-request Script\n\nDescription:\n\nThis Postman collection contains pre-script request methods for VA API's using CCG OAuth. It generates a JWT assertion, requests an OAuth access token, and shows an example call interacting with the Patient Health API.\n\nConfiguration:\n\n1\\. Import \"CCG Pre-request Script.postman_collection.json\" into your Postman workspace.  \n2\\. Click on “CCG Pre-request Script” in the left column of Postman, to view the collection tabs for \"CCG Pre-request Script\".  \n3\\. Click on \"Varaibles\" within Postman, to view pre set collection variables.  \n4\\. Configure \"CCG Pre-request Script\" collection variables (aud, tokenUrl, clientId, privatePem, scope, launch) in Postman, assigning them their respective values. Follow the guidance provided at [https://developer.va.gov/explore/api/patient-health/client-credentials](https://developer.va.gov/explore/api/patient-health/client-credentials) to obtain the necessary collection variable values for the Patient Health API. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values.\n\na. aud (Collection variable)  \nExample Patient Health API aud value:  \n[https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token<br>](https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token)b. tokenUrl (Collection variable)  \nExample Patient Health API tokenUrl value:  \n[https://sandbox-api.va.gov/oauth2/health/system/v1/token<br>](https://sandbox-api.va.gov/oauth2/health/system/v1/token)c. clientId (Collection variable)  \nExample clientId value:  \nYour CCG clientId\n\nd. privatePem (Collection variable)  \nExample privatePem value:  \n\\-----BEGIN RSA PRIVATE KEY-----  \nYour private pem  \n\\-----END RSA PRIVATE KEY-----\n\ne. scope (Collection variable)  \nExample Patient Health API scope value:  \nlaunch system/AllergyIntolerance.read system/Appointment.read system/Condition.read system/Coverage.read system/Coverage.write system/DiagnosticReport.read system/Immunization.read system/Location.read system/Medication.read system/MedicationOrder.read system/Observation.read system/Organization.read system/Patient.read\n\nf. launch (Collection variable)  \nExample Patient Health API launch value:  \neyJwYXRpZW50IjoiMTIzNDUifQ==\n\nRun:\n\nThis step generates a JWT assertion, requests an OAuth access token, and shows an example call interacting with the Lighthouse API of choice. Users can view the JWT assertion and the OAuth access token in the console after running \"ccg-api-request\".\n\n1\\. Click on “ccg-api-request” in the left column of Postman (under the CCG Pre-request Script Collection). The pre-configured HTTP call will appear.  \n2\\. Click \"Send\".\n\nNote:  \nEnsure that you have valid values for the collection variables, as incorrect or missing values may result in issues.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30064595"
+	},
+	"item": [
+		{
+			"name": "ccg-api-request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sandbox-api.va.gov/services/fhir/v0/r4/Appointment?patient=1012853802V084487",
+					"protocol": "https",
+					"host": [
+						"sandbox-api",
+						"va",
+						"gov"
+					],
+					"path": [
+						"services",
+						"fhir",
+						"v0",
+						"r4",
+						"Appointment"
+					],
+					"query": [
+						{
+							"key": "patient",
+							"value": "1012853802V084487"
+						}
+					]
+				},
+				"description": "\"ccg-api-request\" generates a JWT assertion, requests an OAuth access token, and shows an example call interacting with the Benefits Claims API."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const uuid = require(\"uuid\")",
+					"let kjur",
+					"",
+					"const aud = pm.collectionVariables.get(\"aud\")",
+					"const tokenUrl = pm.collectionVariables.get(\"tokenUrl\")",
+					"const clientId = pm.collectionVariables.get(\"clientId\")",
+					"const privatePem = pm.collectionVariables.get(\"privatePem\")",
+					"const scope = pm.collectionVariables.get(\"scope\")",
+					"const launch = pm.collectionVariables.get(\"launch\")",
+					"",
+					"function checkVariables() {",
+					"    const requiredVariables = [\"aud\", \"tokenUrl\", \"clientId\", \"privatePem\", \"scope\"]",
+					"    console.info(\"Checking if required collection variables are set...\")",
+					"    const missingOrNullOrUndefinedVariables = requiredVariables.filter(variable => {",
+					"        const value = pm.collectionVariables.get(variable)",
+					"        return value === \"\" || value === undefined || value === null",
+					"    })",
+					"    if (missingOrNullOrUndefinedVariables.length > 0) {",
+					"        missingOrNullOrUndefinedVariables.forEach(variable => {",
+					"            console.log(`Collection variable '${variable}' is either missing or has a null/undefined value.`)",
+					"        })",
+					"        return 0",
+					"    } else {",
+					"        console.info(\"All required collection variables are set with non-null values.\")",
+					"        return 1",
+					"    }",
+					"}",
+					"",
+					"function getAssertion() {",
+					"    const secondsSinceEpoch = Math.round(Date.now() / 1000)",
+					"    const header = {",
+					"        alg: \"RS256\",",
+					"        typ: \"JWT\"",
+					"    }",
+					"    const claims = {",
+					"        \"aud\": aud,",
+					"        \"iss\": clientId,",
+					"        \"sub\": clientId,",
+					"        \"iat\": secondsSinceEpoch,",
+					"        \"exp\": secondsSinceEpoch + 60,",
+					"        \"jti\": uuid.v4()",
+					"    }",
+					"    const jwt = kjur.jws.JWS.sign(null, header, claims, privatePem)",
+					"    console.info(\"JWT assertion: \" + jwt)",
+					"    const urlencoded = [{",
+					"            key: \"grant_type\",",
+					"            value: \"client_credentials\",",
+					"            disabled: false",
+					"        },",
+					"        {",
+					"            key: \"client_assertion_type\",",
+					"            value: \"urn:ietf:params:oauth:client-assertion-type:jwt-bearer\",",
+					"            disabled: false",
+					"        },",
+					"        {",
+					"            key: \"client_assertion\",",
+					"            value: jwt,",
+					"            disabled: false",
+					"        },",
+					"        {",
+					"            key: \"scope\",",
+					"            value: scope,",
+					"            disabled: false",
+					"        },",
+					"    ]",
+					"    if (launch) {",
+					"        urlencoded.add({",
+					"            key: \"launch\",",
+					"            value: launch,",
+					"            disabled: false",
+					"        })",
+					"    }",
+					"    return urlencoded",
+					"}",
+					"",
+					"function getToken(urlencoded) {",
+					"    const req = {",
+					"        url: tokenUrl,",
+					"        method: \"POST\",",
+					"        headers: {",
+					"            \"Content-Type\": \"Content-Type: application/x-www-form-urlencoded\"",
+					"        },",
+					"        body: {",
+					"            mode: \"urlencoded\",",
+					"            urlencoded: urlencoded",
+					"        }",
+					"    }",
+					"",
+					"    console.info(\"Requesting a new access token...\")",
+					"",
+					"    pm.sendRequest(req, (err, resp) => {",
+					"        const data = resp.json()",
+					"        if (err || data.error) {",
+					"            console.warn(\"Could not get the access token.\")",
+					"            console.error(err || data.error)",
+					"            throw new Error(\"Unable to obtain token, check the console for more details.\")",
+					"        }",
+					"        console.info(data)",
+					"        pm.collectionVariables.set(\"access_token\", data.access_token)",
+					"    })",
+					"}",
+					"",
+					"function run() {",
+					"    if (checkVariables()) {",
+					"        navigator = {}",
+					"        window = {}",
+					"        eval(pm.collectionVariables.get(\"jsrsasign-js\"))",
+					"        kjur = KJUR",
+					"        getToken(getAssertion())",
+					"    }",
+					"}",
+					"",
+					"if (pm.collectionVariables.has(\"jsrsasign-js\")) {",
+					"    run()",
+					"} else {",
+					"    pm.sendRequest(\"http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\", (err, res) => {",
+					"        pm.collectionVariables.set(\"jsrsasign-js\", res.text())",
+					"        run()",
+					"    })",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "aud",
+			"value": "https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token"
+		},
+		{
+			"key": "tokenUrl",
+			"value": "https://sandbox-api.va.gov/oauth2/health/system/v1/token",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "privatePem",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "scope",
+			"value": "launch system/AllergyIntolerance.read system/Appointment.read system/Condition.read system/Coverage.read system/Coverage.write system/DiagnosticReport.read system/Immunization.read system/Location.read system/Medication.read system/MedicationOrder.read system/Observation.read system/Organization.read system/Patient.read",
+			"type": "string"
+		},
+		{
+			"key": "launch",
+			"value": "eyJwYXRpZW50IjoiMTIzNDUifQ==",
+			"type": "string"
+		}
+	]
+}
