@@ -2,30 +2,12 @@
 
 All test users below have a variety of synthetic data records attached to them and can be used to test the [Community Care Eligibility API](https://developer.va.gov/explore/api/community-care-eligibility/docs?version=current).
 
-To use this test data
+**To use this test data**
 1. Find the test accounts that meet your use case from the table below.
 2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.
 3. We suggest bookmarking both this GitHub page and the page with test data credentials so you can return to them if you need other test accounts. The links to these pages do not expire.
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
-
-## Logging in with ID.me
-
-To log in to the sandbox environment using ID.me, make sure you:
-
-  1. Choose an account that is specific to the API you want to test.
-  2. Select **ID.me** to sign in to the sandbox environment.
-  3. Enter the ID.me username and password. The credentials are provided via email upon developer portal signup.
-  4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
-
-## Logging in with Login.gov
-
-To log in to the sandbox environment using Login.gov, make sure you:
-
-  1. Choose an account that is specific to the API you want to test.
-  2. Select **Login.gov** to sign in to the sandbox environment.
-  3. Enter the Login.gov username and password. The credentials are provided via email upon developer portal signup.
-  4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## Veteran Account Information
 
