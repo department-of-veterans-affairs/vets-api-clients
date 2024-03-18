@@ -7,141 +7,10 @@
 	},
 	"item": [
 		{
-			"name": "CCG Token",
+			"name": "Benefits Claims",
 			"item": [
 				{
-					"name": "loan-guaranty/system/v1/token",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"const uuid = require('uuid')",
-									"let kjur;",
-									"",
-									"const AUD = \"https://deptva-eval.okta.com/oauth2/auseavl6o5AjGZr2n2p7/v1/token\";",
-									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const CLIENT_ID = pm.collectionVariables.get(\"loan-guaranty_clientId\");",
-									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const PRIVATE_PEM = pm.collectionVariables.get(\"loan-guaranty_privatePem\");",
-									"",
-									"const required = {",
-									"    \"aud\": AUD, ",
-									"    \"loan-guaranty_clientId\": CLIENT_ID, ",
-									"    \"loan-guaranty_privatePem\": PRIVATE_PEM",
-									"}",
-									"for (const [key, value] of Object.entries(required)) {",
-									"  if (!value) console.error(key + \" is required\");",
-									"}",
-									"",
-									"function getAssertion() {",
-									"    const secondsSinceEpoch = Math.round(Date.now() / 1000);",
-									"    const header = {",
-									"        alg: 'RS256',",
-									"        typ: 'JWT'",
-									"    }",
-									"    const payload = {",
-									"        \"aud\": AUD,",
-									"        \"iss\": CLIENT_ID,",
-									"        \"sub\": CLIENT_ID,",
-									"        \"jti\": uuid.v4(),",
-									"        \"iat\": secondsSinceEpoch,",
-									"        \"exp\": secondsSinceEpoch + 60",
-									"    }",
-									"    const jwt = kjur.jws.JWS.sign(null, header, payload, PRIVATE_PEM);",
-									"    pm.collectionVariables.set(\"client_assertion\", jwt);",
-									"    console.info(\"assertion: \" + jwt);",
-									"}",
-									"",
-									"function run() {",
-									"    navigator = {}",
-									"    window = {}",
-									"    eval(pm.collectionVariables.get(\"import_do_not_edit\"));",
-									"    kjur = KJUR;",
-									"    getAssertion();",
-									"}",
-									"run();"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"user-agent": true,
-							"accept": true,
-							"connection": true,
-							"accept-encoding": true
-						}
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								},
-								{
-									"key": "client_assertion_type",
-									"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
-									"type": "text"
-								},
-								{
-									"key": "client_assertion",
-									"value": "{{client_assertion}}",
-									"type": "text"
-								},
-								{
-									"key": "scope",
-									"value": "launch system.loan-remittance.read system.loan-review.write system.remediation-evidence.write",
-									"type": "text"
-								},
-								{
-									"key": "launch",
-									"value": "eyAic3RhM24iOiAiOTkzIiwgInBhdGllbnQiOiAiMTAwMDcyMDEwMFYyNzEzODciIH0=",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://sandbox-api.va.gov/oauth2/loan-guaranty/system/v1/token",
-							"protocol": "https",
-							"host": [
-								"sandbox-api",
-								"va",
-								"gov"
-							],
-							"path": [
-								"oauth2",
-								"loan-guaranty",
-								"system",
-								"v1",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "claims/system/v1/token",
+					"name": "token",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -152,9 +21,9 @@
 									"",
 									"const AUD = \"https://deptva-eval.okta.com/oauth2/ausdg7guis2TYDlFe2p7/v1/token\";",
 									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const CLIENT_ID = pm.collectionVariables.get(\"claims_clientId\");",
+									"const CLIENT_ID = pm.collectionVariables.get(\"bc_clientId\");",
 									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const PRIVATE_PEM = pm.collectionVariables.get(\"claims_privatePem\");",
+									"const PRIVATE_PEM = pm.collectionVariables.get(\"bc_privatePem\");",
 									"",
 									"const required = {",
 									"    \"aud\": AUD, ",
@@ -272,7 +141,217 @@
 					"response": []
 				},
 				{
-					"name": "health/system/v1/token",
+					"name": "openid-configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sandbox-api.va.gov/oauth2/claims/v1/.well-known/openid-configuration",
+							"protocol": "https",
+							"host": [
+								"sandbox-api",
+								"va",
+								"gov"
+							],
+							"path": [
+								"oauth2",
+								"claims",
+								"v1",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan Review",
+			"item": [
+				{
+					"name": "token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const uuid = require('uuid')",
+									"let kjur;",
+									"",
+									"const AUD = \"https://deptva-eval.okta.com/oauth2/auseavl6o5AjGZr2n2p7/v1/token\";",
+									"// This value is set at the Lighthouse OAuth API collection > variables tab",
+									"const CLIENT_ID = pm.collectionVariables.get(\"lr_clientId\");",
+									"// This value is set at the Lighthouse OAuth API collection > variables tab",
+									"const PRIVATE_PEM = pm.collectionVariables.get(\"lr_privatePem\");",
+									"",
+									"const required = {",
+									"    \"aud\": AUD, ",
+									"    \"loan-guaranty_clientId\": CLIENT_ID, ",
+									"    \"loan-guaranty_privatePem\": PRIVATE_PEM",
+									"}",
+									"for (const [key, value] of Object.entries(required)) {",
+									"  if (!value) console.error(key + \" is required\");",
+									"}",
+									"",
+									"function getAssertion() {",
+									"    const secondsSinceEpoch = Math.round(Date.now() / 1000);",
+									"    const header = {",
+									"        alg: 'RS256',",
+									"        typ: 'JWT'",
+									"    }",
+									"    const payload = {",
+									"        \"aud\": AUD,",
+									"        \"iss\": CLIENT_ID,",
+									"        \"sub\": CLIENT_ID,",
+									"        \"jti\": uuid.v4(),",
+									"        \"iat\": secondsSinceEpoch,",
+									"        \"exp\": secondsSinceEpoch + 60",
+									"    }",
+									"    const jwt = kjur.jws.JWS.sign(null, header, payload, PRIVATE_PEM);",
+									"    pm.collectionVariables.set(\"client_assertion\", jwt);",
+									"    console.info(\"assertion: \" + jwt);",
+									"}",
+									"",
+									"function run() {",
+									"    navigator = {}",
+									"    window = {}",
+									"    eval(pm.collectionVariables.get(\"import_do_not_edit\"));",
+									"    kjur = KJUR;",
+									"    getAssertion();",
+									"}",
+									"run();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true,
+							"accept": true,
+							"connection": true,
+							"accept-encoding": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_assertion_type",
+									"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+									"type": "text"
+								},
+								{
+									"key": "client_assertion",
+									"value": "{{client_assertion}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "launch system.loan-remittance.read system.loan-review.write system.remediation-evidence.write",
+									"type": "text"
+								},
+								{
+									"key": "launch",
+									"value": "eyAic3RhM24iOiAiOTkzIiwgInBhdGllbnQiOiAiMTAwMDcyMDEwMFYyNzEzODciIH0=",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://sandbox-api.va.gov/oauth2/loan-guaranty/system/v1/token",
+							"protocol": "https",
+							"host": [
+								"sandbox-api",
+								"va",
+								"gov"
+							],
+							"path": [
+								"oauth2",
+								"loan-guaranty",
+								"system",
+								"v1",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "openid-configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sandbox-api.va.gov/oauth2/loan-guaranty/system/v1/.well-known/openid-configuration",
+							"protocol": "https",
+							"host": [
+								"sandbox-api",
+								"va",
+								"gov"
+							],
+							"path": [
+								"oauth2",
+								"loan-guaranty",
+								"system",
+								"v1",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient Health",
+			"item": [
+				{
+					"name": "token",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -283,9 +362,9 @@
 									"",
 									"const AUD = \"https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token\";",
 									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const CLIENT_ID = pm.collectionVariables.get(\"phapi_clientId\");",
+									"const CLIENT_ID = pm.collectionVariables.get(\"ph_clientId\");",
 									"// This value is set at the Lighthouse OAuth API collection > variables tab",
-									"const PRIVATE_PEM = pm.collectionVariables.get(\"phapi_privatePem\");",
+									"const PRIVATE_PEM = pm.collectionVariables.get(\"ph_privatePem\");",
 									"",
 									"const required = {",
 									"    \"aud\": AUD, ",
@@ -384,9 +463,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/oauth2/health/system/v1/token",
+							"raw": "https://sandbox-api.va.gov/oauth2/health/system/v1/token",
+							"protocol": "https",
 							"host": [
-								"{{baseUrl}}"
+								"sandbox-api",
+								"va",
+								"gov"
 							],
 							"path": [
 								"oauth2",
@@ -400,7 +482,47 @@
 					"response": []
 				},
 				{
-					"name": "veteran-verification/system/v1/token",
+					"name": "openid-configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sandbox-api.va.gov/oauth2/health/system/v1/.well-known/openid-configuration",
+							"protocol": "https",
+							"host": [
+								"sandbox-api",
+								"va",
+								"gov"
+							],
+							"path": [
+								"oauth2",
+								"health",
+								"system",
+								"v1",
+								".well-known",
+								"openid-configuration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Veteran Service History and Eligibility",
+			"item": [
+				{
+					"name": "token",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -512,9 +634,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{baseUrl}}/oauth2/veteran-verification/system/v1/token",
+							"raw": "https://sandbox-api.va.gov/oauth2/veteran-verification/system/v1/token",
+							"protocol": "https",
 							"host": [
-								"{{baseUrl}}"
+								"sandbox-api",
+								"va",
+								"gov"
 							],
 							"path": [
 								"oauth2",
@@ -522,6 +647,41 @@
 								"system",
 								"v1",
 								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "openid-configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://sandbox-api.va.gov/oauth2/veteran-verification/system/v1/.well-known/openid-configuration",
+							"protocol": "https",
+							"host": [
+								"sandbox-api",
+								"va",
+								"gov"
+							],
+							"path": [
+								"oauth2",
+								"veteran-verification",
+								"system",
+								"v1",
+								".well-known",
+								"openid-configuration"
 							]
 						}
 					},
@@ -556,22 +716,22 @@
 	],
 	"variable": [
 		{
-			"key": "loan-guaranty_clientId",
+			"key": "lr_clientId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"key": "loan-guaranty_privatePem",
+			"key": "lr_privatePem",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"key": "claims_clientId",
+			"key": "bc_clientId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"key": "claims_privatePem",
+			"key": "bc_privatePem",
 			"value": "",
 			"type": "string"
 		},
@@ -586,12 +746,12 @@
 			"type": "string"
 		},
 		{
-			"key": "phapi_clientId",
+			"key": "ph_clientId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"key": "phapi_privatePem",
+			"key": "ph_privatePem",
 			"value": "",
 			"type": "string"
 		},
