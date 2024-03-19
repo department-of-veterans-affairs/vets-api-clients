@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "eadf5f79-e32a-423c-a340-d3c4f1466a9b",
+		"name": "Lighthouse OAuth Token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20417651"
+	},
+	"item": [
+		{
+			"name": "Client Credentials Example",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const uuid = require('uuid')",
+							"let kjur;",
+							"",
+							"const AUD = pm.collectionVariables.get(\"aud\");",
+							"// This value is set at the collection > variables tab",
+							"const CLIENT_ID = pm.collectionVariables.get(\"clientId\");",
+							"// This value is set at the collection > variables tab",
+							"const PRIVATE_PEM = pm.collectionVariables.get(\"privatePem\");",
+							"",
+							"const required = {",
+							"    \"aud\": AUD, ",
+							"    \"clientId\": CLIENT_ID, ",
+							"    \"privatePem\": PRIVATE_PEM",
+							"}",
+							"for (const [key, value] of Object.entries(required)) {",
+							"  if (!value) console.error(key + \" is required\");",
+							"}",
+							"",
+							"function getAssertion() {",
+							"    const secondsSinceEpoch = Math.round(Date.now() / 1000);",
+							"    const header = {",
+							"        alg: 'RS256',",
+							"        typ: 'JWT'",
+							"    }",
+							"    const payload = {",
+							"        \"aud\": AUD,",
+							"        \"iss\": CLIENT_ID,",
+							"        \"sub\": CLIENT_ID,",
+							"        \"jti\": uuid.v4(),",
+							"        \"iat\": secondsSinceEpoch,",
+							"        \"exp\": secondsSinceEpoch + 60",
+							"    }",
+							"    const jwt = kjur.jws.JWS.sign(null, header, payload, PRIVATE_PEM);",
+							"    pm.collectionVariables.set(\"client_assertion\", jwt);",
+							"    console.info(\"assertion: \" + jwt);",
+							"}",
+							"",
+							"function run() {",
+							"    navigator = {}",
+							"    window = {}",
+							"    eval(pm.collectionVariables.get(\"import_do_not_edit\"));",
+							"    kjur = KJUR;",
+							"    getAssertion();",
+							"}",
+							"run();"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"connection": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_assertion_type",
+							"value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+							"type": "text"
+						},
+						{
+							"key": "client_assertion",
+							"value": "{{client_assertion}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "launch",
+							"type": "text"
+						},
+						{
+							"key": "launch",
+							"value": "eyAic3RhM24iOiAiOTkzIiwgInBhdGllbnQiOiAiMTAwMDcyMDEwMFYyNzEzODciIH0=",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{token_endpoint}}",
+					"host": [
+						"{{token_endpoint}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if (!pm.collectionVariables.has(\"import_do_not_edit\") || pm.collectionVariables.get(\"import_do_not_edit\").length <= 1000) {",
+					"    pm.sendRequest(\"http://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js\", (err, res) => {",
+					"        pm.collectionVariables.set(\"import_do_not_edit\", res.text());",
+					"    })",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "aud",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "token_endpoint",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "privatePem",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "client_assertion",
+			"value": ""
+		},
+		{
+			"key": "import_do_not_edit",
+			"value": ""
+		}
+	]
+}
