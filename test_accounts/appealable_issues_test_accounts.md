@@ -8,7 +8,12 @@ The authentication model for the [Appealable Issues API](https://developer.va.go
 - [Authorization code flow](https://developer.va.gov/explore/api/appealable-issues/authorization-code)
 - [Client Credentials Grant (CCG)](https://developer.va.gov/explore/api/appealable-issues/client-credentials)
 
-Login information for all test accounts can be found on the [developer portal](link-will-go-here-once-page-created).
+**To use this test data**
+1. Find the test accounts that meet your use case from the table below.
+2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.  If you do not have this email, [request sandbox access](https://developer.va.gov/explore/api/benefits-claims/sandbox-access) on developer.va.gov.
+3. We suggest bookmarking both this GitHub page and the page with test data credentials so you can return to them if you need other test accounts. The links to these pages do not expire.
+
+**Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
 
 ## Veteran Test Accounts
 
@@ -16,12 +21,12 @@ These accounts can be used to test various data and response scenarios for the `
 
 An `icn` parameter is required when making a request. It should match the value in the ICN column.
 
-| Sandbox Response          | ICN               | ID.me Username                 | Login.gov Username        | First Name | Last Name |
-| :------------------------ | :---------------- | :----------------------------- | :------------------------ | :--------- | :-------- |
-| Appealable Issues (15)    | 1012832025V743496 | va.api.user+idme.025@gmail.com | va.api.user+025@gmail.com | Wesley     | Ford      |
-| Appealable Issues (7)     | 1012667122V019349 | va.api.user+idme.011@gmail.com | va.api.user+011@gmail.com | Hector     | Allen     |
-| Appealable Issues (4)     | 1012861229V078999 | va.api.user+idme.002@gmail.com | va.api.user+002@gmail.com | Janet      | Moore     |
-| Appealable Issue (1)      | 1012667145V762142 | va.api.user+idme.001@gmail.com | va.api.user+001@gmail.com | Tamara     | Ellis     |
-| Empty Response            | 1012666073V986297 | va.api.user+idme.004@gmail.com | va.api.user+004@gmail.com | Jesse      | Gray      |
-| 404 Veteran Not Found     | 1012845630V900607 | va.api.user+idme.005@gmail.com | va.api.user+005@gmail.com | Pauline    | Foster    |
-| 500 Internal Server Error | 1012666182V203559 | va.api.user+idme.008@gmail.com | va.api.user+008@gmail.com | Greg       | Anderson  |
+| Sandbox Response          | ICN               | First Name | Last Name |
+| :------------------------ | :---------------- | :--------- | :-------- |
+| Appealable Issues (15)    | 1012832025V743496 | Wesley     | Ford      |
+| Appealable Issues (7)     | 1012667122V019349 | Hector     | Allen     |
+| Appealable Issues (4)     | 1012861229V078999 | Janet      | Moore     |
+| Appealable Issue (1)      | 1012667145V762142 | Tamara     | Ellis     |
+| Empty Response            | 1012666073V986297 | Jesse      | Gray      |
+| 404 Veteran Not Found     | 1012845630V900607 | Pauline    | Foster    |
+| 500 Internal Server Error | 1012666182V203559 | Greg       | Anderson  |
