@@ -6,93 +6,76 @@ These test users have a variety of synthetic VA records and can be used to test 
 
 Power of Attorney (POA) test accounts are also available [here](https://github.com/department-of-veterans-affairs/vets-api-clients/blob/master/test_accounts/benefits_test_accounts.md#Representative).
 
+**To use this test data**
+1. Find the test accounts that meet your use case from the table below.
+2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.  If you do not have this email, [request sandbox access](https://developer.va.gov/explore/api/benefits-claims/sandbox-access) on developer.va.gov.
+3. We suggest bookmarking both this GitHub page and the page with test data credentials so you can return to them if you need other test accounts. The links to these pages do not expire.
+
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
-
-## Logging in with ID.me
-
-To log in to the sandbox environment using ID.me, make sure you:
-
-  1. Choose an account that is specific to the API you want to test.
-  2. Select **ID.me** to sign in to the sandbox environment.
-  3. Enter the ID.me username and password. The password for all ID.me test accounts is: **Password1234!**
-  4. **Don’t change any preselected answers** when asked about receiving an authentication code. Just click “Continue” to go to the next step.
-
-## Logging in with Login.gov
-
-To log in to the sandbox environment using Login.gov, make sure you:
-
-  1. Choose an account that is specific to the API you want to test.
-  2. Select **Login.gov** to sign in to the sandbox environment.
-  3. Enter the Login.gov username and password. The password for all Login.gov test accounts is: **Password12345!!!**
-  4. Use the Login.gov MFA seed to generate a 2FA code with an app such as Google Authenticator or Authy.
 
 ## Veteran Account Information
 
-**Password for all ID.me accounts: Password1234!**
+| Id  | First Name | Middle Name | Last Name | Sex | Birthdate | SSN       | ICN               |
+|-----|------------|-------------|-----------|-----|-----------|-----------|-------------------|
+| 001 | Tamara     | E           | Ellis     | F   | 6/19/67   | 796130115 | 1012667145V762142 |
+| 002 | Janet      | L           | Moore     | F   | 5/6/49    | 796127677 | 1012861229V078999 |
+| 003 | Ralph      | E           | Lee       | M   | 10/30/48  | 796378782 | 1012667169V030190 |
+| 004 | Jesse      |             | Gray      | M   | 12/15/54  | 796378881 | 1012666073V986297 |
+| 005 | Pauline    | E           | Foster    | F   | 6/9/76    | 796330625 | 1012845630V900607 |
+| 006 | Russell    | James       | Freeman   | M   | 11/5/69   | 796149080 | 1012829910V765228 |
+| 008 | Greg       | A           | Anderson  | M   | 4/5/33    | 796121200 | 1012666182V203559 |
+| 009 | George     |             | Denise    | M   | 7/19/93   |           |                   |
+| 010 | Montgomery |             | Terrence  | M   | 6/11/69   |           |                   |
+| 011 | Hector     | J           | Allen     | M   | 2/5/32    | 796126859 | 1012667122V019349 |
+| 012 | Andrea     | L           | Mitchell  | F   | 12/1/59   | 796127781 | 1012829932V238054 |
+| 013 | Kenneth    | William     | Andrews   | M   | 2/20/90   | 796295980 | 1012667145V762142 |
+| 014 | Alfredo    | M           | Armstrong | M   | 6/8/93    | 796012476 | 1012667145V762142 |
+| 015 | Frank      | Lee         | Arnold    | M   | 2/20/80   | 796143510 | 1012667179V787205 |
+| 016 | Eric       | Victor      | Bishop    | M   | 7/5/63    | 796169727 | 1012829228V424035 |
+| 017 | Jerry      | M           | Brooks    | M   | 9/25/47   | 796148937 | 1012830245V504544 |
+| 018 | Eddie      | J           | Caldwell  | M   | 10/27/33  | 796121086 | 1012666183V089914 |
+| 020 | Chad       | E           | Barrett   | M   | 5/12/75   | 796263749 | 1012853277V552077 |
+| 023 | William    | C           | Daniels   | M   | 3/7/37    | 796127196 | 1012830699V134174 |
+| 024 | Walter     | Tyler       | Davis     | M   | 1/30/87   | 796143570 | 1012845238V805135 |
+| 025 | Wesley     | Watson      | Ford      | M   | 5/6/86    | 796043735 | 1012832025V743496 |
+| 026 | Melvin     | V           | Freeman   | M   | 11/19/71  | 796184750 | 1012643310V921518 |
+| 027 | Herbert    | Michael     | Gardner   | M   | 2/21/83   | 796122369 | 1012845631V882122 |
+| 028 | Sam        | Robert      | Gardner   | M   | 6/23/69   | 796246997 | 1012829446V964657 |
+| 029 | Jesse      | J           | George    | M   | 1/31/50   | 796330163 | 1012845632V596441 |
+| 030 | Sidney     | A           | Gibson    | M   | 8/4/33    | 796127094 | 1012832357V534929 |
+| 031 | June       | R           | Harris    | F   | 12/27/55  | 796184459 | 1012661611V839382 |
+| 032 | Jeffery    | J           | Hayes     | M   | 9/25/37   | 796131729 | 1012845028V591200 |
+| 033 | Everett    | Avery       | Horton    | M   | 4/23/82   | 796377148 | 1012826664V603033 |
+| 034 | Mathew     | A           | Howell    | M   | 1/18/27   | 796131275 | 1012845636V368566 |
+| 035 | Julio      | E           | Hunter    | M   | 11/18/51  | 796378321 | 1012666072V702345 |
+| 036 | Jesus      | A           | Barrett   | M   | 6/29/47   | 796127587 | 1012830305V427401 |
+| 037 | Daryl      | F           | Lawrence  | M   | 2/15/53   | 796153447 | 1012829620V654328 |
+| 039 | Alfredo    | J           | Morales   | M   | 1/14/50   | 796122472 | 1012830991V985099 |
+| 040 | Harry      | J           | Olson     | M   | 6/20/79   | 796136308 | 1012667180V621772 |
+| 041 | Christian  | Fitzgerald  | Patterson | M   | 3/4/64    | 796218467 | 1012831012V063489 |
+| 042 | Jessie     | F           | Price     | M   | 4/7/34    | 796126978 | 1012845658V192434 |
+| 044 | Jenny      | Kadeshia    | Reid      | F   | 2/19/84   | 796364561 | 1012851022V753951 |
+| 045 | Martin     | Ray         | Reid      | M   | 7/4/77    | 796018229 | 1012897042V607227 |
+| 046 | Mattie     | May         | Reid      | F   | 4/14/64   | 796109651 | 1012845662V671308 |
+| 047 | Willard    | J           | Riley     | M   | 2/25/59   | 796013145 | 1012830453V141481 |
+| 048 | Theodore   | Matthew     | Roberts   | M   | 2/28/86   | 796019724 | 1012845672V157064 |
+| 051 | Salvador   | H           | Sims      | M   | 12/28/33  | 796013160 | 1012830334V156386 |
+| 054 | Penny      | M           | Scott     | F   | 12/22/61  | 796128750 | 1012832046V870152 |
+| 055 | Ray        | A           | Scott     | M   | 4/19/78   | 796128748 | 1012826667V821812 |
+| 056 | Dwayne     | E           | Spencer   | M   | 2/24/58   | 796153369 | 1012643250V489886 |
+| 057 | Brian      | J           | Stephens  | M   | 8/20/39   | 796127242 | 1012666881V023688 |
+| 060 | Vernon     | D           | Wagner    | M   | 7/15/65   | 796140369 | 1012845702V443941 |
+| 061 | Kent       | L           | Warren    | M   | 7/14/36   | 796127160 | 1012662125V786396 |
+| 062 | Jeff       | Terrel      | Watson    | M   | 1/5/68    | 796246757 | 1012845703V609890 |
 
-**Password for all Login.gov accounts: Password12345!!!**
-
-| First Name | Middle Name | Last Name | Sex | Birthdate  | SSN       | ICN               | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                              |
-| :--------- | :---------- | :-------- | :-- | :--------- | :-------- | ----------------- | :----------------------------- | :------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tamara     | E           | Ellis     | F   | 1967-06-19 | 796130115 | 1012667145V762142 | va.api.user+idme.001@gmail.com | va.api.user+001@gmail.com | [LKI7FZ7ZEVRLGQRW](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B001%40gmail.com%29?secret=LKI7FZ7ZEVRLGQRW)                                 |
-| Janet      | L           | Moore     | F   | 1949-05-06 | 796127677 | 1012861229V078999 | va.api.user+idme.002@gmail.com | va.api.user+002@gmail.com | [B5C3L42PLUWO3U5T](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B002%40gmail.com%29?secret=B5C3L42PLUWO3U5T)                                 |
-| Ralph      | E           | Lee       | M   | 1948-10-30 | 796378782 | 1012667169V030190 | va.api.user+idme.003@gmail.com | va.api.user+003@gmail.com | [DIN72VD3MUOWJEENIS2FTJZEAROTGBAC](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B003%40gmail.com%29?secret=DIN72VD3MUOWJEENIS2FTJZEAROTGBAC) |
-| Jesse      |             | Gray      | M   | 1954-12-15 | 796378881 | 1012666073V986297 | va.api.user+idme.004@gmail.com | va.api.user+004@gmail.com | [7OMSKULT5PSVFE3SINTWBT2YA2MSFXU4](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B004%40gmail.com%29?secret=7OMSKULT5PSVFE3SINTWBT2YA2MSFXU4) |
-| Pauline    | E           | Foster    | F   | 1976-06-09 | 796330625 | 1012845630V900607 | va.api.user+idme.005@gmail.com | va.api.user+005@gmail.com | [RJIZ4BAI6OIYVKKGYYNHTR7F62IERCDT](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B005%40gmail.com%29?secret=RJIZ4BAI6OIYVKKGYYNHTR7F62IERCDT) |
-| Russell    | James       | Freeman   | M   | 1969-11-05 | 796149080 | 1012829910V765228 | va.api.user+idme.006@gmail.com | va.api.user+006@gmail.com | [3JKYA4CWSQLVRSZPSUHDK6GKKM6XAM4U](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B006%40gmail.com%29?secret=3JKYA4CWSQLVRSZPSUHDK6GKKM6XAM4U) |
-| Greg       | A           | Anderson  | M   | 1933-04-05 | 796121200 | 1012666182V203559 | va.api.user+idme.008@gmail.com | va.api.user+008@gmail.com | [DU5XKE3SS47HHVF62X4C7FASIIAMOSVM](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B008%40gmail.com%29?secret=DU5XKE3SS47HHVF62X4C7FASIIAMOSVM) |
-| George     |             | Denise    | M   | 1993-07-19 |           |                   | va.api.user+idme.009@gmail.com | va.api.user+009@gmail.com | [6BAWJ6IYSM2H4FTQHI7XAKBXDGPHFGJC](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B009%40gmail.com%29?secret=6BAWJ6IYSM2H4FTQHI7XAKBXDGPHFGJC) |
-| Montgomery |             | Terrence  | M   | 1969-06-11 |           |                   | va.api.user+idme.010@gmail.com | va.api.user+010@gmail.com | [YPZMBGFX3WZYY3MWLW4MF4UFOT3YU4HN](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B010%40gmail.com%29?secret=YPZMBGFX3WZYY3MWLW4MF4UFOT3YU4HN) |
-| Hector     | J           | Allen     | M   | 1932-02-05 | 796126859 | 1012667122V019349 | va.api.user+idme.011@gmail.com | va.api.user+011@gmail.com | [GFXLKZNSM3MLI35OP3XKVN4XEUKDIWI5](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B011%40gmail.com%29?secret=GFXLKZNSM3MLI35OP3XKVN4XEUKDIWI5) |
-| Andrea     | L           | Mitchell  | F   | 1959-12-01 | 796127781 | 1012829932V238054 | va.api.user+idme.012@gmail.com | va.api.user+012@gmail.com | [5DEQHH5H6VJVOZ3D74B2RPZ7LIJG3D32](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B012%40gmail.com%29?secret=5DEQHH5H6VJVOZ3D74B2RPZ7LIJG3D32) |
-| Kenneth    | William     | Andrews   | M   | 1990-02-20 | 796295980 | 1012667145V762142 | va.api.user+idme.013@gmail.com | va.api.user+013@gmail.com | [F53R4MVSCQRCRLMUA2QLB7RDSN6AP4BR](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B013%40gmail.com%29?secret=F53R4MVSCQRCRLMUA2QLB7RDSN6AP4BR) |
-| Alfredo    | M           | Armstrong | M   | 1993-06-08 | 796012476 | 1012667145V762142 | va.api.user+idme.014@gmail.com | va.api.user+014@gmail.com | [552MSOTNNUBXPXDUXYKPFWYZHOCJADGZ](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B014%40gmail.com%29?secret=552MSOTNNUBXPXDUXYKPFWYZHOCJADGZ) |
-| Frank      | Lee         | Arnold    | M   | 1980-02-20 | 796143510 | 1012667179V787205 | va.api.user+idme.015@gmail.com | va.api.user+015@gmail.com | [KM7WYII7AU5MG2ZG7XWKH7GKIHSPYKNQ](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B015%40gmail.com%29?secret=KM7WYII7AU5MG2ZG7XWKH7GKIHSPYKNQ) |
-| Eric       | Victor      | Bishop    | M   | 1963-07-05 | 796169727 | 1012829228V424035 | va.api.user+idme.016@gmail.com | va.api.user+016@gmail.com | [U3S662NOVKB5OTJNTR74FZLOOCEAAHES](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B016%40gmail.com%29?secret=U3S662NOVKB5OTJNTR74FZLOOCEAAHES) |
-| Jerry      | M           | Brooks    | M   | 1947-09-25 | 796148937 | 1012830245V504544 | va.api.user+idme.017@gmail.com | va.api.user+017@gmail.com | [MQCJLCW42IBXGRL2ATIU7TSCTP2ODV4K](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B017%40gmail.com%29?secret=MQCJLCW42IBXGRL2ATIU7TSCTP2ODV4K) |
-| Eddie      | J           | Caldwell  | M   | 1933-10-27 | 796121086 | 1012666183V089914 | va.api.user+idme.018@gmail.com | va.api.user+018@gmail.com | [TXWQLPMAUIK36HIQPEUE4WU56HE3BZMP](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B018%40gmail.com%29?secret=TXWQLPMAUIK36HIQPEUE4WU56HE3BZMP) |
-| Chad       | E           | Barrett   | M   | 1975-05-12 | 796263749 | 1012853277V552077 | va.api.user+idme.020@gmail.com | va.api.user+020@gmail.com | [RIOPTFOCGJWP2DXQBRCKIVKGLO5NOQRS](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B020%40gmail.com%29?secret=RIOPTFOCGJWP2DXQBRCKIVKGLO5NOQRS) |
-| William    | C           | Daniels   | M   | 1937-03-07 | 796127196 | 1012830699V134174 | va.api.user+idme.023@gmail.com | va.api.user+023@gmail.com | [2ZKFBODT5NYSLXTTSOZLYAESOS47JFW5](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B023%40gmail.com%29?secret=2ZKFBODT5NYSLXTTSOZLYAESOS47JFW5) |
-| Walter     | Tyler       | Davis     | M   | 1987-01-30 | 796143570 | 1012845238V805135 | va.api.user+idme.024@gmail.com | va.api.user+024@gmail.com | [XJRZVS4FDOQZKTED5PRVP65BV5LJIEH6](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B024%40gmail.com%29?secret=XJRZVS4FDOQZKTED5PRVP65BV5LJIEH6) |
-| Wesley     | Watson      | Ford      | M   | 1986-05-06 | 796043735 | 1012832025V743496 | va.api.user+idme.025@gmail.com | va.api.user+025@gmail.com | [46OPJSEX7URKZVICEKCARJVV7YRQRLFK](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B025%40gmail.com%29?secret=46OPJSEX7URKZVICEKCARJVV7YRQRLFK) |
-| Melvin     | V           | Freeman   | M   | 1971-11-19 | 796184750 | 1012643310V921518 | va.api.user+idme.026@gmail.com | va.api.user+026@gmail.com | [DWAZOR3OMMX5BVCRIQSL53NBXUHQLX73](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B026%40gmail.com%29?secret=DWAZOR3OMMX5BVCRIQSL53NBXUHQLX73) |
-| Herbert    | Michael     | Gardner   | M   | 1983-02-21 | 796122369 | 1012845631V882122 | va.api.user+idme.027@gmail.com | va.api.user+027@gmail.com | [MVGG7R54YN5RC6FW2FNQGMGX2GE7U23C](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B027%40gmail.com%29?secret=MVGG7R54YN5RC6FW2FNQGMGX2GE7U23C) |
-| Sam        | Robert      | Gardner   | M   | 1969-06-23 | 796246997 | 1012829446V964657 | va.api.user+idme.028@gmail.com | va.api.user+028@gmail.com | [AF3QLLZI3SC4ZHPJAR33W3BF73EWY55F](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B028%40gmail.com%29?secret=AF3QLLZI3SC4ZHPJAR33W3BF73EWY55F) |
-| Jesse      | J           | George    | M   | 1950-01-31 | 796330163 | 1012845632V596441 | va.api.user+idme.029@gmail.com | va.api.user+029@gmail.com | [HVZR74BX7HGU6IW4GILRZUXBTHEYYNCE](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B029%40gmail.com%29?secret=HVZR74BX7HGU6IW4GILRZUXBTHEYYNCE) |
-| Sidney     | A           | Gibson    | M   | 1933-08-04 | 796127094 | 1012832357V534929 | va.api.user+idme.030@gmail.com | va.api.user+030@gmail.com | [4DBRM6ISJDM6TH5ZLQB4VIAUQU4VNKEV](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B030%40gmail.com%29?secret=4DBRM6ISJDM6TH5ZLQB4VIAUQU4VNKEV) |
-| June       | R           | Harris    | F   | 1955-12-27 | 796184459 | 1012661611V839382 | va.api.user+idme.031@gmail.com | va.api.user+031@gmail.com | [5XZG2ZZEN3QRNHG54OGCPUYGMEE472KO](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B031%40gmail.com%29?secret=5XZG2ZZEN3QRNHG54OGCPUYGMEE472KO) |
-| Jeffery    | J           | Hayes     | M   | 1937-09-25 | 796131729 | 1012845028V591200 | va.api.user+idme.032@gmail.com | va.api.user+032@gmail.com | [ZHPNIZCLZQJYLLDCABEWJJBEFZXGS4ZH](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B032%40gmail.com%29?secret=ZHPNIZCLZQJYLLDCABEWJJBEFZXGS4ZH) |
-| Everett    | Avery       | Horton    | M   | 1982-04-23 | 796377148 | 1012826664V603033 | va.api.user+idme.033@gmail.com | va.api.user+033@gmail.com | [CXUTGNWJKVDGYZEKBAVVPTDEK6QQR3PB](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B033%40gmail.com%29?secret=CXUTGNWJKVDGYZEKBAVVPTDEK6QQR3PB) |
-| Mathew     | A           | Howell    | M   | 1927-01-18 | 796131275 | 1012845636V368566 | va.api.user+idme.034@gmail.com | va.api.user+034@gmail.com | [ZT2RFRK7T3QRWMP4NLEZKAPIWBWL3FL7](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B034%40gmail.com%29?secret=ZT2RFRK7T3QRWMP4NLEZKAPIWBWL3FL7) |
-| Julio      | E           | Hunter    | M   | 1951-11-18 | 796378321 | 1012666072V702345 | va.api.user+idme.035@gmail.com | va.api.user+035@gmail.com | [6HJ44FJXNNJFPH35HSKPKKXM3X3C7MZK](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B035%40gmail.com%29?secret=6HJ44FJXNNJFPH35HSKPKKXM3X3C7MZK) |
-| Jesus      | A           | Barrett   | M   | 1947-06-29 | 796127587 | 1012830305V427401 | va.api.user+idme.036@gmail.com | va.api.user+036@gmail.com | [2UYCUZBVBSBZ4DHQOJUCJC5WYDNLTW4O](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B036%40gmail.com%29?secret=2UYCUZBVBSBZ4DHQOJUCJC5WYDNLTW4O) |
-| Daryl      | F           | Lawrence  | M   | 1953-02-15 | 796153447 | 1012829620V654328 | va.api.user+idme.037@gmail.com | va.api.user+037@gmail.com | [ECIDJC5TGHXHRYDIG2LVBYBO7HZQFJC5](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B037%40gmail.com%29?secret=ECIDJC5TGHXHRYDIG2LVBYBO7HZQFJC5) |
-| Alfredo    | J           | Morales   | M   | 1950-01-14 | 796122472 | 1012830991V985099 | va.api.user+idme.039@gmail.com | va.api.user+039@gmail.com | [73GIPLNVRDU2UB224HFQWVCRHJX7FYFW](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B039%40gmail.com%29?secret=73GIPLNVRDU2UB224HFQWVCRHJX7FYFW) |
-| Harry      | J           | Olson     | M   | 1979-06-20 | 796136308 | 1012667180V621772 | va.api.user+idme.040@gmail.com | va.api.user+040@gmail.com | [U5WKPSUDGNG2W7J3QQOIYMYY3D57DRM4](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B040%40gmail.com%29?secret=U5WKPSUDGNG2W7J3QQOIYMYY3D57DRM4) |
-| Christian  | Fitzgerald  | Patterson | M   | 1964-03-04 | 796218467 | 1012831012V063489 | va.api.user+idme.041@gmail.com | va.api.user+041@gmail.com | [TAGARD73M4JHBB43OSUJDMA4EP752BNF](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B041%40gmail.com%29?secret=TAGARD73M4JHBB43OSUJDMA4EP752BNF) |
-| Jessie     | F           | Price     | M   | 1934-04-07 | 796126978 | 1012845658V192434 | va.api.user+idme.042@gmail.com | va.api.user+042@gmail.com | [KTVN5ORP3OSNHOAMM3PIPBUMBM43CTBK](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B042%40gmail.com%29?secret=KTVN5ORP3OSNHOAMM3PIPBUMBM43CTBK) |
-| Jenny      | Kadeshia    | Reid      | F   | 1984-02-19 | 796364561 | 1012851022V753951 | va.api.user+idme.044@gmail.com | va.api.user+044@gmail.com | [LJZATKZUM2E3R6MFVNIGHBLP2BZ52Q4M](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B044%40gmail.com%29?secret=LJZATKZUM2E3R6MFVNIGHBLP2BZ52Q4M) |
-| Martin     | Ray         | Reid      | M   | 1977-07-04 | 796018229 | 1012897042V607227 | va.api.user+idme.045@gmail.com | va.api.user+045@gmail.com | [F4JHMLEZAWA3RUVEKK4IFACHQFQV44EP](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B045%40gmail.com%29?secret=F4JHMLEZAWA3RUVEKK4IFACHQFQV44EP) |
-| Mattie     | May         | Reid      | F   | 1964-04-14 | 796109651 | 1012845662V671308 | va.api.user+idme.046@gmail.com | va.api.user+046@gmail.com | [5ZVRMPNWYA3G4NS4BHSBAPMKOPPRR4PW](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B046%40gmail.com%29?secret=5ZVRMPNWYA3G4NS4BHSBAPMKOPPRR4PW) |
-| Willard    | J           | Riley     | M   | 1959-02-25 | 796013145 | 1012830453V141481 | va.api.user+idme.047@gmail.com | va.api.user+047@gmail.com | [ZAM2EDHF2O4ONIOMPABRALE7TBZR3U33](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B047%40gmail.com%29?secret=ZAM2EDHF2O4ONIOMPABRALE7TBZR3U33) |
-| Theodore   | Matthew     | Roberts   | M   | 1986-02-28 | 796019724 | 1012845672V157064 | va.api.user+idme.048@gmail.com | va.api.user+048@gmail.com | [64FBJGIEUZPWXWI2L6C7QC6SYAEWCXDB](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B048%40gmail.com%29?secret=64FBJGIEUZPWXWI2L6C7QC6SYAEWCXDB) |
-| Arthur     | E           | Rose      | M   | 1954-05-26 | 796220828 |                   | va.api.user+idme.050@gmail.com |                           |                                                                                                                                                                                                                 |
-| Salvador   | H           | Sims      | M   | 1933-12-28 | 796013160 | 1012830334V156386 | va.api.user+idme.051@gmail.com | va.api.user+051@gmail.com | [AFEPSTDHBX4PDGYSYO44BD53IE7ZK22N](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B051%40gmail.com%29?secret=AFEPSTDHBX4PDGYSYO44BD53IE7ZK22N) |
-| Penny      | M           | Scott     | F   | 1961-12-22 | 796128750 | 1012832046V870152 | va.api.user+idme.054@gmail.com | va.api.user+054@gmail.com | [TQQC64OMT2O7MTMM5TZUCZH6YHC57E4N](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B054%40gmail.com%29?secret=TQQC64OMT2O7MTMM5TZUCZH6YHC57E4N) |
-| Ray        | A           | Scott     | M   | 1978-04-19 | 796128748 | 1012826667V821812 | va.api.user+idme.055@gmail.com | va.api.user+055@gmail.com | [WUO6UOSJYW6C75D7RP54WQVOAYVDUPIT](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B055%40gmail.com%29?secret=WUO6UOSJYW6C75D7RP54WQVOAYVDUPIT) |
-| Dwayne     | E           | Spencer   | M   | 1958-02-24 | 796153369 | 1012643250V489886 | va.api.user+idme.056@gmail.com | va.api.user+056@gmail.com | [VPKP4GIJUSJVPBES3NHNIDLJHTID5MT6](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B056%40gmail.com%29?secret=VPKP4GIJUSJVPBES3NHNIDLJHTID5MT6) |
-| Brian      | J           | Stephens  | M   | 1939-08-20 | 796127242 | 1012666881V023688 | va.api.user+idme.057@gmail.com | va.api.user+057@gmail.com | [MZISMBG7G6E5ZJYKGTVAGAVKG6L7MPQR](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B057%40gmail.com%29?secret=MZISMBG7G6E5ZJYKGTVAGAVKG6L7MPQR) |
-| Vernon     | D           | Wagner    | M   | 1965-07-15 | 796140369 | 1012845702V443941 | va.api.user+idme.060@gmail.com | va.api.user+060@gmail.com | [DSNVA4XPYQ2IVN5YWMEN2LTTUM3EY3CJ](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B060%40gmail.com%29?secret=DSNVA4XPYQ2IVN5YWMEN2LTTUM3EY3CJ) |
-| Kent       | L           | Warren    | M   | 1936-07-14 | 796127160 | 1012662125V786396 | va.api.user+idme.061@gmail.com | va.api.user+061@gmail.com | [7Y5KNYTYOPMNAM7OZCQSZX3PWTSLSMF5](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B061%40gmail.com%29?secret=7Y5KNYTYOPMNAM7OZCQSZX3PWTSLSMF5) |
-| Jeff       | Terrel      | Watson    | M   | 1968-01-05 | 796246757 | 1012845703V609890 | va.api.user+idme.062@gmail.com | va.api.user+062@gmail.com | [RIEAMNPHJ4B7N3J6JTLSSAMRWNVKTJHY](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B062%40gmail.com%29?secret=RIEAMNPHJ4B7N3J6JTLSSAMRWNVKTJHY) |
 
 ## Test Accounts with Health Data
 
 These test users have both Claims data and Health data and may be used in both the Claims API and Health API.
 
-| First Name | Middle Name | Last Name | Sex  | Birthdate  | SSN       | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                              |
-| :---       | :---        | :---      | :--- | :---       | :---      | :---                           | :---                      | :---                                                                                                                                                                            |
-| Sheba703   |             | Harris789 | F    | 1926-01-08 | 111111111 | va.api.user+idme.101@gmail.com | va.api.user+101@gmail.com | [BNBV63ON5ST7BHSU](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B101%40gmail.com%29?secret=BNBV63ON5ST7BHSU) |
+| Id  | First Name | Middle Name | Last Name | Sex | Birthdate  | SSN       |
+|-----|------------|-------------|-----------|-----|------------|-----------|
+| 101 | Sheba703   |             | Harris789 | F   | 1926-01-08 | 111111111 |
 
 ## Representatives
 
@@ -135,6 +118,6 @@ curl -X GET \
 
 ### Representative Account Information
 
-| First Name | Middle Name | Last Name | Sex  | Birthdate | SSN  | ID.me Username                 | Login.gov Username        | Login.gov MFA Seed                                                                                                                                                                                              |
-| :---       | :---        | :---      | :--- | :---      | :--- | :---                           | :---                      | :---                                                                                                                                                                                                            |
-| John       |             | Doe       | M    |           |      | va.api.user+idme.007@gmail.com | va.api.user+007@gmail.com | [TRNQDFOFWX7254RHFC26MMX7GKZRUCBH](https://chart.googleapis.com/chart?chs=200x200&chld=M%7C0&cht=qr&chl=otpauth://totp/Login.gov%20%28va.api.user%2B007%40gmail.com%29?secret=TRNQDFOFWX7254RHFC26MMX7GKZRUCBH) |
+| Id  | First Name | Middle Name | Last Name | Sex | Birthdate | SSN |
+|-----|------------|-------------|-----------|-----|-----------|-----|
+| 007 | John       |             | Doe       | M   |           |     |
