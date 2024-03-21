@@ -10,7 +10,7 @@ The authentication model for the [Legacy Appeals API](https://developer.va.gov/e
 
 **To use this test data**
 1. Find the test accounts that meet your use case from the table below.
-2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.  If you do not have this email, [request sandbox access](https://developer.va.gov/explore/api/benefits-claims/sandbox-access) on developer.va.gov.
+2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.  If you do not have this email, [request sandbox access](https://developer.va.gov/explore/api/legacy-appeals/sandbox-access) on developer.va.gov.
 3. We suggest bookmarking both this GitHub page and the page with test data credentials so you can return to them if you need other test accounts. The links to these pages do not expire.
 
 **Do not modify any of the attributes for these test accounts, including passwords.** If you need to use one of these accounts for a different use case, [contact us](https://developer.va.gov/support/contact-us) on our developer portal.
