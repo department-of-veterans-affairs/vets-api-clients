@@ -21,12 +21,12 @@ These accounts can be used to test various data and response scenarios for the `
 
 An `icn` parameter is required when making a request. It should match the value in the ICN column.
 
-| Sandbox Response          | ICN               | First Name | Last Name |
-| :------------------------ | :---------------- | :--------- | :-------- |
-| Appealable Issues (15)    | 1012832025V743496 | Wesley     | Ford      |
-| Appealable Issues (7)     | 1012667122V019349 | Hector     | Allen     |
-| Appealable Issues (4)     | 1012861229V078999 | Janet      | Moore     |
-| Appealable Issue (1)      | 1012667145V762142 | Tamara     | Ellis     |
-| Empty Response            | 1012666073V986297 | Jesse      | Gray      |
-| 404 Veteran Not Found     | 1012845630V900607 | Pauline    | Foster    |
-| 500 Internal Server Error | 1012666182V203559 | Greg       | Anderson  |
+| Sandbox Response             | ICN               | First Name | Last Name |
+|:-----------------------------| :---------------- | :--------- | :-------- |
+| Appealable Issues (15)       | 1012832025V743496 | Wesley     | Ford      |
+| Appealable Issues (7)        | 1012667122V019349 | Hector     | Allen     |
+| Appealable Issues (4)        | 1012861229V078999 | Janet      | Moore     |
+| Appealable Issue (1)         | 1012667145V762142 | Tamara     | Ellis     |
+| Empty Response               | 1012666073V986297 | Jesse      | Gray      |
+| 404 Veteran Record Not Found | 1012845630V900607 | Pauline    | Foster    |
+| 500 Internal Server Error    | 1012666182V203559 | Greg       | Anderson  |
