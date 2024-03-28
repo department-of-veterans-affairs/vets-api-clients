@@ -19,7 +19,7 @@ The authentication model for the [Legacy Appeals API](https://developer.va.gov/e
 
 These accounts can be used to test various data and response scenarios for the `GET /legacy-appeals` endpoint. 
 
-An `icn` parameter is required when making a request. It should match the value in the ICN column.
+An `icn` parameter is required when making a request. It should match the value in the ICN column below.
 
 | Sandbox Response             | ICN               | First Name | Last Name |
 |:-----------------------------| :---------------- | :--------- | :-------- |
