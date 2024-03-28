@@ -19,7 +19,7 @@ The authentication model for the [Appeals Status API (v1)](https://developer.va.
 
 These accounts can be used to test various data and response scenarios for the `GET /appeals` endpoint. 
 
-An `icn` parameter and an `X-VA-User` header are required when making a request. The `icn` should match the value in the ICN column, and the `X-VA-User` should match the test account's ID.me or Login.gov username (depending on the authentication method used).
+An `icn` parameter and an `X-VA-User` header are required when making a request. The `icn` should match the value in the ICN column below, and the `X-VA-User` should match the test account's ID.me or Login.gov username (depending on the authentication method used) from the link provided when you signed up for sandbox access.
 
 | Sandbox Response                                                    | ICN               | First Name | Last Name |
 |:--------------------------------------------------------------------|:------------------|:-----------|:----------|
