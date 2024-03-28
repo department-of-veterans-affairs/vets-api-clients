@@ -12,7 +12,7 @@ Configuration:
 
 3. Click on "Variables" within Postman, to view pre set collection variables.
 
-4. Configure "Lighthouse OAuth Token" collection variables (aud, token_endpoint, clientId, privatePem) in Postman, assigning them their respective values. The client_assertion, import_do_not_edit values should not be edited, as they will be pre-populated once the previous values are defined. Follow the guidance provided at https://developer.va.gov/explore/api/patient-health/client-credentials to obtain the necessary collection variable values for the Patient Health API. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values. Some example values for the Collection variables following the Patient Health API will be shown below:
+4. Configure "Lighthouse OAuth Token" collection variables (aud, token_endpoint, clientId, privatePem) in Postman, assigning them their respective values. The client_assertion, import_do_not_edit values should not be edited, as they will be pre-populated once the previous values are defined. Follow the guidance provided at https://developer.va.gov/explore to obtain the necessary collection variable values for the Patient Health API. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values. Some example values for the Collection variables following the Patient Health API will be shown below:
 
 a. aud (Collection variable)
 Example Patient Health API aud value:
@@ -20,8 +20,7 @@ https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token
 b. token_endpoint (Collection variable)
 Example Patient Health API tokenUrl value:
 https://sandbox-api.va.gov/oauth2/health/system/v1/token
-c. clientId (Collection variable)- This value is obtained from signing up for sandbox access on this link:
-https://developer.va.gov/explore/api/patient-health/sandbox-access
+c. clientId (Collection variable)- This value is obtained from signing up for sandbox access using the dev portal link
 Example clientId value:
 Your CCG clientId
 
@@ -31,16 +30,16 @@ Example privatePem value:
 Your private pem
 -----END RSA PRIVATE KEY-----
 
-5. Next under the "Lighthouse OAuth Token" Click on the actual POST call you will make - "POST Client Credentials Example"
+5. Next under the "Lighthouse OAuth Token" click on the actual POST call you will make - "POST Client Credentials Example"
 
 6. You will see that the HTTP url is the {token_endpoint} Collection variable that has already been configured.
 
-7. Then click on "Body" which is located in the middle of the Auth type columns. You should see all values pre-populated and using the x-www-form-urlencoded type. The grant_type and client_assertion_type values should not change as this is a CCG call. The client_assertion should also remain the same as it will be populated with the client_assertion Collection variable. The two configurable values will be the scope and launch based off of the API and call you choose to make. Follow the guidance provided at https://developer.va.gov/explore/api/patient-health/client-credentials to obtain the necessary values for the Patient Health API. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values.
+7. Then click on "Body" which is located in the middle of the Auth type columns. You should see all values pre-populated and using the x-www-form-urlencoded type. The grant_type and client_assertion_type values should not change as this is a CCG call. The client_assertion should also remain the same as it will be populated with the client_assertion Collection variable. The two configurable values will be the scope and launch based off of the API and call you choose to make. Follow the guidance provided at https://developer.va.gov/explore to obtain the necessary values for the Patient Health API. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values.
 
 a. scope
 Currently the default value is set to "launch" which is acceptable for Patient Health API but can be changed to include:
 Example Patient Health API scope value:
-launch system/AllergyIntolerance.read system/Appointment.read system/Condition.read system/Coverage.read system/Coverage.write system/DiagnosticReport.read system/Immunization.read system/Location.read system/Medication.read system/MedicationOrder.read system/Observation.read system/Organization.read system/Patient.read
+offline_access launch system/AllergyIntolerance.read
 
 b. launch
 In some cases launch will not be required for certain APIs. Follow the documentation to see which APIs require launch. In the cases where launch isn't required, uncheck the "launch" box and the default scope value will also need to change accordingly. For Patient Health API launch is required to be an encoded base64.
