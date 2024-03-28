@@ -19,7 +19,7 @@ The authentication model for the [Appealable Issues API](https://developer.va.go
 
 These accounts can be used to test various data and response scenarios for the `GET /appealable-issues/{decisionReviewType}` endpoint. Note that in the sandbox environment, the same results will be returned regardless of the `decisionReviewType` supplied.
 
-An `icn` parameter is required when making a request. It should match the value in the ICN column.
+An `icn` parameter is required when making a request. It should match the value in the ICN column below.
 
 | Sandbox Response             | ICN               | First Name | Last Name |
 |:-----------------------------| :---------------- | :--------- | :-------- |
