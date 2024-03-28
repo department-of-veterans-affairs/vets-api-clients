@@ -28,5 +28,5 @@ An `icn` parameter and an `X-VA-User` header are required when making a request.
 | Legacy Appeal (1)                                                   | 1012861229V078999 | Janet      | Moore     |
 | Legacy Appeal (1)                                                   | 1012667145V762142 | Tamara     | Ellis     |
 | Empty Response                                                      | 1012666073V986297 | Jesse      | Gray      |
-| 404 Veteran Not Found                                               | 1012845630V900607 | Pauline    | Foster    |
+| 404 Veteran Record Not Found                                        | 1012845630V900607 | Pauline    | Foster    |
 | 500 Internal Server Error                                           | 1012666182V203559 | Greg       | Anderson  |
