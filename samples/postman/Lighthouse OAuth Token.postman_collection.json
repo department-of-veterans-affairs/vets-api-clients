@@ -47,7 +47,7 @@
 							"    }",
 							"    const jwt = kjur.jws.JWS.sign(null, header, payload, PRIVATE_PEM);",
 							"    pm.collectionVariables.set(\"client_assertion\", jwt);",
-							"    console.info(\"assertion: \" + jwt);",
+							"    console.info(\"client_assertion: \" + jwt);",
 							"}",
 							"",
 							"function run() {",
