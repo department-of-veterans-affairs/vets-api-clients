@@ -34,9 +34,8 @@ Your private pem
 7. Then click on "Body" which is located in the middle of the Auth type columns. You should see all values pre-populated and using the x-www-form-urlencoded type. The grant_type and client_assertion_type values should not change as this is a CCG call. The client_assertion should also remain the same as it will be populated with the client_assertion Collection variable. The two configurable values will be the scope and launch based off of the API and call you choose to make. Follow the guidance provided at https://developer.va.gov/explore to obtain the necessary values for APIs.
 
 a. scope
-Currently the default value is set to "launch" which is acceptable for certain APIs but can be changed to include:
-Example value:
-offline_access launch
+Currently the default value is set to "launch" which is acceptable for certain APIs but can be changed to include more scopes defined on the dev portal site:
+https://developer.va.gov/explore
 
 b. launch
 In some cases launch will not be required for certain APIs. Follow the documentation to see which APIs require launch. In the cases where launch isn't required, uncheck the "launch" box and the default scope value will also need to change accordingly. Launch is required to be an encoded base64.
