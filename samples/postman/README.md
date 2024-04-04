@@ -39,11 +39,11 @@ This Postman collection contains pre-script request methods to generate a signed
 
 ## Token request
 
-After configuring the Postman collection, you can generate a client assertion and request an OAuth token. You can view the generated JWT in the console after running the request.
+After configuring the Postman collection, you can generate a client assertion and request an OAuth token. 
 
 1. Select **Lighthouse OAuth Token > POST Client Credentials Example** in the left column of the Postman window.
 2. Press the **Send** button, located near the top right of the Postman UI.
-3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an `access_token` and other fields corresponding to the API call you made:
+3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an access token and associated metadata:
 ```json
 {
     "access_token": "eyJraWQiOiJyOWtWMjlFRm9uWWY0LTJWTT...",
@@ -52,4 +52,16 @@ After configuring the Postman collection, you can generate a client assertion an
     "expires_in": 300,
     "state": null
 }
+```
+4. You can also view your signed client assertion in the Postman console after making the request. It should look similar to the following example:
+```json
+client_assertion: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9eyJhdWQiO.JodHRwczovL2Rlc9
+rdGEuY29tL29hdXRoMi9hdXNkZHR2YS1ldmFsLmzdndWlzMlRZRGxGZTJwNy92MS90b2tlbiIsImlzcy
+I6IjBvYXUxOTkzdndRTmE0Mk9FMnA3Iiwic3ViIjoiMG9hdTE5OTN2d1FOYTQyT0UycDciLCJqdGkiOi
+IxZjg2MWFiMi05ZWUxLTRjNWEtODEyNS1kMDZTMiLCJpYXQiOjE3MTIZhZDAyMzVhyNTUyNDgsImV4cC
+I6MTcxMjI1NTMwOH0byCnk2mySwATe1m8657pswpWurucczdgYa5uCHiAKC8e3SQ4ChqeYDunAZ8ikhR
+AXEVf-Cqrea-IXXHCyZYE75ITmetWEs__TdzVLYKmmq61aAK9FRVGHxo8_Qh2gNMsAWo4T0FQuEx1p2z
+5jCP4YMqzPTHOWts3xJJZinck0ZzQ15fIwzOq1DpAS6oRRE8XnWIgGTZ_r1NfCrUZvpPzOU1orOGMWNg
+HXSVjp9UqfK9FMaq4ayts-ucY5ULag_QyEmtpq0GtqJUUJBYbJUCS7klCzJoNkmFth1nYhhDoz1cYiNg
+5BX2NRvgNgKREOYG8HBaVAUCK8CMxkL0lsNVJpQ
 ```
