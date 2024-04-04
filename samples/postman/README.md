@@ -1,59 +1,46 @@
-Postman CCG OAuth Token
+# Postman CCG OAuth Token
 
-Description:
+## Description
 
-This Postman collection contains pre-script request methods for VA API's using CCG OAuth. It's purpose is to generate an access token using the required test variables.
+This Postman collection contains pre-script request methods to generate a signed JSON Web Token (JWT) and use it as a client assertion to request access tokens from VA APIs with the Client Credentials Grant (CCG) OAuth flow.
 
-Configuration:
+-  To retrieve a sandbox token, configure the collection variables and run the token request as shown below. 
+-  For information on signing up for sandbox access for a VA API, and if an API uses CCG for authorization, check its documentation pages on the [VA developer portal](https://developer.va.gov/explore).
 
-1. Import "Lighthouse OAuth Token.postman_collection.json" into your Postman workspace.
+## Configuration
 
-2. Click on “Lighthouse OAuth Token” in the left column of Postman, to view the collection tabs for "Lighthouse OAuth Token".
+1. Import `Lighthouse OAuth Token.postman_collection.json` into your Postman workspace.
+2. Select **Lighthouse OAuth Token**, in the left column of the Postman window.
+3. Select the **Variables** tab.
+4. Configure the 4 variables shown below by pasting them into the **Initial Value** and **Current Value** columns in Postman:
+    - `aud`: The URL that will recieve your token. 
+        - To find this value, check the CCG documentation for the VA API you are working with.
+        - Example (from Patient Health API): `https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token`
+    - `token_endpoint`: The URL you will request a token from.
+        - To find this value, check the CCG documentation for the VA API you are working with.
+        - Example (from Patient Health API): `https://sandbox-api.va.gov/oauth2/health/system/v1/token`
+    - `clientId`: The Client ID you recieved when you signed up for sandbox access.
+	    - For information on signing up for sandbox access, check the documentation for the API you are working with in the [VA developer portal](https://developer.va.gov/explore).
+    - `privatePem`: The private RSA key you generated when signing up for sandbox access, in PEM format.
+	    - Your private RSA key should begin with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`.
+	    - For information on generating your RSA keys, check the CCG documentation for the API you are working with in the [VA developer portal](https://developer.va.gov/explore).
+5. Do **not** edit the `client_assertion` and `import_do_not_edit` values. These will be pre-populated once the previous values are defined. 
+6. Now you're ready to request a token. Select **POST Client Credentials Example**, under **Lighthouse OAuth Token** in the left column of the Postman window.
+    - You should see that the HTTP URL is the `{token_endpoint}` collection variable that you configured in step `4`, above.
+7. Select the **Body** tab.
+8. Configure the `scope` and `launch` values as follows:
+    - `scope`: The default value, "launch," is only appropriate for some VA APIs. Check the documentation for the API you are working with in the [VA developer portal](https://developer.va.gov/explore) for the correct scope(s) to set in your token request. 
+	- `launch`: Follow the steps below to set or omit this value:
+	    1. Check the documentation for the API you are working with in the [VA developer portal](https://developer.va.gov/explore) to see if `launch` is required.
+		2. If `launch` **is** required for your API, enter the correct value as shown in the documentation. This should be a Base64-encoded value that looks similar to the default set in the Postman collection (`eyJwYXRpZW50IjoiMTAwMDcyMDEwMFYyNzEzODcifQ==`).
+		3. If `launch` **is not** required for your API, un-check `launch` in the list of body fields in Postman.
+9. Confirm that all other values are pre-populated, and that `x-www-form-urlencoded` is checked. 
+	- The `grant_type` and `client_assertion_type` values should not change, as they define the token request as a CCG call. The `client_assertion` should also remain the same as it will be populated with the `{{client_assertion}}` collection variable.
 
-3. Click on "Variables" within Postman, to view pre set collection variables.
+## Token request
 
-4. Configure "Lighthouse OAuth Token" collection variables (aud, token_endpoint, clientId, privatePem) in Postman, assigning them their respective values. The client_assertion, import_do_not_edit values should not be edited, as they will be pre-populated once the previous values are defined. Follow the guidance provided at https://developer.va.gov/explore to obtain the necessary collection variable values for API calls. For other APIs, consult the Lighthouse CCG API page related to your desired interaction for accurate API-specific collection variable values. Some example values for the Collection variables following the Patient Health API will be shown below:
+After configuring the Postman collection, you can generate a client assertion and request an OAuth token. You can view the generated JWT in the console after running the request.
 
-a. aud (Collection variable)
-Example aud value:
-https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token
-
-b. token_endpoint (Collection variable)
-Example API tokenUrl value:
-https://sandbox-api.va.gov/oauth2/health/system/v1/token
-
-c. clientId (Collection variable)- This value is obtained from signing up for sandbox access using the dev portal link
-Example clientId value:
-Your CCG clientId
-
-d. privatePem (Collection variable)
-Example privatePem value:
------BEGIN RSA PRIVATE KEY-----
-Your private pem
------END RSA PRIVATE KEY-----
-
-5. Next under the "Lighthouse OAuth Token" click on the actual POST call you will make - "POST Client Credentials Example"
-
-6. You will see that the HTTP url is the {token_endpoint} Collection variable that has already been configured.
-
-7. Then click on "Body" which is located in the middle of the Auth type columns. You should see all values pre-populated and using the x-www-form-urlencoded type. The grant_type and client_assertion_type values should not change as this is a CCG call. The client_assertion should also remain the same as it will be populated with the client_assertion Collection variable. The two configurable values will be the scope and launch based off of the API and call you choose to make. Follow the guidance provided at https://developer.va.gov/explore to obtain the necessary values for APIs.
-
-a. scope
-Currently the default value is set to "launch" which is acceptable for certain APIs but can be changed to include more scopes defined on the dev portal site:
-https://developer.va.gov/explore
-
-b. launch
-In some cases launch will not be required for certain APIs. Follow the documentation to see which APIs require launch. In the cases where launch isn't required, uncheck the "launch" box and the default scope value will also need to change accordingly. Launch is required to be an encoded base64.
-Example Value:
-eyJwYXRpZW50IjoiMTAwMDcyMDEwMFYyNzEzODcifQ==
-
-Run:
-
-This step will generate a JWT assertion and return an OAuth access token. Users can view the JWT assertion in the console after running "Client Credentials Example".
-
-1. If not already there, click on “Client Credentials Example” in the left column of Postman.
-
-2. Click "Send" on the top right corner.
-
-Note:
-If all values were configured correctly, you should see an access_token and other fields corresponding to the API call you made.
+1. Select **Lighthouse OAuth Token > POST Client Credentials Example** in the left column of the Postman window.
+2. Press the **Send** button, located near the top right of the Postman UI.
+3. If all values were configured correctly, you should see an `access_token` and other fields corresponding to the API call you made.
