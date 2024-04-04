@@ -46,9 +46,9 @@ After configuring the Postman collection, you can generate a client assertion an
 3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an access token and associated metadata:
 ```json
 {
-    "access_token": "eyJraWQiOiIzOWdBcj...",
+    "access_token": "eyJraWQiOiIzOWdBcjI4RkZNVVV...",
     "token_type": "Bearer",
-    "scope": "launch",
+    "scope": "system/MedicationOrder.read system/Organization.read system/Location.read system/Medication.read system/Observation.read launch system/Condition.read system/Appointment.read system/DiagnosticReport.read system/AllergyIntolerance.read system/Immunization.read system/Patient.read",
     "expires_in": 300,
     "state": null,
     "patient": "1000720100V271387"
