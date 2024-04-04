@@ -1,4 +1,4 @@
-# Postman CCG OAuth Token
+# Postman Client Credentials Grant (CCG) OAuth Token Request
 
 ## Description
 
