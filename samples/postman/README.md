@@ -46,22 +46,23 @@ After configuring the Postman collection, you can generate a client assertion an
 3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an access token and associated metadata:
 ```json
 {
-    "access_token": "eyJraWQiOiJyOWtWMjlFRm9uWWY0LTJWTT...",
+    "access_token": "eyJraWQiOiIzOWdBcj...",
     "token_type": "Bearer",
-    "scope": "system/claim.write system/claim.read",
+    "scope": "launch",
     "expires_in": 300,
-    "state": null
+    "state": null,
+    "patient": "1000720100V271387"
 }
 ```
 4. You can also view your signed client assertion in the Postman console after making the request. It should look similar to the following example:
 ```json
-client_assertion: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9eyJhdWQiO.JodHRwczovL2Rlc9
-rdGEuY29tL29hdXRoMi9hdXNkZHR2YS1ldmFsLmzdndWlzMlRZRGxGZTJwNy92MS90b2tlbiIsImlzcy
-I6IjBvYXUxOTkzdndRTmE0Mk9FMnA3Iiwic3ViIjoiMG9hdTE5OTN2d1FOYTQyT0UycDciLCJqdGkiOi
-IxZjg2MWFiMi05ZWUxLTRjNWEtODEyNS1kMDZTMiLCJpYXQiOjE3MTIZhZDAyMzVhyNTUyNDgsImV4cC
-I6MTcxMjI1NTMwOH0byCnk2mySwATe1m8657pswpWurucczdgYa5uCHiAKC8e3SQ4ChqeYDunAZ8ikhR
-AXEVf-Cqrea-IXXHCyZYE75ITmetWEs__TdzVLYKmmq61aAK9FRVGHxo8_Qh2gNMsAWo4T0FQuEx1p2z
-5jCP4YMqzPTHOWts3xJJZinck0ZzQ15fIwzOq1DpAS6oRRE8XnWIgGTZ_r1NfCrUZvpPzOU1orOGMWNg
-HXSVjp9UqfK9FMaq4ayts-ucY5ULag_QyEmtpq0GtqJUUJBYbJUCS7klCzJoNkmFth1nYhhDoz1cYiNg
-5BX2NRvgNgKREOYG8HBaVAUCK8CMxkL0lsNVJpQ
+client_assertion: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2R
+lcHR2YS1ldmFsLm9rdGEuY29tL29hdXRoMi9hdXM4bm0xcTBmN1ZRMGE0ODJwNy92MS90b2tlbiIsI
+mlzcyI6IjBvYXUxaWl1eDlUT0RqUU90MnA3Iiwic3ViIjoiMG9hdTFpaXV4OVRPRGpRT3QycDciLCJ
+qdGkiOiJiZGFhOGIxNy04ZGVmLTRkOTctOTY3My0xNDlkNjc0NWRlNTAiLCJpYXQiOjE3MTIyNjI4N
+TYsImV4cCI6MTcxMjI2MjkxNn0.ikWqX-sRIv5dT1Khs8PWvQ5dMAgUSB_CORB3SHSxWM92hz-QEXM
+Z_V6NetnaNRyUvrma-PaQPBrYYs9yOUdP4BvbQgPb_PVjWcHF6QqJuE4UZx-LKNF2sFrrWD5iFqJ0p
+1_e9arcv8VSkFaP-IEFJsi22UCffXhDDhawLYJjTBtK0dxZnX1Om_nlortLOfJsKUCnWdyUBS4EKbh
+7_ec6ZbP9MrwbO_ssnSMoQfONCwfkH1UdWj-NW41Vb5McNvvW2itwfUU6pD-xRSYQWwm0F0hKlG32C
+3PExTfM1xn1uhQBWOURBZ-RhKzx6LaqSHmuaV0BTkwbPTM4GggJcyX06A
 ```
