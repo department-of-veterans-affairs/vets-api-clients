@@ -10,7 +10,7 @@ This Postman collection contains pre-script request methods to generate a signed
 ## Configuration
 
 1. Import `Lighthouse OAuth Token.postman_collection.json` into your Postman workspace.
-2. Select **Lighthouse OAuth Token**, in the left column of the Postman window.
+2. Select the **Lighthouse OAuth Token** collection, in the left column of the Postman window.
 3. Select the **Variables** tab.
 4. Configure the 4 variables shown below by pasting them into the **Initial Value** and **Current Value** columns in Postman:
     - `aud`: The URL that will recieve your token. 
@@ -43,4 +43,13 @@ After configuring the Postman collection, you can generate a client assertion an
 
 1. Select **Lighthouse OAuth Token > POST Client Credentials Example** in the left column of the Postman window.
 2. Press the **Send** button, located near the top right of the Postman UI.
-3. If all values were configured correctly, you should see an `access_token` and other fields corresponding to the API call you made.
+3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an `access_token` and other fields corresponding to the API call you made:
+```json
+{
+    "access_token": "eyJraWQiOiJyOWtWMjlFRm9uWWY0LTJWTT...",
+    "token_type": "Bearer",
+    "scope": "system/claim.write system/claim.read",
+    "expires_in": 300,
+    "state": null
+}
+```
