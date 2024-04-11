@@ -13,13 +13,13 @@ This Postman collection contains pre-script request methods to generate a signed
 2. Select the **Lighthouse OAuth Token** collection, in the left column of the Postman window.
 3. Select the **Variables** tab.
 4. Configure the 4 variables shown below by pasting them into the **Initial Value** and **Current Value** columns in Postman:
-    - `aud`: The URL that will recieve your token. 
+    - `aud`: The URL that will receive your token. 
         - To find this value, check the CCG documentation for the VA API you are working with.
         - Example (from Patient Health API): `https://deptva-eval.okta.com/oauth2/aus8nm1q0f7VQ0a482p7/v1/token`
     - `token_endpoint`: The URL you will request a token from.
         - To find this value, check the CCG documentation for the VA API you are working with.
         - Example (from Patient Health API): `https://sandbox-api.va.gov/oauth2/health/system/v1/token`
-    - `clientId`: The Client ID you recieved when you signed up for sandbox access.
+    - `clientId`: The Client ID you received when you signed up for sandbox access.
         - For information on signing up for sandbox access, check the documentation for the API you are working with in the [VA developer portal](https://developer.va.gov/explore).
     - `privatePem`: The private RSA key you generated when signing up for sandbox access, in PEM format.
         - Your private RSA key should begin with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`.
@@ -43,7 +43,7 @@ After configuring the Postman collection, you can generate a client assertion an
 
 1. Select **Lighthouse OAuth Token > POST Client Credentials Example** in the left column of the Postman window.
 2. Press the **Send** button, located near the top right of the Postman UI.
-3. If all values were configured correctly, you should recieve a JSON object similar to the following example, with an access token and associated metadata:
+3. If all values were configured correctly, you should receive a JSON object similar to the following example, with an access token and associated metadata:
 ```json
 {
     "access_token": "eyJraWQiOiIzOWdBcjI4RkZNVVV...",
