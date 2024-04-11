@@ -55,7 +55,7 @@ After configuring the Postman collection, you can generate a client assertion an
 }
 ```
 4. You can also view your signed client assertion in the Postman console after making the request. It should look similar to the following example:
-```json
+```
 client_assertion: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2R
 lcHR2YS1ldmFsLm9rdGEuY29tL29hdXRoMi9hdXM4bm0xcTBmN1ZRMGE0ODJwNy92MS90b2tlbiIsI
 mlzcyI6IjBvYXUxaWl1eDlUT0RqUU90MnA3Iiwic3ViIjoiMG9hdTFpaXV4OVRPRGpRT3QycDciLCJ
