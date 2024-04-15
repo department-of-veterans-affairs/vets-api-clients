@@ -29,7 +29,7 @@ This Postman collection contains pre-script request methods to generate a signed
     - You should see that the HTTP URL is the `{token_endpoint}` collection variable that you configured in step `4`.
 7. Select the **Body** tab.
 8. Configure the `scope` and `launch` values as follows:
-    - `scope`: The default value, "launch," is only appropriate for some VA APIs. Check the CCG documentation for the API you are working with for the scope(s) that may be included in your token request. 
+    - `scope`: The default value, "launch", is only appropriate for some VA APIs. Check the CCG documentation for the API you are working with for the scope(s) that may be included in your token request. 
     - `launch`: Follow the steps below to set or omit this value:
         1. Check the CCG documentation for the API you are working with to see if `launch` is required.
         2. If `launch` **is** required for your API, enter the example value shown in the documentation. This should be a Base64-encoded value that looks similar to the default set in the Postman collection (`eyJwYXRpZW50IjoiMTAwMDcyMDEwMFYyNzEzODcifQ==`).
