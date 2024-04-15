@@ -5,7 +5,7 @@
 This Postman collection contains pre-script request methods to generate a signed JSON Web Token (JWT) and use it as a client assertion to request access tokens from VA APIs with the Client Credentials Grant (CCG) OAuth flow.
 
 -  To retrieve a sandbox token, configure the collection variables and run the token request as shown below. 
--  For information on signing up for sandbox access for a VA API, and whether an API uses CCG for authorization, check its documentation on [developer.va.gov](https://developer.va.gov/explore).
+-  For information on signing up for sandbox access for a VA API, and to check if an API uses CCG for authorization, check its documentation on [developer.va.gov](https://developer.va.gov/explore).
 
 ## Configuration
 
@@ -26,7 +26,7 @@ This Postman collection contains pre-script request methods to generate a signed
         - For information on generating RSA keys, check the CCG documentation for the API you are working with.
 5. Do **not** edit the `client_assertion` and `import_do_not_edit` values. These will be pre-populated once the previous values are defined. 
 6. Select **POST Client Credentials Example**, located under **Lighthouse OAuth Token** in the left column of the Postman window.
-    - You should see that the HTTP URL is the `{token_endpoint}` collection variable that you configured in step `4`, above.
+    - You should see that the HTTP URL is the `{token_endpoint}` collection variable that you configured in step `4`.
 7. Select the **Body** tab.
 8. Configure the `scope` and `launch` values as follows:
     - `scope`: The default value, "launch," is only appropriate for some VA APIs. Check the CCG documentation for the API you are working with for the scope(s) that may be included in your token request. 
