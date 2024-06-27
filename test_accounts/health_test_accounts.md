@@ -11,7 +11,7 @@ All Health test users below have a variety of synthetic health records attached 
 
 ## Veteran Account Information
 
-**NOTE:** Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/health-apis-datamart-synthetic-records/blob/qa/health-test-patient-data.xlsx). 
+**NOTE:** Resource data about each test patient can be found in [Health Test Patient Data](https://github.com/department-of-veterans-affairs/lighthouse-fhir-apis-consumer-docs/blob/main/patient-health-v0/health-test-patient-data.xlsx). 
 
 | Id  | ICN      | First Name   | Last Name      | Sex | Birthdate |
 |-----|----------|--------------|----------------|-----|-----------|
