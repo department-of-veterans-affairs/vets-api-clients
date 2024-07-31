@@ -1,7 +1,8 @@
 # Sandbox Test Accounts for Veteran Service History & Eligibility API
 
 These test users have a variety of synthetic VA records such as service history and disability rating attached to them and can be used to test the [Veteran Service History & Eligibility API](https://developer.va.gov/explore/verification/docs/veteran_verification?version=current).  
-A table for the Service History Data is located in the file: [verification_service_history_test_accounts.md](verification_service_history_test_accounts.md)
+A table for the Service History Data is located in the file: [verification_service_history_test_accounts.md](verification_service_history_test_accounts.md).
+
 **To use this test data**
 1. Find the test accounts that meet your use case from the table below.
 2. Access login credentials for these accounts and instructions for using ID.me and Login.gov by following the link in the email that was sent to you when you signed up for sandbox access.  If you do not have this email, [request sandbox access](https://developer.va.gov/explore/api/veteran-service-history-and-eligibility/sandbox-access) on developer.va.gov.
