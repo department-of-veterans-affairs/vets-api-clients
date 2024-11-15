@@ -19,7 +19,7 @@ The authentication model for the [Appealable Issues API](https://developer.va.go
 
 These accounts can be used to test various data and response scenarios for the `GET /appealable-issues/{decisionReviewType}` endpoint. Note that in the sandbox environment, the same results will be returned regardless of the `decisionReviewType` supplied.
 
-An `icn` parameter is required when making a request. It should match the value in the ICN column below.
+An `icn` URL parameter is required when making requests using a representative- or system-scoped token. It is optional when making requests using a veteran-scoped token. If provided, the `icn` parameter value should match the value in the ICN column below.
 
 | Sandbox Response             | ICN               | First Name | Last Name |
 |:-----------------------------| :---------------- | :--------- | :-------- |
@@ -29,4 +29,4 @@ An `icn` parameter is required when making a request. It should match the value 
 | Appealable Issue (1)         | 1012667145V762142 | Tamara     | Ellis     |
 | Empty Response               | 1012666073V986297 | Jesse      | Gray      |
 | 404 Veteran Record Not Found | 1012845630V900607 | Pauline    | Foster    |
-| 500 Internal Server Error    | 1012666182V203559 | Greg       | Anderson  |
+| 502 Bad Gateway Error        | 1012666182V203559 | Greg       | Anderson  |

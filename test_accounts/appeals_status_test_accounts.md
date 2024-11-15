@@ -19,7 +19,7 @@ The authentication model for the [Appeals Status API (v1)](https://developer.va.
 
 These accounts can be used to test various data and response scenarios for the `GET /appeals` endpoint. 
 
-An `icn` parameter and an `X-VA-User` header are required when making a request. The `icn` should match the value in the ICN column below, and the `X-VA-User` should match the test account's ID.me or Login.gov username (depending on the authentication method used) from the link provided when you signed up for sandbox access.
+An `icn` URL parameter is required when making requests using a representative- or system-scoped token. It is optional when making requests using a veteran-scoped token. If provided, the `icn` parameter value should match the value in the ICN column below.
 
 | Sandbox Response                                                    | ICN               | First Name | Last Name |
 |:--------------------------------------------------------------------|:------------------|:-----------|:----------|
@@ -29,4 +29,4 @@ An `icn` parameter and an `X-VA-User` header are required when making a request.
 | Legacy Appeal (1)                                                   | 1012667145V762142 | Tamara     | Ellis     |
 | Empty Response                                                      | 1012666073V986297 | Jesse      | Gray      |
 | 404 Veteran Record Not Found                                        | 1012845630V900607 | Pauline    | Foster    |
-| 500 Internal Server Error                                           | 1012666182V203559 | Greg       | Anderson  |
+| 502 Bad Gateway Error                                               | 1012666182V203559 | Greg       | Anderson  |
