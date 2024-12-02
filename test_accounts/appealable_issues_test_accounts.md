@@ -29,4 +29,3 @@ An `icn` URL parameter is required when making requests using a representative- 
 | Appealable Issue (1)         | 1012667145V762142 | Tamara     | Ellis     |
 | Empty Response               | 1012666073V986297 | Jesse      | Gray      |
 | 404 Veteran Record Not Found | 1012845630V900607 | Pauline    | Foster    |
-| 502 Bad Gateway Error        | 1012666182V203559 | Greg       | Anderson  |
