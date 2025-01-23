@@ -10,14 +10,14 @@ Supported resources: AllergyIntolerance, MedicationDispense, Condition, Medicati
 
 **Clinical Health API Test Patients**
 
-| Id  | ICN               | First Name | Last Name   | Sex | Birthdate  | Enabled for Patient Match | Address                                        | Phone        |
-|-----|-------------------|------------|-------------|-----|------------|---------------------------|------------------------------------------------|--------------|
-| 101 | 32000225          | Sheba703   | Harris789   | F   | 1926-01-08 | ➖️                        | ➖                                              | ➖            |
-| 102 | 5000335           | Mariano761 | Ruelas156   | M   | 1907-11-20 | ➖️                        | ➖                                              | ➖            |
-| 103 | 25000126          | Lorenzo669 | Valentín837 | M   | 1942-01-11 | ➖️                        | ➖                                              | ➖            |
-| 114 | 2000190           | Luis923    | Mayer370    | M   | 1969-07-03 | ➖️                        | ➖                                              | ➖            |
-|     | 1012853802V084487 | Ruben      | Moreno      | M   | 1949-12-30 | ✔️                        | 12345 Redlands Blvd, San Bernardino, CA, 92346 | 909 555 5555 |
-|     | 1011568236V299349 | One        | Zztest      | M   | 1949-12-30 | ✔️                        | 12345 Redlands Blvd, San Bernardino, CA, 92346 | 909 555 5555 |
-|     | 1012845331V153043 | Judy       | Morrison    | F   | 1945-05-05 | ✔️                        | 4758 Hollowood Way, Murrieta, CA, 92562        | 909 789 6542 |
-|     | 1011548191V178564 | Eleven     | Zztest      | M   | 1945-05-05 | ✔️                        | 4758 Hollowood Way, Murrieta, CA, 92562        | 909 789 6542 |
+| Id  | ICN               | First Name | Last Name   | Sex | Birthdate  | Enabled for Patient Match | Address                                                | Phone        |
+|-----|-------------------|------------|-------------|-----|------------|---------------------------|--------------------------------------------------------|--------------|
+| 101 | 32000225          | Sheba703   | Harris789   | F   | 1926-01-08 | ➖️                        | 1074 McGlynn Wynd Apt 72, Buffalo, NY, 14201           | 555 436 2634 |
+| 102 | 5000335           | Mariano761 | Ruelas156   | M   | 1907-11-20 | ➖️                        | 245 Padberg Quay Suite 99, Colorado Springs, CO, 80809 | 555 309 5927 |
+| 103 | 25000126          | Lorenzo669 | Valentín837 | M   | 1942-01-11 | ➖️                        | 242 Legros Walk, Ballwin, MO, 63005                    | 555 933 3641 |
+| 114 | 2000190           | Luis923    | Mayer370    | M   | 1969-07-03 | ➖️                        | 948 Paucek Well, Phoenix, AZ, 85003                    | 555 171 5011 |
+|     | 1012853802V084487 | Ruben      | Moreno      | M   | 1949-12-30 | ✔️                        | 12345 Redlands Blvd, San Bernardino, CA, 92346         | 909 555 5555 |
+|     | 1011568236V299349 | One        | Zztest      | M   | 1949-12-30 | ✔️                        | 12345 Redlands Blvd, San Bernardino, CA, 92346         | 909 555 5555 |
+|     | 1012845331V153043 | Judy       | Morrison    | F   | 1945-05-05 | ✔️                        | 4758 Hollowood Way, Murrieta, CA, 92562                | 909 789 6542 |
+|     | 1011548191V178564 | Eleven     | Zztest      | M   | 1945-05-05 | ✔️                        | 4758 Hollowood Way, Murrieta, CA, 92562                | 909 789 6542 |
 
