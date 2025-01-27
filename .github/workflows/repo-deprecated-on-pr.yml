@@ -2,6 +2,8 @@ name: Update the Lighthouse Test Data repo
 
 on:
   pull_request:
+    paths:
+      - 'test_accounts/**'
 
 jobs:
   update_paths:
