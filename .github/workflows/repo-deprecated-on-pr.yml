@@ -1,0 +1,20 @@
+name: Update the Lighthouse Test Data repo
+
+on:
+  pull_request:
+
+jobs:
+  update_paths:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Add comment to PR
+      uses: mshick/add-pr-comment@v2
+      with:
+        message: |
+          Please note that this repository is deprecated in favor of https://github.com/department-of-veterans-affairs/lighthouse-test-data. Changes should be made to the new repository.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
