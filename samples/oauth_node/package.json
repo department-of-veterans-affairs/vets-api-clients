@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/department-of-veterans-affairs/vets-api-clients#readme",
   "dependencies": {
-    "axios": "^1.7.4",
+    "axios": "^1.8.2",
     "body-parser": "^1.20.3",
     "dotenv": "^8.6.0",
     "ejs": "^3.1.10",
